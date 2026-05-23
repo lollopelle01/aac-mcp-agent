@@ -25,3 +25,8 @@ app/frontend/dist/
 app/models/
 *.gguf
 app/datasets/pictograms/
+
+# ── Cache cluster (generate da run_eval_cluster.sh) ──────────
+.hf_cache/
+.torch_cache/
+.xdg_cache/

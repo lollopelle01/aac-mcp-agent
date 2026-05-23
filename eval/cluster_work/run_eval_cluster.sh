@@ -13,6 +13,13 @@
 SCRIPT_DIR="/scratch.hpc/lorenzo.pellegrino2/aac-mcp-agent/eval/cluster_work"
 mkdir -p "${SCRIPT_DIR}/logs" "${SCRIPT_DIR}/results"
 
+# Keep ALL caches out of home — redirect everything to scratch inside the project
+export PIP_CACHE_DIR="/scratch.hpc/${USER}/pip_cache"
+export TORCH_HOME="${SCRIPT_DIR}/../../.torch_cache"
+export XDG_CACHE_HOME="${SCRIPT_DIR}/../../.xdg_cache"
+export HF_HOME="${SCRIPT_DIR}/../../.hf_cache"
+mkdir -p "${PIP_CACHE_DIR}" "${TORCH_HOME}" "${XDG_CACHE_HOME}" "${HF_HOME}"
+
 # Redirect output to logs in the script directory
 exec > >(tee -a "${SCRIPT_DIR}/logs/eval_aac_hf_${SLURM_JOB_ID}.out") \
      2> >(tee -a "${SCRIPT_DIR}/logs/eval_aac_hf_${SLURM_JOB_ID}.err" >&2)
@@ -154,13 +161,7 @@ PYCHECK
 fi
 
 # ── 6. HuggingFace cache (use scratch if available, else home) ────────────────
-if [ -n "${SLURM_TMPDIR}" ]; then
-    export HF_HOME="${SLURM_TMPDIR}/hf_cache"
-elif [ -d "/scratch" ]; then
-    export HF_HOME="/scratch/${USER}/hf_cache"
-else
-    export HF_HOME="${HOME}/.cache/huggingface"
-fi
+export HF_HOME="/scratch.hpc/${USER}/hf_cache"
 mkdir -p "${HF_HOME}"
 echo "[run] HF_HOME=${HF_HOME}"
 
