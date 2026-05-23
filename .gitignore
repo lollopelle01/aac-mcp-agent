@@ -24,3 +24,4 @@ app/frontend/dist/
 # ── Modelli GGUF — file grandi, mai pushare ──────────────────
 app/models/
 *.gguf
+app/datasets/pictograms/
