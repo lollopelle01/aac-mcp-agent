@@ -1,3 +1,26 @@
+# ── Sistema ──────────────────────────────────────────────────
 .DS_Store
 .vscode/settings.json
 */__pycache__/*
+__pycache__/
+.pytest_cache/
+
+# ── Credenziali e segreti — MAI pushare ──────────────────────
+app/credentials/credentials.json   # client_secret OAuth Google
+app/credentials/token.pickle       # token OAuth attivo
+app/credentials/passwords.txt
+*.pickle
+app/.env                           # credenziali locali (vedi app/.env.example)
+app/user_settings.json             # impostazioni utente locali (generate da settings.py)
+
+# ── Log ────────────────────────────────────────────────────────
+app/logs/*.log
+app/logs/*.log.*
+
+# ── Frontend build ─────────────────────────────────────────────
+app/frontend/node_modules/
+app/frontend/dist/
+
+# ── Modelli GGUF — file grandi, mai pushare ──────────────────
+app/models/
+*.gguf

@@ -1,0 +1,42 @@
+{
+  "timezone": "Europe/Rome",
+  "lang": "en",
+  "calendar_provider": "apple",
+  "subscribed_ics_urls": {
+    "UNIBO": "https://calendar.students.cs.unibo.it/cal/9063/2?curr=000-000&subjects=91257_1,91257_2"
+  },
+  "models": {
+    "granite4:3b-h": {
+      "size_gb": 4.4
+    },
+    "qwen2.5:3b": {
+      "size_gb": 2.0
+    },
+    "llama3.2:3b": {
+      "size_gb": 1.9
+    },
+    "mistral:7b": {
+      "size_gb": 1.9
+    }
+  },
+  "gguf_models": {
+    "qwen2.5:3b": "models/Qwen2.5-3B-Instruct-Q4_K_M.gguf",
+    "llama3.2:3b": "models/Llama-3.2-3B-Instruct-Q4_K_M.gguf",
+    "granite4:3b-h": "models/ibm-granite_granite-4.1-3b-Q4_K_M.gguf",
+    "mistral:7b": "models/Mistral-7B-Instruct-v0.3-Q4_K_M.gguf"
+  },
+  "agent_default_model": "qwen2.5:3b",
+  "agent_use_llamacpp": true,
+  "agent_max_results": 50,
+  "agent_candidates_per_term": 10,
+  "agent_memory_turns": 3,
+  "agent_fetch_schedule": true,
+  "agent_synset_expand": true,
+  "agent_synset_expand_max": 8,
+  "use_local_datasets": true,
+  "dataset_langs": [
+    "en",
+    "it",
+    "es"
+  ]
+}
