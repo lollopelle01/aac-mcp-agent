@@ -6,8 +6,16 @@
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=8
 #SBATCH --gres=gpu:1
-#SBATCH --output=logs/eval_aac_hf_%j.out
-#SBATCH --error=logs/eval_aac_hf_%j.err
+#SBATCH --output=/dev/null
+#SBATCH --error=/dev/null
+
+# Resolve script directory early (works with sbatch — BASH_SOURCE[0] is the real path)
+SCRIPT_DIR="/scratch.hpc/lorenzo.pellegrino2/aac-mcp-agent/eval/cluster_work"
+mkdir -p "${SCRIPT_DIR}/logs" "${SCRIPT_DIR}/results"
+
+# Redirect output to logs in the script directory
+exec > >(tee -a "${SCRIPT_DIR}/logs/eval_aac_hf_${SLURM_JOB_ID}.out") \
+     2> >(tee -a "${SCRIPT_DIR}/logs/eval_aac_hf_${SLURM_JOB_ID}.err" >&2)
 
 # ── 0. Configuration — edit these before submitting ──────────────────────────
 # Path to the Python venv (shared with annotation if already set up, or new one)
@@ -24,12 +32,10 @@ SEED="${SEED:-42}"
 LOAD_8BIT="${LOAD_8BIT:-0}"     # 1 = INT8 quantisation (saves VRAM)
 
 # Output CSV — one file for all models (has a 'model' column)
-OUTPUT_CSV="results/eval_hf_${SLURM_JOB_ID}.csv"
+OUTPUT_CSV="${SCRIPT_DIR}/results/eval_hf_${SLURM_JOB_ID}.csv"
 
 # Sentinel: marks a completed venv setup so subsequent runs skip the install.
 SENTINEL="${VENV_DIR}/.setup_ok"
-
-mkdir -p logs results
 
 # ── 1. Fast path: venv already ready ─────────────────────────────────────────
 if [ -f "${SENTINEL}" ]; then
@@ -159,7 +165,6 @@ mkdir -p "${HF_HOME}"
 echo "[run] HF_HOME=${HF_HOME}"
 
 # ── 7. Build Python arguments ─────────────────────────────────────────────────
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SCRIPT="${SCRIPT_DIR}/run_eval_hf.py"
 MODELS_ARGS=""
 for M in ${HF_MODELS}; do
