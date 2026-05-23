@@ -11,7 +11,7 @@
 
 # ── 0. Configuration — edit these before submitting ──────────────────────────
 # Path to the Python venv (shared with annotation if already set up, or new one)
-VENV_DIR="../../python_venvs/BDATM"
+VENV_DIR="/scratch.hpc/lorenzo.pellegrino2/python_venvs/BDATM"
 
 # HuggingFace models to evaluate — space-separated, quoted as a single string.
 # Each model is run sequentially; GPU memory is freed between models.
@@ -159,7 +159,8 @@ mkdir -p "${HF_HOME}"
 echo "[run] HF_HOME=${HF_HOME}"
 
 # ── 7. Build Python arguments ─────────────────────────────────────────────────
-SCRIPT="$(dirname "$(realpath "$0")")/run_eval_hf.py"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT="${SCRIPT_DIR}/run_eval_hf.py"
 MODELS_ARGS=""
 for M in ${HF_MODELS}; do
     MODELS_ARGS="${MODELS_ARGS} ${M}"
