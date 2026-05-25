@@ -27,6 +27,7 @@ Supported model families (any model with a chat template):
 from __future__ import annotations
 
 import logging
+import time
 from typing import Optional
 
 import torch
@@ -224,7 +225,8 @@ class HFAACAgent(AACAgent):
 
         Identical logic to AACAgent._plan; only the inference call differs.
         """
-        system_msg = build_planner_prompt()
+        _t_plan_start = time.perf_counter()
+        system_msg = build_planner_prompt(full=False)   # explicit: always SHORT (fast)
         user_msg   = build_planner_message(raw_input, history)
 
         agent_log.debug(
@@ -233,8 +235,14 @@ class HFAACAgent(AACAgent):
         )
 
         try:
+            agent_log.info(
+                "[PLAN CALL][HF] model=%s  pre_hf=%.2fs",
+                self.model, time.perf_counter() - _t_plan_start,
+            )
+            _t0      = time.perf_counter()
             raw_text = self._hf_chat(system_msg, user_msg)
-            agent_log.info("[PLAN OUT][HF] raw=%r", raw_text)
+            _elapsed = time.perf_counter() - _t0
+            agent_log.info("[PLAN OUT][HF] elapsed=%.2fs  raw=%r", _elapsed, raw_text)
 
             parsed     = self._parse_planner_response(raw_text)
             call_tools = bool(parsed.get("call_tools", True))
@@ -246,7 +254,7 @@ class HFAACAgent(AACAgent):
 
         except Exception as exc:
             logger.warning("HF Planner failed: %s — falling back to regex.", exc)
-            agent_log.info("[PLAN][HF]  ERROR %s — fallback to regex", exc)
+            agent_log.info("[PLAN][HF]  ERROR %s — fallback to empty list", exc)
             return True, []
 
 

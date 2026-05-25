@@ -160,6 +160,9 @@ def _ids_to_results(
         if rec is None:
             logger.debug("Local pictogram id=%s not found in dataset — skipping.", pid_str)
             continue
+        # Ensure 'id' is present — some dataset formats store it only as the dict key
+        if "id" not in rec and "_id" not in rec:
+            rec = {"id": int(pid_str), **rec}
         if (s := _safe_to_scored(rec)) is not None:
             results.append(s)
     return results
@@ -271,6 +274,8 @@ def get_pictogram_metadata(
         if pictograms is not None:
             rec = pictograms.get(pid_str)
             if rec is not None:
+                if "id" not in rec and "_id" not in rec:
+                    rec = {"id": pictogram_id, **rec}
                 logger.info("get_pictogram_metadata(id=%d): OK from local dataset.", pictogram_id)
                 return _raw_to_pictogram(rec).model_dump()
             logger.debug(

@@ -11,46 +11,45 @@
 
 # Resolve script directory early (works with sbatch — BASH_SOURCE[0] is the real path)
 SCRIPT_DIR="/scratch.hpc/lorenzo.pellegrino2/aac-mcp-agent/eval/cluster_work"
-mkdir -p "${SCRIPT_DIR}/logs" "${SCRIPT_DIR}/results"
+PROJECT_ROOT="$(dirname "${SCRIPT_DIR}")/.."   # <project_root>/
+NOTEBOOK="${PROJECT_ROOT}/eval/eval.ipynb"
+mkdir -p "${SCRIPT_DIR}/logs" "${SCRIPT_DIR}/results" "${PROJECT_ROOT}/eval/results"
 
 # Keep ALL caches out of home — redirect everything to scratch inside the project
 export PIP_CACHE_DIR="/scratch.hpc/${USER}/pip_cache"
-export TORCH_HOME="${SCRIPT_DIR}/../../.torch_cache"
-export XDG_CACHE_HOME="${SCRIPT_DIR}/../../.xdg_cache"
-export HF_HOME="${SCRIPT_DIR}/../../.hf_cache"
+export TORCH_HOME="${PROJECT_ROOT}/.torch_cache"
+export XDG_CACHE_HOME="${PROJECT_ROOT}/.xdg_cache"
+export HF_HOME="/scratch.hpc/${USER}/hf_cache"
 mkdir -p "${PIP_CACHE_DIR}" "${TORCH_HOME}" "${XDG_CACHE_HOME}" "${HF_HOME}"
 
 # Redirect output to logs in the script directory
 exec > >(tee -a "${SCRIPT_DIR}/logs/eval_aac_hf_${SLURM_JOB_ID}.out") \
      2> >(tee -a "${SCRIPT_DIR}/logs/eval_aac_hf_${SLURM_JOB_ID}.err" >&2)
 
-# ── 0. Configuration — edit these before submitting ──────────────────────────
-# Path to the Python venv (shared with annotation if already set up, or new one)
+# ── 0. Configuration — edit these before submitting ──────────────────────────────
 VENV_DIR="/scratch.hpc/lorenzo.pellegrino2/python_venvs/BDATM"
 
-# HuggingFace models to evaluate — space-separated, quoted as a single string.
-# Each model is run sequentially; GPU memory is freed between models.
-HF_MODELS="${HF_MODELS:-Qwen/Qwen2.5-3B-Instruct meta-llama/Llama-3.2-3B-Instruct ibm-granite/granite-3.1-2b-instruct}"
+# Notebook parameters injected as env vars (read by the Config cell via os.environ).
+# Overridable on the sbatch command line:  MODELS="..." sbatch run_eval_cluster.sh
+export NB_IS_COLAB="False"
+export NB_MODELS="${NB_MODELS:-Qwen/Qwen2.5-3B-Instruct meta-llama/Llama-3.2-3B-Instruct ibm-granite/granite-3.1-2b-instruct}"
+export NB_SPLIT="${NB_SPLIT:-both}"
+export NB_N_ROWS="${NB_N_ROWS:-0}"          # 0 = full dataset on cluster
+export NB_SEED="${NB_SEED:-42}"
+export NB_LOAD_8BIT="${NB_LOAD_8BIT:-False}"
+export NB_MAX_NEW_TOKENS="${NB_MAX_NEW_TOKENS:-512}"
+export NB_LANG="${NB_LANG:-en_eval}"
+export NB_OUTPUT_CSV="eval/results/eval_cluster_${SLURM_JOB_ID}.csv"
 
-# Eval parameters (override via env vars or edit here)
-SPLIT="${SPLIT:-both}"          # clear | vague | both
-N_ROWS="${N_ROWS:-0}"           # 0 = full dataset
-SEED="${SEED:-42}"
-LOAD_8BIT="${LOAD_8BIT:-0}"     # 1 = INT8 quantisation (saves VRAM)
-
-# Output CSV — one file for all models (has a 'model' column)
-OUTPUT_CSV="${SCRIPT_DIR}/results/eval_hf_${SLURM_JOB_ID}.csv"
-
-# Sentinel: marks a completed venv setup so subsequent runs skip the install.
 SENTINEL="${VENV_DIR}/.setup_ok"
 
-# ── 1. Fast path: venv already ready ─────────────────────────────────────────
+# ── 1. Fast path: venv already ready ──────────────────────────────────────────────
 if [ -f "${SENTINEL}" ]; then
     echo "[setup] Sentinel found — skipping install."
     source "${VENV_DIR}/bin/activate"
     echo "[setup] Python: $(which python3)"
 else
-    # ── 2. CUDA module ────────────────────────────────────────────────────────
+    # ── 2. CUDA module ────────────────────────────────────────────────────────────────
     echo "[setup] Probing CUDA modules …"
     LOADED=0
     for VER in 12.4 12.3 12.2 12.1 12.0 11.8 11.7; do
@@ -85,14 +84,14 @@ else
     esac
     echo "[setup] torch==${TORCH_VER}"
 
-    # ── 3. Create / activate venv ─────────────────────────────────────────────
+    # ── 3. Create / activate venv ─────────────────────────────────────────────────────
     if [ ! -d "${VENV_DIR}" ]; then
         echo "[setup] Creating venv at ${VENV_DIR} …"
         python3 -m venv "${VENV_DIR}"
     fi
     source "${VENV_DIR}/bin/activate"
 
-    # ── 4. Install packages ───────────────────────────────────────────────────
+    # ── 4. Install packages ─────────────────────────────────────────────────────────────
     pip install -q --upgrade pip
 
     pip install -q \
@@ -113,6 +112,9 @@ else
         "sentencepiece>=0.1.99" \
         "protobuf>=3.20" \
         "spacy>=3.7" \
+        "nbconvert>=7.0" \
+        "nbformat>=5.9" \
+        "ipykernel>=6.0" \
         "en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl"
 
     # Project-specific deps (no ollama needed on cluster)
@@ -121,7 +123,7 @@ else
         "pydantic>=2.0" \
         "httpx>=0.24"
 
-    # ── 5. Sanity check ───────────────────────────────────────────────────────
+    # ── 5. Sanity check ───────────────────────────────────────────────────────────────
     python3 - << 'PYCHECK'
 import importlib, sys, torch
 from packaging.version import Version
@@ -132,6 +134,7 @@ required = [
     ("accelerate",   "0.29.0"),
     ("pandas",       "2.0.0"),
     ("pydantic",     "2.0.0"),
+    ("nbconvert",    "7.0.0"),
 ]
 ok = True
 for pkg, min_ver in required:
@@ -160,47 +163,30 @@ PYCHECK
     echo "[setup] Sentinel written."
 fi
 
-# ── 6. HuggingFace cache (use scratch if available, else home) ────────────────
-export HF_HOME="/scratch.hpc/${USER}/hf_cache"
-mkdir -p "${HF_HOME}"
-echo "[run] HF_HOME=${HF_HOME}"
+# ── 6. Run the notebook via nbconvert ────────────────────────────────────────────────
+echo "[run] Notebook : ${NOTEBOOK}"
+echo "[run] Models   : ${NB_MODELS}"
+echo "[run] Split    : ${NB_SPLIT}  N_rows: ${NB_N_ROWS}"
+echo "[run] Output   : ${PROJECT_ROOT}/${NB_OUTPUT_CSV}"
+echo "[run] Started  : $(date)"
 
-# ── 7. Build Python arguments ─────────────────────────────────────────────────
-SCRIPT="${SCRIPT_DIR}/run_eval_hf.py"
-MODELS_ARGS=""
-for M in ${HF_MODELS}; do
-    MODELS_ARGS="${MODELS_ARGS} ${M}"
-done
-
-EXTRA_ARGS=""
-[ "${LOAD_8BIT}" = "1" ] && EXTRA_ARGS="${EXTRA_ARGS} --load_in_8bit"
-[ "${N_ROWS}" != "0"  ] && EXTRA_ARGS="${EXTRA_ARGS} --n_rows ${N_ROWS}"
-
-echo "[run] Script  : ${SCRIPT}"
-echo "[run] Models  : ${HF_MODELS}"
-echo "[run] Split   : ${SPLIT}"
-echo "[run] N_rows  : ${N_ROWS}"
-echo "[run] Output  : ${OUTPUT_CSV}"
-echo "[run] Started : $(date)"
-
-# ── 8. Run evaluation ─────────────────────────────────────────────────────────
-python3 "${SCRIPT}" \
-    --models ${MODELS_ARGS} \
-    --split  "${SPLIT}" \
-    --seed   "${SEED}" \
-    --output "${OUTPUT_CSV}" \
-    --log_every  25 \
-    --save_every 10 \
-    --verbose \
-    ${EXTRA_ARGS}
+# nbconvert executes the notebook in-place and writes a timestamped executed copy
+# to logs/ for debugging. The notebook itself reads config from NB_* env vars.
+jupyter nbconvert \
+    --to notebook \
+    --execute \
+    --ExecutePreprocessor.timeout=-1 \
+    --ExecutePreprocessor.kernel_name=python3 \
+    --output "${SCRIPT_DIR}/logs/eval_executed_${SLURM_JOB_ID}.ipynb" \
+    "${NOTEBOOK}"
 
 EXIT_CODE=$?
 echo "[run] Finished : $(date)  exit=${EXIT_CODE}"
 
 if [ ${EXIT_CODE} -eq 0 ]; then
-    echo "[run] Results saved to: ${OUTPUT_CSV}"
+    echo "[run] CSV saved to: ${PROJECT_ROOT}/${NB_OUTPUT_CSV}"
 else
-    echo "[ERROR] Evaluation failed (exit ${EXIT_CODE})" >&2
+    echo "[ERROR] Notebook execution failed (exit ${EXIT_CODE})" >&2
 fi
 
 deactivate
