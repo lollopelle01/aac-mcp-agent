@@ -107,8 +107,9 @@ class AACAgent:
           5. Deterministic ranking → exclude already-shown → fill window
 
         The window is always exactly `max_results` items (or all candidates
-        if fewer exist). All pictograms shown in the previous window are excluded
-        (not just selected ones) so each turn offers genuinely fresh options.
+        if fewer exist). Only pictograms the user actually SELECTED are excluded
+        from subsequent windows; pictograms that were shown but not chosen can
+        reappear, since the new context may make them relevant again.
         """
         _t_run_start = time.perf_counter()
         self._eval_ctx = eval_ctx
@@ -158,9 +159,11 @@ class AACAgent:
             return []
 
         # ── Phase 4: deterministic ranking + window fill ──────────────────────
-        shown_ids    = self.memory.recently_presented_ids(n_turns=AGENT_MEMORY_TURNS)
+        # Opzione A: solo i pittogrammi SELEZIONATI vengono esclusi dalla finestra.
+        # Quelli mostrati ma non scelti possono riapparire — il contesto è cambiato
+        # e potrebbero essere rilevanti per il concetto corrente.
         selected_ids = self.memory.recently_selected_ids(n_turns=AGENT_MEMORY_TURNS)
-        result       = self._rank_and_fill(candidates, shown_ids, selected_ids, turn_id)
+        result       = self._rank_and_fill(candidates, set(), selected_ids, turn_id)
 
         # ── Record turn ───────────────────────────────────────────────────────
         topics = SessionMemory.extract_topics(result)
@@ -176,8 +179,8 @@ class AACAgent:
         ))
         self._eval_ctx = None
         agent_log.info(
-            "[RESULT] window=%d  shown_excluded=%d  ids=%s",
-            len(result), len(shown_ids), [p.id for p in result],
+            "[RESULT] window=%d  selected_excluded=%d  ids=%s",
+            len(result), len(selected_ids), [p.id for p in result],
         )
         logger.info("Turn %d done — %d pictograms", turn_id, len(result))
         return result
@@ -467,17 +470,16 @@ class AACAgent:
 
         Strategy:
           1. Hard-exclude pictograms the user SELECTED in recent turns.
-             These never reappear, not even as stale padding, because showing a
-             chosen pictogram again would confuse the subject.
-          2. Exclude pictograms already shown (but not chosen) from the fresh pool.
-             These can be used as stale padding if fresh candidates are scarce.
+             These never reappear because the user already chose them —
+             showing them again would be redundant and confusing.
+          2. All other candidates (including those previously shown but not chosen)
+             are treated as fresh — shown_ids is always empty (Opzione A).
+             Rationale: the new context may make a previously-shown pictogram
+             relevant again; suppressing it artificially reduces the useful pool.
           3. Rank by (concept_order ASC, quality_score DESC):
              concept_order mirrors the planner's priority (first concept first);
              within the same concept, quality wins: aac_color > aac > no violence/sex.
-          4. Take up to max_results from the ranked fresh pool.
-          5. If the fresh pool is smaller than max_results, pad with the
-             best already-shown-but-not-selected candidates (stale) so the
-             window is always full.
+          4. Take up to max_results from the ranked pool.
         """
         concept_order = getattr(self, "_concept_order", {})
         _MAX_CONCEPT = 9999
@@ -491,31 +493,18 @@ class AACAgent:
             if not pic.sex:      score += 1
             return (cidx, -score)   # sort by concept first, then best quality first
 
-        fresh   = [p for p in candidates if p.id not in shown_ids]
-        stale   = [p for p in candidates if p.id in shown_ids and p.id not in selected_ids]
-        # selected_ids: completely excluded — never in window, not even as padding
+        # shown_ids is always empty (Opzione A) — only selected_ids are excluded.
+        pool = [p for p in candidates if p.id not in selected_ids]
+        pool.sort(key=_sort_key)
 
-        fresh.sort(key=_sort_key)
-        stale.sort(key=_sort_key)
-
-        window = fresh[:self.max_results]
+        window = pool[:self.max_results]
         self.last_fresh_count = len(window)
 
-        # Pad with stale candidates if we don't have enough fresh ones
-        if len(window) < self.max_results:
-            needed = self.max_results - len(window)
-            window.extend(stale[:needed])
-            if stale:
-                agent_log.info(
-                    "[RANK]   fresh=%d  padded_with_stale=%d",
-                    len(fresh), min(needed, len(stale)),
-                )
-
         agent_log.info(
-            "[RANK]   total_candidates=%d  shown_excluded=%d  selected_hard_excluded=%d  fresh=%d  window=%d",
-            len(candidates), len(shown_ids & {p.id for p in candidates}),
+            "[RANK]   total_candidates=%d  selected_hard_excluded=%d  pool=%d  window=%d",
+            len(candidates),
             len(selected_ids & {p.id for p in candidates}),
-            len(fresh), len(window),
+            len(pool), len(window),
         )
         return window
 

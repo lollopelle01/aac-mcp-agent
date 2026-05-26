@@ -642,4 +642,126 @@ File consegnato: `eval_patched.ipynb` → rinominare `eval.ipynb`.
 
 ---
 
-*Ultimo aggiornamento: maggio 2026 — R20: fix eval pipeline completato (`eval.ipynb` aggiornato, colonne `planner_had_gold_concept` e `input_triggered_tools` aggiunte al CSV).*
+*Ultimo aggiornamento: maggio 2026 — R21: fix Colab notebook; prima eval run completata (200 righe, Qwen2.5-3B); diagnosi bottleneck resolve; piano miglioramenti.*
+
+---
+
+## 35. Risultati prima eval run (R21)
+
+**Setup:** 200 sequenze random da `eval_filtered.parquet`, Qwen/Qwen2.5-3B-Instruct, T4 Colab, ~1h, `NB_LOAD_8BIT=False`.
+
+| Metrica | Valore |
+|---|---|
+| Hit@window (gold nella finestra finale) | **22.0%** |
+| gold_in_candidates (pre-ranking) | 23.5% |
+| Hit split `clear` | 26.9% |
+| Hit split `vague` | 17.2% |
+| Hit turn_pos=0 | 29.3% |
+| resolve_method=none (tutte le righe) | **88.3%** |
+| planner_had_gold_concept | 13.7% |
+| Hit quando planner_had_gold_concept=True | 33.8% |
+| Tool call rate su vague input reale | 77.5% |
+
+**Diagnosi bottleneck:**
+
+1. **`resolve_method=none` all'88%** — il collo di bottiglia primario. Il planner genera concetti che `resolve_concept` non sa mappare su nessuna keyword ARASAAC. Su 1556 turni, 1374 producono query vuote → niente candidati dal concetto gold.
+
+2. **Gap gold_in_candidates → hit minimo (23.5% → 22.0%)** — quando il gold entra nel pool, quasi sempre entra anche nella finestra: il ranking non è il problema.
+
+3. **Tool call su vague**: il planner chiama i tool nel 77.5% dei casi vague, 0% su clear. Corretto come da design. Però hit con tool (23.2%) ≈ hit senza tool (22.2%) → i tool non peggiorano né migliorano significativamente il hit rate con questo campione piccolo.
+
+4. **Concetti gold non in ARASAAC**: analisi dei `none` con `planner_had_gold_concept=True` mostra termini come `portrait`, `nectar`, `bluebells`, `groceries` — parole che non esistono come keyword ARASAAC.
+
+---
+
+## 36. Fix Colab notebook (R21)
+
+**Problema 1 — CWD sbagliata:** su Colab, dopo il clone in `/content/aac-mcp-agent`, la CWD resta `/content`. La cella 9 (path setup) usa `Path().resolve()` → trovava `/content` invece della root del progetto. Fix: aggiunto `os.chdir(PROJECT_ROOT)` in cella 0 subito dopo l'assegnazione di `PROJECT_ROOT`.
+
+**Problema 2 — Output CSV su filesystem root:** `NB_OUTPUT_CSV = "eval/results/eval_colab.csv"` è relativo → con CWD errata scriveva in `/content/eval/results/` invece di `/content/aac-mcp-agent/eval/results/`. Fix: path assoluto in cella 1.
+
+**Problema 3 — `! cd` inutile:** la cella 2 con `! cd aac-mcp-agent/eval/` lancia una subshell che non cambia la CWD del notebook. Fix: sostituita con un sanity-check Python che stampa CWD e verifica esistenza dei file chiave.
+
+**File consegnato:** `eval.ipynb` (celle 0, 1, 2 aggiornate).
+
+**Nota performance:** ~1h per 200 righe su T4 senza 8-bit è atteso (~1.9s/turno). Per accelerare: `os.environ["NB_LOAD_8BIT"] = "True"` (già commentato in cella 1 come reminder).
+
+---
+
+## 37. Risposte a dubbi tecnici (R21)
+
+**La quantizzazione 8-bit è il default nell'app?**
+No. `HFAACAgent.__init__` ha `hf_load_in_8bit=False` come default. La quantizzazione è rilevante solo per il cluster/Colab (HF Transformers), non per Ollama (che gestisce la quantizzazione a livello di formato GGUF). Nell'app su tablet la pipeline usa `OllamaBackend` o `LlamaCppBackend` con GGUF Q4_K_M — la quantizzazione è già baked nel file modello.
+
+**I tool aiutano su input vague?**
+Dai dati: hit con tool (23.2%) ≈ hit senza tool (22.2%) su input vague a turn_pos=0. La differenza non è significativa con 200 righe. Il planner comunque chiama i tool nel 77.5% dei casi vague (corretto comportamento), ma i termini iniettati dallo schedule non finiscono nel gold concetto → non migliorano il hit diretto. Valutare con campione più grande.
+
+**Perché l'agente sembrava più efficace nelle prove manuali?**
+Durante le prove manuali il caregiver scrive input che contengono già keyword vicine ad ARASAAC (es. "he wants water" → `water` è una keyword esatta). Nel dataset di eval, i concetti gold sono spesso più specifici o tecnici (`portrait`, `nectar`, `groceries`) e non corrispondono a nessuna keyword ARASAAC → `resolve=none` → il gold non entra mai nel pool. Il sistema funziona bene per i casi "comuni"; fatica sui long-tail del dataset.
+
+---
+
+## 38. Piano miglioramenti score (R21)
+
+Priority decrescente per impatto/sforzo:
+
+**P1 — Fuzzy resolve (impatto stimato: +8-15pp hit)**
+Attualmente `resolve_concept` cerca corrispondenze esatte o lemmatizzate. Aggiungere un passo fuzzy (RapidFuzz o difflib) dopo il passo 4 (`token`) che cerca la keyword ARASAAC più simile con soglia ≥ 0.8. Colpirebbe casi come `groceries → grocery`, `bluebells → bluebell`. Rischio: falsi positivi con parole brevi → testare con soglia alta.
+
+**P2 — Prompt con esempi di concetti ARASAAC reali (impatto stimato: +3-7pp)**
+Il planner genera `portrait` invece di `photo`, `groceries` invece di `shopping`. Il problema è che il modello non conosce il vocabolario ARASAAC. Soluzione: aggiungere nel prompt SHORT una lista di ~20 esempi di sostituzioni gold ARASAAC (`portrait→photo`, `groceries→shopping`, `uphill→hill`, ...) come few-shot hint. Alternativa più robusta: includere nel prompt un campione delle keyword ARASAAC più frequenti (top-200) per ancorare il vocabolario.
+
+**P3 — Synonym expansion nel resolve (impatto stimato: +3-5pp)**
+Dopo il passo 4 (`token`), aggiungere un passo 5 `synonym` che cerca i sinonimi WordNet del concetto e verifica se uno di essi è in `kw_set`. Già fattibile con `nltk.corpus.wordnet` che è leggero. Colpirebbe `remind→remember`, `wander→walk`, `wear→dress`.
+
+**P4 — Aumentare `AGENT_CANDIDATES_PER_TERM` (impatto stimato: +1-3pp, no codice)**
+Attualmente 10. Portare a 15-20 aumenta il pool senza cambiare logica. Da bilanciare con rischio di rumore nel ranking.
+
+**Cosa NON fare:**
+- Non cambiare il ranker: il gap `gold_in_candidates → hit` è già minimo (1.5pp).
+- Non usare embedding retrieval come sostituto del resolve: troppo pesante su CPU/tablet.
+- Non aumentare `max_results` sopra 24: UX dell'utente AAC degrada con troppe scelte.
+
+---
+
+## 39. Modifiche R22: Opzione A exclusion + window 25 + NB_MAX_RESULTS
+
+*Aggiornamento: maggio 2026 — R22: refactor exclusion logic (Opzione A), window 25, variabile NB_MAX_RESULTS nel notebook.*
+
+### 3 modifiche implementate
+
+**1. agent.py — Opzione A: solo `selected_ids` come hard-exclude**
+
+In `run()`, la chiamata a `_rank_and_fill` ora passa `shown_ids=set()` (vuoto) invece di `recently_presented_ids()`. Solo i pittogrammi che l'utente ha effettivamente **selezionato** vengono esclusi dalla finestra successiva. Quelli mostrati ma non scelti possono riapparire liberamente.
+
+Razionale:
+- Lato UX reale: l'utente AAC non ha scelto quei pittogrammi → non è ridondante riproporli se il contesto è cambiato.
+- Lato eval: con `resolve=none` all'88% il pool candidati è già piccolo; escludere tutti i 24-25 mostrati lo svuotava artificialmente.
+
+Docstring di `_rank_and_fill` aggiornata per documentare questa scelta.
+
+**2. settings.py — `agent_max_results`: 24 → 25**
+
+Cambiato il default in `_DEFAULTS`: `"agent_max_results": 25`. Commento `# R22: 24→25 (eval window size experiment)` aggiunto.
+
+Nota: `user_settings.json` locale ha `agent_max_results: 50` (override manuale precedente). Questo non viene toccato — il cambio in `_DEFAULTS` impatta solo ambienti che non hanno un `user_settings.json` (cluster, Colab).
+
+**3. eval.ipynb — variabile `NB_MAX_RESULTS`**
+
+- Cella 2 (Colab env): aggiunto `os.environ["NB_MAX_RESULTS"] = "0"` con commento `# 0 = use settings.py default (25). Set to 50 for the large-window ablation.`
+- Cella 5 (Config): legge `_max_results_env = int(os.environ.get('NB_MAX_RESULTS', '0'))` e lo risolve in `EVAL_MAX_RESULTS` (0 → usa `AGENT_MAX_RESULTS` da settings.py, altrimenti override esplicito).
+- Cella 25 (loop): `HFAACAgent(... max_results=EVAL_MAX_RESULTS ...)` — il parametro arriva direttamente all'agente.
+
+### Come eseguire i due esperimenti ablation
+
+| Esperimento | Come impostare | Valore effettivo |
+|---|---|---|
+| Window 25 (default) | `NB_MAX_RESULTS=0` (o non impostare) | 25 (da settings.py) |
+| Window 50 (ablation) | `NB_MAX_RESULTS=50` | 50 (override esplicito) |
+
+Su cluster: passare `--env NB_MAX_RESULTS=50` nello script `.sh`.
+Su Colab: cambiare la riga in cella 2 da `"0"` a `"50"`.
+
+### Prossimi step (post-R22)
+
+Eseguire le due run da 200 sample (window=25, window=50) e confrontare hit@window. Poi procedere con i miglioramenti P1-P4 da sezione 38 (fuzzy resolve è la priorità).

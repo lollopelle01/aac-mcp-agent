@@ -30,3 +30,4 @@ app/datasets/pictograms/
 .hf_cache/
 .torch_cache/
 .xdg_cache/
+app/.env
