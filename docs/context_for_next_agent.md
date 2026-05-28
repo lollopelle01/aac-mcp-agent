@@ -642,7 +642,7 @@ File consegnato: `eval_patched.ipynb` → rinominare `eval.ipynb`.
 
 ---
 
-*Ultimo aggiornamento: maggio 2026 — R21: fix Colab notebook; prima eval run completata (200 righe, Qwen2.5-3B); diagnosi bottleneck resolve; piano miglioramenti.*
+*Ultimo aggiornamento: maggio 2026 — R23: analisi CSV colab R21; diagnosi reale bottleneck resolve; fix article stripping in `resolve.py`; script diagnostico `eval/analyze_none_concepts.py`.*
 
 ---
 
@@ -765,3 +765,46 @@ Su Colab: cambiare la riga in cella 2 da `"0"` a `"50"`.
 ### Prossimi step (post-R22)
 
 Eseguire le due run da 200 sample (window=25, window=50) e confrontare hit@window. Poi procedere con i miglioramenti P1-P4 da sezione 38 (fuzzy resolve è la priorità).
+
+---
+
+## 40. Analisi bottleneck resolve e fix R23
+
+### Diagnosi reale dell'88% none
+
+Analizzando il CSV colab R21 (`eval_colab.csv`, 1556 turni) con classificazione manuale dei concetti `resolve=none`:
+
+| Categoria | Count | % su none totali | Causa |
+|---|---|---|---|
+| `single_content_word` | 919 | 66.9% | Concetto con articolo: `"a banana"`, `"the sky"`, `"a man"` — la parola core è quasi certamente in kw_set ma `resolve` riceve la stringa letterale con l'articolo |
+| `multi_content_word` | 443 | 32.2% | Concetto multi-parola con articolo: `"a football match"` → core `[football, match]` — stessa causa |
+| `solo_stopwords` | 12 | 0.9% | Solo stopwords: `"they"`, `"you"`, `"i"` — irrecuperabili |
+
+**Conclusione:** ~99% dei none è causato da articoli/determiners nel concetto generato dal planner, non da OOV semantica. Gli embedding **non servono** per risolvere questo problema.
+
+### Fix implementata: article stripping in `resolve.py` (R23)
+
+Aggiunto step 0 in `resolve_concept()`: prima di qualsiasi lookup, rimuove articoli e determiners iniziali/finali (`a`, `an`, `the`, `some`, `many`, `much`, `this`, `that`, `these`, `those`, `my`, `your`, `his`, `her`, `its`, `our`, `their`, `so`, `very`, `quite`, `really`, `more`, `most`, `lot`, `lots`).
+
+```
+"a banana"       → "banana"       → exact match
+"the local mall" → "local mall"   → token match: [local, mall]
+"so much lightning" → "lightning" → exact match
+"their families" → "families"    → lemma match: "family"
+```
+
+Implementazione: funzione `_strip_determiners(text)` + costante `_STRIP_WORDS`. Il pipeline originale (step 1-4) viene tentato prima sulla stringa originale, poi sulla stringa stripped se diversa. Aggiunta anche helper `_resolve_method_label()` per derivare il label di metodo senza duplicare logica.
+
+Il label `resolve_method` nel CSV di output non cambia: `exact`, `lemma`, `token` ecc. — riflette il sub-step che ha matchato sulla forma stripped.
+
+### Script diagnostico `eval/analyze_none_concepts.py`
+
+Script autonomo che analizza i concetti gold del parquet + i none del CSV colab. Produce `eval/none_analysis.csv`. Lancia con venv BDATM attivo:
+```bash
+python eval/analyze_none_concepts.py
+```
+Nota: i 1598 none nel parquet gold sono array numpy serializzati male come stringa (bug di serializzazione) — **non sono OOV reali**. Il numero rilevante è quello del CSV colab (1374 none su 1556 turni).
+
+### Impatto atteso
+
+La fix copre ~66-99% dei none (tutte le righe con articolo). L'impatto su hit@window dipende da quante di quelle parole core sono effettivamente nel kw_set — da misurare con la prossima eval run (R23).

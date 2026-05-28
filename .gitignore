@@ -31,3 +31,4 @@ app/datasets/pictograms/
 .torch_cache/
 .xdg_cache/
 app/.env
+eval/analyze_none_concepts.py
