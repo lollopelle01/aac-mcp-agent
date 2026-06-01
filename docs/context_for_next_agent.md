@@ -37,17 +37,17 @@ fase di valutazione sul cluster.
 
 ## 2. Stack tecnologico
 
-| Componente          | Dettaglio                                                   |
-| ------------------- | ----------------------------------------------------------- |
-| LLM locale          | Ollama (`granite4:3b-h`, `qwen2.5:3b`, `llama3.2:3b`) |
-| LLM eval cluster    | HuggingFace Transformers (`HFAACAgent`)                   |
-| Tool MCP            | FastMCP (`app/src/mcp_server/`)                           |
-| NLP                 | spaCy `en_core_web_sm` (lemmatizzazione, POS, stop-word)  |
-| Backend             | FastAPI + uvicorn su `:8000`                              |
-| Frontend            | React + Vite su `:5173`                                   |
-| Dataset pittogrammi | ARASAAC locale in `app/datasets/en/`                      |
-| Dataset eval        | `hf_dataset_annotation/eval_final.parquet` (~54k righe)   |
-| Lingua principale   | inglese (`LANG = "en"`)                                   |
+| Componente            | Dettaglio                                                     |
+| --------------------- | ------------------------------------------------------------- |
+| LLM locale            | Ollama (`granite4:3b-h`, `qwen2.5:3b`, `llama3.2:3b`)       |
+| LLM eval cluster      | HuggingFace Transformers (`HFAACAgent`)                       |
+| Tool MCP              | FastMCP (`app/src/mcp_server/`)                               |
+| NLP                   | spaCy `en_core_web_sm` (lemmatizzazione, POS, stop-word)     |
+| Backend               | FastAPI + uvicorn su `:8000`                                  |
+| Frontend              | React + Vite su `:5173`                                       |
+| Dataset pittogrammi   | ARASAAC locale in `app/datasets/en/`                          |
+| Dataset eval primario | `annotation/eval_filtered.parquet` (1760 frasi) — vedi §10   |
+| Lingua principale     | inglese (`LANG = "en"`)                                       |
 
 ---
 
@@ -55,7 +55,6 @@ fase di valutazione sul cluster.
 
 ```
 aac-mcp-agent/
-  README.md
   app/
     src/
       agent/
@@ -76,75 +75,30 @@ aac-mcp-agent/
         server.py           # istanza FastMCP
       api/
         server.py           # FastAPI — wrappa AACAgent, espone REST
-        __init__.py
       config.py             # costanti pure + re-export da settings.py e .env
       settings.py           # SettingsManager — legge/scrive user_settings.json
-    frontend/
-      src/
-        components/
-          PictogramGrid.jsx
-          PictogramCard.jsx
-          InputBar.jsx
-          SessionSidebar.jsx
-          SettingsPanel.jsx
-          DatasetPanel.jsx   # modale aggiornamento dataset locale (R5)
-        hooks/
-          useAgent.js        # /run, /select, /reset, /session, /health
-          useSettings.js     # GET/PATCH /settings
-          useDatasets.js     # GET /datasets/status, POST /datasets/update (SSE) (R5)
-        App.jsx
-        main.jsx
-      index.html
-      vite.config.js
-      package.json
-    logs/
-      logging_config.py
-      __init__.py
-      .gitkeep
-      *.log               # gitignored
-    credentials/          # gitignored
-      credentials.json
-      token.pickle
-    .env                  # gitignored — credenziali live
-    .env.example          # committato — template
-    requirements.txt
-    user_settings.json    # gitignored — generato al primo avvio
+    frontend/               # React + Vite
+    datasets/
+      en/                   # dataset produzione — NON TOCCARE
+      en_eval/              # snapshot frozen per eval (merge local+HF) — NON TOCCARE
+      pictograms/           # PNG cachati
+      update_datasets.py    # ricostruisce en/ dall'API ARASAAC
+  annotation/
+    arasaac_vs_hf_vs_eval.ipynb   # notebook analisi e produzione dataset eval (R26)
+    eval_filtered.parquet         # dataset eval primario (1760 frasi) — prodotto da R26
   eval/
-    eval.ipynb            # notebook eval principale (unico entry point)
-    eval_filtered.parquet # dataset filtrato (gold irrecuperabili rimossi)
-    metric_evaluation.ipynb
-    arasaac_vs_eval.ipynb
+    eval.ipynb              # notebook eval principale (unico entry point)
+    eval_filtered.parquet   # dataset eval LEGACY (~54k righe) — NON USARE per nuove run
     cluster_work/
       run_eval_cluster.sh
       results/
-  hf_dataset_annotation/  # DO NOT TOUCH — fase a monte completata
-    eval_final.parquet
-    eval_annotated.parquet
-    eval_raw.parquet
-  app/
-    datasets/
-      en/                 # dataset produzione (non toccare)
-      en_eval/            # snapshot frozen per eval (merge local+HF)
-      pictograms/
-        {id}.png
-      update_datasets.py
+  hf_dataset_annotation/   # DO NOT TOUCH — fase a monte completata
   docs/
-    context_for_next_agent.md   # questo file
+    context_for_next_agent.md
     consegna.md
   test/
     tools_test.ipynb
-  .gitignore
-  LICENSE
 ```
-
-**Separazione dei valori di configurazione:**
-
-| File                       | Contenuto                                              | Sensibile?    | Modificabile dal frontend? |
-| -------------------------- | ------------------------------------------------------ | ------------- | -------------------------- |
-| `app/src/config.py`      | Costanti pure (URL ARASAAC, slot orari, percorsi)      | No            | No                         |
-| `app/src/settings.py`    | SettingsManager — legge/scrive `user_settings.json` | No            | **Sì**              |
-| `app/user_settings.json` | Valori utente correnti (gitignored)                    | No            | **Sì**              |
-| `app/.env`               | Credenziali (Apple, Google, HF)                        | **Sì** | No (manuale)               |
 
 ---
 
@@ -154,7 +108,7 @@ aac-mcp-agent/
 # Prerequisiti (una tantum)
 pip install -r app/requirements.txt
 python -m spacy download en_core_web_sm
-ollama pull qwen2.5:3b   # modello default
+ollama pull qwen2.5:3b
 
 # Backend
 cd app
@@ -162,55 +116,32 @@ uvicorn src.api.server:app --reload --port 8000
 
 # Frontend (altra finestra)
 cd app/frontend
-npm install          # prima volta
-npm run dev          # Vite su http://localhost:5173
+npm install
+npm run dev
 ```
 
-Il proxy Vite inoltra `/api/*` → `http://localhost:8000`.
-Aprire `http://localhost:5173` nel browser.
+---
+
+## 5. Backend FastAPI — endpoint
+
+| Metodo  | Path               | Descrizione                                                         |
+| ------- | ------------------ | ------------------------------------------------------------------- |
+| `POST`  | `/run`             | `{"text": str}` → lista pittogrammi + turn + tools_called          |
+| `POST`  | `/select`          | `{"pictogram_id": int}` → aggiorna memoria sessione                |
+| `POST`  | `/reset`           | svuota sessione                                                      |
+| `GET`   | `/session`         | storia sessione corrente                                             |
+| `GET`   | `/settings`        | legge `user_settings.json`                                          |
+| `PATCH` | `/settings`        | `{"updates": {...}}` → aggiorna settings                           |
+| `GET`   | `/health`          | `{"ok": true, "model": "...", "ollama": bool}`                     |
+| `GET`   | `/images/{id}`     | serve PNG da dataset locale o CDN ARASAAC                           |
+| `GET`   | `/datasets/status` | metadata dataset per ogni lingua + conteggio PNG cachati            |
+| `POST`  | `/datasets/update` | `{langs?, force?, download_images?}` → SSE stream log lines        |
+| `GET`   | `/categories`      | categorie ARASAAC raggruppate in macro-categorie con count          |
+| `GET`   | `/by_category`     | pittogrammi di una data categoria                                   |
 
 ---
 
-## 5. Backend FastAPI — endpoint (`app/src/api/server.py`)
-
-| Metodo    | Path                  | Descrizione                                                         |
-| --------- | --------------------- | ------------------------------------------------------------------- |
-| `POST`  | `/run`              | `{"text": str}` → lista pittogrammi + turn + tools_called        |
-| `POST`  | `/select`           | `{"pictogram_id": int}` → aggiorna memoria sessione              |
-| `POST`  | `/reset`            | svuota sessione                                                       |
-| `GET`   | `/session`          | storia sessione corrente                                              |
-| `GET`   | `/settings`         | legge `user_settings.json`                                          |
-| `PATCH` | `/settings`         | `{"updates": {...}}` → aggiorna settings                         |
-| `GET`   | `/health`           | `{"ok": true, "model": "...", "ollama": bool}`                  |
-| `GET`   | `/images/{id}`      | serve PNG da dataset locale o CDN ARASAAC                            |
-| `GET`   | `/datasets/status`  | metadata dataset per ogni lingua configurata + conteggio PNG cachati |
-| `POST`  | `/datasets/update`  | `{langs?, force?, download_images?}` → SSE stream log lines        |
-| `GET`   | `/categories`       | categorie ARASAAC raggruppate in macro-categorie con count           |
-| `GET`   | `/by_category`      | pittogrammi di una data categoria                                    |
-
-**`POST /select`** aggiorna l'ultimo turno in memoria: sostituisce `pictograms`
-con il solo pittogramma scelto e ricalcola `topics`. `presented` rimane intatto
-(usato da `recently_presented_ids()` per escludere l'intera finestra passata).
-
-**Logica immagini:** `USE_LOCAL_DATASETS=True` → `/api/images/{id}` (proxy Vite → backend).
-`USE_LOCAL_DATASETS=False` → URL CDN ARASAAC diretta. Definita in `_image_url()` in
-`arasaac.py`, importata anche da `api/server.py`.
-
----
-
-## 6. Frontend React
-
-- Caregiver scrive → Enter o `→ Search` → spinner → griglia pittogrammi
-- Soggetto tocca una card → POST `/select` → card appare nella Session bar → input svuotato
-- `[↺]` → POST `/reset` → sessione azzerata
-- `⚙ Settings` → modal con tutti i valori di `user_settings.json`
-- `⬇ Datasets` → `DatasetPanel.jsx`: status dataset per lingua, SSE stream log update
-- `🔍 Browse` → `CategoryBrowser.jsx`: navigazione pittogrammi per macro-categoria (3 livelli)
-- Il dropdown modello in header chiama PATCH `/settings` → al turno successivo l'agente usa il nuovo modello
-
----
-
-## 7. Metadata di un pittogramma ARASAAC
+## 6. Metadata di un pittogramma ARASAAC
 
 ```json
 {
@@ -233,7 +164,7 @@ Circa il 40% dei pittogrammi non ha synsets.
 
 ---
 
-## 8. Pipeline agente (un LLM call per turno)
+## 7. Pipeline agente (un LLM call per turno)
 
 ```
 input caregiver
@@ -250,25 +181,22 @@ input caregiver
   └─► _expand_pool_by_synset() (se AGENT_SYNSET_EXPAND=True)
 
   └─► _rank_and_fill()
-        ├─ escludi pittogrammi in recently_presented_ids() (intera finestra)
+        ├─ escludi solo selected_ids (Opzione A, R22)
         ├─ ordina per (concept_order ASC, quality_score DESC)
         └─ riempi fino a max_results; se mancano fresh → padding con stale
 
   └─► add_turn() → memoria sessione aggiornata
 ```
 
-**Una sola chiamata LLM per turno.** Nessun secondo LLM call — la selezione è
-interamente deterministica dopo la fase 1.
-
 ---
 
-## 9. Parametri funzionali
+## 8. Parametri funzionali
 
 ```python
-AGENT_MAX_RESULTS         = 24   # dimensione finestra pittogrammi
-AGENT_CANDIDATES_PER_TERM = 10   # candidati per keyword ARASAAC
-AGENT_MEMORY_TURNS        = 3    # turni di storia in memoria
-AGENT_DEFAULT_MODEL       = "qwen2.5:3b"   # default aggiornato in R11
+AGENT_MAX_RESULTS         = 25   # R22: 24→25
+AGENT_CANDIDATES_PER_TERM = 10
+AGENT_MEMORY_TURNS        = 3
+AGENT_DEFAULT_MODEL       = "qwen2.5:3b"
 AGENT_SYNSET_EXPAND       = True
 AGENT_SYNSET_EXPAND_MAX   = 8
 LANG                      = "en"
@@ -277,19 +205,230 @@ AGENT_FETCH_SCHEDULE      = True
 
 ---
 
-## 10. Uso di spaCy nel progetto
+## 9. Strategia `resolve_concept` (`app/src/agent/resolve.py`)
 
-spaCy (`en_core_web_sm`) è usato in tre punti:
+| Step | Label       | Esempio                                             |
+|------|-------------|-----------------------------------------------------|
+| 0    | `strip`     | `"a banana"` → `"banana"` (article stripping, R23) |
+| 1    | `exact`     | `"eat"` → `"eat"`                                  |
+| 2    | `lemma`     | `"eating"` → `"eat"` via spaCy                    |
+| 3    | `hyphen`    | `"go out"` → `"go-out"`                           |
+| 3b   | `lemma_alt` | lemma della forma normalizzata                      |
+| 4    | `token`     | `"wash hands"` → `["wash", "hand"]`               |
+| —    | `none`      | nessun match → concetto saltato                     |
 
-1. **`resolve.py`** — `resolve_concept()`: lemmatizza il concetto per trovare la keyword ARASAAC.
-2. **`session.py`** — `extract_topics()`: lemmatizza keyword dei pittogrammi selezionati, filtra stop-word.
-3. **`agent.py`** — `_extract_terms()`: fallback quando il planner LLM fallisce; POS tagging per tenere solo NOUN/VERB/PROPN.
-
-Non esiste più nessuna lista di stop-word hardcoded (`AGENT_STOPWORDS` rimossa in R3).
+`resolve_concept(concept, kw_set, return_method=True)` ritorna `(queries, method)`.
 
 ---
 
-## 11. Tabella implementazioni
+## 10. Dataset per la valutazione — stato attuale (R26)
+
+### Dataset primario: `annotation/eval_filtered.parquet`
+
+Prodotto da `annotation/arasaac_vs_hf_vs_eval.ipynb` (R26). È il dataset corretto
+da usare per tutte le eval future. Struttura sentence-based: ogni riga è una frase
+con lista di `concepts` (concept_text, gold_id, candidate_ids).
+
+**Numeri finali:**
+
+| Fase | Frasi |
+|---|---|
+| Originale (`aac_database/sentences` HF) | 2.461 |
+| Dopo filtro gold irrecuperabili (none_ids) | 2.025 |
+| Dopo filtro candidati >20% irrecuperabili | 1.787 |
+| Dopo rimozione duplicati esatti | **1.760** |
+
+**Struttura di ogni riga:**
+```python
+{
+  "sentence": "I want to go to the park.",
+  "concepts": [
+    {
+      "concept_text": "go",
+      "gold_id": 8544,
+      "candidate_ids": [8544, 2603, ...]   # sempre 10 candidati, gold sempre incluso
+    },
+    ...
+  ]
+}
+```
+
+**Proprietà garantite:**
+- Gold sempre tra i 10 candidati (100%) — per costruzione del dataset HF
+- Nessun gold con metadata irrecuperabile
+- Nessun concetto con >20% candidati irrecuperabili
+- Nessun duplicato esatto (18 gruppi ambigui tenuti — gold diversi sullo stesso pool, interpretazioni legittime)
+- Gold non ripetuto nella stessa frase (0 casi)
+- Candidati sempre esattamente 10
+- Concetti per frase: mean=3.68, std=1.05, min=2, max=7
+
+### Dataset sorgente pittogrammi: `app/datasets/en_eval/`
+
+Snapshot frozen prodotto da R26. **Non toccare.**
+
+| File                 | Contenuto                                  |
+|----------------------|--------------------------------------------|
+| `pictograms.json`    | 13.804 pittogrammi (`{ id_str → record }`) |
+| `keywords.json`      | 15.761 keyword uniche                      |
+| `keyword_index.json` | 15.761 entries                             |
+| `synset_index.json`  | 8.422 synset                               |
+| `_meta.json`         | timestamp e conteggi                       |
+
+**Come è stato costruito:**
+- Base: `df_local` (13.780 pittogrammi, dataset ARASAAC ufficiale locale)
+- Aggiunta: 24 ID presenti solo in `df_hf` valido, normalizzati allo schema local
+- I 24 only-HF hanno `synsets=[]`, `type=None`, `plural=None`
+- 1.807 ID con metadata None in `df_hf` (`none_ids`) esclusi
+
+### Perché il nuovo dataset è un upgrade rispetto al legacy
+
+| Aspetto | Legacy (`eval/eval_filtered.parquet`) | Nuovo (`annotation/eval_filtered.parquet`) |
+|---|---|---|
+| Struttura gold | ID singolo per concept, spesso deprecato | Gold sempre tra i 10 candidati (100%) |
+| Concetti | Caption fragments (es. "a football match") | Parole/frasi brevi normalizzate (es. "go", "train") |
+| Stima resolve=none | ~88% (da R21) | ~12% (stimato) |
+| Frasi usabili | ~54k righe ma molto rumore | **1.760 frasi pulite** |
+
+---
+
+## 11. Analisi qualità dataset (R26) — risultati chiave
+
+### `df_local` (13.780 righe)
+- Nessun duplicato, nessuna riga None
+- `synsets` vuoti: 1.213 righe (8.8%)
+- Keywords: 65.9% dei meaning sono None (non bloccante)
+- 138 pittogrammi con keyword duplicate interne (non bloccante)
+- Type distribution: common noun 61.8%, verb 23.2%, adjective 7.4%
+
+### `df_hf` (originale 12.484 → dopo cleaning 10.657 righe valide)
+- 10 ID duplicati (38264–38273): ogni duplicato aveva una copia con metadata e una None → tenuta la copia non-None
+- 1.817 righe con keywords/categories/tags tutti None → `none_ids` (1.807 dopo drop duplicati)
+- Solo 1 ID su 1.807 `none_ids` presente anche in `df_local`
+- Schema keyword diverso da local: `{hasLocution, keyword, meaning}` invece di `{type, keyword, plural, meaning}`
+
+### Overlap `df_local` vs `df_hf` valido
+- In entrambi: 10.633 (77.0% dell'union)
+- Solo in local: 3.147 (22.8%)
+- Solo in HF: 24 (0.2%)
+- Similarity score (keywords×0.6 + categories×0.2 + tags×0.2): mean=0.985, 92% identici
+- Merge strategy: local vince sempre nell'overlap (schema più ricco: synsets, type, plural)
+
+### Copertura eval gold in en_eval
+- Gold ids in en_eval: 1.023/1.026 (99.7%)
+- I 3 restanti sono only-HF e quindi in en_eval
+- 214 candidate IDs irrecuperabili (none_ids) — accettati perché <20% per concetto
+
+---
+
+## 12. Eval — come funziona (`eval/eval.ipynb`)
+
+Notebook self-contained per il cluster. Unico entry point per la valutazione.
+
+Carica `annotation/eval_filtered.parquet`, raggruppa per `sentence` (ogni frase = una sessione multi-turn con N concepts), esegue `agent.run(sentence)` sulla frase completa al primo turno poi usa teacher forcing per i turni successivi.
+
+**Metriche principali:**
+- `gold_in_candidates` — il gold ID era nel pool prima del ranking?
+- `hit` (`gold_in_window`) — il gold ID è nella finestra finale?
+- `overlap_level` — livello semantico migliore (`synset` > `category` > `keyword` > `tag`)
+
+**Colonne CSV di output principali:**
+
+| Colonna | Descrizione |
+|---|---|
+| `model` | nome modello HF |
+| `sentence` | frase caregiver |
+| `concept` | concetto gold del turno (= `concept_text`) |
+| `gold_id` | ID pittogramma gold |
+| `hit` | gold nella finestra finale |
+| `gold_in_candidates` | gold nel pool pre-ranking |
+| `resolve_method` | step usato da resolve_concept |
+| `planner_had_gold_concept` | planner ha generato esattamente il gold concept |
+| `input_triggered_tools` | True solo a turn_pos==0 |
+
+**Nota:** `resolve_method` è significativo solo dove `planner_had_gold_concept=True`.
+
+---
+
+## 13. Infrastruttura eval: cluster vs Colab
+
+### Cluster (SLURM)
+
+```bash
+NB_MODELS="Qwen/Qwen2.5-3B-Instruct" NB_N_ROWS=500 sbatch eval/cluster_work/run_eval_cluster.sh
+```
+
+### Colab
+
+```python
+os.environ["NB_IS_COLAB"]    = "True"
+os.environ["NB_MODELS"]      = "Qwen/Qwen2.5-3B-Instruct"
+os.environ["NB_N_ROWS"]      = "200"
+os.environ["NB_LANG"]        = "en_eval"
+os.environ["NB_MAX_RESULTS"] = "0"   # 0 = usa default settings.py (25)
+```
+
+---
+
+## 14. Risultati prima eval run (R21) — su dataset LEGACY
+
+⚠️ Questi risultati sono sul dataset legacy, non comparabili con run future.
+
+| Metrica | Valore |
+|---|---|
+| Hit@window | **22.0%** |
+| gold_in_candidates | 23.5% |
+| resolve_method=none | **88.3%** |
+| planner_had_gold_concept | 13.7% |
+| Hit quando planner_had_gold_concept=True | 33.8% |
+
+**Diagnosi:** bottleneck primario = planner genera concetti non allineati al vocabolario ARASAAC (vocabolario legacy molto distante da ARASAAC). Il nuovo dataset riduce questo problema strutturalmente.
+
+---
+
+## 15. Piano miglioramenti score
+
+### Strategia ibrida raccomandata (3 strati)
+
+| Strato | Implementazione | Impatto stimato |
+|---|---|---|
+| **1. CONCEPT_MAP** | Dict `{"groceries":"shopping", ...}` in `resolve.py` step 4b | Top-50 casi OOV frequenti |
+| **2. Embedding** | `all-MiniLM-L6-v2` + `.npy` cached, step 5 in resolve | Casi OOV long-tail (~2-3pp) |
+| **3. Prompt few-shot** | 10-15 coppie nel `_PLANNER_SYSTEM_PROMPT_SHORT` | Previene OOV a monte |
+
+**P4:** aumentare `AGENT_CANDIDATES_PER_TERM` da 10 a 15-20 (+1-3pp stimati, zero codice).
+
+---
+
+## 16. Dubbi aperti — da chiarire con i tutor
+
+**D1 — Tool-use: LLM decide o codice decide?**
+
+**D2 — Una sola chiamata LLM per turno: sufficiente?**
+
+**D5 — Soglia di overlap per il successo semantico**
+
+**D6 — Teacher forcing: metodologicamente accettabile?**
+
+**D7 — Quante righe sono sufficienti?** Il dataset filtrato ha 1.760 frasi.
+
+**D8 — Gold multipli per concetto?** I 18 gruppi ambigui mostrano che esistono interpretazioni alternative legittime — estendere a top-3?
+
+---
+
+## 17. Cose da NON fare
+
+- **Non passare `concept` o `sentence` all'agente** durante l'eval
+- **Non sovrascrivere parametri di `config.py` nel notebook**
+- **Non usare MRR** come metrica primaria
+- **Non toccare `hf_dataset_annotation/`** — fase a monte completata
+- **Non toccare `app/datasets/en_eval/`** — snapshot frozen per eval
+- **Non toccare `app/datasets/en/`** — dataset produzione
+- **Non usare `eval/eval_filtered.parquet`** per nuove run — è il dataset legacy
+- **Non mettere logica applicativa fuori da `app/`**
+
+---
+
+## 18. Tabella implementazioni
 
 | ID  | Descrizione | File principali |
 |---|---|---|
@@ -304,507 +443,24 @@ Non esiste più nessuna lista di stop-word hardcoded (`AGENT_STOPWORDS` rimossa 
 | R11 | Fix errata `has_thinking`; prompt SHORT/FULL; `backends.py` | `prompts.py`, `backends.py` |
 | R12 | Rimosso cap concepts nel prompt; few-shot espansione semantica | `prompts.py` |
 | R14 | InputBar warmup; GGUF scaricati; `LlamaCppBackend` agganciato | `frontend/`, `agent.py` |
-| R15 | ⚠️ Revisione critica — analisi HF coverage errata | — |
-| R16 | Cleaning df_hf; numeri definitivi copertura gold; piano merge | `arasaac_vs_eval.ipynb` |
-| R17 | Merge local+HF; creazione `en_eval/`; `--lang` in eval script | notebook, `settings.py` |
 | R19 | Fix eval pipeline: `get_resolve_info` 3 valori; `hf_agent.py` prompt | `hf_agent.py`, `eval.ipynb` |
 | R20 | Completamento fix eval.ipynb (celle 10, 18, 19) | `eval/eval.ipynb` |
+| R21 | Prima eval run Colab (200 righe, T4); diagnosi bottleneck resolve | `eval/results/` |
+| R22 | Opzione A exclusion + window 25 + `NB_MAX_RESULTS` | `agent.py`, `settings.py`, `eval.ipynb` |
+| R23 | Fix article stripping in `resolve.py` | `resolve.py` |
+| R24 | Analisi embedding 7-punti; strategia ibrida 3-strati | `docs/` |
+| R26 | Analisi dataset, cleaning, merge, produzione `en_eval/` e `annotation/eval_filtered.parquet` | `annotation/` |
 
 ---
 
-## 12. Dubbi aperti — da chiarire con i tutor
+## 19. Prossimi passi
 
-**D1 — Tool-use: LLM decide o codice decide?**
-Attualmente il planner LLM decide autonomamente se chiamare `get_time` / `get_schedule`.
-
-**D2 — Una sola chiamata LLM per turno: sufficiente?**
-Il vecchio design prevedeva un secondo LLM call (filter). Ora è tutto deterministico.
-
-**D4 — Il comportamento tool-call entra nella valutazione formale?**
-`tools_called` è esposto nell'API ma non è ancora una metrica di eval.
-
-**D5 — Soglia di overlap per il successo semantico**
-Qual è la soglia accettabile per `gold_in_candidates` e `gold_in_window`?
-
-**D6 — Teacher forcing: metodologicamente accettabile?**
-L'eval inietta `gold_id` come pittogramma selezionato per simulare turni multi-step.
-
-**D7 — Quante righe sono sufficienti?**
-Il dataset ha ~54k righe. Quante servono per risultati statisticamente significativi?
-
-**D8 — Gold multipli per concetto?**
-Attualmente ogni riga ha un solo gold ID. Avrebbe senso estendere a top-3?
+1. **Prima eval run sul nuovo dataset** — adattare loader in `eval.ipynb` per struttura sentence-based (`annotation/eval_filtered.parquet`): raggruppare per `sentence`, teacher forcing per concept, colonna `concept` = `concept_text`
+2. **Implementare CONCEPT_MAP** (step 4b in `resolve.py`) con top-50 coppie da R21 CSV
+3. **Aggiungere colonna `split`** (`clear`/`vague`) alle 1.760 frasi via LLM in batch
+4. **Embedding fallback** (`all-MiniLM-L6-v2`) come step 5 in `resolve_concept()`
+5. **Confronto con R21**: il nuovo dataset dovrebbe ridurre resolve=none da ~88% a ~12%
 
 ---
 
-## 13. Cose da NON fare
-
-- **Non passare `concept` o `sentence` all'agente** durante l'eval
-- **Non sovrascrivere parametri di `config.py` nel notebook**
-- **Non usare MRR** come metrica primaria
-- **Non valutare in "single-turn"** — ogni riga ha N pittogrammi gold
-- **Non toccare `hf_dataset_annotation/`** — fase a monte completata
-- **Non toccare `app/datasets/en_eval/`** — snapshot frozen per eval
-- **Non mettere logica applicativa fuori da `app/`**
-
----
-
-## 14. Strategia `resolve_concept` (`app/src/agent/resolve.py`)
-
-| Step | Label | Esempio |
-|---|---|---|
-| 1 | `exact` | `"eat"` → `"eat"` |
-| 2 | `lemma` | `"eating"` → `"eat"` via spaCy |
-| 3 | `hyphen` | `"go out"` → `"go-out"` |
-| 3b | `lemma_alt` | lemma della forma normalizzata |
-| 4 | `token` | `"wash hands"` → `["wash", "hand"]` |
-| — | `none` | nessun match → concetto saltato |
-
-`resolve_concept(concept, kw_set, return_method=True)` ritorna `(queries, method)`.
-La costante `RESOLVE_METHODS` elenca tutti i label nell'ordine canonico.
-
----
-
-## 15. Eval — come funziona (`eval/eval.ipynb`)
-
-Notebook self-contained per il cluster. Unico entry point per la valutazione.
-
-Carica `eval_filtered.parquet`, esegue `agent.run(raw_input)` su ogni riga, misura:
-- `gold_in_candidates` — il gold ID era nel pool prima del ranking?
-- `hit` (`gold_in_window`) — il gold ID è nella finestra finale?
-- `overlap_level` — livello semantico migliore (`synset` > `category` > `keyword` > `tag`)
-
-Teacher forcing: dopo ogni turno inietta il gold come selezione per simulare multi-turn.
-
-**Colonne CSV di output:**
-
-| Colonna | Tipo | Descrizione |
-|---|---|---|
-| `model` | str | nome modello HF |
-| `row_idx` | int | indice riga dataset |
-| `split` | str | `clear` o `vague` |
-| `turn_pos` | int | posizione turno (0-based) |
-| `n_turns_total` | int | lunghezza sequenza |
-| `caregiver_input` | str | input caregiver (vuoto per turni > 0) |
-| `concept` | str | concetto gold del turno |
-| `gold_id` | int | ID pittogramma gold |
-| `all_gold_ids` | list | tutti i gold della sequenza |
-| `predicted_ids` | list | IDs finestra prodotta dall'agente |
-| `gold_in_candidates` | bool | gold nel pool pre-ranking |
-| `hit` | bool | gold nella finestra finale |
-| `n_candidates` | int | dimensione pool candidati |
-| `window_len` | int | dimensione finestra |
-| `called_get_time` | bool | planner ha chiamato get_time |
-| `called_get_schedule` | bool | planner ha chiamato get_schedule |
-| `overlap_level` | str\|None | miglior overlap semantico |
-| `resolve_method` | str | step usato da resolve_concept |
-| `resolve_queries` | list | keyword passate a search_pictograms |
-| `plan_method` | str | `llm` / `fallback_spacy` / `fallback_empty` |
-| `synset_added` | int | pittogrammi aggiunti da synset expansion |
-| `fresh_count` | int | pittogrammi fresh nella finestra |
-| `planner_had_gold_concept` | bool | planner ha generato esattamente il gold concept (aggiunto R20) |
-| `input_triggered_tools` | bool | True solo a turn_pos==0 (aggiunto R20) |
-
-**Uso corretto delle nuove colonne (R20):**
-```python
-# resolve_method significativo: solo dove il planner mirava al gold
-df[df['planner_had_gold_concept']]['resolve_method'].value_counts()
-
-# tool call su input reale vs autonoma dalla history
-df[df['input_triggered_tools']]['called_get_time'].mean()   # caregiver → tool
-df[~df['input_triggered_tools']]['called_get_time'].mean()  # autonomo
-```
-
----
-
-## 16. Infrastruttura eval: cluster vs Colab
-
-### Cluster (SLURM)
-
-```bash
-git pull
-NB_MODELS="Qwen/Qwen2.5-3B-Instruct" NB_N_ROWS=500 sbatch eval/cluster_work/run_eval_cluster.sh
-```
-
-Output: `eval/results/eval_hf_<JOB_ID>.csv`
-
-### Colab
-
-```python
-os.environ["NB_IS_COLAB"] = "True"
-os.environ["NB_MODELS"]   = "Qwen/Qwen2.5-3B-Instruct"
-os.environ["NB_N_ROWS"]   = "200"
-os.environ["NB_LANG"]     = "en_eval"
-os.environ["NB_SPLIT"]    = "both"
-```
-
-| | Cluster | Colab |
-|---|---|---|
-| GPU | L40 (40 GB) | T4 (15 GB) o A100 Pro |
-| Dataset completo | ✅ | ⚠️ subsample consigliato |
-| Persistenza | Scratch HPC | nessuna |
-
----
-
-## 17. Possibili prossimi passi
-
-- **Sezione 5 `arasaac_vs_eval.ipynb`**: filtrare `eval_final.parquet` rimuovendo le sequenze con gold ID irrecuperabili (924 ID deprecati da ARASAAC). Produrre `eval_filtered.parquet`.
-- **Free-run eval**: modalità senza teacher forcing.
-- **Gold multipli**: estendere dataset con top-3 IDs per concetto.
-- **Retrieval BM25/embedding**: alternative al planner LLM per la selezione delle keyword.
-- **Produzione offline**: pre-scaricare PNG con `DatasetPanel` + `download_images=true`.
-
----
-
-## 18. Teacher forcing e ricerca manuale dei pittogrammi
-
-L'eval usa **teacher forcing**: se il `gold_id` non è nella finestra, si assume che il
-caregiver lo trovi manualmente — rendendo la sequenza multi-turn deterministica.
-**La funzionalità non esiste nell'app** (mancanza da segnalare nella tesi come sviluppo futuro).
-
-Nell'app attuale il caregiver può solo riscrivere il testo nell'InputBar o usare
-il `CategoryBrowser` per navigare per categoria. L'endpoint `GET /search?keyword=...`
-esiste già nel backend ma non ha un'interfaccia frontend dedicata.
-
----
-
-## 19. Ricerca manuale per categoria
-
-`CategoryBrowser.jsx` implementa la navigazione a 3 livelli:
-- Livello 0: ~15 macro-categorie (emoji + immagine + conteggio)
-- Livello 1: sottocategorie ARASAAC della macro selezionata
-- Livello 2: `PictogramGrid` della categoria specifica
-
-Backend: `GET /categories` e `GET /by_category` in `api/server.py`.
-`MACRO_CATEGORIES` è definita nel codice (non nei dati) e include tutte le
-categorie biologiche animali (`mammal`, `viviparous`, ecc.) dalla R9.
-Logica conteggio: set di ID unici per macro (nessun doppio conteggio);
-"Other" contiene solo pittogrammi non coperti da nessuna macro nominata.
-
----
-
-## 20. Note non banali sul dataset ARASAAC
-
-- **13.780 pittogrammi** (non 15.757 — quello è il numero di keyword uniche).
-- **567 categorie** ARASAAC sono tag piatti, non una gerarchia; nomi sempre in inglese.
-- **~40% dei pittogrammi** non ha synsets → non espandibili via WordNet.
-- **`aac: true`** indica pittogrammi validati per core vocabulary (~60% del totale).
-- **`update_datasets.py`** usa l'endpoint bulk `/pictograms/all/{lang}` (non le MCP tools).
-- **`en_eval/`** è uno snapshot frozen: 13.804 pittogrammi (merge local + 24 only-HF clean).
-  Non viene toccato da `update_datasets.py`. I 24 only-HF hanno `synsets=[]`, `aac=False`.
-
----
-
-## 21. Cosa è stato fatto in R6
-
-- Bigrammi in `_terms_from_schedule` (compound ARASAAC labels → `exact`/`lemma` match)
-- Fix path setup `test/tools_test.ipynb` (`SRC = PROJECT_ROOT / 'app' / 'src'`)
-- Fix docstring colonne CSV in `run_eval_hf.py`
-- Test `return_method=True` aggiunto a `tools_test.ipynb`
-- Review completa codebase — nessun problema trovato
-
----
-
-## 22. Cosa è stato fatto in R7
-
-- Creato `app/frontend/src/components/CategoryBrowser.jsx` (3 livelli di navigazione)
-- Modificato `App.jsx`: stato `showCategories`, bottone `🔍 Cerca` in header, rendering condizionale
-
----
-
-## 23. Cosa è stato fatto in R8
-
-- `CategoryBrowser.jsx`: testi UI in inglese
-- `useAgent.js`: helper `_errorMessage` per errori FastAPI leggibili
-- `api/server.py` `/categories`: riscritta logica con set ID unici; "Other" solo uncovered
-
----
-
-## 24. Cosa è stato fatto in R9
-
-- `MACRO_CATEGORIES["Animals"]` estesa con 8 categorie biologiche (`mammal`, `viviparous`, `herbivorous`, `omnivorous`, `carnivorous`, `oviparous`, `invertebrate`, `arachnid`)
-
----
-
-## 25. Cosa è stato fatto in R10
-
-- Diagnostica lentezza: `granite4:3b-h` non ha reasoning attivo di default (il `-h` è hybrid mamba-2)
-- `settings.py`: aggiunto `num_predict=150` per tutti i modelli; modello default → `qwen2.5:3b`
-- `agent.py._plan()`: options dinamiche per modello; timing con `perf_counter()`
-- Roadmap con tutor: Step1 diagnostica → Step2 backend astratto → Step3 BM25/embedding
-
----
-
-## 26. Cosa è stato fatto in R11
-
-- Fix errata `has_thinking`: rimossa logica `think=False` (non necessaria)
-- `settings.py`: corretti `size_gb`; `num_ctx` 2048 → 512
-- Prompt split FULL/SHORT: `build_planner_prompt(*, full=False)` (SHORT di default)
-- Nuovo file `app/src/agent/backends.py`: `OllamaBackend`, `LlamaCppBackend`, `HuggingFaceBackend`
-
----
-
-## 27. Cosa è stato fatto in R12
-
-- Rimosso cap `4-8` sui concepts in entrambi i prompt FULL e SHORT
-- Aggiunta regola espansione semantica esplicita + few-shot inline nel SHORT
-- Invariante: il LLM genera liberamente, `_rank_and_fill` taglia a `max_results`
-
----
-
-## 28. Cosa è stato fatto in R14
-
-- `InputBar.jsx`: prop `warmingUp`; textarea gialla durante warmup; bottone `⏳`
-- GGUF scaricati in `app/models/` (Q4_K_M: Qwen2.5-3B, Llama-3.2-3B, Granite-4.1-3B, Mistral-7B)
-- `settings.py`: sezione `gguf_models` (alias → path GGUF)
-- `agent.py`: accetta `backend: Optional[LLMBackend] = None`; usa backend se presente, altrimenti Ollama
-
----
-
-## 29. Cosa è stato fatto in R15 — REVISIONE CRITICA
-
-⚠️ Le conclusioni di R15 erano errate: la copertura HF sembrava 100% perché
-includeva 1.817 righe con `keywords = categories = tags = None`. Dopo cleaning
-corretto, copertura HF = 86.3% — non meglio di local.
-`eval/build_eval_dataset.ipynb` è obsoleto.
-
----
-
-## 30. Cosa è stato fatto in R16
-
-- Cleaning `df_hf`: rimossi 10 duplicati + 1.817 righe None → `df_hf_clean` = 10.657 righe
-- Numeri definitivi copertura gold: local 86.1%, HF 86.3%, union 86.3%
-- 924 gold ID irrecuperabili (deprecati da ARASAAC — non esistono più online)
-- Piano merge: local vince nell'overlap (ha synsets, type, plural, più recente)
-
----
-
-## 31. Analisi `arasaac_vs_eval.ipynb` §3
-
-Stato finale sezioni:
-- §3.1: ID partitioning, gold coverage, None rows anatomy ✅
-- §3.2: deeper checks ✅
-- §3.3: Jaccard keyword agreement + visualizzazione HTML ✅
-- §4: merge + scrittura `en_eval/` ✅
-- §5: filtro `eval_final.parquet` → `eval_filtered.parquet` ⬜ **da fare**
-
-Conclusione §3.3: local vince sempre nell'overlap (Jaccard basso = granularità diversa, stesso pittogramma).
-Switch `FIELD_SOURCE` per ablazioni future su `keywords`/`categories`/`tags`.
-
----
-
-## 32. Cosa è stato fatto in R17
-
-- Merge local + HF clean eseguito (§4 notebook): 13.804 pittogrammi
-- Dataset `app/datasets/en_eval/` creato (5 file: `pictograms.json`, `keyword_index.json`, `keywords.json`, `synset_index.json`, `_meta.json`)
-- `settings.py`: aggiunto `"en_eval"` a `dataset_langs`
-- `run_eval_hf.py`: aggiunto `--lang` (default `"en_eval"`); `_eval_lang` modulo-level
-
----
-
-## 33. Cosa è stato fatto in R19
-
-**Fix 1 — `get_resolve_info` gonfiava `none_pct`:**
-Per `turn_pos > 0` il planner non genera il gold concept → `get_resolve_info` restituiva
-sempre `('none', [])`. Fix: 3° valore di ritorno `planner_had_gold` (bool).
-- `planner_had_gold=True`: resolve_method è significativo
-- `planner_had_gold=False`: `none` è atteso, non è un fallimento
-
-**Fix 2 — `called_get_time`/`called_get_schedule` fuorvianti:**
-Aggiunta colonna `input_triggered_tools` (True solo a `turn_pos==0`).
-
-**Fix 3 — `hf_agent.py`:**
-`build_planner_prompt(full=False)` esplicito (evita cambio silenzioso se il default cambia).
-
-File toccati: `app/src/agent/hf_agent.py` ✅ (applicato); `eval/eval.ipynb` ⬜ (applicato in R20).
-
----
-
-## 34. Cosa è stato fatto in R20
-
-Completamento fix `eval/eval.ipynb` (i fix R19 erano stati descritti ma non applicati al notebook):
-
-| Cella | Modifica |
-|---|---|
-| 10 (`CSV_COLUMNS`) | Aggiunte `planner_had_gold_concept` e `input_triggered_tools` |
-| 18 (`get_resolve_info`) | Firma estesa a `tuple[str, list[str], bool]`; docstring dettagliata |
-| 19 (`run_multi_turn`) | Unpacking 3 valori; 2 nuovi campi nel dict risultato |
-
-File consegnato: `eval_patched.ipynb` → rinominare `eval.ipynb`.
-
-**Stato finale di tutti i fix:**
-
-| Fix | File | Stato |
-|---|---|---|
-| Bug #6 (get_resolve_info → 3 valori) | `eval/eval.ipynb` celle 10, 18, 19 | ✅ |
-| Bug #5 (input_triggered_tools) | `eval/eval.ipynb` celle 10, 19 | ✅ |
-| Log #2 (build_planner_prompt esplicito) | `app/src/agent/hf_agent.py` | ✅ |
-
----
-
-*Ultimo aggiornamento: maggio 2026 — R23: analisi CSV colab R21; diagnosi reale bottleneck resolve; fix article stripping in `resolve.py`; script diagnostico `eval/analyze_none_concepts.py`.*
-
----
-
-## 35. Risultati prima eval run (R21)
-
-**Setup:** 200 sequenze random da `eval_filtered.parquet`, Qwen/Qwen2.5-3B-Instruct, T4 Colab, ~1h, `NB_LOAD_8BIT=False`.
-
-| Metrica | Valore |
-|---|---|
-| Hit@window (gold nella finestra finale) | **22.0%** |
-| gold_in_candidates (pre-ranking) | 23.5% |
-| Hit split `clear` | 26.9% |
-| Hit split `vague` | 17.2% |
-| Hit turn_pos=0 | 29.3% |
-| resolve_method=none (tutte le righe) | **88.3%** |
-| planner_had_gold_concept | 13.7% |
-| Hit quando planner_had_gold_concept=True | 33.8% |
-| Tool call rate su vague input reale | 77.5% |
-
-**Diagnosi bottleneck:**
-
-1. **`resolve_method=none` all'88%** — il collo di bottiglia primario. Il planner genera concetti che `resolve_concept` non sa mappare su nessuna keyword ARASAAC. Su 1556 turni, 1374 producono query vuote → niente candidati dal concetto gold.
-
-2. **Gap gold_in_candidates → hit minimo (23.5% → 22.0%)** — quando il gold entra nel pool, quasi sempre entra anche nella finestra: il ranking non è il problema.
-
-3. **Tool call su vague**: il planner chiama i tool nel 77.5% dei casi vague, 0% su clear. Corretto come da design. Però hit con tool (23.2%) ≈ hit senza tool (22.2%) → i tool non peggiorano né migliorano significativamente il hit rate con questo campione piccolo.
-
-4. **Concetti gold non in ARASAAC**: analisi dei `none` con `planner_had_gold_concept=True` mostra termini come `portrait`, `nectar`, `bluebells`, `groceries` — parole che non esistono come keyword ARASAAC.
-
----
-
-## 36. Fix Colab notebook (R21)
-
-**Problema 1 — CWD sbagliata:** su Colab, dopo il clone in `/content/aac-mcp-agent`, la CWD resta `/content`. La cella 9 (path setup) usa `Path().resolve()` → trovava `/content` invece della root del progetto. Fix: aggiunto `os.chdir(PROJECT_ROOT)` in cella 0 subito dopo l'assegnazione di `PROJECT_ROOT`.
-
-**Problema 2 — Output CSV su filesystem root:** `NB_OUTPUT_CSV = "eval/results/eval_colab.csv"` è relativo → con CWD errata scriveva in `/content/eval/results/` invece di `/content/aac-mcp-agent/eval/results/`. Fix: path assoluto in cella 1.
-
-**Problema 3 — `! cd` inutile:** la cella 2 con `! cd aac-mcp-agent/eval/` lancia una subshell che non cambia la CWD del notebook. Fix: sostituita con un sanity-check Python che stampa CWD e verifica esistenza dei file chiave.
-
-**File consegnato:** `eval.ipynb` (celle 0, 1, 2 aggiornate).
-
-**Nota performance:** ~1h per 200 righe su T4 senza 8-bit è atteso (~1.9s/turno). Per accelerare: `os.environ["NB_LOAD_8BIT"] = "True"` (già commentato in cella 1 come reminder).
-
----
-
-## 37. Risposte a dubbi tecnici (R21)
-
-**La quantizzazione 8-bit è il default nell'app?**
-No. `HFAACAgent.__init__` ha `hf_load_in_8bit=False` come default. La quantizzazione è rilevante solo per il cluster/Colab (HF Transformers), non per Ollama (che gestisce la quantizzazione a livello di formato GGUF). Nell'app su tablet la pipeline usa `OllamaBackend` o `LlamaCppBackend` con GGUF Q4_K_M — la quantizzazione è già baked nel file modello.
-
-**I tool aiutano su input vague?**
-Dai dati: hit con tool (23.2%) ≈ hit senza tool (22.2%) su input vague a turn_pos=0. La differenza non è significativa con 200 righe. Il planner comunque chiama i tool nel 77.5% dei casi vague (corretto comportamento), ma i termini iniettati dallo schedule non finiscono nel gold concetto → non migliorano il hit diretto. Valutare con campione più grande.
-
-**Perché l'agente sembrava più efficace nelle prove manuali?**
-Durante le prove manuali il caregiver scrive input che contengono già keyword vicine ad ARASAAC (es. "he wants water" → `water` è una keyword esatta). Nel dataset di eval, i concetti gold sono spesso più specifici o tecnici (`portrait`, `nectar`, `groceries`) e non corrispondono a nessuna keyword ARASAAC → `resolve=none` → il gold non entra mai nel pool. Il sistema funziona bene per i casi "comuni"; fatica sui long-tail del dataset.
-
----
-
-## 38. Piano miglioramenti score (R21)
-
-Priority decrescente per impatto/sforzo:
-
-**P1 — Fuzzy resolve (impatto stimato: +8-15pp hit)**
-Attualmente `resolve_concept` cerca corrispondenze esatte o lemmatizzate. Aggiungere un passo fuzzy (RapidFuzz o difflib) dopo il passo 4 (`token`) che cerca la keyword ARASAAC più simile con soglia ≥ 0.8. Colpirebbe casi come `groceries → grocery`, `bluebells → bluebell`. Rischio: falsi positivi con parole brevi → testare con soglia alta.
-
-**P2 — Prompt con esempi di concetti ARASAAC reali (impatto stimato: +3-7pp)**
-Il planner genera `portrait` invece di `photo`, `groceries` invece di `shopping`. Il problema è che il modello non conosce il vocabolario ARASAAC. Soluzione: aggiungere nel prompt SHORT una lista di ~20 esempi di sostituzioni gold ARASAAC (`portrait→photo`, `groceries→shopping`, `uphill→hill`, ...) come few-shot hint. Alternativa più robusta: includere nel prompt un campione delle keyword ARASAAC più frequenti (top-200) per ancorare il vocabolario.
-
-**P3 — Synonym expansion nel resolve (impatto stimato: +3-5pp)**
-Dopo il passo 4 (`token`), aggiungere un passo 5 `synonym` che cerca i sinonimi WordNet del concetto e verifica se uno di essi è in `kw_set`. Già fattibile con `nltk.corpus.wordnet` che è leggero. Colpirebbe `remind→remember`, `wander→walk`, `wear→dress`.
-
-**P4 — Aumentare `AGENT_CANDIDATES_PER_TERM` (impatto stimato: +1-3pp, no codice)**
-Attualmente 10. Portare a 15-20 aumenta il pool senza cambiare logica. Da bilanciare con rischio di rumore nel ranking.
-
-**Cosa NON fare:**
-- Non cambiare il ranker: il gap `gold_in_candidates → hit` è già minimo (1.5pp).
-- Non usare embedding retrieval come sostituto del resolve: troppo pesante su CPU/tablet.
-- Non aumentare `max_results` sopra 24: UX dell'utente AAC degrada con troppe scelte.
-
----
-
-## 39. Modifiche R22: Opzione A exclusion + window 25 + NB_MAX_RESULTS
-
-*Aggiornamento: maggio 2026 — R22: refactor exclusion logic (Opzione A), window 25, variabile NB_MAX_RESULTS nel notebook.*
-
-### 3 modifiche implementate
-
-**1. agent.py — Opzione A: solo `selected_ids` come hard-exclude**
-
-In `run()`, la chiamata a `_rank_and_fill` ora passa `shown_ids=set()` (vuoto) invece di `recently_presented_ids()`. Solo i pittogrammi che l'utente ha effettivamente **selezionato** vengono esclusi dalla finestra successiva. Quelli mostrati ma non scelti possono riapparire liberamente.
-
-Razionale:
-- Lato UX reale: l'utente AAC non ha scelto quei pittogrammi → non è ridondante riproporli se il contesto è cambiato.
-- Lato eval: con `resolve=none` all'88% il pool candidati è già piccolo; escludere tutti i 24-25 mostrati lo svuotava artificialmente.
-
-Docstring di `_rank_and_fill` aggiornata per documentare questa scelta.
-
-**2. settings.py — `agent_max_results`: 24 → 25**
-
-Cambiato il default in `_DEFAULTS`: `"agent_max_results": 25`. Commento `# R22: 24→25 (eval window size experiment)` aggiunto.
-
-Nota: `user_settings.json` locale ha `agent_max_results: 50` (override manuale precedente). Questo non viene toccato — il cambio in `_DEFAULTS` impatta solo ambienti che non hanno un `user_settings.json` (cluster, Colab).
-
-**3. eval.ipynb — variabile `NB_MAX_RESULTS`**
-
-- Cella 2 (Colab env): aggiunto `os.environ["NB_MAX_RESULTS"] = "0"` con commento `# 0 = use settings.py default (25). Set to 50 for the large-window ablation.`
-- Cella 5 (Config): legge `_max_results_env = int(os.environ.get('NB_MAX_RESULTS', '0'))` e lo risolve in `EVAL_MAX_RESULTS` (0 → usa `AGENT_MAX_RESULTS` da settings.py, altrimenti override esplicito).
-- Cella 25 (loop): `HFAACAgent(... max_results=EVAL_MAX_RESULTS ...)` — il parametro arriva direttamente all'agente.
-
-### Come eseguire i due esperimenti ablation
-
-| Esperimento | Come impostare | Valore effettivo |
-|---|---|---|
-| Window 25 (default) | `NB_MAX_RESULTS=0` (o non impostare) | 25 (da settings.py) |
-| Window 50 (ablation) | `NB_MAX_RESULTS=50` | 50 (override esplicito) |
-
-Su cluster: passare `--env NB_MAX_RESULTS=50` nello script `.sh`.
-Su Colab: cambiare la riga in cella 2 da `"0"` a `"50"`.
-
-### Prossimi step (post-R22)
-
-Eseguire le due run da 200 sample (window=25, window=50) e confrontare hit@window. Poi procedere con i miglioramenti P1-P4 da sezione 38 (fuzzy resolve è la priorità).
-
----
-
-## 40. Analisi bottleneck resolve e fix R23
-
-### Diagnosi reale dell'88% none
-
-Analizzando il CSV colab R21 (`eval_colab.csv`, 1556 turni) con classificazione manuale dei concetti `resolve=none`:
-
-| Categoria | Count | % su none totali | Causa |
-|---|---|---|---|
-| `single_content_word` | 919 | 66.9% | Concetto con articolo: `"a banana"`, `"the sky"`, `"a man"` — la parola core è quasi certamente in kw_set ma `resolve` riceve la stringa letterale con l'articolo |
-| `multi_content_word` | 443 | 32.2% | Concetto multi-parola con articolo: `"a football match"` → core `[football, match]` — stessa causa |
-| `solo_stopwords` | 12 | 0.9% | Solo stopwords: `"they"`, `"you"`, `"i"` — irrecuperabili |
-
-**Conclusione:** ~99% dei none è causato da articoli/determiners nel concetto generato dal planner, non da OOV semantica. Gli embedding **non servono** per risolvere questo problema.
-
-### Fix implementata: article stripping in `resolve.py` (R23)
-
-Aggiunto step 0 in `resolve_concept()`: prima di qualsiasi lookup, rimuove articoli e determiners iniziali/finali (`a`, `an`, `the`, `some`, `many`, `much`, `this`, `that`, `these`, `those`, `my`, `your`, `his`, `her`, `its`, `our`, `their`, `so`, `very`, `quite`, `really`, `more`, `most`, `lot`, `lots`).
-
-```
-"a banana"       → "banana"       → exact match
-"the local mall" → "local mall"   → token match: [local, mall]
-"so much lightning" → "lightning" → exact match
-"their families" → "families"    → lemma match: "family"
-```
-
-Implementazione: funzione `_strip_determiners(text)` + costante `_STRIP_WORDS`. Il pipeline originale (step 1-4) viene tentato prima sulla stringa originale, poi sulla stringa stripped se diversa. Aggiunta anche helper `_resolve_method_label()` per derivare il label di metodo senza duplicare logica.
-
-Il label `resolve_method` nel CSV di output non cambia: `exact`, `lemma`, `token` ecc. — riflette il sub-step che ha matchato sulla forma stripped.
-
-### Script diagnostico `eval/analyze_none_concepts.py`
-
-Script autonomo che analizza i concetti gold del parquet + i none del CSV colab. Produce `eval/none_analysis.csv`. Lancia con venv BDATM attivo:
-```bash
-python eval/analyze_none_concepts.py
-```
-Nota: i 1598 none nel parquet gold sono array numpy serializzati male come stringa (bug di serializzazione) — **non sono OOV reali**. Il numero rilevante è quello del CSV colab (1374 none su 1556 turni).
-
-### Impatto atteso
-
-La fix copre ~66-99% dei none (tutte le righe con articolo). L'impatto su hit@window dipende da quante di quelle parole core sono effettivamente nel kw_set — da misurare con la prossima eval run (R23).
+*Ultimo aggiornamento: R26 — analisi completa dataset, cleaning df_hf, merge local+HF, produzione `en_eval/` (13.804 pittogrammi) e `annotation/eval_filtered.parquet` (1.760 frasi). Il dataset legacy `eval/eval_filtered.parquet` non va più usato per nuove run.*

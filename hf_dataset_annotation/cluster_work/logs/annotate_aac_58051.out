@@ -1,7 +1,0 @@
-[setup] Sentinel found — skipping install and sanity check.
-[setup] Python : /scratch.hpc/lorenzo.pellegrino2/python_venvs/BDATM/bin/python3
-[run] Starting notebook execution: annotate_dataset.ipynb
-[run] Output → annotate_dataset_executed_58051.ipynb
-[run] Job started at: Fri May  1 01:35:26 AM CEST 2026
-[run] Job finished at: Fri May  1 01:34:30 PM CEST 2026
-[run] Notebook completed successfully → annotate_dataset_executed_58051.ipynb

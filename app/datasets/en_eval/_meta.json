@@ -1,20 +1,18 @@
 {
   "pictograms": {
-    "built_at": "2026-05-25T10:09:18.022489Z",
-    "count": 13804,
-    "added": 24,
-    "updated": 0
+    "built_at": "2026-05-31T17:33:58Z",
+    "count": 13804
   },
   "keywords": {
-    "built_at": "2026-05-25T10:09:18.022489Z",
-    "count": 15688
+    "built_at": "2026-05-31T17:33:58Z",
+    "count": 15761
   },
   "keyword_index": {
-    "built_at": "2026-05-25T10:09:18.022489Z",
-    "count": 15688
+    "built_at": "2026-05-31T17:33:58Z",
+    "count": 15761
   },
   "synset_index": {
-    "built_at": "2026-05-25T10:09:18.022489Z",
-    "count": 8421
+    "built_at": "2026-05-31T17:33:58Z",
+    "count": 8422
   }
 }
