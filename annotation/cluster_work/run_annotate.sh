@@ -83,9 +83,9 @@ if [[ ! -d "${VENV_DIR}" ]]; then
         jupyter \
         ipykernel
 
-    # Register kernel so papermill can find it by name
+    # Register kernel inside the venv (--sys-prefix avoids ~/.local conflicts)
     python -m ipykernel install \
-        --user \
+        --sys-prefix \
         --name aac_annotate \
         --display-name "aac_annotate"
 
