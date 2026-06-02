@@ -2,12 +2,12 @@
 
 #SBATCH --job-name=aac_annotate
 #SBATCH --partition=l40
-#SBATCH --gres=gpu:l40:1
+#SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=60G
 #SBATCH --time=3-00:00:00
-#SBATCH --output=/scratch.hpc/lorenzo.pellegrino2/aac-mcp-agent/logs/annotate_%j.out
-#SBATCH --error=/scratch.hpc/lorenzo.pellegrino2/aac-mcp-agent/logs/annotate_%j.out
+#SBATCH --output=/scratch.hpc/lorenzo.pellegrino2/aac-mcp-agent/annotation/cluster_work/logs/annotate_%j.out
+#SBATCH --error=/scratch.hpc/lorenzo.pellegrino2/aac-mcp-agent/annotation/cluster_work/logs/annotate_%j.out
 
 #### Paths ######################################################################
 SCRATCH_ROOT="/scratch.hpc/lorenzo.pellegrino2"
