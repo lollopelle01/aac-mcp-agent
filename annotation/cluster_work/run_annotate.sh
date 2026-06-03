@@ -13,8 +13,8 @@
 SCRATCH_ROOT="/scratch.hpc/lorenzo.pellegrino2"
 PROJECT_ROOT="${SCRATCH_ROOT}/aac-mcp-agent"
 VENV_DIR="${SCRATCH_ROOT}/python_venvs/aac_annotate"
-NB_IN="${PROJECT_ROOT}/annotation/cluster_work/annotate_eval_new.ipynb"
-NB_OUT="${PROJECT_ROOT}/annotation/cluster_work/annotate_eval_new_out.ipynb"
+NB_IN="${PROJECT_ROOT}/annotation/cluster_work/annotate_eval.ipynb"
+NB_OUT="${PROJECT_ROOT}/annotation/cluster_work/annotate_eval_out.ipynb"
 LOGS_DIR="${PROJECT_ROOT}/logs"
 
 #### Configuration ##############################################################
