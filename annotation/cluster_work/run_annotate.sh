@@ -35,10 +35,12 @@ if [[ -z "${HF_TOKEN}" ]] && [[ -f "${PROJECT_ROOT}/app/.env" ]]; then
     export HF_TOKEN
 fi
 
-#### Redirect HuggingFace cache into scratch (avoid filling home quota) ############
+#### Redirect ALL caches into scratch (avoid filling home quota) ###################
 export HF_HOME="${SCRATCH_ROOT}/.cache/huggingface"
 export TRANSFORMERS_CACHE="${HF_HOME}/hub"
 export HF_DATASETS_CACHE="${HF_HOME}/datasets"
+# Triton compiles kernel C extensions into ~/.triton/cache by default — redirect to scratch
+export TRITON_CACHE_DIR="${SCRATCH_ROOT}/.triton/cache"
 
 #### Sanity check: ensure PROJECT_ROOT is on scratch (not home) ####################
 case "${PROJECT_ROOT}" in
