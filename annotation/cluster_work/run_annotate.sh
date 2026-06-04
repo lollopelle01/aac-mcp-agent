@@ -1,10 +1,10 @@
 #!/bin/bash
 
 #SBATCH --job-name=aac_annotate
-#SBATCH --partition=l40
+#SBATCH --partition=rtx2080
 #SBATCH --gres=gpu:1
-#SBATCH --cpus-per-task=8
-#SBATCH --mem=60G
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=40G
 #SBATCH --time=3-00:00:00
 #SBATCH --output=/scratch.hpc/lorenzo.pellegrino2/aac-mcp-agent/annotation/cluster_work/logs/annotate_%j.out
 #SBATCH --error=/scratch.hpc/lorenzo.pellegrino2/aac-mcp-agent/annotation/cluster_work/logs/annotate_%j.out
