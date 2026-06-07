@@ -1,0 +1,668 @@
+Input Notebook:  /scratch.hpc/lorenzo.pellegrino2/aac-mcp-agent/annotation/cluster_work/annotate_eval.ipynb
+Output Notebook: /scratch.hpc/lorenzo.pellegrino2/aac-mcp-agent/annotation/cluster_work/annotate_eval_out.ipynb
+Executing notebook with kernel: aac_annotate
+Executing Cell 1---------------------------------------
+Ending Cell 1------------------------------------------
+Executing Cell 2---------------------------------------
+Ending Cell 2------------------------------------------
+Executing Cell 3---------------------------------------
+PROJECT_ROOT          : /scratch.hpc/lorenzo.pellegrino2/aac-mcp-agent  (exists=True)
+MODEL_ID              : Qwen/Qwen2.5-7B-Instruct
+LOAD_IN_4BIT          : True
+INPUT_PATH            : /scratch.hpc/lorenzo.pellegrino2/aac-mcp-agent/annotation/eval_filtered.parquet  (exists=True)
+ANNOTATED_PATH        : /scratch.hpc/lorenzo.pellegrino2/aac-mcp-agent/annotation/eval_annotated.parquet
+LOG_PATH              : /scratch.hpc/lorenzo.pellegrino2/aac-mcp-agent/annotation/annotation_log.jsonl
+BATCH_SIZE            : 4
+BACKUP_EVERY_N_RECORDS: 10
+N_ROWS                : all
+
+Ending Cell 3------------------------------------------
+Executing Cell 4---------------------------------------
+Ending Cell 4------------------------------------------
+Executing Cell 5---------------------------------------
+2026-06-06 11:54:39,176 INFO device: cuda
+
+2026-06-06 11:54:39,198 INFO   gpu 0: NVIDIA GeForce RTX 2080 Ti  (11.4 gb vram)
+
+Ending Cell 5------------------------------------------
+Executing Cell 6---------------------------------------
+Ending Cell 6------------------------------------------
+Executing Cell 7---------------------------------------
+=======================================================
+  Righe gia annotate (log):                0
+  Frasi uniche da annotare (stima):        1740
+  (Il parquet finale avra 1760 righe dopo merge)
+  Remaining:                               1740
+  log file exists:                         False
+=======================================================
+
+Ending Cell 7------------------------------------------
+Executing Cell 8---------------------------------------
+Ending Cell 8------------------------------------------
+Executing Cell 9---------------------------------------
+2026-06-06 11:54:39,580 INFO dataset shape (all rows): (1760, 2)  unique sentences to annotate: 1740
+
+                         sentence                                                                                                                                                                                                                                                                                                                                                                                                 concepts
+0   The blue train is going fast.    [{'candidate_ids': [2603, 29010, 7282, 10187, 36763, 6494, 29008, 2472, 27768, 27769], 'concept_text': 'The blue train', 'gold_id': 7282}, {'candidate_ids': [9851, 8544, 5946, 17054, 6955, 8643, 27769, 27768, 5306, 25133], 'concept_text': 'go', 'gold_id': 8544}, {'candidate_ids': [8544, 5306, 9851, 36600, 17054, 5946, 38219, 8643, 36763, 38224], 'concept_text': 'fast', 'gold_id': 5306}]
+1  The music is too loud in here.                                                                                                                                     [{'candidate_ids': [9851, 23811, 37486, 38106, 5915, 9187, 8643, 38216, 37857, 8608], 'concept_text': 'The music', 'gold_id': 37486}, {'candidate_ids': [9851, 26629, 6155, 8643, 38216, 7157, 5525, 30645, 37638, 37857], 'concept_text': 'loud', 'gold_id': 7157}]
+2    Look at the bubbles popping.  [{'candidate_ids': [9851, 17054, 6155, 30510, 6627, 37369, 5441, 8643, 28717, 25133], 'concept_text': 'look', 'gold_id': 37369}, {'candidate_ids': [6945, 9851, 6510, 30510, 17054, 38448, 8643, 36717, 27769, 26022], 'concept_text': 'the bubbles', 'gold_id': 6945}, {'candidate_ids': [9851, 17054, 8643, 30510, 6155, 5441, 25944, 28717, 28366, 28365], 'concept_text': 'pop', 'gold_id': 25944}]
+
+Ending Cell 9------------------------------------------
+Executing Cell 10--------------------------------------
+Ending Cell 10-----------------------------------------
+Executing Cell 11--------------------------------------
+2026-06-06 11:54:39,639 INFO loading tokenizer for Qwen/Qwen2.5-7B-Instruct ...
+
+2026-06-06 11:55:59,974 INFO HTTP Request: HEAD https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+
+2026-06-06 11:55:59,990 INFO HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen2.5-7B-Instruct/a09a35458c702b33eeacc393d103063234e8bc28/config.json "HTTP/1.1 200 OK"
+
+2026-06-06 11:56:00,147 INFO HTTP Request: HEAD https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/resolve/main/tokenizer_config.json "HTTP/1.1 307 Temporary Redirect"
+
+2026-06-06 11:56:00,163 INFO HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen2.5-7B-Instruct/a09a35458c702b33eeacc393d103063234e8bc28/tokenizer_config.json "HTTP/1.1 200 OK"
+
+2026-06-06 11:56:00,318 INFO HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen2.5-7B-Instruct/tree/main/additional_chat_templates?recursive=false&expand=false "HTTP/1.1 404 Not Found"
+
+2026-06-06 11:56:00,452 INFO HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen2.5-7B-Instruct/tree/main?recursive=true&expand=false "HTTP/1.1 200 OK"
+
+2026-06-06 11:56:01,134 INFO HTTP Request: GET https://huggingface.co/api/models/Qwen/Qwen2.5-7B-Instruct "HTTP/1.1 200 OK"
+
+2026-06-06 11:56:01,138 INFO 4-bit nf4 quantization enabled
+
+2026-06-06 11:56:01,139 INFO loading model weights ...
+
+2026-06-06 11:56:01,270 INFO HTTP Request: HEAD https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/resolve/main/config.json "HTTP/1.1 307 Temporary Redirect"
+
+2026-06-06 11:56:01,286 INFO HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen2.5-7B-Instruct/a09a35458c702b33eeacc393d103063234e8bc28/config.json "HTTP/1.1 200 OK"
+
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+
+Loading weights:   0%|          | 0/339 [00:00<?, ?it/s]
+2026-06-06 11:57:33,913 INFO HTTP Request: HEAD https://huggingface.co/Qwen/Qwen2.5-7B-Instruct/resolve/main/generation_config.json "HTTP/1.1 307 Temporary Redirect"
+
+2026-06-06 11:57:33,938 INFO HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/Qwen/Qwen2.5-7B-Instruct/a09a35458c702b33eeacc393d103063234e8bc28/generation_config.json "HTTP/1.1 200 OK"
+
+2026-06-06 11:57:33,952 INFO model loaded in 92.8 s
+
+2026-06-06 11:57:33,954 INFO vram after load: 5.55 gb allocated / 5.73 gb reserved / 11.36 gb total
+
+Ending Cell 11-----------------------------------------
+Executing Cell 12--------------------------------------
+Ending Cell 12-----------------------------------------
+Executing Cell 13--------------------------------------
+time sampling and prompt builder ready.
+
+Ending Cell 13-----------------------------------------
+Executing Cell 14--------------------------------------
+Ending Cell 14-----------------------------------------
+Executing Cell 15--------------------------------------
+json extraction, stopping criteria and validation ready.
+
+Ending Cell 15-----------------------------------------
+Executing Cell 16--------------------------------------
+Ending Cell 16-----------------------------------------
+Executing Cell 17--------------------------------------
+result helpers ready.
+
+Ending Cell 17-----------------------------------------
+Executing Cell 18--------------------------------------
+Ending Cell 18-----------------------------------------
+Executing Cell 19--------------------------------------
+log helpers ready.
+
+Ending Cell 19-----------------------------------------
+Executing Cell 20--------------------------------------
+Ending Cell 20-----------------------------------------
+Executing Cell 21--------------------------------------
+2026-06-06 11:57:34,265 INFO === annotation pass 1 ===
+
+2026-06-06 11:57:34,338 INFO rows to process: 1740 | batches: 435
+
+2026-06-06 11:59:06,738 INFO Checkpoint: 10 record annotati totali.
+
+2026-06-06 12:00:09,686 INFO Checkpoint: 20 record annotati totali.
+
+2026-06-06 12:00:09,766 INFO batch 5/435 done — annotated so far: 20
+
+2026-06-06 12:01:46,364 INFO Checkpoint: 30 record annotati totali.
+
+2026-06-06 12:02:52,929 INFO Checkpoint: 40 record annotati totali.
+
+2026-06-06 12:02:53,010 INFO batch 10/435 done — annotated so far: 40
+
+2026-06-06 12:04:27,092 INFO Checkpoint: 50 record annotati totali.
+
+2026-06-06 12:05:29,485 INFO Checkpoint: 60 record annotati totali.
+
+2026-06-06 12:05:29,565 INFO batch 15/435 done — annotated so far: 60
+
+2026-06-06 12:07:03,105 INFO Checkpoint: 70 record annotati totali.
+
+2026-06-06 12:08:06,472 INFO Checkpoint: 80 record annotati totali.
+
+2026-06-06 12:08:06,553 INFO batch 20/435 done — annotated so far: 80
+
+2026-06-06 12:09:49,984 INFO Checkpoint: 90 record annotati totali.
+
+2026-06-06 12:11:02,564 INFO Checkpoint: 100 record annotati totali.
+
+2026-06-06 12:11:02,646 INFO batch 25/435 done — annotated so far: 100
+
+2026-06-06 12:12:34,678 INFO Checkpoint: 110 record annotati totali.
+
+2026-06-06 12:13:38,595 INFO Checkpoint: 120 record annotati totali.
+
+2026-06-06 12:13:38,674 INFO batch 30/435 done — annotated so far: 120
+
+2026-06-06 12:15:11,569 INFO Checkpoint: 130 record annotati totali.
+
+2026-06-06 12:16:15,000 INFO Checkpoint: 140 record annotati totali.
+
+2026-06-06 12:16:15,078 INFO batch 35/435 done — annotated so far: 140
+
+2026-06-06 12:17:58,782 INFO Checkpoint: 150 record annotati totali.
+
+2026-06-06 12:19:01,646 INFO Checkpoint: 160 record annotati totali.
+
+2026-06-06 12:19:01,727 INFO batch 40/435 done — annotated so far: 160
+
+2026-06-06 12:20:36,219 INFO Checkpoint: 170 record annotati totali.
+
+2026-06-06 12:21:39,106 INFO Checkpoint: 180 record annotati totali.
+
+2026-06-06 12:21:39,187 INFO batch 45/435 done — annotated so far: 180
+
+2026-06-06 12:23:12,541 INFO Checkpoint: 190 record annotati totali.
+
+2026-06-06 12:24:14,225 INFO Checkpoint: 200 record annotati totali.
+
+2026-06-06 12:24:14,306 INFO batch 50/435 done — annotated so far: 200
+
+2026-06-06 12:25:47,919 INFO Checkpoint: 210 record annotati totali.
+
+2026-06-06 12:26:51,653 INFO Checkpoint: 220 record annotati totali.
+
+2026-06-06 12:26:51,733 INFO batch 55/435 done — annotated so far: 220
+
+2026-06-06 12:28:26,996 INFO Checkpoint: 230 record annotati totali.
+
+2026-06-06 12:29:30,341 INFO Checkpoint: 240 record annotati totali.
+
+2026-06-06 12:29:30,421 INFO batch 60/435 done — annotated so far: 240
+
+2026-06-06 12:31:06,359 INFO Checkpoint: 250 record annotati totali.
+
+2026-06-06 12:32:07,834 INFO Checkpoint: 260 record annotati totali.
+
+2026-06-06 12:32:07,915 INFO batch 65/435 done — annotated so far: 260
+
+2026-06-06 12:33:41,930 INFO Checkpoint: 270 record annotati totali.
+
+2026-06-06 12:34:45,073 INFO Checkpoint: 280 record annotati totali.
+
+2026-06-06 12:34:45,154 INFO batch 70/435 done — annotated so far: 280
+
+2026-06-06 12:36:20,142 INFO Checkpoint: 290 record annotati totali.
+
+2026-06-06 12:37:31,369 INFO Checkpoint: 300 record annotati totali.
+
+2026-06-06 12:37:31,451 INFO batch 75/435 done — annotated so far: 300
+
+2026-06-06 12:39:07,326 INFO Checkpoint: 310 record annotati totali.
+
+2026-06-06 12:40:09,596 INFO Checkpoint: 320 record annotati totali.
+
+2026-06-06 12:40:09,677 INFO batch 80/435 done — annotated so far: 320
+
+2026-06-06 12:41:42,697 INFO Checkpoint: 330 record annotati totali.
+
+2026-06-06 12:42:45,831 INFO Checkpoint: 340 record annotati totali.
+
+2026-06-06 12:42:45,911 INFO batch 85/435 done — annotated so far: 340
+
+2026-06-06 12:44:19,403 INFO Checkpoint: 350 record annotati totali.
+
+2026-06-06 12:45:30,290 INFO Checkpoint: 360 record annotati totali.
+
+2026-06-06 12:45:30,372 INFO batch 90/435 done — annotated so far: 360
+
+2026-06-06 12:47:03,968 INFO Checkpoint: 370 record annotati totali.
+
+2026-06-06 12:48:14,393 INFO Checkpoint: 380 record annotati totali.
+
+2026-06-06 12:48:14,473 INFO batch 95/435 done — annotated so far: 380
+
+2026-06-06 12:49:50,303 INFO Checkpoint: 390 record annotati totali.
+
+2026-06-06 12:50:53,347 INFO Checkpoint: 400 record annotati totali.
+
+2026-06-06 12:50:53,428 INFO batch 100/435 done — annotated so far: 400
+
+2026-06-06 12:52:26,933 INFO Checkpoint: 410 record annotati totali.
+
+2026-06-06 12:53:29,765 INFO Checkpoint: 420 record annotati totali.
+
+2026-06-06 12:53:29,845 INFO batch 105/435 done — annotated so far: 420
+
+2026-06-06 12:55:10,897 INFO Checkpoint: 430 record annotati totali.
+
+2026-06-06 12:56:13,459 INFO Checkpoint: 440 record annotati totali.
+
+2026-06-06 12:56:13,540 INFO batch 110/435 done — annotated so far: 440
+
+2026-06-06 12:57:47,626 INFO Checkpoint: 450 record annotati totali.
+
+2026-06-06 12:58:52,108 INFO Checkpoint: 460 record annotati totali.
+
+2026-06-06 12:58:52,189 INFO batch 115/435 done — annotated so far: 460
+
+2026-06-06 13:00:25,762 INFO Checkpoint: 470 record annotati totali.
+
+2026-06-06 13:01:28,822 INFO Checkpoint: 480 record annotati totali.
+
+2026-06-06 13:01:28,900 INFO batch 120/435 done — annotated so far: 480
+
+2026-06-06 13:03:02,524 INFO Checkpoint: 490 record annotati totali.
+
+2026-06-06 13:04:14,437 INFO Checkpoint: 500 record annotati totali.
+
+2026-06-06 13:04:14,458 INFO batch 125/435 done — annotated so far: 500
+
+2026-06-06 13:05:47,168 INFO Checkpoint: 510 record annotati totali.
+
+2026-06-06 13:06:49,440 INFO Checkpoint: 520 record annotati totali.
+
+2026-06-06 13:06:49,520 INFO batch 130/435 done — annotated so far: 520
+
+2026-06-06 13:08:32,265 INFO Checkpoint: 530 record annotati totali.
+
+2026-06-06 13:09:34,475 INFO Checkpoint: 540 record annotati totali.
+
+2026-06-06 13:09:34,555 INFO batch 135/435 done — annotated so far: 540
+
+2026-06-06 13:11:15,569 INFO Checkpoint: 550 record annotati totali.
+
+2026-06-06 13:12:17,575 INFO Checkpoint: 560 record annotati totali.
+
+2026-06-06 13:12:17,653 INFO batch 140/435 done — annotated so far: 560
+
+2026-06-06 13:14:01,796 INFO Checkpoint: 570 record annotati totali.
+
+2026-06-06 13:15:04,967 INFO Checkpoint: 580 record annotati totali.
+
+2026-06-06 13:15:05,047 INFO batch 145/435 done — annotated so far: 580
+
+2026-06-06 13:16:38,892 INFO Checkpoint: 590 record annotati totali.
+
+2026-06-06 13:17:49,820 INFO Checkpoint: 600 record annotati totali.
+
+2026-06-06 13:17:49,840 INFO batch 150/435 done — annotated so far: 600
+
+2026-06-06 13:19:23,393 INFO Checkpoint: 610 record annotati totali.
+
+2026-06-06 13:20:27,180 INFO Checkpoint: 620 record annotati totali.
+
+2026-06-06 13:20:27,261 INFO batch 155/435 done — annotated so far: 620
+
+2026-06-06 13:22:00,138 INFO Checkpoint: 630 record annotati totali.
+
+2026-06-06 13:23:02,898 INFO Checkpoint: 640 record annotati totali.
+
+2026-06-06 13:23:02,978 INFO batch 160/435 done — annotated so far: 640
+
+2026-06-06 13:24:36,283 INFO Checkpoint: 650 record annotati totali.
+
+2026-06-06 13:25:39,433 INFO Checkpoint: 660 record annotati totali.
+
+2026-06-06 13:25:39,515 INFO batch 165/435 done — annotated so far: 660
+
+2026-06-06 13:27:22,236 INFO Checkpoint: 670 record annotati totali.
+
+2026-06-06 13:28:25,384 INFO Checkpoint: 680 record annotati totali.
+
+2026-06-06 13:28:25,464 INFO batch 170/435 done — annotated so far: 680
+
+2026-06-06 13:29:58,571 INFO Checkpoint: 690 record annotati totali.
+
+2026-06-06 13:31:00,903 INFO Checkpoint: 700 record annotati totali.
+
+2026-06-06 13:31:00,984 INFO batch 175/435 done — annotated so far: 700
+
+2026-06-06 13:32:34,452 INFO Checkpoint: 710 record annotati totali.
+
+2026-06-06 13:33:46,788 INFO Checkpoint: 720 record annotati totali.
+
+2026-06-06 13:33:46,869 INFO batch 180/435 done — annotated so far: 720
+
+2026-06-06 13:35:36,309 INFO Checkpoint: 730 record annotati totali.
+
+2026-06-06 13:36:38,616 INFO Checkpoint: 740 record annotati totali.
+
+2026-06-06 13:36:38,698 INFO batch 185/435 done — annotated so far: 740
+
+2026-06-06 13:38:22,006 INFO Checkpoint: 750 record annotati totali.
+
+2026-06-06 13:39:24,308 INFO Checkpoint: 760 record annotati totali.
+
+2026-06-06 13:39:24,391 INFO batch 190/435 done — annotated so far: 760
+
+2026-06-06 13:40:59,425 INFO Checkpoint: 770 record annotati totali.
+
+2026-06-06 13:42:01,956 INFO Checkpoint: 780 record annotati totali.
+
+2026-06-06 13:42:02,035 INFO batch 195/435 done — annotated so far: 780
+
+2026-06-06 13:43:38,186 INFO Checkpoint: 790 record annotati totali.
+
+2026-06-06 13:44:41,633 INFO Checkpoint: 800 record annotati totali.
+
+2026-06-06 13:44:41,715 INFO batch 200/435 done — annotated so far: 800
+
+2026-06-06 13:46:17,766 INFO Checkpoint: 810 record annotati totali.
+
+2026-06-06 13:47:19,966 INFO Checkpoint: 820 record annotati totali.
+
+2026-06-06 13:47:20,049 INFO batch 205/435 done — annotated so far: 820
+
+2026-06-06 13:48:53,415 INFO Checkpoint: 830 record annotati totali.
+
+2026-06-06 13:49:56,770 INFO Checkpoint: 840 record annotati totali.
+
+2026-06-06 13:49:56,850 INFO batch 210/435 done — annotated so far: 840
+
+2026-06-06 13:51:51,844 INFO Checkpoint: 850 record annotati totali.
+
+2026-06-06 13:52:54,403 INFO Checkpoint: 860 record annotati totali.
+
+2026-06-06 13:52:54,486 INFO batch 215/435 done — annotated so far: 860
+
+2026-06-06 13:54:27,916 INFO Checkpoint: 870 record annotati totali.
+
+2026-06-06 13:55:31,342 INFO Checkpoint: 880 record annotati totali.
+
+2026-06-06 13:55:31,422 INFO batch 220/435 done — annotated so far: 880
+
+2026-06-06 13:57:07,091 INFO Checkpoint: 890 record annotati totali.
+
+2026-06-06 13:58:10,801 INFO Checkpoint: 900 record annotati totali.
+
+2026-06-06 13:58:10,880 INFO batch 225/435 done — annotated so far: 900
+
+2026-06-06 13:59:46,817 INFO Checkpoint: 910 record annotati totali.
+
+2026-06-06 14:00:58,834 INFO Checkpoint: 920 record annotati totali.
+
+2026-06-06 14:00:58,918 INFO batch 230/435 done — annotated so far: 920
+
+2026-06-06 14:02:32,778 INFO Checkpoint: 930 record annotati totali.
+
+2026-06-06 14:03:36,072 INFO Checkpoint: 940 record annotati totali.
+
+2026-06-06 14:03:36,153 INFO batch 235/435 done — annotated so far: 940
+
+2026-06-06 14:05:08,332 INFO Checkpoint: 950 record annotati totali.
+
+2026-06-06 14:06:17,333 INFO Checkpoint: 960 record annotati totali.
+
+2026-06-06 14:06:17,414 INFO batch 240/435 done — annotated so far: 960
+
+2026-06-06 14:08:08,714 INFO Checkpoint: 970 record annotati totali.
+
+2026-06-06 14:09:20,065 INFO Checkpoint: 980 record annotati totali.
+
+2026-06-06 14:09:20,085 INFO batch 245/435 done — annotated so far: 980
+
+2026-06-06 14:10:59,726 INFO Checkpoint: 990 record annotati totali.
+
+2026-06-06 14:12:00,749 INFO Checkpoint: 1000 record annotati totali.
+
+2026-06-06 14:12:00,829 INFO batch 250/435 done — annotated so far: 1000
+
+2026-06-06 14:13:35,821 INFO Checkpoint: 1010 record annotati totali.
+
+2026-06-06 14:14:38,031 INFO Checkpoint: 1020 record annotati totali.
+
+2026-06-06 14:14:38,111 INFO batch 255/435 done — annotated so far: 1020
+
+2026-06-06 14:16:13,387 INFO Checkpoint: 1030 record annotati totali.
+
+2026-06-06 14:17:15,012 INFO Checkpoint: 1040 record annotati totali.
+
+2026-06-06 14:17:15,093 INFO batch 260/435 done — annotated so far: 1040
+
+2026-06-06 14:18:47,312 INFO Checkpoint: 1050 record annotati totali.
+
+2026-06-06 14:19:49,120 INFO Checkpoint: 1060 record annotati totali.
+
+2026-06-06 14:19:49,200 INFO batch 265/435 done — annotated so far: 1060
+
+2026-06-06 14:21:20,566 INFO Checkpoint: 1070 record annotati totali.
+
+2026-06-06 14:22:23,151 INFO Checkpoint: 1080 record annotati totali.
+
+2026-06-06 14:22:23,233 INFO batch 270/435 done — annotated so far: 1080
+
+2026-06-06 14:23:55,337 INFO Checkpoint: 1090 record annotati totali.
+
+2026-06-06 14:24:58,115 INFO Checkpoint: 1100 record annotati totali.
+
+2026-06-06 14:24:58,197 INFO batch 275/435 done — annotated so far: 1100
+
+2026-06-06 14:26:32,224 INFO Checkpoint: 1110 record annotati totali.
+
+2026-06-06 14:27:34,713 INFO Checkpoint: 1120 record annotati totali.
+
+2026-06-06 14:27:34,795 INFO batch 280/435 done — annotated so far: 1120
+
+2026-06-06 14:29:06,609 INFO Checkpoint: 1130 record annotati totali.
+
+2026-06-06 14:30:08,140 INFO Checkpoint: 1140 record annotati totali.
+
+2026-06-06 14:30:08,219 INFO batch 285/435 done — annotated so far: 1140
+
+2026-06-06 14:31:41,368 INFO Checkpoint: 1150 record annotati totali.
+
+2026-06-06 14:32:44,718 INFO Checkpoint: 1160 record annotati totali.
+
+2026-06-06 14:32:44,798 INFO batch 290/435 done — annotated so far: 1160
+
+2026-06-06 14:34:19,782 INFO Checkpoint: 1170 record annotati totali.
+
+2026-06-06 14:35:30,470 INFO Checkpoint: 1180 record annotati totali.
+
+2026-06-06 14:35:30,489 INFO batch 295/435 done — annotated so far: 1180
+
+2026-06-06 14:37:04,541 INFO Checkpoint: 1190 record annotati totali.
+
+2026-06-06 14:38:15,505 INFO Checkpoint: 1200 record annotati totali.
+
+2026-06-06 14:38:15,585 INFO batch 300/435 done — annotated so far: 1200
+
+2026-06-06 14:39:48,516 INFO Checkpoint: 1210 record annotati totali.
+
+2026-06-06 14:41:00,192 INFO Checkpoint: 1220 record annotati totali.
+
+2026-06-06 14:41:00,273 INFO batch 305/435 done — annotated so far: 1220
+
+2026-06-06 14:42:33,893 INFO Checkpoint: 1230 record annotati totali.
+
+2026-06-06 14:43:36,962 INFO Checkpoint: 1240 record annotati totali.
+
+2026-06-06 14:43:37,042 INFO batch 310/435 done — annotated so far: 1240
+
+2026-06-06 14:45:12,054 INFO Checkpoint: 1250 record annotati totali.
+
+2026-06-06 14:46:14,315 INFO Checkpoint: 1260 record annotati totali.
+
+2026-06-06 14:46:14,394 INFO batch 315/435 done — annotated so far: 1260
+
+2026-06-06 14:47:48,890 INFO Checkpoint: 1270 record annotati totali.
+
+2026-06-06 14:48:51,742 INFO Checkpoint: 1280 record annotati totali.
+
+2026-06-06 14:48:51,821 INFO batch 320/435 done — annotated so far: 1280
+
+2026-06-06 14:50:25,894 INFO Checkpoint: 1290 record annotati totali.
+
+2026-06-06 14:51:37,855 INFO Checkpoint: 1300 record annotati totali.
+
+2026-06-06 14:51:37,936 INFO batch 325/435 done — annotated so far: 1300
+
+2026-06-06 14:53:13,910 INFO Checkpoint: 1310 record annotati totali.
+
+2026-06-06 14:54:16,240 INFO Checkpoint: 1320 record annotati totali.
+
+2026-06-06 14:54:16,319 INFO batch 330/435 done — annotated so far: 1320
+
+2026-06-06 14:55:53,542 INFO Checkpoint: 1330 record annotati totali.
+
+2026-06-06 14:56:56,996 INFO Checkpoint: 1340 record annotati totali.
+
+2026-06-06 14:56:57,079 INFO batch 335/435 done — annotated so far: 1340
+
+2026-06-06 14:58:31,926 INFO Checkpoint: 1350 record annotati totali.
+
+2026-06-06 14:59:34,799 INFO Checkpoint: 1360 record annotati totali.
+
+2026-06-06 14:59:34,881 INFO batch 340/435 done — annotated so far: 1360
+
+2026-06-06 15:01:09,830 INFO Checkpoint: 1370 record annotati totali.
+
+2026-06-06 15:02:12,733 INFO Checkpoint: 1380 record annotati totali.
+
+2026-06-06 15:02:12,814 INFO batch 345/435 done — annotated so far: 1380
+
+2026-06-06 15:03:48,673 INFO Checkpoint: 1390 record annotati totali.
+
+2026-06-06 15:04:50,501 INFO Checkpoint: 1400 record annotati totali.
+
+2026-06-06 15:04:50,582 INFO batch 350/435 done — annotated so far: 1400
+
+2026-06-06 15:06:24,728 INFO Checkpoint: 1410 record annotati totali.
+
+2026-06-06 15:07:28,853 INFO Checkpoint: 1420 record annotati totali.
+
+2026-06-06 15:07:28,932 INFO batch 355/435 done — annotated so far: 1420
+
+2026-06-06 15:09:04,001 INFO Checkpoint: 1430 record annotati totali.
+
+2026-06-06 15:10:07,508 INFO Checkpoint: 1440 record annotati totali.
+
+2026-06-06 15:10:07,590 INFO batch 360/435 done — annotated so far: 1440
+
+2026-06-06 15:12:02,255 INFO Checkpoint: 1450 record annotati totali.
+
+2026-06-06 15:13:14,184 INFO Checkpoint: 1460 record annotati totali.
+
+2026-06-06 15:13:14,265 INFO batch 365/435 done — annotated so far: 1460
+
+2026-06-06 15:14:48,813 INFO Checkpoint: 1470 record annotati totali.
+
+2026-06-06 15:15:52,284 INFO Checkpoint: 1480 record annotati totali.
+
+2026-06-06 15:15:52,366 INFO batch 370/435 done — annotated so far: 1480
+
+2026-06-06 15:17:26,447 INFO Checkpoint: 1490 record annotati totali.
+
+2026-06-06 15:18:31,062 INFO Checkpoint: 1500 record annotati totali.
+
+2026-06-06 15:18:31,145 INFO batch 375/435 done — annotated so far: 1500
+
+2026-06-06 15:20:06,124 INFO Checkpoint: 1510 record annotati totali.
+
+2026-06-06 15:21:08,709 INFO Checkpoint: 1520 record annotati totali.
+
+2026-06-06 15:21:08,791 INFO batch 380/435 done — annotated so far: 1520
+
+2026-06-06 15:22:42,130 INFO Checkpoint: 1530 record annotati totali.
+
+2026-06-06 15:23:45,861 INFO Checkpoint: 1540 record annotati totali.
+
+2026-06-06 15:23:45,943 INFO batch 385/435 done — annotated so far: 1540
+
+2026-06-06 15:25:23,318 INFO Checkpoint: 1550 record annotati totali.
+
+2026-06-06 15:26:28,219 INFO Checkpoint: 1560 record annotati totali.
+
+2026-06-06 15:26:28,300 INFO batch 390/435 done — annotated so far: 1560
+
+2026-06-06 15:28:01,178 INFO Checkpoint: 1570 record annotati totali.
+
+2026-06-06 15:29:03,276 INFO Checkpoint: 1580 record annotati totali.
+
+2026-06-06 15:29:03,358 INFO batch 395/435 done — annotated so far: 1580
+
+2026-06-06 15:30:35,961 INFO Checkpoint: 1590 record annotati totali.
+
+2026-06-06 15:31:39,084 INFO Checkpoint: 1600 record annotati totali.
+
+2026-06-06 15:31:39,165 INFO batch 400/435 done — annotated so far: 1600
+
+2026-06-06 15:33:23,154 INFO Checkpoint: 1610 record annotati totali.
+
+2026-06-06 15:34:34,578 INFO Checkpoint: 1620 record annotati totali.
+
+2026-06-06 15:34:34,660 INFO batch 405/435 done — annotated so far: 1620
+
+2026-06-06 15:36:10,289 INFO Checkpoint: 1630 record annotati totali.
+
+2026-06-06 15:37:13,733 INFO Checkpoint: 1640 record annotati totali.
+
+2026-06-06 15:37:13,812 INFO batch 410/435 done — annotated so far: 1640
+
+2026-06-06 15:38:49,453 INFO Checkpoint: 1650 record annotati totali.
+
+2026-06-06 15:40:01,444 INFO Checkpoint: 1660 record annotati totali.
+
+2026-06-06 15:40:01,525 INFO batch 415/435 done — annotated so far: 1660
+
+2026-06-06 15:41:35,419 INFO Checkpoint: 1670 record annotati totali.
+
+2026-06-06 15:42:38,478 INFO Checkpoint: 1680 record annotati totali.
+
+2026-06-06 15:42:38,559 INFO batch 420/435 done — annotated so far: 1680
+
+2026-06-06 15:44:13,533 INFO Checkpoint: 1690 record annotati totali.
+
+2026-06-06 15:45:15,501 INFO Checkpoint: 1700 record annotati totali.
+
+2026-06-06 15:45:15,580 INFO batch 425/435 done — annotated so far: 1700
+
+2026-06-06 15:46:48,565 INFO Checkpoint: 1710 record annotati totali.
+
+2026-06-06 15:47:51,399 INFO Checkpoint: 1720 record annotati totali.
+
+2026-06-06 15:47:51,481 INFO batch 430/435 done — annotated so far: 1720
+
+2026-06-06 15:49:24,781 INFO Checkpoint: 1730 record annotati totali.
+
+2026-06-06 15:50:25,322 INFO Checkpoint: 1740 record annotati totali.
+
+2026-06-06 15:50:25,403 INFO batch 435/435 done — annotated so far: 1740
+
+2026-06-06 15:50:25,632 INFO done. all rows annotated successfully.
+
+2026-06-06 15:50:25,633 INFO all passes completed in 13971 s.
+
+Ending Cell 21-----------------------------------------
+Executing Cell 22--------------------------------------
+Ending Cell 22-----------------------------------------
+Executing Cell 23--------------------------------------
+2026-06-06 15:50:26,076 INFO saved: /scratch.hpc/lorenzo.pellegrino2/aac-mcp-agent/annotation/eval_annotated.parquet  (1760 rows — all original rows incl. duplicates)
+
+
+Final shape: (1760, 9)  (expected 1760 rows)
+
+split distribution:
+split
+both    1760
+
+sample:
+                               sentence                                          caregiver_clear                     caregiver_vague time_of_day split
+0         The blue train is going fast.  He is playing with the blue train at 06:15 this morning    he keeps asking for the blue one     morning  both
+1        The music is too loud in here.    He is annoyed by the loud music at 20:15 this evening          he keeps covering his ears     evening  both
+2          Look at the bubbles popping.       He is enjoying the bubbles at 17:15 this afternoon  he keeps reaching for more bubbles   afternoon  both
+3   My shirt feels scratchy on my neck.          He needs help with his pyjamas at 04:15 tonight      he keeps pulling at his collar       night  both
+4  The fan is spinning round and round.         He is playing with the fan at 19:30 this evening              he keeps running to it     evening  both
+
+Ending Cell 23-----------------------------------------

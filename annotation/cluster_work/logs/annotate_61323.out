@@ -1,0 +1,16 @@
+=======================================================
+  JOB ID   : 61323
+  NODE     : ws2gpu1-ng
+  GPU      : NVIDIA GeForce RTX 2080 Ti, 11264 MiB
+  MODEL    : Qwen/Qwen2.5-7B-Instruct
+  N_ROWS   : 0 (0=all)
+  VENV     : /scratch.hpc/lorenzo.pellegrino2/python_venvs/aac_annotate
+  NOTEBOOK : /scratch.hpc/lorenzo.pellegrino2/aac-mcp-agent/annotation/cluster_work/annotate_eval.ipynb
+=======================================================
+[setup] Venv already exists — skipping installation.
+GPU OK: NVIDIA GeForce RTX 2080 Ti  11.4 GB VRAM
+[run] Starting papermill ...
+[done] Notebook completed successfully.
+  Output parquet : /scratch.hpc/lorenzo.pellegrino2/aac-mcp-agent/annotation/eval_annotated.parquet
+  Annotation log : /scratch.hpc/lorenzo.pellegrino2/aac-mcp-agent/annotation/annotation_log.jsonl
+  Notebook output: /scratch.hpc/lorenzo.pellegrino2/aac-mcp-agent/annotation/cluster_work/annotate_eval_out.ipynb

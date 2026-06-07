@@ -7,7 +7,7 @@
 #SBATCH --mem=40G
 #SBATCH --time=3-00:00:00
 #SBATCH --output=/scratch.hpc/lorenzo.pellegrino2/aac-mcp-agent/annotation/cluster_work/logs/annotate_%j.out
-#SBATCH --error=/scratch.hpc/lorenzo.pellegrino2/aac-mcp-agent/annotation/cluster_work/logs/annotate_%j.out
+#SBATCH --error=/scratch.hpc/lorenzo.pellegrino2/aac-mcp-agent/annotation/cluster_work/logs/annotate_%j.err
 
 #### Paths ######################################################################
 SCRATCH_ROOT="/scratch.hpc/lorenzo.pellegrino2"
@@ -19,11 +19,11 @@ LOGS_DIR="${PROJECT_ROOT}/logs"
 
 #### Configuration ##############################################################
 export NB_PROJECT_ROOT="${PROJECT_ROOT}"
-export NB_MODEL_ID="${NB_MODEL_ID:-Qwen/Qwen2.5-3B-Instruct}"
+export NB_MODEL_ID="${NB_MODEL_ID:-Qwen/Qwen2.5-7B-Instruct}"
 export NB_LOAD_IN_4BIT="${NB_LOAD_IN_4BIT:-1}"
 export NB_MAX_NEW_TOKENS="${NB_MAX_NEW_TOKENS:-256}"
 export NB_MAX_PROMPT_LENGTH="${NB_MAX_PROMPT_LENGTH:-2048}"
-export NB_BATCH_SIZE="${NB_BATCH_SIZE:-16}"
+export NB_BATCH_SIZE="${NB_BATCH_SIZE:-4}"
 export NB_MAX_ROW_RETRIES="${NB_MAX_ROW_RETRIES:-3}"
 export NB_MAX_ANNOTATION_RETRIES="${NB_MAX_ANNOTATION_RETRIES:-2}"
 export NB_BACKUP_EVERY_N="${NB_BACKUP_EVERY_N:-10}"
