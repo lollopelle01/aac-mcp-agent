@@ -213,8 +213,8 @@ export default function App() {
           {toolsCalled !== null && (
             <span
               title={toolsCalled
-                ? 'Il planner ha chiamato i tool (get_time / get_schedule)'
-                : 'Il planner NON ha chiamato i tool — input già esplicito'}
+                ? 'Planner called tools (get_time / get_schedule)'
+                : 'Planner did NOT call tools — input already explicit'}
               style={{
                 fontSize: '11px',
                 padding: '2px 7px',
@@ -226,7 +226,7 @@ export default function App() {
                 cursor: 'default',
               }}
             >
-              {toolsCalled ? '🔍 tool' : '✓ no tool'}
+              {toolsCalled ? 'tool' : 'no tool'}
             </span>
           )}
 
@@ -259,8 +259,8 @@ export default function App() {
             </span>
           )}
 
-          <button style={iconBtn} onClick={() => setShowCategories(true)} title="Cerca per categoria">
-            🔍 Cerca
+          <button style={iconBtn} onClick={() => setShowCategories(true)} title="Browse by category">
+            Browse
           </button>
           <button style={iconBtn} onClick={() => setShowDatasets(true)} title="Local datasets">
             ⬇ Datasets

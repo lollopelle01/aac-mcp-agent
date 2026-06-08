@@ -7,7 +7,7 @@ import requests
 from urllib.parse import quote
 
 from mcp_server.server import mcp
-from mcp_server.models import Keyword, Pictogram, ScoredPictogram
+from mcp_server.models import Keyword, Pictogram
 from mcp_server.dataset_cache import _DatasetCache
 from config import (
     LANG,
@@ -19,16 +19,15 @@ from config import (
 
 logger = logging.getLogger(__name__)
 
-##########################################################################################
-## Utils #################################################################################
-##########################################################################################
+####### Utils ############################################################
+
 
 def _image_url(pictogram_id: int) -> str:
     """
     Return the image URL for the given pictogram ID.
 
     When USE_LOCAL_DATASETS is True the URL points to the local proxy endpoint
-    (/api/images/{id}). The Vite dev proxy rewrites /api/* → backend :8000,
+    (/api/images/{id}). The Vite dev proxy rewrites /api/* -> backend :8000,
     so the browser resolves this correctly without ever hitting the CDN.
     This makes the app fully functional offline.
 
@@ -64,12 +63,6 @@ def _raw_to_pictogram(raw: dict) -> Pictogram:
         created      = raw.get("created"),
         last_updated = raw.get("lastUpdated") or raw.get("last_updated"),
     )
-
-
-def _scored_to_dict(scored: ScoredPictogram) -> dict:
-    """Serialise a ScoredPictogram to a plain Pictogram dict for MCP tool output."""
-    pic, _score = scored
-    return pic.model_dump()
 
 
 def _get_json(url: str, context: str) -> object:
@@ -134,43 +127,40 @@ def _search_raw(search_text: str, lang: str, max_results: int, context: str) -> 
     return raw_list[:max_results]
 
 
-def _safe_to_scored(raw: dict) -> "ScoredPictogram | None":
-    """Convert a raw dict to a ScoredPictogram, returning None on failure."""
+def _safe_parse(raw: dict) -> "Pictogram | None":
+    """Convert a raw dict to a Pictogram, returning None on failure."""
     try:
-        return (_raw_to_pictogram(raw), 0.0)
+        return _raw_to_pictogram(raw)
     except Exception as exc:
         logger.debug("Unparseable pictogram (id=%s): %s", raw.get("_id") or raw.get("id"), exc)
         return None
 
 
-def _parse_raw_list(raw_list: list[dict]) -> list[ScoredPictogram]:
-    """Parse a list of raw API dicts into ScoredPictogram pairs, skipping failures."""
-    return [s for raw in raw_list if (s := _safe_to_scored(raw)) is not None]
+def _parse_raw_list(raw_list: list[dict]) -> list[Pictogram]:
+    """Parse a list of raw API dicts into Pictogram objects, skipping failures."""
+    return [p for raw in raw_list if (p := _safe_parse(raw)) is not None]
 
 
 def _ids_to_results(
     ids: list[str],
     pictograms: dict[str, dict],
     max_results: int,
-) -> list[ScoredPictogram]:
-    """Look up pictogram records by ID list and convert to ScoredPictogram pairs."""
-    results: list[ScoredPictogram] = []
+) -> list[Pictogram]:
+    """Look up pictogram records by ID list and return Pictogram objects."""
+    results: list[Pictogram] = []
     for pid_str in ids[:max_results]:
         rec = pictograms.get(pid_str)
         if rec is None:
-            logger.debug("Local pictogram id=%s not found in dataset — skipping.", pid_str)
+            logger.debug("Local pictogram id=%s not found in dataset -- skipping.", pid_str)
             continue
-        # Ensure 'id' is present — some dataset formats store it only as the dict key
         if "id" not in rec and "_id" not in rec:
             rec = {"id": int(pid_str), **rec}
-        if (s := _safe_to_scored(rec)) is not None:
-            results.append(s)
+        if (p := _safe_parse(rec)) is not None:
+            results.append(p)
     return results
 
 
-##########################################################################################
-## Helper ################################################################################
-##########################################################################################
+####### Helper ###########################################################
 
 def get_pictogram_image(pictogram_id: int) -> bytes:
     """
@@ -190,9 +180,7 @@ def get_pictogram_image(pictogram_id: int) -> bytes:
     return r.content
 
 
-##########################################################################################
-## MCP tools #############################################################################
-##########################################################################################
+####### MCP tools ########################################################
 
 @mcp.tool()
 def search_pictograms(
@@ -212,13 +200,13 @@ def search_pictograms(
 
     Parameters
     ----------
-    keyword     : str  — Exact or near-exact word/phrase to look up (e.g. "eat").
-    lang        : str  — ARASAAC language code (default from config: "en").
-    max_results : int  — Maximum number of results to return (default 5).
+    keyword     : str  -- Exact or near-exact word/phrase to look up (e.g. "eat").
+    lang        : str  -- ARASAAC language code (default from config: "en").
+    max_results : int  -- Maximum number of results to return (default 5).
 
     Returns
     -------
-    dict  — {"results": list[dict]}  up to max_results serialised Pictogram dicts.
+    dict  -- {"results": list[dict]}  up to max_results serialised Pictogram dicts.
     """
     if USE_LOCAL_DATASETS:
         kw_index   = _DatasetCache.load_keyword_index(lang)
@@ -231,7 +219,7 @@ def search_pictograms(
                 "search_pictograms('%s', lang='%s'): %d results from local dataset.",
                 keyword, lang, len(results),
             )
-            return {"results": [_scored_to_dict(r) for r in results]}
+            return {"results": [r.model_dump() for r in results]}
 
         logger.info(
             "search_pictograms('%s', lang='%s'): local dataset unavailable, calling API.",
@@ -244,7 +232,7 @@ def search_pictograms(
         "search_pictograms('%s', lang='%s'): %d results from API.",
         keyword, lang, len(results),
     )
-    return {"results": [_scored_to_dict(r) for r in results]}
+    return {"results": [r.model_dump() for r in results]}
 
 
 @mcp.tool()
@@ -260,12 +248,12 @@ def get_pictogram_metadata(
 
     Parameters
     ----------
-    pictogram_id : int  — Unique ARASAAC pictogram ID (e.g. 2500).
-    lang         : str  — Language code for keyword fields (default from config).
+    pictogram_id : int  -- Unique ARASAAC pictogram ID (e.g. 2500).
+    lang         : str  -- Language code for keyword fields (default from config).
 
     Returns
     -------
-    dict  — All pictogram fields plus image_url, or {"error": "..."} if not found.
+    dict  -- All pictogram fields plus image_url, or {"error": "..."} if not found.
     """
     pid_str = str(pictogram_id)
 
@@ -309,11 +297,11 @@ def list_keywords(lang: str = LANG) -> dict:
 
     Parameters
     ----------
-    lang : str  — ARASAAC language code (default from config).
+    lang : str  -- ARASAAC language code (default from config).
 
     Returns
     -------
-    dict  — {"keywords": list[str]}  sorted keyword strings.
+    dict  -- {"keywords": list[str]}  sorted keyword strings.
     """
     if USE_LOCAL_DATASETS:
         local_kws = _DatasetCache.load_keywords(lang)
@@ -350,7 +338,7 @@ def search_pictograms_by_synset(
     """
     Fetch all ARASAAC pictograms linked to a Princeton WordNet synset.
 
-    The most semantically precise search available — retrieves exactly the
+    The most semantically precise search available -- retrieves exactly the
     pictograms representing a concept without relying on keyword matching.
 
     Synset IDs are 8-digit zero-padded integers followed by a POS tag,
@@ -359,13 +347,13 @@ def search_pictograms_by_synset(
 
     Parameters
     ----------
-    synset_id : str  — WordNet synset offset with POS suffix (e.g. "00854425-v").
-    wordnet   : str  — WordNet version (default "3.1"; also supports "3.0").
-    lang      : str  — ARASAAC language code for keyword labels (default from config).
+    synset_id : str  -- WordNet synset offset with POS suffix (e.g. "00854425-v").
+    wordnet   : str  -- WordNet version (default "3.1"; also supports "3.0").
+    lang      : str  -- ARASAAC language code for keyword labels (default from config).
 
     Returns
     -------
-    dict  — {"results": list[dict]}  serialised Pictogram dicts for all matches.
+    dict  -- {"results": list[dict]}  serialised Pictogram dicts for all matches.
     """
     if USE_LOCAL_DATASETS:
         synset_index = _DatasetCache.load_synset_index(lang)
@@ -378,7 +366,7 @@ def search_pictograms_by_synset(
                 "search_pictograms_by_synset(synset=%s, lang=%s): %d results from local dataset.",
                 synset_id, lang, len(results),
             )
-            return {"results": [_scored_to_dict(r) for r in results]}
+            return {"results": [r.model_dump() for r in results]}
 
         logger.info(
             "search_pictograms_by_synset(synset=%s): local dataset unavailable, calling API.",
@@ -403,4 +391,4 @@ def search_pictograms_by_synset(
         "search_pictograms_by_synset(synset=%s, wn=%s, lang=%s): %d results from API.",
         synset_id, wordnet, lang, len(results),
     )
-    return {"results": [_scored_to_dict(r) for r in results]}
+    return {"results": [r.model_dump() for r in results]}

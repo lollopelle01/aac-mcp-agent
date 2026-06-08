@@ -54,8 +54,8 @@ const styles = {
   },
 }
 
-// Pipeline reale: planner LLM → ricerca ARASAAC → ranking deterministico.
-// Le fasi rispecchiano il flusso effettivo (nessun secondo LLM di filtraggio).
+// Pipeline: planner LLM -> ARASAAC search -> deterministic ranking.
+// Phases reflect the actual flow (no second LLM filter).
 const PHASES = [
   { label: 'Planning concepts…',           seconds: 10 },
   { label: 'Searching ARASAAC catalogue…', seconds: Infinity },

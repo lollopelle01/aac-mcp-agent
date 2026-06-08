@@ -4,30 +4,16 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-from functools import lru_cache
-
-import spacy
+from agent.session import _nlp
 
 
-@lru_cache(maxsize=1)
-def _nlp() -> spacy.language.Language:
-    """Load the spaCy model once (lazy, cached)."""
-    try:
-        return spacy.load("en_core_web_sm", disable=["parser", "ner"])
-    except OSError as exc:
-        raise RuntimeError(
-            "spaCy model 'en_core_web_sm' not found. "
-            "Run: python -m spacy download en_core_web_sm"
-        ) from exc
-
-
-#### Helpers ####################################################################
+####### Helpers ###########################################################
 
 def _lemmatize_phrase(text: str) -> str:
     """
     Return the lemmatised form of a (possibly multi-word) phrase.
 
-    Example:    "going out" -> "go out"  
+    Example:    "going out" -> "go out"
                 "brushing teeth" -> "brush tooth"
     """
     doc = _nlp()(text.lower())
@@ -38,14 +24,14 @@ def _lemmatize_word(word: str) -> str:
     """
     Return the lemma of a single word token.
 
-    Example:    "eating" -> "eat"  
+    Example:    "eating" -> "eat"
                 "coats" -> "coat"
     """
     doc = _nlp()(word.lower())
     return doc[0].lemma_ if doc else word.lower()
 
 
-#### Publc functions ############################################################
+####### Public functions ##################################################
 
 # Resolve method labels, used for eval tracing.
 RESOLVE_METHODS = (
@@ -77,8 +63,6 @@ def _strip_determiners(text: str) -> str:
     "their families"    -> "families"
     """
     tokens = text.split()
-    # strip from both ends, then remove isolated stop-words in the middle
-    # (keep middle content words even if they happen to be in _STRIP_WORDS)
     while tokens and tokens[0] in _STRIP_WORDS:
         tokens = tokens[1:]
     while tokens and tokens[-1] in _STRIP_WORDS:
@@ -86,7 +70,6 @@ def _strip_determiners(text: str) -> str:
     return " ".join(tokens)
 
 
-# The actual mapping function used by the agent before looking for keywords
 def resolve_concept(
     concept: str,
     kw_set: set[str],
@@ -94,7 +77,7 @@ def resolve_concept(
     return_method: bool = False,
 ) -> "list[str] | tuple[list[str], str]":
     """
-    Map a natural-language concept to ARASAAC keyword string.
+    Map a natural-language concept to an ARASAAC keyword string.
 
     - concept: natural-language concept (e.g. "going out", "water bottle").
     - kw_set: all keyword strings in the ARASAAC keyword index.
@@ -148,7 +131,6 @@ def resolve_concept(
     # Step 0: try original form first
     result = _lookup(c)
     if result is not None:
-        # Determine which sub-step matched for the method label
         method = _resolve_method_label(c, result, kw_set)
         return (result, method) if return_method else result
 

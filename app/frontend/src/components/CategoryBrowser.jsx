@@ -1,18 +1,18 @@
-// CategoryBrowser.jsx — navigazione a 3 livelli per la ricerca manuale dei pittogrammi
+// CategoryBrowser.jsx — 3-level navigation for manual pictogram search
 //
-// Livello 0 — macro-categorie (~15 card con emoji + immagine rappresentativa)
-// Livello 1 — categorie ARASAAC figlie della macro selezionata
-// Livello 2 — pittogrammi della categoria selezionata (riusa lo stile di PictogramCard)
+// Level 0 — macro-categories (~15 cards with representative image)
+// Level 1 — ARASAAC sub-categories of the selected macro
+// Level 2 — pictograms in the selected category (reuses PictogramCard style)
 //
-// Chiamate API:
-//   GET /api/categories?lang=en   → {macros: [...]}
-//   GET /api/by_category?category=food&lang=en&max_results=50  → [...]
+// API calls:
+//   GET /api/categories?lang=en   -> {macros: [...]}
+//   GET /api/by_category?category=food&lang=en&max_results=50  -> [...]
 //
-// Al tap su un pittogramma si chiama onSelect(pic) — stesso contratto di PictogramGrid.
+// Tapping a pictogram calls onSelect(pic) — same contract as PictogramGrid.
 
 import React, { useState, useEffect, useRef } from 'react'
 
-// ── Stili ─────────────────────────────────────────────────────────────────────
+// ── Styles ────────────────────────────────────────────────────────────────────
 
 const overlay = {
   position: 'fixed', inset: 0,
@@ -106,11 +106,11 @@ const thumbStyle = (size = 72) => ({
   background: '#f7fafc',
 })
 
-const emojiIcon = (size = 48) => ({
-  fontSize: `${size * 0.55}px`,
+const placeholderIcon = (size = 48) => ({
   width: `${size}px`, height: `${size}px`,
   display: 'flex', alignItems: 'center', justifyContent: 'center',
   background: '#edf2f7', borderRadius: '8px',
+  color: '#a0aec0', fontSize: `${Math.round(size * 0.45)}px`, fontWeight: '600',
 })
 
 const spinnerWrap = {
@@ -139,11 +139,11 @@ async function fetchByCategory(category, lang = 'en', maxResults = 60) {
   return r.json()   // [{id, label, image_url, categories, aac}]
 }
 
-// Thumbnail con fallback emoji se l'immagine non carica
-function Thumb({ imageUrl, alt, size = 72, emoji = '🖼' }) {
+// Thumbnail with text fallback when the image fails to load
+function Thumb({ imageUrl, alt, size = 72, fallbackLabel = '?' }) {
   const [failed, setFailed] = useState(false)
   if (failed || !imageUrl) {
-    return <div style={emojiIcon(size)}>{emoji}</div>
+    return <div style={placeholderIcon(size)}>{fallbackLabel}</div>
   }
   return (
     <img
@@ -160,7 +160,7 @@ function imageUrlForId(id) {
   return `${API_BASE}/images/${id}`
 }
 
-// ── Livello 0 — griglia macro-categorie ──────────────────────────────────────
+// ── Level 0 — macro-category grid ────────────────────────────────────────────
 
 function MacroGrid({ macros, onSelect }) {
   return (
@@ -170,13 +170,13 @@ function MacroGrid({ macros, onSelect }) {
           key={mc.name}
           style={card(false)}
           onClick={() => onSelect(mc)}
-          title={`${mc.count} pittogrammi`}
+          title={`${mc.count} pictograms`}
         >
           <Thumb
             imageUrl={mc.representative_id ? imageUrlForId(mc.representative_id) : null}
             alt={mc.name}
             size={72}
-            emoji={mc.emoji}
+            fallbackLabel={mc.name.slice(0, 2).toUpperCase()}
           />
           <span style={cardLabel}>{mc.name}</span>
           <span style={cardCount}>{mc.count}</span>
@@ -186,7 +186,7 @@ function MacroGrid({ macros, onSelect }) {
   )
 }
 
-// ── Livello 1 — griglia categorie ARASAAC ─────────────────────────────────────
+// ── Level 1 — ARASAAC sub-category grid ──────────────────────────────────────
 
 function CategoryGrid({ categories, onSelect }) {
   if (!categories.length) return <p style={emptyMsg}>No categories found.</p>
@@ -197,13 +197,13 @@ function CategoryGrid({ categories, onSelect }) {
           key={cat.name}
           style={card(false)}
           onClick={() => onSelect(cat)}
-          title={`${cat.count} pittogrammi`}
+          title={`${cat.count} pictograms`}
         >
           <Thumb
             imageUrl={cat.representative_id ? imageUrlForId(cat.representative_id) : null}
             alt={cat.name}
             size={64}
-            emoji="🏷"
+            fallbackLabel={cat.name.slice(0, 2).toUpperCase()}
           />
           <span style={cardLabel}>{cat.name}</span>
           <span style={cardCount}>{cat.count}</span>
@@ -213,10 +213,10 @@ function CategoryGrid({ categories, onSelect }) {
   )
 }
 
-// ── Livello 2 — griglia pittogrammi ──────────────────────────────────────────
+// ── Level 2 — pictogram grid ─────────────────────────────────────────────────
 
 function PicGrid({ pics, selectedId, onSelect }) {
-  if (!pics.length) return <p style={emptyMsg}>Nessun pittogramma trovato.</p>
+  if (!pics.length) return <p style={emptyMsg}>No pictograms found.</p>
   return (
     <div style={gridPics}>
       {pics.map(p => (
@@ -230,7 +230,7 @@ function PicGrid({ pics, selectedId, onSelect }) {
             imageUrl={p.image_url}
             alt={p.label}
             size={80}
-            emoji="🖼"
+            fallbackLabel={p.label.slice(0, 2).toUpperCase()}
           />
           <span style={cardLabel}>{p.label}</span>
         </div>
@@ -239,26 +239,26 @@ function PicGrid({ pics, selectedId, onSelect }) {
   )
 }
 
-// ── Componente principale ─────────────────────────────────────────────────────
+// ── Main component ────────────────────────────────────────────────────────────
 
 /**
  * CategoryBrowser
  *
  * Props:
- *   onClose()          — chiude il pannello (senza selezione)
- *   onSelect(pic)      — pittogramma scelto; stesso contratto di PictogramGrid
- *   lang               — lingua dataset (default "en")
+ *   onClose()          — closes the panel (without selection)
+ *   onSelect(pic)      — chosen pictogram; same contract as PictogramGrid
+ *   lang               — dataset language (default "en")
  */
 export function CategoryBrowser({ onClose, onSelect, lang = 'en' }) {
-  // Livello di navigazione: 0 | 1 | 2
-  const [level,      setLevel]      = useState(0)
-  const [macros,     setMacros]     = useState([])
-  const [activeMacro, setActiveMacro] = useState(null)   // oggetto macro
-  const [activeCat,  setActiveCat]  = useState(null)     // oggetto categoria ARASAAC
-  const [pics,       setPics]       = useState([])
-  const [loading,    setLoading]    = useState(false)
-  const [error,      setError]      = useState(null)
-  const [selectedId, setSelectedId] = useState(null)
+  // Navigation level: 0 | 1 | 2
+  const [level,       setLevel]       = useState(0)
+  const [macros,      setMacros]      = useState([])
+  const [activeMacro, setActiveMacro] = useState(null)   // macro object
+  const [activeCat,   setActiveCat]   = useState(null)   // ARASAAC category object
+  const [pics,        setPics]        = useState([])
+  const [loading,     setLoading]     = useState(false)
+  const [error,       setError]       = useState(null)
+  const [selectedId,  setSelectedId]  = useState(null)
   const scrollRef = useRef(null)
 
   // Load macro-categories on mount
@@ -270,12 +270,12 @@ export function CategoryBrowser({ onClose, onSelect, lang = 'en' }) {
       .finally(() => setLoading(false))
   }, [lang])
 
-  // Scorre in cima ad ogni cambio livello
+  // Scroll to top on every level change
   useEffect(() => {
     if (scrollRef.current) scrollRef.current.scrollTop = 0
   }, [level])
 
-  // ── Navigazione ──────────────────────────────────────────────────────────
+  // ── Navigation ───────────────────────────────────────────────────────────
 
   function selectMacro(mc) {
     setActiveMacro(mc)
@@ -299,15 +299,15 @@ export function CategoryBrowser({ onClose, onSelect, lang = 'en' }) {
     else if (level === 1) { setLevel(0); setActiveMacro(null) }
   }
 
-  // ── Selezione pittogramma ────────────────────────────────────────────────
+  // ── Pictogram selection ───────────────────────────────────────────────────
 
   function handleSelectPic(pic) {
     setSelectedId(pic.id)
-    // Normalizza il formato atteso da App.jsx (stesso di PictogramGrid)
+    // Normalised format expected by App.jsx (same as PictogramGrid)
     onSelect(pic)
   }
 
-  // ── Breadcrumb ───────────────────────────────────────────────────────────
+  // ── Breadcrumb ────────────────────────────────────────────────────────────
 
   function breadcrumbText() {
     if (level === 0) return 'All categories'
@@ -315,7 +315,7 @@ export function CategoryBrowser({ onClose, onSelect, lang = 'en' }) {
     return `${activeMacro?.name} › ${activeCat?.name}`
   }
 
-  // ── Render ───────────────────────────────────────────────────────────────
+  // ── Render ────────────────────────────────────────────────────────────────
 
   return (
     <div style={overlay} onClick={e => { if (e.target === e.currentTarget) onClose() }}>
@@ -331,7 +331,7 @@ export function CategoryBrowser({ onClose, onSelect, lang = 'en' }) {
           <button style={closeBtn} onClick={onClose} title="Close">✕</button>
         </div>
 
-        {/* Titolo livello */}
+        {/* Level title */}
         <div style={{ padding: '8px 16px 4px', borderBottom: '1px solid #e2e8f0', flexShrink: 0 }}>
           <span style={{ fontSize: '13px', color: '#4a5568', fontWeight: '600' }}>
             {level === 0 && 'Choose a category'}
@@ -340,7 +340,7 @@ export function CategoryBrowser({ onClose, onSelect, lang = 'en' }) {
           </span>
         </div>
 
-        {/* Contenuto scrollabile */}
+        {/* Scrollable content */}
         <div style={scrollArea} ref={scrollRef}>
           {error && (
             <p style={{ color: '#c53030', fontSize: '13px', marginBottom: '12px' }}>{error}</p>
@@ -348,7 +348,7 @@ export function CategoryBrowser({ onClose, onSelect, lang = 'en' }) {
 
           {loading && (
             <div style={spinnerWrap}>
-              <span style={{ fontSize: '22px' }}>⏳</span>
+              <span style={{ fontSize: '14px', color: '#718096' }}>Loading...</span>
             </div>
           )}
 

@@ -1,4 +1,5 @@
-# mcp_server/dataset_cache.py — lazy in-memory loader for local ARASAAC datasets.
+####### mcp_server/dataset_cache.py ######################################
+# Lazy in-memory loader for local ARASAAC datasets.
 #
 # Reads from DATASETS_DIR/{lang}/*.json on first access, keeps in memory for the
 # process lifetime. All load_* methods return None on missing/malformed files so
@@ -10,9 +11,9 @@
 # Layout:
 #   app/datasets/{lang}/_meta.json            Build timestamps and counts per file.
 #   app/datasets/{lang}/keywords.json         Full keyword list.
-#   app/datasets/{lang}/pictograms.json       { id_str → PictogramRecord }
-#   app/datasets/{lang}/keyword_index.json    { keyword → [id, ...] }
-#   app/datasets/{lang}/synset_index.json     { synset_id → [id, ...] }
+#   app/datasets/{lang}/pictograms.json       { id_str -> PictogramRecord }
+#   app/datasets/{lang}/keyword_index.json    { keyword -> [id, ...] }
+#   app/datasets/{lang}/synset_index.json     { synset_id -> [id, ...] }
 #   app/datasets/pictograms/{id}.png          Language-independent images.
 
 from __future__ import annotations
@@ -29,11 +30,11 @@ logger = logging.getLogger(__name__)
 class _DatasetCache:
     # Per-language caches
     _keywords:      dict[str, list[str]]             = {}
-    _pictograms:    dict[str, dict[str, dict]]       = {}  # lang → { id_str → record }
-    _keyword_index: dict[str, dict[str, list[str]]]  = {}  # lang → { keyword → [id, ...] }
-    _synset_index:  dict[str, dict[str, list[str]]]  = {}  # lang → { synset_id → [id, ...] }
+    _pictograms:    dict[str, dict[str, dict]]       = {}  # lang -> { id_str -> record }
+    _keyword_index: dict[str, dict[str, list[str]]]  = {}  # lang -> { keyword -> [id, ...] }
+    _synset_index:  dict[str, dict[str, list[str]]]  = {}  # lang -> { synset_id -> [id, ...] }
 
-    # ── Helpers ───────────────────────────────────────────────────────────────
+    ####### Helpers ########################################################
 
     @classmethod
     def _lang_dir(cls, lang: str) -> Path:
@@ -55,7 +56,7 @@ class _DatasetCache:
             logger.error("Dataset file %s is not valid JSON: %s", path, exc)
             return None
 
-    # ── Meta ──────────────────────────────────────────────────────────────────
+    ####### Meta ###########################################################
 
     @classmethod
     def load_meta(cls, lang: str) -> dict | None:
@@ -73,7 +74,7 @@ class _DatasetCache:
         data = cls._load_json(cls._lang_dir(lang) / "_meta.json")
         return data if isinstance(data, dict) else None
 
-    # ── Public loaders ────────────────────────────────────────────────────────
+    ####### Public loaders ################################################
 
     @classmethod
     def load_keywords(cls, lang: str) -> list[str] | None:
@@ -88,7 +89,7 @@ class _DatasetCache:
 
     @classmethod
     def load_pictograms(cls, lang: str) -> dict[str, dict] | None:
-        """Return { id_str → PictogramRecord } for lang, or None if unavailable."""
+        """Return { id_str -> PictogramRecord } for lang, or None if unavailable."""
         if lang not in cls._pictograms:
             data = cls._load_json(cls._lang_dir(lang) / "pictograms.json")
             if data is None or not isinstance(data, dict):
@@ -99,7 +100,7 @@ class _DatasetCache:
 
     @classmethod
     def load_keyword_index(cls, lang: str) -> dict[str, list[str]] | None:
-        """Return { keyword → [id_str, ...] } for lang, or None if unavailable."""
+        """Return { keyword -> [id_str, ...] } for lang, or None if unavailable."""
         if lang not in cls._keyword_index:
             data = cls._load_json(cls._lang_dir(lang) / "keyword_index.json")
             if data is None or not isinstance(data, dict):
@@ -110,7 +111,7 @@ class _DatasetCache:
 
     @classmethod
     def load_synset_index(cls, lang: str) -> dict[str, list[str]] | None:
-        """Return { synset_id → [id_str, ...] } for lang, or None if unavailable."""
+        """Return { synset_id -> [id_str, ...] } for lang, or None if unavailable."""
         if lang not in cls._synset_index:
             data = cls._load_json(cls._lang_dir(lang) / "synset_index.json")
             if data is None or not isinstance(data, dict):
@@ -135,7 +136,7 @@ class _DatasetCache:
             r.raise_for_status()
             path.parent.mkdir(parents=True, exist_ok=True)
             path.write_bytes(r.content)
-            logger.info("Downloaded pictogram %d → %s", pictogram_id, path)
+            logger.info("Downloaded pictogram %d -> %s", pictogram_id, path)
         return path
 
     @classmethod

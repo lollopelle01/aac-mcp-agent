@@ -17,10 +17,11 @@ from typing import Any
 logger = logging.getLogger(__name__)
 
 _SRC           = Path(__file__).resolve().parent
-_APP           = _SRC.parent                    
-_SETTINGS_FILE = _APP / "user_settings.json"    
+_APP           = _SRC.parent
+_SETTINGS_FILE = _APP / "user_settings.json"
 
-#### Defaults ##################################################################
+####### Defaults #########################################################
+
 _DEFAULTS: dict[str, Any] = {
     # Locale / time
     "timezone":         "Europe/Rome",
@@ -29,7 +30,7 @@ _DEFAULTS: dict[str, Any] = {
     # Calendar
     "calendar_provider": "apple",
     "subscribed_ics_urls": {
-        # my unibo calendar, don't worry it contains only the dates of Ethics :)
+        # UNIBO calendar — Ethics lectures only
         "UNIBO": (
             "https://calendar.students.cs.unibo.it/cal/9063/2"
             "?curr=000-000&subjects=91257_1,91257_2"
@@ -65,7 +66,7 @@ _DEFAULTS: dict[str, Any] = {
     # Agent behaviour
     "agent_default_model":       "qwen2.5:3b",
     "agent_use_llamacpp":        True,   # if True, use LlamaCppBackend instead of Ollama
-    "agent_max_results":         25,     # R22: 24→25 (eval window size experiment)
+    "agent_max_results":         25,     # R22: 24->25 (eval window size experiment)
     "agent_candidates_per_term": 10,
     "agent_memory_turns":        3,
     "agent_fetch_schedule":      True,
@@ -74,21 +75,23 @@ _DEFAULTS: dict[str, Any] = {
 
     # Dataset
     # en_eval is the merged eval dataset (local + HF clean) used by run_eval_hf.py.
-    # It is never touched by update_datasets.py — treat it as a frozen snapshot.
+    # It is never touched by update_datasets.py -- treat it as a frozen snapshot.
     "use_local_datasets": True,
     "dataset_langs":      ["en", "en_eval", "it", "es"],
 }
 
 
-#### Manager ##################################################################
+####### Manager ##########################################################
+
 class _SettingsManager:
-    """Singleton settings manager — import as `from settings import settings`."""
+    """Singleton settings manager -- import as `from settings import settings`."""
 
     def __init__(self) -> None:
         self._data: dict[str, Any] = dict(_DEFAULTS)
         self._load()
 
-    #### Persistance ##################################################################
+    ####### Persistence ###################################################
+
     def _load(self) -> None:
         if _SETTINGS_FILE.exists():
             try:
@@ -97,7 +100,7 @@ class _SettingsManager:
                 logger.debug("Settings loaded from %s", _SETTINGS_FILE)
             except Exception as exc:
                 logger.warning(
-                    "Could not read %s: %s — using defaults.", _SETTINGS_FILE, exc
+                    "Could not read %s: %s -- using defaults.", _SETTINGS_FILE, exc
                 )
         else:
             self._save()
@@ -112,7 +115,8 @@ class _SettingsManager:
         except Exception as exc:
             logger.error("Could not write %s: %s", _SETTINGS_FILE, exc)
 
-    #### Public API ##################################################################
+    ####### Public API ####################################################
+
     def get(self, key: str, default: Any = None) -> Any:
         return self._data.get(key, default)
 
@@ -124,7 +128,7 @@ class _SettingsManager:
                 self._data[k] = v
                 changed = True
             else:
-                logger.warning("Unknown setting key %r — ignored.", k)
+                logger.warning("Unknown setting key %r -- ignored.", k)
         if changed:
             self._save()
 
@@ -136,7 +140,8 @@ class _SettingsManager:
         """Return a copy of all current settings (safe to serialise to JSON)."""
         return dict(self._data)
 
-    #### Getters ##################################################################
+    ####### Getters #######################################################
+
     @property
     def timezone(self) -> str:
         return str(self._data["timezone"])
@@ -202,5 +207,6 @@ class _SettingsManager:
         return list(self._data["dataset_langs"])
 
 
-#### Singleton ##################################################################
+####### Singleton ########################################################
+
 settings = _SettingsManager()

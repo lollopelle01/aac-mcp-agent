@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import { useDatasets } from '../hooks/useDatasets.js'
 
-// ── Styles (coerenti con SettingsPanel) ───────────────────────────────────────
+// ── Styles ───────────────────────────────────────────────────────────────────
 const overlay = {
   position: 'fixed', inset: 0,
   background: 'rgba(0,0,0,0.45)',

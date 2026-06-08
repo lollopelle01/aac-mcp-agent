@@ -99,9 +99,14 @@ class SessionMemory:
     def recently_presented_ids(self, n_turns: int = AGENT_MEMORY_TURNS) -> set[int]:
         """IDs of ALL pictograms shown to the user in the last n_turns.
 
-        This includes both selected and rejected ones. Used to exclude
-        already-seen pictograms from the next window so the user always
-        gets fresh options after each selection.
+        This includes both selected and rejected ones.
+
+        NOTE (R22 — Opzione A): this method is intentionally NOT used in
+        _rank_and_fill. Only selected pictograms are excluded from the next
+        window (recently_selected_ids), not all presented ones. This was a
+        deliberate choice to keep the available pool large enough for the
+        max_results=25 window. Re-enabling stricter exclusion here would
+        require increasing AGENT_CANDIDATES_PER_TERM or the pool size.
         """
         ids: set[int] = set()
         for turn in self.turns[-n_turns:]:

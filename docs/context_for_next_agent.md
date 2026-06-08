@@ -25,7 +25,7 @@ Comunicazione Aumentativa e Alternativa (CAA/AAC).
 5. `search_pictograms()` costruisce il pool di candidati
 6. Espansione opzionale del pool via WordNet synsets (`_expand_pool_by_synset`)
 7. Ranking deterministico → `_rank_and_fill` → finestra di `max_results`
-   pittogrammi (esclusi quelli già mostrati nei turni recenti)
+   pittogrammi (esclusi quelli già selezionati nei turni recenti)
 8. Il soggetto seleziona un pittogramma dalla finestra → `/select` aggiorna la
    memoria di sessione; si riparte dal punto 1 per il concetto successivo
 
@@ -39,8 +39,9 @@ fase di valutazione sul cluster.
 
 | Componente            | Dettaglio                                                     |
 | --------------------- | ------------------------------------------------------------- |
-| LLM locale            | Ollama (`granite4:3b-h`, `qwen2.5:3b`, `llama3.2:3b`)       |
-| LLM eval cluster      | HuggingFace Transformers (`HFAACAgent`)                       |
+| LLM locale (CPU)      | llama.cpp `LlamaCppBackend` (GGUF Q4_K_M) — backend default  |
+| LLM locale (fallback) | Ollama (`granite4:3b-h`, `qwen2.5:3b`, `llama3.2:3b`)       |
+| LLM eval cluster/GPU  | HuggingFace Transformers via `HuggingFaceBackend`             |
 | Tool MCP              | FastMCP (`app/src/mcp_server/`)                               |
 | NLP                   | spaCy `en_core_web_sm` (lemmatizzazione, POS, stop-word)     |
 | Backend               | FastAPI + uvicorn su `:8000`                                  |
@@ -59,9 +60,9 @@ aac-mcp-agent/
     src/
       agent/
         agent.py        # AACAgent — pipeline procedurale (un LLM call/turno)
-        hf_agent.py     # HFAACAgent — sottoclasse per cluster HuggingFace
+        backends.py     # LlamaCppBackend, OllamaBackend, HuggingFaceBackend
         prompts.py      # build_planner_prompt, build_planner_message
-        session.py      # SessionMemory, Turn, _nlp() (spaCy loader)
+        session.py      # SessionMemory, Turn, _nlp() (spaCy loader, lru_cache)
         resolve.py      # resolve_concept — concept → keyword ARASAAC
       mcp_server/
         tools/
@@ -70,7 +71,7 @@ aac-mcp-agent/
                             # list_keywords
           time_tool.py      # get_time()
           schedule_tool.py  # get_schedule()
-        models.py           # Pictogram, TimeInfo, ScheduleEvent, ...
+        models.py           # Pictogram, Keyword, TimeInfo, ScheduleEvent
         dataset_cache.py    # _DatasetCache — loader locale per i JSON
         server.py           # istanza FastMCP
       api/
@@ -83,22 +84,34 @@ aac-mcp-agent/
       en_eval/              # snapshot frozen per eval (merge local+HF) — NON TOCCARE
       pictograms/           # PNG cachati
       update_datasets.py    # ricostruisce en/ dall'API ARASAAC
+    models/                 # GGUF scaricati (es. Qwen2.5-3B-Instruct-Q4_K_M.gguf)
   annotation/
-    arasaac_vs_hf_vs_eval.ipynb   # notebook analisi e produzione dataset eval (R26)
-    eval_filtered.parquet         # dataset eval primario (1760 frasi) — prodotto da R26
-  eval/
-    eval.ipynb              # notebook eval principale (unico entry point)
-    eval_filtered.parquet   # dataset eval LEGACY (~54k righe) — NON USARE per nuove run
+    arasaac_vs_hf_vs_eval.ipynb        # notebook analisi e produzione dataset (R26)
+    annotation_quality_evaluation.ipynb # analisi qualità annotazione LLM (R27)
+    eval_filtered.parquet              # dataset eval primario (1760 frasi) — prodotto R26
+    eval_annotated.parquet             # dataset annotato da LLM (R27) — con colonne contesto
+    eval_final.parquet                 # dataset finale con split clear/vague
+    annotation_log.jsonl               # log idempotente annotazione
     cluster_work/
-      run_eval_cluster.sh
-      results/
-  hf_dataset_annotation/   # DO NOT TOUCH — fase a monte completata
+      annotate_eval.ipynb              # notebook annotazione su cluster (R27)
+      annotate_eval_out.ipynb          # output annotazione (non modificare)
+      run_annotate.sh                  # sbatch script
+  eval/
+    eval_cpu.ipynb          # eval locale/Colab su CPU con LlamaCppBackend
+    eval_gpu.ipynb          # eval Colab/cluster su GPU con HuggingFaceBackend
+    results/                # CSV output delle run (gitignored o vuota al push)
   docs/
     context_for_next_agent.md
     consegna.md
   test/
     tools_test.ipynb
 ```
+
+**Nota struttura eval:** i notebook `eval_cpu.ipynb` e `eval_gpu.ipynb` vivono
+direttamente in `eval/`. Il prossimo step organizzativo (già pianificato) è
+creare `eval/cpu/` e `eval/gpu/` e spostare lì i rispettivi notebook, CSV di
+risultato e script di lancio — tenendo lo stesso file CSV come output condiviso
+di riferimento. Non è ancora stato fatto.
 
 ---
 
@@ -108,7 +121,7 @@ aac-mcp-agent/
 # Prerequisiti (una tantum)
 pip install -r app/requirements.txt
 python -m spacy download en_core_web_sm
-ollama pull qwen2.5:3b
+ollama pull qwen2.5:3b   # solo se si usa il backend Ollama
 
 # Backend
 cd app
@@ -131,8 +144,8 @@ npm run dev
 | `POST`  | `/reset`           | svuota sessione                                                      |
 | `GET`   | `/session`         | storia sessione corrente                                             |
 | `GET`   | `/settings`        | legge `user_settings.json`                                          |
-| `PATCH` | `/settings`        | `{"updates": {...}}` → aggiorna settings                           |
-| `GET`   | `/health`          | `{"ok": true, "model": "...", "ollama": bool}`                     |
+| `PATCH` | `/settings`        | `{"updates": {...}}` → aggiorna settings + warmup nuovo modello    |
+| `GET`   | `/health`          | `{"ok": true, "model": "...", "ollama": bool, "warming_up": bool}` |
 | `GET`   | `/images/{id}`     | serve PNG da dataset locale o CDN ARASAAC                           |
 | `GET`   | `/datasets/status` | metadata dataset per ogni lingua + conteggio PNG cachati            |
 | `POST`  | `/datasets/update` | `{langs?, force?, download_images?}` → SSE stream log lines        |
@@ -183,7 +196,7 @@ input caregiver
   └─► _rank_and_fill()
         ├─ escludi solo selected_ids (Opzione A, R22)
         ├─ ordina per (concept_order ASC, quality_score DESC)
-        └─ riempi fino a max_results; se mancano fresh → padding con stale
+        └─ riempi fino a max_results
 
   └─► add_turn() → memoria sessione aggiornata
 ```
@@ -219,15 +232,17 @@ AGENT_FETCH_SCHEDULE      = True
 
 `resolve_concept(concept, kw_set, return_method=True)` ritorna `(queries, method)`.
 
+`_nlp()` è definita una sola volta in `session.py` con `@lru_cache(maxsize=1)` e
+importata da `resolve.py` e `agent.py` — un solo caricamento spaCy in RAM.
+
 ---
 
-## 10. Dataset per la valutazione — stato attuale (R26)
+## 10. Dataset per la valutazione — stato attuale (R27)
 
 ### Dataset primario: `annotation/eval_filtered.parquet`
 
-Prodotto da `annotation/arasaac_vs_hf_vs_eval.ipynb` (R26). È il dataset corretto
-da usare per tutte le eval future. Struttura sentence-based: ogni riga è una frase
-con lista di `concepts` (concept_text, gold_id, candidate_ids).
+Prodotto da `annotation/arasaac_vs_hf_vs_eval.ipynb` (R26). Dataset corretto
+da usare per tutte le eval future. Struttura sentence-based.
 
 **Numeri finali:**
 
@@ -257,10 +272,22 @@ con lista di `concepts` (concept_text, gold_id, candidate_ids).
 - Gold sempre tra i 10 candidati (100%) — per costruzione del dataset HF
 - Nessun gold con metadata irrecuperabile
 - Nessun concetto con >20% candidati irrecuperabili
-- Nessun duplicato esatto (18 gruppi ambigui tenuti — gold diversi sullo stesso pool, interpretazioni legittime)
-- Gold non ripetuto nella stessa frase (0 casi)
+- Nessun duplicato esatto (18 gruppi ambigui tenuti — gold diversi sullo stesso pool)
 - Candidati sempre esattamente 10
 - Concetti per frase: mean=3.68, std=1.05, min=2, max=7
+
+### Dataset annotato: `annotation/eval_annotated.parquet`
+
+Prodotto da `annotation/cluster_work/annotate_eval.ipynb` (R27).
+Modello: `Qwen/Qwen2.5-3B-Instruct` (4-bit NF4), GPU NVIDIA L40, cluster SLURM.
+Contiene colonne di contesto sintetico generate dal LLM (es. `time_of_day`,
+`input_type`, `schedule`, `distractors`). Ha 1760 righe (Fix A R27 corregge un
+drop errato di 20 duplicate).
+
+### Dataset finale: `annotation/eval_final.parquet`
+
+Versione con colonna `split` (`clear`/`vague`) — usare questo per run che
+vogliono filtrare per tipo di input.
 
 ### Dataset sorgente pittogrammi: `app/datasets/en_eval/`
 
@@ -274,18 +301,12 @@ Snapshot frozen prodotto da R26. **Non toccare.**
 | `synset_index.json`  | 8.422 synset                               |
 | `_meta.json`         | timestamp e conteggi                       |
 
-**Come è stato costruito:**
-- Base: `df_local` (13.780 pittogrammi, dataset ARASAAC ufficiale locale)
-- Aggiunta: 24 ID presenti solo in `df_hf` valido, normalizzati allo schema local
-- I 24 only-HF hanno `synsets=[]`, `type=None`, `plural=None`
-- 1.807 ID con metadata None in `df_hf` (`none_ids`) esclusi
-
 ### Perché il nuovo dataset è un upgrade rispetto al legacy
 
 | Aspetto | Legacy (`eval/eval_filtered.parquet`) | Nuovo (`annotation/eval_filtered.parquet`) |
 |---|---|---|
 | Struttura gold | ID singolo per concept, spesso deprecato | Gold sempre tra i 10 candidati (100%) |
-| Concetti | Caption fragments (es. "a football match") | Parole/frasi brevi normalizzate (es. "go", "train") |
+| Concetti | Caption fragments (es. "a football match") | Parole/frasi brevi normalizzate (es. "go") |
 | Stima resolve=none | ~88% (da R21) | ~12% (stimato) |
 | Frasi usabili | ~54k righe ma molto rumore | **1.760 frasi pulite** |
 
@@ -301,41 +322,70 @@ Snapshot frozen prodotto da R26. **Non toccare.**
 - Type distribution: common noun 61.8%, verb 23.2%, adjective 7.4%
 
 ### `df_hf` (originale 12.484 → dopo cleaning 10.657 righe valide)
-- 10 ID duplicati (38264–38273): ogni duplicato aveva una copia con metadata e una None → tenuta la copia non-None
-- 1.817 righe con keywords/categories/tags tutti None → `none_ids` (1.807 dopo drop duplicati)
+- 10 ID duplicati (38264–38273): copia con metadata tenuta
+- 1.817 righe con keywords/categories/tags tutti None → `none_ids`
 - Solo 1 ID su 1.807 `none_ids` presente anche in `df_local`
-- Schema keyword diverso da local: `{hasLocution, keyword, meaning}` invece di `{type, keyword, plural, meaning}`
+- Schema keyword diverso da local: `{hasLocution, keyword, meaning}`
 
 ### Overlap `df_local` vs `df_hf` valido
 - In entrambi: 10.633 (77.0% dell'union)
-- Solo in local: 3.147 (22.8%)
-- Solo in HF: 24 (0.2%)
+- Solo in local: 3.147 (22.8%) — Solo in HF: 24 (0.2%)
 - Similarity score (keywords×0.6 + categories×0.2 + tags×0.2): mean=0.985, 92% identici
-- Merge strategy: local vince sempre nell'overlap (schema più ricco: synsets, type, plural)
-
-### Copertura eval gold in en_eval
-- Gold ids in en_eval: 1.023/1.026 (99.7%)
-- I 3 restanti sono only-HF e quindi in en_eval
-- 214 candidate IDs irrecuperabili (none_ids) — accettati perché <20% per concetto
+- Merge strategy: local vince sempre (schema più ricco: synsets, type, plural)
 
 ---
 
-## 12. Eval — come funziona (`eval/eval.ipynb`)
+## 12. Eval — come funziona
 
-Notebook self-contained per il cluster. Unico entry point per la valutazione.
+### `eval/eval_cpu.ipynb` — CPU locale / Colab CPU
 
-Carica `annotation/eval_filtered.parquet`, raggruppa per `sentence` (ogni frase = una sessione multi-turn con N concepts), esegue `agent.run(sentence)` sulla frase completa al primo turno poi usa teacher forcing per i turni successivi.
+Usa `AACAgent(backend=LlamaCppBackend(...))`, identico all'app in produzione.
+Progettato per Colab con runtime CPU o validazione rapida in locale.
 
-**Metriche principali:**
+**Parametri (env var):**
+
+| Variabile | Default | Note |
+|---|---|---|
+| `NB_MODELS` | `qwen2.5:3b` | alias separati da spazio, devono essere in `settings.gguf_models` |
+| `NB_N_ROWS` | `100` | 0 = tutto il dataset |
+| `NB_N_THREADS` | `4` | thread CPU per llama.cpp |
+| `NB_N_CTX` | `512` | context window (uguale a produzione) |
+| `NB_OUTPUT_CSV` | `eval/results/eval_cpu.csv` | |
+| `NB_ANNOTATED_PARQUET` | percorso `eval_annotated.parquet` | |
+
+### `eval/eval_gpu.ipynb` — GPU Colab / cluster SLURM
+
+Usa `AACAgent(backend=HuggingFaceBackend(...))` con modelli HuggingFace.
+
+**Parametri (env var):**
+
+| Variabile | Default | Note |
+|---|---|---|
+| `NB_MODELS` | `Qwen/Qwen2.5-3B-Instruct` | repo HF separati da spazio |
+| `NB_N_ROWS` | `100` | 0 = tutto il dataset |
+| `NB_LOAD_8BIT` | `True` | INT8 via bitsandbytes (~50% VRAM) |
+| `NB_DTYPE` | `float16` | |
+| `NB_SPLIT_FILTER` | `all` | `clear` \| `vague` \| `all` |
+| `NB_MAX_NEW_TOKENS` | `150` | |
+| `NB_OUTPUT_CSV` | `eval/results/eval_gpu_colab.csv` | |
+| `NB_ANNOTATED_PARQUET` | percorso `eval_annotated.parquet` | |
+
+**Lancio su cluster SLURM:**
+```bash
+NB_MODELS="Qwen/Qwen2.5-3B-Instruct" NB_N_ROWS=500 sbatch eval/cluster_work/run_eval_cluster.sh
+```
+
+### Metriche principali
+
 - `gold_in_candidates` — il gold ID era nel pool prima del ranking?
 - `hit` (`gold_in_window`) — il gold ID è nella finestra finale?
 - `overlap_level` — livello semantico migliore (`synset` > `category` > `keyword` > `tag`)
 
-**Colonne CSV di output principali:**
+### Colonne CSV output principali
 
 | Colonna | Descrizione |
 |---|---|
-| `model` | nome modello HF |
+| `model` | nome modello |
 | `sentence` | frase caregiver |
 | `concept` | concetto gold del turno (= `concept_text`) |
 | `gold_id` | ID pittogramma gold |
@@ -349,27 +399,7 @@ Carica `annotation/eval_filtered.parquet`, raggruppa per `sentence` (ogni frase 
 
 ---
 
-## 13. Infrastruttura eval: cluster vs Colab
-
-### Cluster (SLURM)
-
-```bash
-NB_MODELS="Qwen/Qwen2.5-3B-Instruct" NB_N_ROWS=500 sbatch eval/cluster_work/run_eval_cluster.sh
-```
-
-### Colab
-
-```python
-os.environ["NB_IS_COLAB"]    = "True"
-os.environ["NB_MODELS"]      = "Qwen/Qwen2.5-3B-Instruct"
-os.environ["NB_N_ROWS"]      = "200"
-os.environ["NB_LANG"]        = "en_eval"
-os.environ["NB_MAX_RESULTS"] = "0"   # 0 = usa default settings.py (25)
-```
-
----
-
-## 14. Risultati prima eval run (R21) — su dataset LEGACY
+## 13. Risultati prima eval run (R21) — su dataset LEGACY
 
 ⚠️ Questi risultati sono sul dataset legacy, non comparabili con run future.
 
@@ -381,11 +411,12 @@ os.environ["NB_MAX_RESULTS"] = "0"   # 0 = usa default settings.py (25)
 | planner_had_gold_concept | 13.7% |
 | Hit quando planner_had_gold_concept=True | 33.8% |
 
-**Diagnosi:** bottleneck primario = planner genera concetti non allineati al vocabolario ARASAAC (vocabolario legacy molto distante da ARASAAC). Il nuovo dataset riduce questo problema strutturalmente.
+**Diagnosi:** bottleneck primario = planner genera concetti non allineati al
+vocabolario ARASAAC. Il nuovo dataset riduce questo problema strutturalmente.
 
 ---
 
-## 15. Piano miglioramenti score
+## 14. Piano miglioramenti score
 
 ### Strategia ibrida raccomandata (3 strati)
 
@@ -399,7 +430,7 @@ os.environ["NB_MAX_RESULTS"] = "0"   # 0 = usa default settings.py (25)
 
 ---
 
-## 16. Dubbi aperti — da chiarire con i tutor
+## 15. Dubbi aperti — da chiarire con i tutor
 
 **D1 — Tool-use: LLM decide o codice decide?**
 
@@ -411,11 +442,12 @@ os.environ["NB_MAX_RESULTS"] = "0"   # 0 = usa default settings.py (25)
 
 **D7 — Quante righe sono sufficienti?** Il dataset filtrato ha 1.760 frasi.
 
-**D8 — Gold multipli per concetto?** I 18 gruppi ambigui mostrano che esistono interpretazioni alternative legittime — estendere a top-3?
+**D8 — Gold multipli per concetto?** I 18 gruppi ambigui mostrano che esistono
+interpretazioni alternative legittime — estendere a top-3?
 
 ---
 
-## 17. Cose da NON fare
+## 16. Cose da NON fare
 
 - **Non passare `concept` o `sentence` all'agente** durante l'eval
 - **Non sovrascrivere parametri di `config.py` nel notebook**
@@ -423,12 +455,13 @@ os.environ["NB_MAX_RESULTS"] = "0"   # 0 = usa default settings.py (25)
 - **Non toccare `hf_dataset_annotation/`** — fase a monte completata
 - **Non toccare `app/datasets/en_eval/`** — snapshot frozen per eval
 - **Non toccare `app/datasets/en/`** — dataset produzione
-- **Non usare `eval/eval_filtered.parquet`** per nuove run — è il dataset legacy
+- **Non usare `eval/eval_filtered.parquet`** — è il dataset LEGACY (non esiste più
+  come file, ma la confusione di nome è ancora possibile)
 - **Non mettere logica applicativa fuori da `app/`**
 
 ---
 
-## 18. Tabella implementazioni
+## 17. Tabella implementazioni
 
 | ID  | Descrizione | File principali |
 |---|---|---|
@@ -438,29 +471,83 @@ os.environ["NB_MAX_RESULTS"] = "0"   # 0 = usa default settings.py (25)
 | R6  | Fix path setup eval; bigrammi schedule; test `return_method` | `test/`, `agent.py` |
 | R7  | `CategoryBrowser.jsx` — ricerca per categoria (frontend) | `frontend/` |
 | R8  | Fix `/categories` conteggi; UI inglese; `_errorMessage` hook | `api/server.py`, `frontend/` |
-| R9  | Aggiunte categorie biologiche animali a `MACRO_CATEGORIES` | `api/server.py` |
+| R9  | Aggiunte categorie biologiche animali a `MACRO_CATEGORIES` | `config.py` |
 | R10 | Diagnostica latenza; `num_predict`; modello default → `qwen2.5:3b` | `settings.py`, `agent.py` |
 | R11 | Fix errata `has_thinking`; prompt SHORT/FULL; `backends.py` | `prompts.py`, `backends.py` |
 | R12 | Rimosso cap concepts nel prompt; few-shot espansione semantica | `prompts.py` |
 | R14 | InputBar warmup; GGUF scaricati; `LlamaCppBackend` agganciato | `frontend/`, `agent.py` |
-| R19 | Fix eval pipeline: `get_resolve_info` 3 valori; `hf_agent.py` prompt | `hf_agent.py`, `eval.ipynb` |
-| R20 | Completamento fix eval.ipynb (celle 10, 18, 19) | `eval/eval.ipynb` |
+| R19 | Fix eval pipeline: `get_resolve_info` 3 valori; prompt HF | `backends.py`, `eval_gpu.ipynb` |
+| R20 | Completamento fix eval notebook (celle 10, 18, 19) | `eval/eval_gpu.ipynb` |
 | R21 | Prima eval run Colab (200 righe, T4); diagnosi bottleneck resolve | `eval/results/` |
-| R22 | Opzione A exclusion + window 25 + `NB_MAX_RESULTS` | `agent.py`, `settings.py`, `eval.ipynb` |
+| R22 | Opzione A exclusion + window 25 + `NB_MAX_RESULTS` | `agent.py`, `settings.py` |
 | R23 | Fix article stripping in `resolve.py` | `resolve.py` |
 | R24 | Analisi embedding 7-punti; strategia ibrida 3-strati | `docs/` |
 | R26 | Analisi dataset, cleaning, merge, produzione `en_eval/` e `annotation/eval_filtered.parquet` | `annotation/` |
+| R27 | Annotazione LLM dataset (1760 righe); fix drop duplicate; `eval_annotated.parquet` | `annotation/` |
+| R28 | `eval_cpu.ipynb` (CPU/llama.cpp); `eval_gpu.ipynb` (GPU/HF); analisi piano pulizia `hf_agent.py` | `eval/` |
+| R29 | Fix codebase pre-eval: 9 fix su `resolve.py`, `session.py`, `agent.py`, `api/server.py`, `config.py`, `models.py`, `arasaac.py`, `time_tool.py` — vedi §18 | tutti i file `app/src/` |
 
 ---
 
-## 19. Prossimi passi
+## 18. Fix applicati in R29 (pre-eval cleanup)
 
-1. **Prima eval run sul nuovo dataset** — adattare loader in `eval.ipynb` per struttura sentence-based (`annotation/eval_filtered.parquet`): raggruppare per `sentence`, teacher forcing per concept, colonna `concept` = `concept_text`
-2. **Implementare CONCEPT_MAP** (step 4b in `resolve.py`) con top-50 coppie da R21 CSV
-3. **Aggiungere colonna `split`** (`clear`/`vague`) alle 1.760 frasi via LLM in batch
-4. **Embedding fallback** (`all-MiniLM-L6-v2`) come step 5 in `resolve_concept()`
-5. **Confronto con R21**: il nuovo dataset dovrebbe ridurre resolve=none da ~88% a ~12%
+Tutti i fix seguenti sono stati applicati e verificati prima del push.
+
+| Fix | File | Descrizione |
+|-----|------|-------------|
+| **1** | `resolve.py`, `session.py` | `_nlp()` duplicata rimossa da `resolve.py`; importata da `agent.session`. Un solo caricamento spaCy in RAM via `@lru_cache(maxsize=1)`. |
+| **2** | `config.py` | `DATASET_LANGS` aggiunta come re-export da `settings`. Era un bug vivo: `api/server.py` la importava da `config` ma non esisteva. |
+| **3** | `mcp_server/models.py` | `ContextBundle` rimosso — era dead code dalla R3. Commento su `ScoredPictogram` aggiornato. |
+| **4** | `agent.py`, `session.py` | `shown_ids` rimosso da `_rank_and_fill`. `recently_presented_ids()` ha ora un docstring che spiega esplicitamente la scelta R22/Opzione A. |
+| **5** | `mcp_server/tools/arasaac.py`, `mcp_server/models.py` | `ScoredPictogram` eliminato. `_safe_to_scored` → `_safe_parse` (ritorna `Pictogram \| None`); `_parse_raw_list` e `_ids_to_results` ora ritornano `list[Pictogram]`; `_scored_to_dict` eliminata; call site aggiornati a `r.model_dump()`. `Tuple` rimosso dall'import di `models.py`. |
+| **6** | `config.py`, `api/server.py` | `MACRO_CATEGORIES` spostato in `config.py`. `server.py` ora la importa. ~80 righe di dati sparite da un file di logica API. |
+| **7** | `api/server.py` | `_agent.unload()` aggiunto prima di `_agent = None` in `PATCH /settings`. Evita due GGUF in RAM contemporaneamente durante il warmup del nuovo modello. |
+| **8** | tutti i file toccati | Separatori uniformati a `##` — rimossi `####` residui in `resolve.py`. |
+| **9** | `mcp_server/tools/time_tool.py` | Commento del fallback `_resolve_time_of_day` corretto: `DAY_TIMES[0]` è `"morning"`, non `"night"`. Il comportamento era già corretto; solo il commento era sbagliato. |
 
 ---
 
-*Ultimo aggiornamento: R26 — analisi completa dataset, cleaning df_hf, merge local+HF, produzione `en_eval/` (13.804 pittogrammi) e `annotation/eval_filtered.parquet` (1.760 frasi). Il dataset legacy `eval/eval_filtered.parquet` non va più usato per nuove run.*
+## 19. Stato `app/src/agent/` dopo R29
+
+`hf_agent.py` è stato **eliminato** in una sessione precedente. La pulizia
+pianificata in R28 (§20 del vecchio contesto) è già completata.
+
+La directory `agent/` contiene ora solo:
+
+| File | Ruolo |
+|---|---|
+| `agent.py` | `AACAgent` — pipeline principale, backend-agnostico |
+| `backends.py` | `LlamaCppBackend`, `HuggingFaceBackend`, `OllamaBackend` |
+| `prompts.py` | `build_planner_prompt`, `build_planner_message` |
+| `session.py` | `SessionMemory`, `Turn`, `_nlp()` |
+| `resolve.py` | `resolve_concept`, `_lemmatize_phrase`, `_lemmatize_word` |
+
+`eval_gpu.ipynb` usa già `AACAgent(backend=HuggingFaceBackend(...))` —
+non fa più riferimento a `HFAACAgent`.
+
+---
+
+## 20. Prossimi passi
+
+1. **Prima eval run sul nuovo dataset** — `eval/eval_cpu.ipynb` (locale) o
+   `eval/eval_gpu.ipynb` (Colab/cluster) usando `annotation/eval_annotated.parquet`.
+   Verificare che `gold_in_candidates` e `resolve_method=none` siano
+   significativamente migliorati rispetto ai numeri R21 (~88% none).
+
+2. **Riorganizzare `eval/`** — creare `eval/cpu/` e `eval/gpu/`, spostare
+   `eval_cpu.ipynb` e `eval_gpu.ipynb` nelle rispettive sottodirectory insieme
+   ai CSV di risultato. Unico file CSV condiviso tra le due come riferimento
+   comparativo. (Già pianificato — non ancora eseguito.)
+
+3. **Implementare CONCEPT_MAP** (step 4b in `resolve.py`) con le top-50 coppie
+   OOV identificate dall'analisi R21.
+
+4. **Aggiungere colonna `split`** (`clear`/`vague`) alle frasi via LLM in batch,
+   se non già presente in `eval_final.parquet`.
+
+5. **Embedding fallback** (`all-MiniLM-L6-v2`) come step 5 in `resolve_concept()`.
+
+---
+
+*Ultimo aggiornamento: R29 — fix pre-eval codebase (9 fix); `hf_agent.py` eliminato;
+`eval_cpu.ipynb` e `eval_gpu.ipynb` pronti in `eval/`.*

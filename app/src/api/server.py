@@ -10,16 +10,16 @@ Run from the app/ directory:
 
 Endpoints
 ---------
-    POST /run           {"text": str}         → PictogramList
-    POST /select        {"pictogram_id": int} → {"ok": true}
-    POST /reset                               → {"ok": true}
-    GET  /session                             → SessionHistory
-    GET  /settings                            → dict
-    PATCH /settings     {key: value, ...}     → {"ok": true}
-    GET  /health                              → HealthStatus
-    GET  /images/{id}       (PNG proxy)         → image/png
-    GET  /datasets/status                       → DatasetStatus
-    POST /datasets/update  {langs?, force?, images?} → SSE stream of log lines
+    POST /run           {"text": str}         -> PictogramList
+    POST /select        {"pictogram_id": int} -> {"ok": true}
+    POST /reset                               -> {"ok": true}
+    GET  /session                             -> SessionHistory
+    GET  /settings                            -> dict
+    PATCH /settings     {key: value, ...}     -> {"ok": true}
+    GET  /health                              -> HealthStatus
+    GET  /images/{id}       (PNG proxy)         -> image/png
+    GET  /datasets/status                       -> DatasetStatus
+    POST /datasets/update  {langs?, force?, images?} -> SSE stream of log lines
 """
 
 from __future__ import annotations
@@ -33,17 +33,17 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import Any, Optional
 
-# ── Path setup ────────────────────────────────────────────────────────────────
+####### Path setup #######################################################
 # This file lives at app/src/api/server.py.
-# app/src/ must be on sys.path for all package imports (config, agent, mcp_server…).
+# app/src/ must be on sys.path for all package imports (config, agent, mcp_server...).
 _SRC = Path(__file__).resolve().parent.parent   # app/src/
 _APP = _SRC.parent                              # app/
 if str(_SRC) not in sys.path:
     sys.path.insert(0, str(_SRC))
 if str(_APP) not in sys.path:
-    sys.path.insert(0, str(_APP))               # allows `from logs.logging_config import …`
+    sys.path.insert(0, str(_APP))               # allows `from logs.logging_config import ...`
 
-# ── Logging setup (before any other local import) ────────────────────────────
+####### Logging setup (before any other local import) ####################
 try:
     from logs.logging_config import setup_logging
     setup_logging()
@@ -52,14 +52,14 @@ except Exception:
 
 logger = logging.getLogger(__name__)
 
-# ── FastAPI imports ───────────────────────────────────────────────────────────
+####### FastAPI imports ##################################################
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response, StreamingResponse
 from pydantic import BaseModel
 
-# ── Domain imports ────────────────────────────────────────────────────────────
-from config import AGENT_DEFAULT_MODEL, DATASETS_DIR, DATASET_LANGS
+####### Domain imports ###################################################
+from config import AGENT_DEFAULT_MODEL, DATASETS_DIR, DATASET_LANGS, MACRO_CATEGORIES
 from settings import settings
 from agent.agent import AACAgent
 from agent.prompts import build_planner_prompt, build_planner_message
@@ -70,7 +70,7 @@ from mcp_server.tools.arasaac import (
     get_pictogram_metadata,
 )
 
-# ── Warmup state ─────────────────────────────────────────────────────────────
+####### Warmup state #####################################################
 # Tracks whether the model is loaded and ready for inference.
 # warming_up=True while the GGUF is being read from disk (first load).
 # Set to False when _ensure_loaded() completes; errors are logged but non-fatal.
@@ -82,7 +82,7 @@ def _warmup_agent() -> None:
     """Load the agent and its LLM backend in a background thread.
 
     Called once at startup via the lifespan hook, and again whenever the model
-    setting changes (triggered by PATCH /settings). Safe to call concurrently —
+    setting changes (triggered by PATCH /settings). Safe to call concurrently --
     the second call is a no-op if the agent is already loaded for the requested
     model.
     """
@@ -96,7 +96,7 @@ def _warmup_agent() -> None:
             agent.backend._ensure_loaded()   # load GGUF into RAM now
             # Run a dummy inference with the REAL planner prompt so llama.cpp
             # caches the system prompt prefix. A different prompt at warmup means
-            # the first real /run still pays full prefill cost — defeating warmup.
+            # the first real /run still pays full prefill cost -- defeating warmup.
             try:
                 agent.backend.chat(
                     system = build_planner_prompt(full=False),
@@ -121,10 +121,10 @@ async def lifespan(app):
     thread.start()
     logger.info("[WARMUP] background model load started")
     yield
-    # Nothing to clean up — threads are daemon, process exit handles the rest.
+    # Nothing to clean up -- threads are daemon, process exit handles the rest.
 
 
-# ── App setup ─────────────────────────────────────────────────────────────────
+####### App setup ########################################################
 app = FastAPI(title="AAC Pictogram Agent", version="1.0.0", lifespan=lifespan)
 
 app.add_middleware(
@@ -134,7 +134,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ── Single shared agent instance (one user, local app) ───────────────────────
+####### Single shared agent instance (one user, local app) ##############
 _agent: Optional[AACAgent] = None
 
 
@@ -158,7 +158,7 @@ def _get_agent() -> AACAgent:
                 )
             else:
                 logger.warning(
-                    "agent_use_llamacpp=True but no GGUF found for model %r — "
+                    "agent_use_llamacpp=True but no GGUF found for model %r -- "
                     "falling back to Ollama.", current_model
                 )
         logger.info("Creating AACAgent model=%r  backend=%s",
@@ -167,7 +167,7 @@ def _get_agent() -> AACAgent:
     return _agent
 
 
-# ── Request / response schemas ────────────────────────────────────────────────
+####### Request / response schemas ######################################
 
 class RunRequest(BaseModel):
     text: str
@@ -207,7 +207,7 @@ class HealthResponse(BaseModel):
     warmup_error: Optional[str] = None  # set if warmup failed
 
 
-# ── Helpers ───────────────────────────────────────────────────────────────────
+####### Helpers ##########################################################
 
 def _pic_to_out(pic) -> PictogramOut:
     label = pic.keywords[0].keyword if pic.keywords else str(pic.id)
@@ -220,14 +220,14 @@ def _pic_to_out(pic) -> PictogramOut:
     )
 
 
-# ── Endpoints ─────────────────────────────────────────────────────────────────
+####### Endpoints ########################################################
 
 @app.post("/run", response_model=RunResponse)
 async def run(req: RunRequest) -> RunResponse:
-    """Execute one agent turn: caregiver input → pictogram grid.
+    """Execute one agent turn: caregiver input -> pictogram grid.
 
     agent.run() calls the LLM backend (llama.cpp or Ollama) which is a
-    blocking, CPU-bound operation that can take 10–60 s.  Running it in a
+    blocking, CPU-bound operation that can take 10-60 s.  Running it in a
     plain sync endpoint would block uvicorn's asyncio event loop for the
     entire duration, causing the Vite proxy to receive "socket hang up"
     before any response arrives.
@@ -271,12 +271,11 @@ def select(req: SelectRequest) -> dict:
         raise HTTPException(status_code=400, detail="No active turn to record selection for")
 
     pid = req.pictogram_id
-    # Find the pictogram object in the last turn's result set
     last = agent.memory.turns[-1]
     chosen = next((p for p in last.pictograms if p.id == pid), None)
 
     if chosen is None:
-        # Pictogram not in last window — fetch metadata and inject anyway
+        # Pictogram not in last window -- fetch metadata and inject anyway
         # (covers the case where user navigates manually outside the grid)
         try:
             meta    = get_pictogram_metadata(pid)
@@ -290,7 +289,6 @@ def select(req: SelectRequest) -> dict:
     # recently_presented_ids() keeps excluding the full previous window.
     last.pictograms = [chosen]
     last.topics     = agent.memory.extract_topics([chosen])
-    # Update frequency counter
     for t in last.topics:
         agent.memory.topic_frequency[t] = agent.memory.topic_frequency.get(t, 0) + 1
 
@@ -302,7 +300,7 @@ def select(req: SelectRequest) -> dict:
 def reset() -> dict:
     """Clear the session: all history and topic memory."""
     _get_agent().reset_session()
-    logger.info("/reset — session cleared")
+    logger.info("/reset -- session cleared")
     return {"ok": True}
 
 
@@ -341,12 +339,15 @@ def patch_settings(req: PatchSettingsRequest) -> dict:
     logger.info("/settings PATCH  keys=%s", list(req.updates.keys()))
 
     if new_model != old_model:
-        # Invalidate the cached agent so _get_agent() rebuilds for new_model.
+        # Unload the current backend before swapping -- avoids holding two GGUF
+        # models in RAM simultaneously during the warmup of the new one.
         global _agent
+        if _agent is not None:
+            _agent.unload()
         _agent = None
         thread = threading.Thread(target=_warmup_agent, name="warmup-switch", daemon=True)
         thread.start()
-        logger.info("[WARMUP] model switch %r → %r — background warmup started", old_model, new_model)
+        logger.info("[WARMUP] model switch %r -> %r -- background warmup started", old_model, new_model)
 
     return {"ok": True}
 
@@ -380,145 +381,9 @@ def get_image(pictogram_id: int) -> Response:
         raise HTTPException(status_code=404, detail=str(exc))
 
 
-# ── Category browser ────────────────────────────────────────────────────────
-#
-# Two-level category hierarchy for manual pictogram search.
-# Level 0: ~15 macro-categories (defined here)
-# Level 1: original ARASAAC category names within each macro
-# Level 2: pictograms in a specific category (via /by_category)
-#
-# ARASAAC categories not listed in any macro go into the catch-all "Other".
-
-MACRO_CATEGORIES: list[dict] = [
-    {
-        "name": "Actions",
-        "emoji": "🏃",
-        "categories": [
-            "verb", "usual verbs", "routine", "body position",
-            "locomotion verb", "communication verb", "movement",
-            "daily life activity", "action", "activity",
-        ],
-    },
-    {
-        "name": "People & Body",
-        "emoji": "👤",
-        "categories": [
-            "family", "human anatomy", "child", "adult", "elderly",
-            "personal care", "body part", "human body", "person",
-            "social role", "gender",
-        ],
-    },
-    {
-        "name": "Feelings",
-        "emoji": "😊",
-        "categories": [
-            "feeling", "human response", "disruptive behavior",
-            "expression", "mood", "emotion", "behavior",
-        ],
-    },
-    {
-        "name": "Animals",
-        "emoji": "🐾",
-        "categories": [
-            "terrestrial animal", "marine animal", "bird", "insect",
-            "domestic animal", "pet", "farm animal", "wild animal",
-            "reptile", "amphibian", "animal",
-            # biological trait categories that ARASAAC applies to animals
-            # and would otherwise overflow into "Other"
-            "mammal", "viviparous", "herbivorous", "omnivorous",
-            "carnivorous", "oviparous", "invertebrate", "arachnid",
-        ],
-    },
-    {
-        "name": "Food & Drink",
-        "emoji": "🍎",
-        "categories": [
-            "food", "beverage", "fruit", "vegetable", "gastronomy",
-            "baking", "meal", "snack", "dairy product", "meat", "fish",
-            "mineral rich food", "legume", "cereal", "sweet", "dessert",
-            "condiment", "spice",
-        ],
-    },
-    {
-        "name": "Places",
-        "emoji": "🏠",
-        "categories": [
-            "residential building", "commercial building", "building room",
-            "educational space", "public space", "outdoor space",
-            "room", "city", "country", "continent", "space", "place",
-            "environment",
-        ],
-    },
-    {
-        "name": "Objects",
-        "emoji": "🔧",
-        "categories": [
-            "work tool", "utensil", "electrical appliance", "toy",
-            "educational material", "kitchen", "container", "furniture",
-            "household item", "electronic device", "object",
-            "instrument", "material",
-        ],
-    },
-    {
-        "name": "Clothes",
-        "emoji": "👕",
-        "categories": [
-            "clothes", "footwear", "accessories", "clothing",
-        ],
-    },
-    {
-        "name": "Health",
-        "emoji": "🏥",
-        "categories": [
-            "symptom", "disease", "medicament", "medical procedure",
-            "hygiene product", "hospital", "medicine", "body care",
-            "health", "medical",
-        ],
-    },
-    {
-        "name": "School & Work",
-        "emoji": "📚",
-        "categories": [
-            "educational task", "educational material", "subject",
-            "professional", "school", "job", "work", "office",
-            "study",
-        ],
-    },
-    {
-        "name": "Transport",
-        "emoji": "🚗",
-        "categories": [
-            "land transport", "aerial transport", "water transport",
-            "vehicle component", "transport",
-        ],
-    },
-    {
-        "name": "Nature",
-        "emoji": "🌿",
-        "categories": [
-            "atmospheric phenomena", "landform", "plant", "flower",
-            "tree", "weather", "season", "geography", "natural element",
-            "nature", "landscape",
-        ],
-    },
-    {
-        "name": "Time & Numbers",
-        "emoji": "🕐",
-        "categories": [
-            "number", "day hours", "unit of time", "month", "day",
-            "time", "date", "year", "calendar",
-        ],
-    },
-    {
-        "name": "Communication",
-        "emoji": "💬",
-        "categories": [
-            "core vocabulary-communication", "mass media", "computing",
-            "social interaction", "language", "communication",
-            "symbol", "sign",
-        ],
-    },
-]
+####### Category browser #################################################
+# MACRO_CATEGORIES is defined in config.py.
+# Level 0: macro-categories  Level 1: ARASAAC category strings  Level 2: /by_category
 
 
 @app.get("/categories")
@@ -536,8 +401,7 @@ def get_categories(lang: str = "en") -> dict:
           "macros": [
             {
               "name": "Food & Drink",
-              "emoji": "🍎",
-              "count": 830,            # unique pictograms in this macro
+              "count": 830,
               "representative_id": 2248,
               "categories": [
                 {"name": "food", "count": 64, "representative_id": 1234},
@@ -556,9 +420,7 @@ def get_categories(lang: str = "en") -> dict:
             detail=f"Dataset not available for lang='{lang}'. Run /datasets/update first.",
         )
 
-    # ── Step 1: build per-category sets of IDs (unique per category) ─────────
-    # cat_ids: category_name → set of pictogram IDs that belong to it
-    # cat_rep: category_name → (representative_id, has_aac_rep)
+    # Step 1: build per-category sets of IDs
     cat_ids: dict[str, set[int]] = {}
     cat_rep: dict[str, tuple[int, bool]] = {}
     for id_str, rec in pics.items():
@@ -573,11 +435,9 @@ def get_categories(lang: str = "en") -> dict:
             if aac and not has_aac:
                 cat_rep[cat] = (pid, True)
 
-    # ── Step 2: build macro-categories ────────────────────────────────────────
-    # A pictogram is counted at most once per macro even if it belongs to several
-    # sub-categories of the same macro.
-    covered_cats: set[str] = set()   # ARASAAC category names assigned to a macro
-    covered_pids: set[int] = set()   # pictogram IDs assigned to any named macro
+    # Step 2: build macro-categories
+    covered_cats: set[str] = set()
+    covered_pids: set[int] = set()
     macros: list[dict] = []
 
     for mc in MACRO_CATEGORIES:
@@ -604,19 +464,15 @@ def get_categories(lang: str = "en") -> dict:
             continue
 
         covered_pids.update(macro_pids)
-        # Sort sub-categories by count descending
         sub_cats.sort(key=lambda x: -x["count"])
         macros.append({
             "name":              mc["name"],
-            "emoji":             mc["emoji"],
-            "count":             len(macro_pids),  # unique IDs in this macro
+            "count":             len(macro_pids),
             "representative_id": macro_rep_id,
             "categories":        sub_cats,
         })
 
-    # ── Step 3: "Other" — only pictograms not covered by any named macro ──────
-    # Collect uncovered pictograms, grouped by their first uncovered category.
-    # We avoid inflating the count by tracking unique IDs.
+    # Step 3: "Other" -- only pictograms not covered by any named macro
     other_cat_ids: dict[str, set[int]] = {}
     other_cat_rep: dict[str, tuple[int, bool]] = {}
     for id_str, rec in pics.items():
@@ -625,7 +481,6 @@ def get_categories(lang: str = "en") -> dict:
             continue
         aac  = rec.get("aac", False)
         cats = rec.get("categories", [])
-        # Assign this pictogram to its first category (or a synthetic "uncategorised")
         bucket = cats[0] if cats else "uncategorised"
         if bucket not in other_cat_ids:
             other_cat_ids[bucket] = set()
@@ -651,7 +506,6 @@ def get_categories(lang: str = "en") -> dict:
                 other_rep_id = rep_id
         macros.append({
             "name":              "Other",
-            "emoji":             "📦",
             "count":             len(all_other_pids),
             "representative_id": other_rep_id,
             "categories":        other_sub,
@@ -695,11 +549,11 @@ def get_by_category(
         })
 
     results.sort(key=lambda r: (not r["aac"], r["label"].lower()))
-    logger.debug("/by_category category=%r lang=%r → %d results", category, lang, len(results))
+    logger.debug("/by_category category=%r lang=%r -> %d results", category, lang, len(results))
     return results[:max_results]
 
 
-# ── Dataset update ────────────────────────────────────────────────────────────
+####### Dataset update ###################################################
 
 # One concurrent update job at a time; lock prevents double-runs.
 _update_lock = threading.Lock()
@@ -747,7 +601,6 @@ def datasets_update(req: DatasetUpdateRequest) -> StreamingResponse:
         raise HTTPException(status_code=409, detail="Dataset update already in progress")
 
     langs = req.langs or DATASET_LANGS
-    # Resolve datasets/ dir relative to update_datasets.py which now lives there
     datasets_dir = DATASETS_DIR
 
     async def _event_stream():
@@ -757,7 +610,6 @@ def datasets_update(req: DatasetUpdateRequest) -> StreamingResponse:
         loop = asyncio.get_event_loop()
         q: _queue.Queue = _queue.Queue()
 
-        # ── Custom log handler that pushes lines into the queue ────────────
         class _QueueHandler(logging.Handler):
             def emit(self, record: logging.LogRecord) -> None:
                 q.put_nowait(self.format(record))
@@ -765,18 +617,14 @@ def datasets_update(req: DatasetUpdateRequest) -> StreamingResponse:
         handler = _QueueHandler()
         handler.setFormatter(logging.Formatter("%(levelname)s %(message)s"))
 
-        # Attach to the root logger used inside update_datasets
         _ud_logger = logging.getLogger()  # root
         _ud_logger.addHandler(handler)
 
-        # ── Run the update in a thread ─────────────────────────────────────
         result_container: list[bool] = []
 
         def _run():
             with _update_lock:
                 try:
-                    # Load update_datasets.py from its absolute path to avoid
-                    # collision with the 'datasets' PyPI package (HuggingFace).
                     import importlib.util as _ilu
                     _ud_path = datasets_dir / "update_datasets.py"
                     _spec = _ilu.spec_from_file_location("_update_datasets", _ud_path)
@@ -802,7 +650,6 @@ def datasets_update(req: DatasetUpdateRequest) -> StreamingResponse:
         thread = threading.Thread(target=_run, daemon=True)
         thread.start()
 
-        # ── Forward queue items as SSE ────────────────────────────────────
         try:
             while True:
                 try:
@@ -811,9 +658,9 @@ def datasets_update(req: DatasetUpdateRequest) -> StreamingResponse:
                         timeout=0.5,
                     )
                 except (asyncio.TimeoutError, Exception):
-                    item = _queue.Empty  # keep polling
+                    item = _queue.Empty
 
-                if item is None:         # sentinel — thread finished
+                if item is None:
                     break
                 if item is _queue.Empty:
                     continue
@@ -826,7 +673,6 @@ def datasets_update(req: DatasetUpdateRequest) -> StreamingResponse:
 
         ok = result_container[0] if result_container else False
         yield f"data: {_json.dumps({'type': 'done', 'ok': ok})}\n\n"
-        # Invalidate the dataset cache so the next query uses fresh data
         try:
             from mcp_server.dataset_cache import _DatasetCache
             _DatasetCache.invalidate()

@@ -1,57 +1,57 @@
 # AAC MCP Agent
 
-Sistema agentico per la selezione contestuale di pittogrammi [ARASAAC](https://arasaac.org/) per la Comunicazione Aumentativa e Alternativa (CAA/AAC).
+Agentic system for context-aware [ARASAAC](https://arasaac.org/) pictogram selection for Augmentative and Alternative Communication (AAC).
 
-Il caregiver descrive la situazione a parole libere; l'agente usa un LLM locale come planner per decidere quali concetti semantici cercare, interroga il dataset ARASAAC locale, e restituisce una finestra di pittogrammi candidati. Il soggetto seleziona; la sessione tiene traccia delle scelte per evitare ripetizioni.
+The caregiver describes the situation in free text; the agent uses a local LLM as a planner to decide which semantic concepts to search for, queries the local ARASAAC dataset, and returns a window of candidate pictograms. The user selects one; the session tracks choices to avoid repetitions.
 
 ---
 
-## Prerequisiti
+## Prerequisites
 
-| Dipendenza | Versione minima | Note |
+| Dependency | Minimum version | Notes |
 |---|---|---|
 | Python | 3.11 | |
-| Node.js | 18 | per il frontend |
-| Ollama | qualsiasi | solo in locale |
-| `granite4:3b-h` (o altro) | — | vedi Settings |
+| Node.js | 18 | for the frontend |
+| Ollama | any | local only |
+| `granite4:3b-h` (or other) | — | see Settings |
 
 ```bash
-# Setup Python (una tantum)
+# Python setup (one-time)
 pip install -r app/requirements.txt
 python -m spacy download en_core_web_sm
 
-# Modello LLM locale
+# Local LLM model
 ollama pull granite4:3b-h
 ```
 
 ---
 
-## Avvio locale
+## Local startup
 
 ```bash
-# 1. Backend (FastAPI su :8000)
+# 1. Backend (FastAPI on :8000)
 cd app
 uvicorn src.api.server:app --reload --port 8000
 
-# 2. Frontend (altro terminale — Vite su :5173)
+# 2. Frontend (another terminal — Vite on :5173)
 cd app/frontend
-npm install        # prima volta
+npm install        # first time only
 npm run dev
 ```
 
-Aprire **http://localhost:5173**. Il proxy Vite inoltra `/api/*` → `:8000`.
+Open **http://localhost:5173**. The Vite proxy forwards `/api/*` → `:8000`.
 
-### Variabili d'ambiente
+### Environment variables
 
-Copiare `app/.env.example` → `app/.env` e compilare le credenziali opzionali (Google Calendar, Apple, HuggingFace). Le impostazioni operative (modello, numero risultati, ecc.) si gestiscono dall'interfaccia → ⚙ Settings o direttamente in `app/user_settings.json`.
+Copy `app/.env.example` → `app/.env` and fill in the optional credentials (Google Calendar, Apple, HuggingFace). Operational settings (model, number of results, etc.) are managed from the interface → ⚙ Settings or directly in `app/user_settings.json`.
 
-### Dataset pittogrammi
+### Pictogram dataset
 
-Al primo avvio il dataset testuale è incluso in `app/datasets/en/`. Le immagini PNG sono scaricate on-demand da ARASAAC CDN (o servite localmente se già presenti in `app/datasets/pictograms/`). Per pre-scaricare tutte le immagini prima di andare offline, usare il pannello **⬇ Datasets** → *Download images*.
+On first startup the text dataset is included in `app/datasets/en/`. PNG images are downloaded on demand from the ARASAAC CDN (or served locally if already present in `app/datasets/pictograms/`). To pre-download all images before going offline, use the **⬇ Datasets** panel → *Download images*.
 
 ---
 
-## Uso dell'interfaccia
+## Interface usage
 
 ```
 ┌────────────────────────────────────────────────────────────┐
@@ -59,26 +59,26 @@ Al primo avvio il dataset testuale è incluso in `app/datasets/en/`. Le immagini
 ├────────────────────────────────────────────────────────────┤
 │  He wants something to eat before leaving        [→ Send]  │
 ├────────────────────────────────────────────────────────────┤
-│  ┌────────┐  ┌────────┐  ┌────────┐  ←  tap per selezionare│
+│  ┌────────┐  ┌────────┐  ┌────────┐  ←  tap to select     │
 │  │ apple  │  │ yogurt │  │ snack  │                        │
 └──┴────────┴──┴────────┴──┴────────┴────────────────────────┘
-│  Sessione: [🍎] [🧥] [👟]                                   │
+│  Session: [apple] [coat] [shoes]                            │
 └────────────────────────────────────────────────────────────┘
 ```
 
-1. Il caregiver scrive la situazione e preme **Send** (o Enter).
-2. L'agente restituisce una griglia di pittogrammi candidati.
-3. Il soggetto tocca un pittogramma → viene registrato nella sessione.
-4. Ripetere per ogni concetto della frase.
-5. **↺** azzera la sessione.
+1. The caregiver types the situation and presses **Send** (or Enter).
+2. The agent returns a grid of candidate pictograms.
+3. The user taps a pictogram → it is recorded in the session.
+4. Repeat for each concept in the sentence.
+5. **↺** resets the session.
 
-Il dropdown del modello cambia il LLM al volo (PATCH `/settings` → agente ricostruito al turno successivo).
+The model dropdown changes the LLM on the fly (PATCH `/settings` → agent rebuilt on the next turn).
 
 ---
 
-## Test locale rapido
+## Quick local test
 
-Il notebook `test/tools_test.ipynb` verifica i tool MCP in isolamento (ARASAAC search, time, schedule) senza avviare il backend completo. Utile per controllare che il dataset locale sia integro.
+The notebook `test/tools_test.ipynb` tests the MCP tools in isolation (ARASAAC search, time, schedule) without starting the full backend. Useful for checking that the local dataset is intact.
 
 ```bash
 cd test
@@ -87,34 +87,34 @@ jupyter notebook tools_test.ipynb
 
 ---
 
-## Valutazione (eval)
+## Evaluation (eval)
 
-### Dataset di eval
+### Eval dataset
 
-Il dataset annotato si trova in `hf_dataset_annotation/eval_final.parquet` (~54 k righe). **Non modificarlo** — è il prodotto della fase di annotazione a monte (completata).
+The annotated dataset is located in `hf_dataset_annotation/eval_final.parquet` (~54k rows). **Do not modify it** — it is the product of the upstream annotation phase (completed).
 
-Ogni riga contiene: `raw_input` (testo caregiver), `concept` (concetto gold), `gold_id` (ID pittogramma atteso), `split` (`clear` o `vague`).
+Each row contains: `raw_input` (caregiver text), `concept` (gold concept), `gold_id` (expected pictogram ID), `split` (`clear` or `vague`).
 
-### Eval locale (notebook)
+### Local eval (notebook)
 
 ```bash
 cd eval
 jupyter notebook agent_eval.ipynb
 ```
 
-Utile per ispezione manuale e debug su un sottoinsieme di righe.
+Useful for manual inspection and debugging on a subset of rows.
 
-### Eval su cluster (SLURM + GPU)
+### Cluster eval (SLURM + GPU)
 
-Unico entry point per la valutazione formale:
+Single entry point for formal evaluation:
 
 ```bash
 cd eval/cluster_work
 
-# Sottomettere job SLURM (modificare i parametri in cima allo script prima)
+# Submit SLURM job (edit parameters at the top of the script first)
 sbatch run_eval_cluster.sh
 
-# oppure eseguire direttamente (CPU, debug)
+# or run directly (CPU, debug)
 python run_eval_hf.py \
   --models Qwen/Qwen2.5-3B-Instruct \
   --split both \
@@ -123,68 +123,68 @@ python run_eval_hf.py \
   --verbose
 ```
 
-**Parametri principali di `run_eval_hf.py`:**
+**Main `run_eval_hf.py` parameters:**
 
-| Flag | Default | Descrizione |
+| Flag | Default | Description |
 |---|---|---|
-| `--models` | — | uno o più modelli HF (space-separated) |
-| `--split` | `both` | `clear`, `vague`, o `both` |
-| `--n_rows` | `0` (tutti) | righe da valutare (0 = dataset completo) |
-| `--seed` | `42` | seed per il campionamento |
-| `--output` | `results/eval_hf_<job>.csv` | CSV di output |
-| `--load_in_8bit` | off | quantizzazione INT8 (risparmia VRAM) |
-| `--log_every` | `25` | progress ogni N righe |
-| `--save_every` | `10` | checkpoint CSV ogni N righe |
-| `--verbose` | off | dettagli turno per turno |
+| `--models` | — | one or more HF models (space-separated) |
+| `--split` | `both` | `clear`, `vague`, or `both` |
+| `--n_rows` | `0` (all) | rows to evaluate (0 = full dataset) |
+| `--seed` | `42` | sampling seed |
+| `--output` | `results/eval_hf_<job>.csv` | output CSV |
+| `--load_in_8bit` | off | INT8 quantisation (saves VRAM) |
+| `--log_every` | `25` | progress every N rows |
+| `--save_every` | `10` | CSV checkpoint every N rows |
+| `--verbose` | off | turn-by-turn details |
 
-**Metriche principali** (CSV + summary a fine run):
+**Main metrics** (CSV + summary at end of run):
 
-| Metrica | Descrizione |
+| Metric | Description |
 |---|---|
-| `hit` / `gold_in_window` | gold ID nella finestra finale — **metrica primaria** |
-| `gold_in_candidates` | gold ID nel pool prima del ranking |
-| `overlap_level` | miglior overlap semantico (`synset` > `category` > `keyword` > `tag`) |
-| `resolve_method` | strategia `resolve_concept` (`exact`, `lemma`, `token`, …) |
+| `hit` / `gold_in_window` | gold ID in final window — **primary metric** |
+| `gold_in_candidates` | gold ID in pool before ranking |
+| `overlap_level` | best semantic overlap (`synset` > `category` > `keyword` > `tag`) |
+| `resolve_method` | `resolve_concept` strategy (`exact`, `lemma`, `token`, …) |
 | `plan_method` | `llm` / `fallback_spacy` / `fallback_empty` |
-| `synset_added` | pittogrammi aggiunti dall'espansione WordNet |
-| `fresh_count` | pittogrammi fresh (non padding stale) nella finestra |
+| `synset_added` | pictograms added by WordNet expansion |
+| `fresh_count` | fresh (non-stale padding) pictograms in the window |
 
-Il CSV ha una riga per turno e una colonna `model`, così più modelli possono stare nello stesso file.
+The CSV has one row per turn and a `model` column, so multiple models can share the same file.
 
-**Teacher forcing:** dopo ogni turno l'eval inietta `gold_id` come pittogramma selezionato per simulare sequenze multi-step realistiche.
+**Teacher forcing:** after each turn the eval injects `gold_id` as the selected pictogram to simulate realistic multi-step sequences.
 
-### Configurare i modelli nel job SLURM
+### Configuring models in the SLURM job
 
-Modificare `HF_MODELS` in `run_eval_cluster.sh` prima di `sbatch`:
+Edit `HF_MODELS` in `run_eval_cluster.sh` before `sbatch`:
 
 ```bash
 HF_MODELS="Qwen/Qwen2.5-3B-Instruct meta-llama/Llama-3.2-3B-Instruct ibm-granite/granite-3.1-2b-instruct"
 ```
 
-I modelli vengono scaricati automaticamente in `$HF_HOME` (scratch del cluster o `~/.cache/huggingface`). Il venv viene costruito alla prima esecuzione e riusato grazie al sentinel file.
+Models are downloaded automatically to `$HF_HOME` (cluster scratch or `~/.cache/huggingface`). The venv is built on the first run and reused thanks to the sentinel file.
 
 ---
 
-## Annotazione dataset (`hf_dataset_annotation/`)
+## Dataset annotation (`hf_dataset_annotation/`)
 
-> **Non toccare questa cartella** — la fase di annotazione è completata.
+> **Do not touch this folder** — the annotation phase is complete.
 
-Contiene i notebook e i parquet intermedi (`eval_raw`, `eval_annotated`, `eval_final`) usati per costruire il dataset di eval. Documentati in `annotated_dataset_eval.ipynb`.
+Contains the notebooks and intermediate parquets (`eval_raw`, `eval_annotated`, `eval_final`) used to build the eval dataset. Documented in `annotated_dataset_eval.ipynb`.
 
 ---
 
-## Struttura del progetto
+## Project structure
 
 ```
 aac-mcp-agent/
   app/
     src/
       agent/        # AACAgent, HFAACAgent, planner, session, resolve
-      mcp_server/   # tool ARASAAC, time, schedule + FastMCP
-      api/          # FastAPI (endpoint REST)
+      mcp_server/   # ARASAAC, time, schedule tools + FastMCP
+      api/          # FastAPI (REST endpoints)
     frontend/       # React + Vite
-    datasets/en/    # JSON ARASAAC locale
-    datasets/pictograms/  # PNG cachati (gitignored)
+    datasets/en/    # local ARASAAC JSON
+    datasets/pictograms/  # cached PNGs (gitignored)
   eval/
     agent_eval.ipynb
     cluster_work/   # run_eval_hf.py, run_eval_cluster.sh, results/
@@ -192,7 +192,10 @@ aac-mcp-agent/
   test/
     tools_test.ipynb
   docs/
-    context_for_next_agent.md   # contesto completo per nuove sessioni LLM
+    context_for_next_agent.md   # full context for new LLM sessions
 ```
 
-Per il contesto architetturale completo (decisioni di design, dubbi aperti, tabella implementazioni) vedere [`docs/context_for_next_agent.md`](docs/context_for_next_agent.md).
+For the complete architectural context (design decisions, open questions, implementation table) see [`docs/context_for_next_agent.md`](docs/context_for_next_agent.md).
+
+
+---

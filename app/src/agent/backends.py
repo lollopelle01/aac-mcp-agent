@@ -1,4 +1,5 @@
-"""backends.py — LLM backend abstraction for AACAgent.
+"""
+backends.py — LLM backend abstraction for AACAgent.
 
 Three concrete backends:
   OllamaBackend        — local inference via Ollama HTTP API (default for production)
@@ -12,20 +13,20 @@ Model selection per backend
 ---------------------------
 OllamaBackend:
     model = Ollama alias, e.g. "qwen2.5:3b"
-    Listed in settings.py under "models" → used by AACAgent today.
+    Listed in settings.py under "models" -> used by AACAgent today.
 
 LlamaCppBackend:
     model = absolute path to a .gguf file, e.g. "/models/qwen2.5-3b-q4_k_m.gguf"
     GGUF files are downloaded from HuggingFace (bartowski or lmstudio-community
     namespaces have pre-quantized versions of all models in settings.py).
     Recommended quantization for CPU: Q4_K_M (best speed/quality tradeoff).
-    The model alias → path mapping lives in settings.py under "gguf_models"
+    The model alias -> path mapping lives in settings.py under "gguf_models"
     (to be added when llama.cpp backend is wired into AACAgent).
 
 HuggingFaceBackend:
     model = HF repo id, e.g. "Qwen/Qwen2.5-3B-Instruct"
     Used for cluster eval only; not intended for CPU production use.
-    Equivalent to what HFAACAgent._hf_chat does today — extracted here so the
+    Equivalent to what HFAACAgent._hf_chat does today -- extracted here so the
     same logic can be reused without subclassing AACAgent.
 
 Future wiring (not yet done):
@@ -44,7 +45,7 @@ from typing import Optional
 logger = logging.getLogger(__name__)
 
 
-# ── Base ──────────────────────────────────────────────────────────────────────
+####### Base ###############################################################
 
 class LLMBackend(ABC):
     """Abstract base — all LLM backends implement this interface.
@@ -73,7 +74,7 @@ class LLMBackend(ABC):
         ...
 
 
-# ── Ollama ────────────────────────────────────────────────────────────────────
+####### Ollama #############################################################
 
 class OllamaBackend(LLMBackend):
     """Ollama HTTP backend.
@@ -127,7 +128,7 @@ class OllamaBackend(LLMBackend):
         return response["message"]["content"].strip()
 
 
-# ── llama.cpp ─────────────────────────────────────────────────────────────────
+####### llama.cpp ##########################################################
 
 class LlamaCppBackend(LLMBackend):
     """llama-cpp-python backend.
@@ -198,7 +199,7 @@ class LlamaCppBackend(LLMBackend):
         }
         if self._n_threads is not None:
             kwargs["n_threads"] = self._n_threads
-        logger.info("Loading GGUF model from %r (n_ctx=%d) …", self._model_path, self._n_ctx)
+        logger.info("Loading GGUF model from %r (n_ctx=%d) ...", self._model_path, self._n_ctx)
         self._llm = self._Llama(**kwargs)
         logger.info("GGUF model loaded.")
 
@@ -214,8 +215,18 @@ class LlamaCppBackend(LLMBackend):
         )
         return response["choices"][0]["message"]["content"].strip()
 
+    def unload(self) -> None:
+        """Release the GGUF model from RAM.
 
-# ── HuggingFace ───────────────────────────────────────────────────────────────
+        Sets _llm to None so the llama.cpp Llama object is garbage-collected.
+        Call between models in a multi-model eval loop to avoid OOM.
+        """
+        if self._llm is not None:
+            self._llm = None
+            logger.info("LlamaCppBackend: model unloaded from RAM.")
+
+
+####### HuggingFace ########################################################
 
 class HuggingFaceBackend(LLMBackend):
     """HuggingFace Transformers backend.

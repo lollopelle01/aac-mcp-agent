@@ -47,7 +47,7 @@ Caregiver: "" (empty, see history)
 {"call_tools": false, "concepts": ["drink", "juice", "water", "cup"]}
 """
 
-# Shorter prompt for faster inference (around 300 tokens)
+# Shorter prompt for faster inference (around 300 tokens)
 _PLANNER_SYSTEM_PROMPT_SHORT = """\
 You are an AAC pictogram planner. Return ONLY a JSON object, no explanation.
 Format: {"call_tools": <bool>, "concepts": ["word1", "word2", ...]}

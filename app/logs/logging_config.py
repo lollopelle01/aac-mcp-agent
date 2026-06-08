@@ -1,21 +1,21 @@
-# logging_config.py — configurazione centralizzata del logging per aac-mcp-agent.
+# logging_config.py -- centralised logging configuration for aac-mcp-agent.
 #
-# Uso: chiama setup_logging() prima possibile. È idempotente.
+# Usage: call setup_logging() as early as possible. It is idempotent.
 #
 #   from logs.logging_config import setup_logging; setup_logging()
 #
 # Output:
-#   logs/app.log     — tutto (DEBUG+), rotazione 2 MB × 5 file
-#   logs/errors.log  — solo WARNING+, rotazione 1 MB × 3 file
-#   logs/agent.log   — trace leggibile del flusso agent (INFO+): input LLM,
-#                      tool calls, output LLM, risultato finale
-#   stderr           — WARNING+ senza timestamp (leggibile nel terminale, catturato da pytest -s)
+#   logs/app.log     -- everything (DEBUG+), rotation 2 MB x 5 files
+#   logs/errors.log  -- WARNING+ only, rotation 1 MB x 3 files
+#   logs/agent.log   -- human-readable trace of the agent flow (INFO+): LLM input,
+#                       tool calls, LLM output, final result
+#   stderr           -- WARNING+ without timestamp (readable in terminal, captured by pytest -s)
 #
-# Formato file:   "2025-04-15 14:23:01,042 WARNING  mcp_server.tools.arasaac: <msg>"
-# Formato console:"WARNING  mcp_server.tools.arasaac: <msg>"
-# Formato agent:  messaggio grezzo (nessun prefisso — già formattato dall'agent)
+# File format:    "2025-04-15 14:23:01,042 WARNING  mcp_server.tools.arasaac: <msg>"
+# Console format: "WARNING  mcp_server.tools.arasaac: <msg>"
+# Agent format:   raw message (no prefix -- already formatted by the agent)
 #
-# Livello file: APP_LOG_LEVEL (default DEBUG). Es.: APP_LOG_LEVEL=INFO python ...
+# File level: APP_LOG_LEVEL (default DEBUG). E.g.: APP_LOG_LEVEL=INFO python ...
 
 from __future__ import annotations
 
@@ -24,9 +24,11 @@ import logging.config
 import os
 from pathlib import Path
 
-# ── Costanti ──────────────────────────────────────────────────────────────────
+##############################################################################
+## Constants #################################################################
+##############################################################################
 
-# Il file è dentro logs/, quindi Path(__file__).parent è già la cartella logs/.
+# This file lives inside logs/, so Path(__file__).parent is already the logs/ folder.
 _LOGS_DIR = Path(__file__).parent
 _FILE_LEVEL = os.environ.get("APP_LOG_LEVEL", "DEBUG").upper()
 
@@ -42,10 +44,12 @@ _ERR_LOG_BACKUP_COUNT = 3
 _CONFIGURED = False
 
 
-# ── Funzione pubblica ─────────────────────────────────────────────────────────
+##############################################################################
+## Public function ###########################################################
+##############################################################################
 
 def setup_logging() -> None:
-    """Configura il sistema di logging globale. Idempotente."""
+    """Configure the global logging system. Idempotent."""
     global _CONFIGURED
     if _CONFIGURED:
         return
@@ -59,7 +63,7 @@ def setup_logging() -> None:
         "formatters": {
             "file_fmt":    {"format": _FMT_FILE,    "datefmt": _DATE_FMT},
             "console_fmt": {"format": _FMT_CONSOLE, "datefmt": _DATE_FMT},
-            # Nessun prefisso: l'agent.py formatta già ogni riga leggibilmente
+            # No prefix: agent.py already formats each line in a readable way
             "agent_fmt":   {"format": "%(message)s"},
         },
 
@@ -82,7 +86,7 @@ def setup_logging() -> None:
                 "formatter":   "file_fmt",
                 "level":       "WARNING",
             },
-            # Trace leggibile del flusso agent: input LLM → tool → output
+            # Human-readable trace of the agent flow: LLM input -> tool -> output
             "agent_file": {
                 "class":       "logging.handlers.RotatingFileHandler",
                 "filename":    str(_LOGS_DIR / "agent.log"),
@@ -106,14 +110,14 @@ def setup_logging() -> None:
         },
 
         "loggers": {
-            # Logger dedicato al trace agent — non propaga al root per non
-            # duplicare le righe in app.log con il formato sbagliato
+            # Dedicated logger for agent trace -- does not propagate to root to avoid
+            # duplicating lines in app.log with the wrong format
             "agent.run": {
                 "level":     "INFO",
                 "handlers":  ["agent_file"],
                 "propagate": False,
             },
-            # Silenzia librerie verbose
+            # Silence verbose libraries
             "urllib3":            {"level": "WARNING", "propagate": True},
             "requests":           {"level": "WARNING", "propagate": True},
             "charset_normalizer": {"level": "WARNING", "propagate": True},
@@ -124,7 +128,7 @@ def setup_logging() -> None:
     _CONFIGURED = True
 
     logging.getLogger(__name__).info(
-        "Logging inizializzato. app.log=%s, errors.log=%s, agent.log=%s, file_level=%s",
+        "Logging initialised. app.log=%s, errors.log=%s, agent.log=%s, file_level=%s",
         _LOGS_DIR / "app.log",
         _LOGS_DIR / "errors.log",
         _LOGS_DIR / "agent.log",

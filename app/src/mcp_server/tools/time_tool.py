@@ -7,24 +7,21 @@ from config import DAY_TIMES, DAY_TIME_THRESHOLDS
 
 logger = logging.getLogger(__name__)
 
-################################################################################################
-## Utils #######################################################################################
-################################################################################################
+####### Utils ############################################################
 
 def _resolve_time_of_day(hour: int) -> str:
     """
-    Map an integer hour (0–23) to the corresponding 
-    time-of-day label efined in config.DAY_TIMES.
+    Map an integer hour (0-23) to the corresponding
+    time-of-day label defined in config.DAY_TIMES.
     """
     for i in range(len(DAY_TIME_THRESHOLDS) - 1, -1, -1):
         if hour >= DAY_TIME_THRESHOLDS[i]:
             return DAY_TIMES[i]
-    return DAY_TIMES[-1]  
+    # hour < DAY_TIME_THRESHOLDS[0] (i.e. before 05:00) -> "morning" (safe fallback)
+    return DAY_TIMES[0]
 
 
-################################################################################################
-## MCP tool ####################################################################################
-################################################################################################
+####### MCP tool #########################################################
 
 @mcp.tool()
 def get_time() -> dict:
@@ -39,14 +36,14 @@ def get_time() -> dict:
     Returns
     -------
     dict with fields:
-        current_dt  : str  — ISO 8601 datetime (YYYY-MM-DDTHH:MM:SS)
-        time_of_day : str  — slot label (e.g. "morning", "afternoon", etc.)
+        current_dt  : str  -- ISO 8601 datetime (YYYY-MM-DDTHH:MM:SS)
+        time_of_day : str  -- slot label (e.g. "morning", "afternoon", etc.)
     """
     now = datetime.now()
     time_of_day = _resolve_time_of_day(now.hour)
 
     result = TimeInfo(current_dt=now, time_of_day=time_of_day)
 
-    logger.debug("get_time() → %s | %s", now.strftime("%Y-%m-%d %H:%M"), time_of_day)
+    logger.debug("get_time() -> %s | %s", now.strftime("%Y-%m-%d %H:%M"), time_of_day)
 
     return result.model_dump(mode="json")

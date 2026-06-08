@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import List, Literal, Optional, Tuple
+from typing import List, Literal, Optional
 from datetime import datetime
 
 from config import DAY_TIMES
@@ -8,9 +8,7 @@ from config import DAY_TIMES
 # LANG is fixed to "en" — do not change.
 TimeOfDay = Literal[*DAY_TIMES]
 
-##########################################################################################
-## ARASAAC API models ####################################################################
-##########################################################################################
+####### ARASAAC API models ###############################################
 
 class Keyword(BaseModel):
     # type = part of speech: 1=Proper_Names 2=Common_Names 3=Verbs 4=Descriptives 5=Social 6=Misc
@@ -40,13 +38,11 @@ class Pictogram(BaseModel):
     created: Optional[str]      = Field(default=None )  # ISO 8601
     last_updated: Optional[str] = Field(default=None )  # ISO 8601 — used for incremental updates
 
-##########################################################################################
-## Pipeline models #######################################################################
-##########################################################################################
+####### Pipeline models ##################################################
 
-# A scored result produced by the LLM filter stage, the Pictogram paired with its relevance 
-# score (0.0 ==> 1.0).
-ScoredPictogram = Tuple[Pictogram, float]
+# ScoredPictogram (Tuple[Pictogram, float]) removed in Fix 5 — the float
+# score was always 0.0 after the LLM filter stage was dropped in R3.
+# All internal arasaac.py helpers now work directly with Pictogram.
 
 
 class TimeInfo(BaseModel):
@@ -67,30 +63,3 @@ class ScheduleEvent(BaseModel):
     start_time: str             = Field(               description="Start time as HH:MM string"                  )
     location: Optional[str]     = Field(default=None,  description="Physical or symbolic location"               )
     description: Optional[str]  = Field(default=None,  description="Optional free-text description of the event" )
-
-
-class ContextBundle(BaseModel):
-    """
-    Aggregated context passed to the LLM filter.
-    Combines the caregiver's raw input with enrichment from MCP tools.
-    """
-
-    raw_input: str                  = Field(               description="Original caregiver description"                                                   )
-    time_info: Optional[TimeInfo]   = Field(default=None,  description="Temporal context from get_time(). None if the input was already detailed enough." )
-    schedule: List[ScheduleEvent]   = Field(default=[],    description="Today's calendar events from get_schedule(). Empty if no agenda was fetched."     )
-
-    def to_prompt_text(self) -> str:
-        """Serialize the bundle into a readable string for the LLM prompt."""
-        parts = [f"Context: {self.raw_input}"]
-
-        if self.time_info:
-            t = self.time_info
-            parts.append(
-                f"Time: {t.current_dt.strftime('%Y-%m-%d %H:%M')} ({t.time_of_day})"
-            )
-
-        if self.schedule:
-            events = ", ".join(f"{e.title} ({e.start_time})" for e in self.schedule)
-            parts.append(f"Plans for the day: {events}")
-
-        return "\n".join(parts)
