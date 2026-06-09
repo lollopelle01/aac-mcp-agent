@@ -39,6 +39,7 @@ Future wiring (not yet done):
 from __future__ import annotations
 
 import logging
+import re
 from abc import ABC, abstractmethod
 from typing import Optional
 
@@ -130,6 +131,32 @@ class OllamaBackend(LLMBackend):
 
 ####### llama.cpp ##########################################################
 
+def _extract_first_json_object(text: str) -> str:
+    """Extract the first well-formed {...} JSON object from raw model output.
+
+    llama.cpp Instruct models occasionally produce a valid JSON object followed
+    by repeated tokens or extra text before EOS. This function extracts only
+    the first complete {...} block so the upstream JSON parser always receives
+    clean input.
+
+    Strategy: scan forward tracking brace depth; stop at the first balanced `}`.
+    Falls back to the full stripped text when no `{` is found.
+    """
+    start = text.find("{")
+    if start == -1:
+        return text.strip()
+    depth = 0
+    for i, ch in enumerate(text[start:], start):
+        if ch == "{":
+            depth += 1
+        elif ch == "}":
+            depth -= 1
+            if depth == 0:
+                return text[start : i + 1]
+    # Unbalanced — return from start to end and let the parser handle it
+    return text[start:].strip()
+
+
 class LlamaCppBackend(LLMBackend):
     """llama-cpp-python backend.
 
@@ -154,6 +181,26 @@ class LlamaCppBackend(LLMBackend):
         temperature: 0.0 = greedy decoding.
         max_tokens:  Max tokens to generate per call.
         verbose:     If False, suppresses llama.cpp's C-level stdout logs.
+
+    Notes on stop tokens
+    --------------------
+    We do NOT use stop=["}"] here. That pattern was intended to prevent runaway
+    repetition loops (e.g. "todate" repeated 30×) by halting at the closing
+    brace, but it backfires on Instruct models:
+
+    1. The model emits a correct, complete JSON and then naturally stops — no
+       runaway loop occurs, so the stop token is never needed.
+    2. When the model *does* generate garbage after the JSON, the garbage
+       comes *after* the closing `}`, not before it — so stopping at `}` would
+       truncate the valid output, not the garbage.
+    3. Qwen2.5-Instruct and similar chat-tuned models always close the JSON
+       before emitting any spurious tokens; stopping at `}` would consume the
+       legitimate closing brace mid-array and produce malformed JSON.
+
+    Instead, `_extract_first_json_object()` is applied post-generation: it
+    finds the first balanced `{...}` block and discards anything after it.
+    This handles both clean outputs and the rare "valid JSON + trailing junk"
+    case without touching the generation itself.
     """
 
     def __init__(
@@ -162,7 +209,7 @@ class LlamaCppBackend(LLMBackend):
         n_ctx:       int            = 512,
         n_threads:   Optional[int]  = None,
         temperature: float          = 0.0,
-        max_tokens:  int            = 150,
+        max_tokens:  int            = 300,
         verbose:     bool           = False,
     ) -> None:
         try:
@@ -212,16 +259,11 @@ class LlamaCppBackend(LLMBackend):
             ],
             temperature = self._temperature,
             max_tokens  = self._max_tokens,
-            # Stop at the closing brace of the JSON object — prevents both
-            # runaway token loops (e.g. "todate" repeated 30x) and hard
-            # truncations mid-array that make the JSON unparseable.
-            stop        = ["}"],
+            # No stop tokens — see class docstring for rationale.
+            # _extract_first_json_object() handles post-generation cleanup.
         )
         raw = response["choices"][0]["message"]["content"].strip()
-        # Re-attach the closing brace (consumed by the stop token)
-        if not raw.endswith("}"):
-            raw = raw + "}"
-        return raw
+        return _extract_first_json_object(raw)
 
     def unload(self) -> None:
         """Release the GGUF model from RAM.

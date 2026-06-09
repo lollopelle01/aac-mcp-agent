@@ -356,7 +356,11 @@ class AACAgent:
                     ctx.tool_calls.append("get_time")
                 except Exception as exc:
                     logger.warning("EvalContext mock_time invalid: %s", exc)
-            agent_log.info("[EVAL]   get_time() mocked → time_of_day=%r", time_of_day)
+            agent_log.info(
+                "[EVAL]   get_time() mocked → tod=%r  dt=%s",
+                time_of_day,
+                time_info.current_dt.isoformat() if time_info else "N/A",
+            )
         else:
             try:
                 time_raw    = get_time()
@@ -365,7 +369,7 @@ class AACAgent:
             except Exception as exc:
                 logger.warning("get_time() failed: %s", exc)
             agent_log.info(
-                "[TOOL]   get_time() → time_of_day=%r  dt=%s",
+                "[TOOL]   get_time() → tod=%r  dt=%s",
                 time_of_day,
                 time_info.current_dt.isoformat() if time_info else "N/A",
             )
@@ -378,13 +382,21 @@ class AACAgent:
                     ctx.tool_calls.append("get_schedule")
             except Exception as exc:
                 logger.warning("EvalContext mock_schedule invalid: %s", exc)
-            agent_log.info("[EVAL]   get_schedule() mocked → %d events", len(schedule))
+            _sched_detail = (
+                "  [" + ", ".join(f"{e.title}@{e.start_time}" for e in schedule[:5]) + "]"
+                if schedule else ""
+            )
+            agent_log.info("[EVAL]   get_schedule() mocked → %d events%s", len(schedule), _sched_detail)
         elif self.fetch_schedule:
             try:
                 schedule = [ScheduleEvent.model_validate(e) for e in get_schedule()]
             except Exception as exc:
                 logger.warning("get_schedule() failed: %s", exc)
-            agent_log.info("[TOOL]   get_schedule() → %d events", len(schedule))
+            _sched_detail = (
+                "  [" + ", ".join(f"{e.title}@{e.start_time}" for e in schedule[:5]) + "]"
+                if schedule else ""
+            )
+            agent_log.info("[TOOL]   get_schedule() → %d events%s", len(schedule), _sched_detail)
 
         return time_of_day, schedule
 
