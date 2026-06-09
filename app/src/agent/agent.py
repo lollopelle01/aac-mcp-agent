@@ -538,6 +538,8 @@ class AACAgent:
 
     def _extract_terms(self, raw_input: str) -> list[str]:
         """Regex-free fallback term extractor using spaCy POS tags."""
+        if not raw_input.strip():
+            return []
         nlp  = _nlp()
         doc  = nlp(raw_input.lower())
         seen: set[str]  = set()
