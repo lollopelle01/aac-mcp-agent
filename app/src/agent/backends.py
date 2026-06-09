@@ -212,8 +212,16 @@ class LlamaCppBackend(LLMBackend):
             ],
             temperature = self._temperature,
             max_tokens  = self._max_tokens,
+            # Stop at the closing brace of the JSON object — prevents both
+            # runaway token loops (e.g. "todate" repeated 30x) and hard
+            # truncations mid-array that make the JSON unparseable.
+            stop        = ["}"],
         )
-        return response["choices"][0]["message"]["content"].strip()
+        raw = response["choices"][0]["message"]["content"].strip()
+        # Re-attach the closing brace (consumed by the stop token)
+        if not raw.endswith("}"):
+            raw = raw + "}"
+        return raw
 
     def unload(self) -> None:
         """Release the GGUF model from RAM.
