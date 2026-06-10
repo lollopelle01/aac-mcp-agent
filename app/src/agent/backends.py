@@ -162,7 +162,7 @@ class LlamaCppBackend(LLMBackend):
 
     Loads a GGUF model file directly into RAM — no HTTP daemon, no Ollama
     overhead. Faster prefill on CPU because the model is in-process and n_ctx
-    can be set precisely (512 instead of Ollama's default 2048+).
+    can be set precisely.
 
     Installation:
         pip install llama-cpp-python
@@ -176,7 +176,10 @@ class LlamaCppBackend(LLMBackend):
 
     Args:
         model_path:  Absolute path to the .gguf file.
-        n_ctx:       Context window. 512 is enough for the planner prompt.
+        n_ctx:       Context window. Default 2048 — 512 was too small: by turn 3
+                     the prompt (system + session history + user message) exceeds
+                     512 tokens, causing llama.cpp to truncate the input and
+                     corrupt the generation.
         n_threads:   CPU threads. None = llama.cpp auto-detects (uses all cores).
         temperature: 0.0 = greedy decoding.
         max_tokens:  Max tokens to generate per call.
@@ -203,7 +206,7 @@ class LlamaCppBackend(LLMBackend):
     def __init__(
         self,
         model_path:  str,
-        n_ctx:       int            = 512,
+        n_ctx:       int            = 2048,
         n_threads:   Optional[int]  = None,
         temperature: float          = 0.0,
         max_tokens:  int            = 300,
