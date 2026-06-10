@@ -184,22 +184,20 @@ class LlamaCppBackend(LLMBackend):
 
     Notes on stop tokens
     --------------------
-    We use stop=["\n}", "}\n"] to halt generation as soon as the JSON object
-    is closed. The planner always produces exactly one {"call_tools":...,
-    "concepts":[...]} object on a single logical line. Two failure modes
-    observed with Qwen2.5-3B on CPU make stop tokens necessary:
+    We use stop=["\n\n"] to block extra prose after the JSON object without
+    interfering with the closing brace.
 
-    1. Greedy-repetition loops: the model gets stuck repeating tokens inside
-       the "concepts" array (e.g. "todate" x20) until max_tokens is exhausted,
-       producing a never-closed JSON string that cannot be parsed.
-    2. Tail junk: a correctly closed JSON is followed by extra prose or a
-       second JSON object, which can confuse _extract_first_json_object when
-       the trailing content itself contains braces.
+    Previous versions used stop=["\n}", "}\n"], which caused consistent parse
+    failures: those sequences match exactly at the point where the model is
+    about to emit the final "}" — so generation halted with the concepts array
+    still open and the top-level object never closed.
 
-    Stopping at the first closing-brace+newline sequence terminates generation
-    exactly at the end of the top-level object. _extract_first_json_object()
-    is still applied afterwards as a safety net for the rare case where the
-    model emits the closing brace without a trailing newline before EOS.
+    _extract_first_json_object() handles the remaining failure modes:
+    1. Greedy-repetition loops: the brace-depth scanner returns whatever
+       balanced fragment is available; if malformed the JSON parser rejects it
+       and the spaCy fallback takes over.
+    2. Tail junk / second JSON object: the scanner stops at the first balanced
+       "}" so any trailing content is safely ignored.
     """
 
     def __init__(
@@ -258,20 +256,13 @@ class LlamaCppBackend(LLMBackend):
             ],
             temperature = self._temperature,
             max_tokens  = self._max_tokens,
-            # Stop the generation as soon as the JSON object is closed.
-            # The planner always emits a single {"call_tools":..., "concepts":[...]}
-            # object followed immediately by a newline (or EOS). Stopping at "}\n"
-            # prevents two failure modes seen in practice with Qwen2.5-3B on CPU:
-            #   1. Greedy-repetition loops: the model gets stuck repeating tokens
-            #      inside the "concepts" array (e.g. "todate" x20) until max_tokens
-            #      is exhausted, producing a never-closed array.
-            #   2. Tail junk: a correctly closed JSON is followed by extra prose or
-            #      a second JSON object, which confuses _extract_first_json_object.
-            # Stopping at "}\n" terminates generation at the first line that closes
-            # the top-level object, which is the correct end of output.
-            # _extract_first_json_object() is still applied as a safety net for the
-            # rare case where the model omits the trailing newline before EOS.
-            stop=["\n}", "}\n"],
+            # stop=["\n\n"] blocks extra prose after the JSON object without
+            # truncating the closing brace.
+            # Previous stop=["\n}", "}\n"] caused consistent parse failures:
+            # those sequences match at the point where the model is about to
+            # emit the final "}" — so generation halted with the array still
+            # open and the top-level object never closed.
+            stop=["\n\n"],
         )
         raw = response["choices"][0]["message"]["content"].strip()
         return _extract_first_json_object(raw)
