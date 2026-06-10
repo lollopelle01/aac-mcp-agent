@@ -145,12 +145,19 @@ class AACAgent:
         if call_tools:
             time_of_day, schedule_events = self._collect_context(raw_input, turn_id)
             if schedule_events:
-                sched_terms = self._terms_from_schedule(schedule_events)
+                # Filter to the single closest event to avoid distractor events
+                # from bleeding into the concept pool via _terms_from_schedule().
+                # This path is identical in production (live tools) and eval (mocks).
+                relevant = self._filter_schedule_by_time(schedule_events, time_of_day)
+                sched_terms = self._terms_from_schedule(relevant)
                 for t in sched_terms:
                     if t not in concepts:
                         concepts.append(t)
                 if sched_terms:
-                    agent_log.info("[CTX]    schedule terms injected into concepts: %s", sched_terms)
+                    agent_log.info(
+                        "[CTX]    schedule terms injected (1/%d events used): %s",
+                        len(schedule_events), sched_terms
+                    )
         else:
             time_of_day = None
             agent_log.info("[CTX]    skipped (planner: input is explicit)")
@@ -226,7 +233,12 @@ class AACAgent:
 
     # ── Phase 1: planner ──────────────────────────────────────────────────────
 
-    def _plan(self, raw_input: str, history: str, turn_id: int) -> tuple[bool, list[str]]:
+    def _plan(
+        self,
+        raw_input: str,
+        history: str,
+        turn_id: int,
+    ) -> tuple[bool, list[str]]:
         _t_plan_start = time.perf_counter()
         system_msg = build_planner_prompt(full=False)
         user_msg   = build_planner_message(raw_input, history)
@@ -524,6 +536,31 @@ class AACAgent:
         return window
 
     # ── Fallback helpers ──────────────────────────────────────────────────────
+
+    def _filter_schedule_by_time(
+        self,
+        events: list[ScheduleEvent],
+        time_of_day: Optional[str],
+    ) -> list[ScheduleEvent]:
+        """Return only the schedule event closest to the current time of day.
+
+        Used in production (no EvalContext) to prevent distractor events from
+        bleeding into the concept pool via _terms_from_schedule().
+        """
+        if not events:
+            return events
+        tod_to_hour = {
+            "morning": 9, "afternoon": 14, "evening": 19, "night": 22
+        }
+        target_h = tod_to_hour.get(time_of_day or "", 12)
+
+        def _event_hour(e: ScheduleEvent) -> int:
+            try:
+                return int(str(e.start_time).split(":")[0])
+            except Exception:
+                return 12
+
+        return [min(events, key=lambda e: abs(_event_hour(e) - target_h))]
 
     def _terms_from_schedule(self, events: list[ScheduleEvent]) -> list[str]:
         """Extract searchable terms from calendar event fields."""

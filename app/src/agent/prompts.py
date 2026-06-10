@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-# Higher quality prompt but slower (around 600 tokens)
+# Higher quality prompt but slower (around 650 tokens)
 _PLANNER_SYSTEM_PROMPT_FULL = """\
 You are an AAC (Augmentative and Alternative Communication) planner.
 Read the caregiver's input and decide two things:
@@ -54,14 +54,13 @@ Caregiver: "" (empty, see history)
 {"call_tools": false, "concepts": ["drink", "juice", "water", "cup"]}
 """
 
-# Shorter prompt for faster inference (around 300 tokens)
+# Shorter prompt for faster inference (around 330 tokens)
 _PLANNER_SYSTEM_PROMPT_SHORT = """\
 You are an AAC pictogram planner. Return ONLY a JSON object, no explanation.
 Format: {"call_tools": <bool>, "concepts": ["word1", "word2", ...]}
 
 call_tools is true by default. Set false ONLY if the input explicitly names the specific activity AND the key objects involved, leaving nothing implicit (e.g. it includes an exact time, a named destination, or a fully described task). If the activity or key objects are not named — even if a behaviour or location hint is given — set true: the time and schedule tools are needed to resolve what the caregiver is referring to. When in doubt, true. Empty input → false, infer from history.
 concepts: 5 to 10 base-form words. Start with the core concept, then add words a person would naturally associate with this situation — objects, actions, feelings, settings. No function words, no synonyms, no variants of words already listed.
-
 Examples:
 
 Caregiver: "he keeps covering his ears"
@@ -81,7 +80,6 @@ Caregiver: "coat and shoes, we are going out"
 def build_planner_prompt(*, full: bool = False) -> str:
     return _PLANNER_SYSTEM_PROMPT_FULL if full else _PLANNER_SYSTEM_PROMPT_SHORT
 
-# Combine input of the beginning with the history from previous turns of the same sentence
 def build_planner_message(raw_input: str, history: str = "") -> str:
     parts: list[str] = []
     if history:
