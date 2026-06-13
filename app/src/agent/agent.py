@@ -102,6 +102,7 @@ class AACAgent:
         self.last_plan_method: str                = "llm"  # exposed to eval: "llm" | "fallback_spacy" | "fallback_empty"
         self.last_synset_added: int               = 0      # exposed to eval: pictograms added by synset expansion
         self.last_fresh_count: int                = 0      # exposed to eval: pictograms from fresh pool (not stale padding)
+        self.last_pool_ids: list[int]             = []     # exposed to eval: full ranked candidate pool, pre-window-truncation
 
     # ── Public ────────────────────────────────────────────────────────────────
 
@@ -523,6 +524,8 @@ class AACAgent:
 
         pool = [p for p in candidates if p.id not in selected_ids]
         pool.sort(key=_sort_key)
+
+        self.last_pool_ids = [p.id for p in pool]  # full ranked pool, pre-truncation — enables gold_rank in eval
 
         window = pool[:self.max_results]
         self.last_fresh_count = len(window)
