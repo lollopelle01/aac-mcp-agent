@@ -1,24 +1,40 @@
 from __future__ import annotations
 
-# Higher quality prompt but slower (around 650 tokens)
+import json
+import logging
+import re
+
+logger = logging.getLogger(__name__)
+
+
+################################################################################
+# System prompts
+################################################################################
+
+# Decision prompt — Phase 1 of the two-phase pipeline.
+_DECISION_SYSTEM_PROMPT = """\
+You are deciding whether temporal or schedule context is needed to understand a caregiver's input.
+Return ONLY a JSON object, no explanation, no markdown.
+Format: {"needs_context": <bool>, "reason": "<one short phrase>"}
+
+needs_context is true when the input is vague, references a routine, implies shared knowledge,
+or leaves the specific activity or objects unstated.
+needs_context is false ONLY when the input explicitly names the activity, timing, and key objects
+— nothing left implicit.
+Empty input → false.
+
+Examples:
+"he keeps covering his ears"          → {"needs_context": true,  "reason": "behaviour observed, activity unknown"}
+"she keeps reaching for the snacks"   → {"needs_context": true,  "reason": "implicit hunger/want context"}
+"coat and shoes, we are going out"    → {"needs_context": false, "reason": "activity and objects explicit"}
+"she is doing physiotherapy at 10:45" → {"needs_context": false, "reason": "explicit time and activity"}
+"his usual"                           → {"needs_context": true,  "reason": "routine reference, needs schedule"}
+"""
+
+# ~650 tokens — higher quality, slower inference.
 _PLANNER_SYSTEM_PROMPT_FULL = """\
 You are an AAC (Augmentative and Alternative Communication) planner.
-Read the caregiver's input and decide two things:
-1. Whether temporal or schedule context would help (call_tools).
-2. Which pictogram concepts to search for (concepts).
-
-Set call_tools to false ONLY if the input explicitly names the specific activity
-AND the key objects involved, with enough detail to act immediately (e.g. an exact
-time, a named destination, a fully described task). Nothing should be left implicit.
-
-Set call_tools to true in every other case. The caregiver_vague style assumes
-shared context: the caregiver speaks as if the listener already knows the child's
-routine and does NOT name the specific activity or key objects. If anything is
-left implicit — a behaviour observed, a location hint, a feeling, a routine
-reference, a person arriving — the time and schedule tools are needed to resolve
-what is being referred to. When in doubt, set true.
-If the input is empty, infer the next concept from session history and set
-call_tools to false.
+Read the caregiver's input and generate pictogram concepts.
 
 Generate 5 to 10 concepts for the request.
 Start with the core concept, then add words a person would naturally associate
@@ -26,67 +42,228 @@ with this situation — objects, actions, feelings, or settings.
 Use base forms: infinitive for verbs, singular for nouns.
 Write "eat", "go out", "coat", not "eating", "going out", "coats".
 Leave out function words and filler. No synonyms or variants of words already listed.
+If a "Context" block is present in the input, use it to generate more specific
+and relevant concepts.
+If the input is empty, infer the next concept from session history.
 
 Return ONLY a JSON object. No explanation, no markdown, no extra text.
-Format: {"call_tools": <bool>, "concepts": ["concept1", "concept2", ...]}
+Format: {"concepts": ["concept1", "concept2", ...]}
 
 Examples:
 
 Caregiver: "he keeps covering his ears"
-{"call_tools": true, "concepts": ["ear", "noise", "loud", "pain", "headphone", "quiet", "stop"]}
+{"concepts": ["ear", "noise", "loud", "pain", "headphone", "quiet", "stop"]}
 
 Caregiver: "she keeps reaching for the snacks"
-{"call_tools": true, "concepts": ["snack", "hungry", "eat", "food", "want", "more"]}
+{"concepts": ["snack", "hungry", "eat", "food", "want", "more"]}
 
 Caregiver: "he seems upset"
-{"call_tools": true, "concepts": ["upset", "sad", "angry", "pain", "scared", "tired", "help"]}
+{"concepts": ["upset", "sad", "angry", "pain", "scared", "tired", "help"]}
 
 Caregiver: "coat and shoes, we are going out right now"
-{"call_tools": false, "concepts": ["coat", "shoes", "go out", "door", "bag", "ready", "outside"]}
+{"concepts": ["coat", "shoes", "go out", "door", "bag", "ready", "outside"]}
 
 Caregiver: "she is doing physiotherapy at 10:45 this morning"
-{"call_tools": false, "concepts": ["physiotherapy", "exercise", "arm", "leg", "stretch", "therapist", "pain", "movement"]}
+{"concepts": ["physiotherapy", "exercise", "arm", "leg", "stretch", "therapist", "pain", "movement"]}
 
 Caregiver: "his usual"
-{"call_tools": true, "concepts": ["routine", "morning", "afternoon", "activity", "favourite"]}
+{"concepts": ["routine", "morning", "afternoon", "activity", "favourite"]}
 
 Caregiver: "" (empty, see history)
-{"call_tools": false, "concepts": ["drink", "juice", "water", "cup"]}
+{"concepts": ["drink", "juice", "water", "cup"]}
 """
 
-# Shorter prompt for faster inference (around 330 tokens)
+# ~330 tokens — shorter, faster inference.
 _PLANNER_SYSTEM_PROMPT_SHORT = """\
 You are an AAC pictogram planner. Return ONLY a JSON object, no explanation.
-Format: {"call_tools": <bool>, "concepts": ["word1", "word2", ...]}
+Format: {"concepts": ["word1", "word2", ...]}
 
-call_tools is true by default. Set false ONLY if the input explicitly names the specific activity AND the key objects involved, leaving nothing implicit (e.g. it includes an exact time, a named destination, or a fully described task). If the activity or key objects are not named — even if a behaviour or location hint is given — set true: the time and schedule tools are needed to resolve what the caregiver is referring to. When in doubt, true. Empty input → false, infer from history.
-concepts: 5 to 10 base-form words. Start with the core concept, then add words a person would naturally associate with this situation — objects, actions, feelings, settings. No function words, no synonyms, no variants of words already listed.
+Generate 5 to 10 concepts. Start with the core concept, then add words a person would naturally
+associate with this situation — objects, actions, feelings, settings.
+Use base forms: infinitive for verbs, singular for nouns.
+No function words, no synonyms, no variants of words already listed.
+If a "Context" block is present in the input, use it to generate more specific and relevant concepts.
+If the input is empty, infer the next concept from session history.
+
 Examples:
 
 Caregiver: "he keeps covering his ears"
-{"call_tools": true, "concepts": ["ear", "noise", "loud", "pain", "headphone", "quiet", "stop"]}
+{"concepts": ["ear", "noise", "loud", "pain", "headphone", "quiet", "stop"]}
 
 Caregiver: "she keeps reaching for the snacks"
-{"call_tools": true, "concepts": ["snack", "hungry", "eat", "food", "want", "more"]}
+{"concepts": ["snack", "hungry", "eat", "food", "want", "more"]}
 
 Caregiver: "she is doing physiotherapy at 10:45 this morning"
-{"call_tools": false, "concepts": ["physiotherapy", "exercise", "arm", "leg", "stretch", "therapist", "pain", "movement"]}
+{"concepts": ["physiotherapy", "exercise", "arm", "leg", "stretch", "therapist", "pain", "movement"]}
 
 Caregiver: "coat and shoes, we are going out"
-{"call_tools": false, "concepts": ["coat", "shoes", "go out", "door", "bag", "ready", "outside"]}
+{"concepts": ["coat", "shoes", "go out", "door", "bag", "ready", "outside"]}
 """
 
-# The interface to switch between prompts more easily
+
+################################################################################
+# Public builders
+################################################################################
+
 def build_planner_prompt(*, full: bool = False) -> str:
+    """Return the system prompt. Use full=True for higher quality at the cost of speed."""
     return _PLANNER_SYSTEM_PROMPT_FULL if full else _PLANNER_SYSTEM_PROMPT_SHORT
 
-def build_planner_message(raw_input: str, history: str = "") -> str:
+
+def build_planner_message(raw_input: str, history: str = "", context_block: str = "") -> str:
+    """Build the user-turn message, prepending session history and context when available."""
     parts: list[str] = []
     if history:
         parts.append(history)
+        parts.append("")
+    if context_block:
+        parts.append(f"Context:\n{context_block}")
         parts.append("")
     if raw_input.strip():
         parts.append(f'Caregiver: "{raw_input}"')
     else:
         parts.append('Caregiver: "" (empty, see history)')
     return "\n".join(parts)
+
+
+def build_decision_prompt() -> str:
+    """Return the system prompt for the decision (Phase 1) LLM call."""
+    return _DECISION_SYSTEM_PROMPT
+
+
+################################################################################
+# Response parsers
+################################################################################
+
+def parse_planner_response(text: str) -> dict:
+    """Parse raw LLM output into {call_tools, concepts}.
+
+    Pass 1: standard JSON extraction (handles markdown fences).
+    Pass 2: regex salvage — recovers partial fields from malformed output
+    so the pipeline degrades gracefully instead of returning an empty plan.
+    """
+    text = re.sub(r"```(?:json)?", "", text).strip()
+
+    # Pass 1: look for a complete JSON object anywhere in the text
+    match = re.search(r"\{.*\}", text, re.DOTALL)
+    if match:
+        try:
+            return json.loads(match.group())
+        except json.JSONDecodeError:
+            pass
+
+    # Pass 2: field-by-field salvage for malformed output
+    result: dict = {}
+
+    ct_match = re.search(r"call_tools[\s:=]+([Tt]rue|[Ff]alse|1|0)", text)
+    if ct_match:
+        result["call_tools"] = ct_match.group(1).lower() in ("true", "1")
+
+    # Try a JSON array literal first, then fall back to a bare comma-separated list
+    arr_match = re.search(r"\[\s*[\"'][\w\s]+[\"'](?:\s*,\s*[\"'][\w\s]+[\"'])*\s*\]", text)
+    if arr_match:
+        try:
+            concepts = json.loads(arr_match.group().replace("'", '"'))
+            if isinstance(concepts, list):
+                result["concepts"] = [str(c) for c in concepts if c]
+        except (json.JSONDecodeError, ValueError):
+            pass
+
+    if "concepts" not in result:
+        kv_match = re.search(r"concepts[\s:=]+([a-zA-Z][\w,\s-]*)", text, re.IGNORECASE)
+        if kv_match:
+            words = [w.strip().strip(",") for w in kv_match.group(1).split(",")]
+            concepts = [w for w in words if w and not w.startswith("{")]
+            if concepts:
+                result["concepts"] = concepts
+
+    if result:
+        logger.warning("[FALLBACK] planner JSON malformed — salvaged: %s", result)
+        return result
+
+    logger.warning("[FALLBACK] could not parse planner response at all: %r", text)
+    return {}
+
+
+def parse_new_planner_response(text: str) -> dict:
+    """Parse planner response for two-phase mode. Expects {concepts: [...]} only.
+
+    call_tools is not expected; if it appears, log a warning and ignore it.
+    Pass 1: standard JSON extraction.
+    Pass 2: regex salvage on concepts only (no ct_match).
+    """
+    text = re.sub(r"```(?:json)?", "", text).strip()
+
+    match = re.search(r"\{.*\}", text, re.DOTALL)
+    if match:
+        try:
+            parsed = json.loads(match.group())
+            if "call_tools" in parsed:
+                logger.warning(
+                    "[PLAN] unexpected 'call_tools' in planner response — ignoring (old prompt cached?)"
+                )
+                parsed.pop("call_tools", None)
+            return parsed
+        except json.JSONDecodeError:
+            pass
+
+    # Pass 2: concepts-only salvage
+    result: dict = {}
+
+    arr_match = re.search(r"\[\s*[\"'][\w\s]+[\"'](?:\s*,\s*[\"'][\w\s]+[\"'])*\s*\]", text)
+    if arr_match:
+        try:
+            concepts = json.loads(arr_match.group().replace("'", '"'))
+            if isinstance(concepts, list):
+                result["concepts"] = [str(c) for c in concepts if c]
+        except (json.JSONDecodeError, ValueError):
+            pass
+
+    if "concepts" not in result:
+        kv_match = re.search(r"concepts[\s:=]+([a-zA-Z][\w,\s-]*)", text, re.IGNORECASE)
+        if kv_match:
+            words = [w.strip().strip(",") for w in kv_match.group(1).split(",")]
+            concepts = [w for w in words if w and not w.startswith("{")]
+            if concepts:
+                result["concepts"] = concepts
+
+    if result:
+        logger.warning("[FALLBACK] new planner JSON malformed — salvaged: %s", result)
+        return result
+
+    logger.warning("[FALLBACK] could not parse new planner response at all: %r", text)
+    return {}
+
+
+def parse_decision_response(text: str) -> dict:
+    """Parse raw LLM output into {needs_context: bool, reason: str}.
+
+    Pass 1: standard JSON extraction.
+    Pass 2: regex salvage on needs_context only.
+    """
+    text = re.sub(r"```(?:json)?", "", text).strip()
+
+    match = re.search(r"\{.*\}", text, re.DOTALL)
+    if match:
+        try:
+            parsed = json.loads(match.group())
+            if "needs_context" in parsed:
+                return parsed
+        except json.JSONDecodeError:
+            pass
+
+    # Pass 2: regex salvage
+    result: dict = {}
+    nc_match = re.search(r"needs_context[\s:=]+([Tt]rue|[Ff]alse|1|0)", text)
+    if nc_match:
+        result["needs_context"] = nc_match.group(1).lower() in ("true", "1")
+    r_match = re.search(r'"reason"\s*:\s*"([^"]+)"', text)
+    if r_match:
+        result["reason"] = r_match.group(1)
+
+    if result:
+        logger.warning("[FALLBACK] decision JSON malformed — salvaged: %s", result)
+        return result
+
+    logger.warning("[FALLBACK] could not parse decision response at all: %r", text)
+    return {}

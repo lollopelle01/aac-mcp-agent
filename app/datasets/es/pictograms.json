@@ -4103,7 +4103,8 @@
       "work",
       "primary sector",
       "hunting",
-      "core vocabulary"
+      "core vocabulary",
+      "cattle farming"
     ],
     "sex": false,
     "violence": false,
@@ -4113,7 +4114,7 @@
     "skin": false,
     "hair": false,
     "created": "2007-12-13T11:02:48.000Z",
-    "last_updated": "2024-10-21T11:49:06.674Z"
+    "last_updated": "2026-05-28T12:40:51.393Z"
   },
   "2355": {
     "id": 2355,
@@ -13677,6 +13678,12 @@
         "keyword": "yogur",
         "plural": "yogures",
         "meaning": " m. Variedad de leche fermentada, que se prepara reduciéndola por evaporación a la mitad de su volumen y sometiéndola después a la acción de un fermento denominado maya."
+      },
+      {
+        "type": 2,
+        "keyword": "yogurt",
+        "plural": null,
+        "meaning": null
       }
     ],
     "categories": [
@@ -13703,7 +13710,7 @@
     "skin": false,
     "hair": false,
     "created": "2007-12-18T13:49:01.000Z",
-    "last_updated": "2021-02-05T08:58:52.832Z"
+    "last_updated": "2026-05-14T15:47:11.736Z"
   },
   "2622": {
     "id": 2622,
@@ -66747,7 +66754,7 @@
     "skin": true,
     "hair": true,
     "created": "2008-10-27T12:16:51.000Z",
-    "last_updated": "2025-12-18T15:49:37.312Z"
+    "last_updated": "2026-05-25T12:46:49.043Z"
   },
   "5943": {
     "id": 5943,
@@ -165983,7 +165990,8 @@
     "tags": [
       "health",
       "medicine",
-      "disease"
+      "disease",
+      "work"
     ],
     "sex": false,
     "violence": false,
@@ -165993,7 +166001,7 @@
     "skin": true,
     "hair": true,
     "created": "2010-03-21T13:00:40.000Z",
-    "last_updated": "2020-12-29T09:33:27.002Z"
+    "last_updated": "2026-05-25T19:55:20.608Z"
   },
   "14548": {
     "id": 14548,
@@ -224562,9 +224570,7 @@
       }
     ],
     "categories": [
-      "mineral rich food",
-      "cookery",
-      "core vocabulary-feeding"
+      "condiment"
     ],
     "synsets": [
       "07829083-n"
@@ -224574,7 +224580,9 @@
       "food",
       "mineral rich food",
       "cookery",
-      "core vocabulary"
+      "core vocabulary",
+      "ultra-processed food",
+      "condiment"
     ],
     "sex": false,
     "violence": false,
@@ -224584,7 +224592,7 @@
     "skin": false,
     "hair": false,
     "created": "2011-08-16T20:49:42.000Z",
-    "last_updated": "2021-02-05T08:57:40.856Z"
+    "last_updated": "2026-05-17T07:43:41.524Z"
   },
   "25580": {
     "id": 25580,
@@ -360391,6 +360399,12 @@
         "keyword": "Iguanodón galvensis",
         "plural": "",
         "meaning": "m. Género de dinosaurios ornitópodos iguanodóntidos, que vivieron a principios del período Cretácico, hace aproximadamente 130 a 120 millones de años. En este caso, se trata de un Iguanodón cuyos fósiles se encontraron en la localidad turolense de Galve."
+      },
+      {
+        "type": 2,
+        "keyword": "iguanodonte",
+        "plural": null,
+        "meaning": null
       }
     ],
     "categories": [
@@ -360413,7 +360427,7 @@
     "skin": false,
     "hair": false,
     "created": "2019-03-10T08:56:51.000Z",
-    "last_updated": "2020-05-31T18:15:47.017Z"
+    "last_updated": "2026-05-24T07:02:38.267Z"
   },
   "35005": {
     "id": 35005,
@@ -511237,5 +511251,657 @@
     "hair": false,
     "created": "2026-04-13T10:31:28.956Z",
     "last_updated": "2026-04-13T11:36:15.521Z"
+  },
+  "39858": {
+    "id": 39858,
+    "keywords": [
+      {
+        "type": 3,
+        "keyword": "gratinar",
+        "plural": null,
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "verb",
+      "electrical appliance",
+      "cookery"
+    ],
+    "synsets": [],
+    "tags": [
+      "communication",
+      "language",
+      "verb",
+      "object",
+      "appliance",
+      "electrical appliance",
+      "home",
+      "feeding",
+      "cookery"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.459Z",
+    "last_updated": "2026-05-13T11:44:21.585Z"
+  },
+  "39861": {
+    "id": 39861,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "valla",
+        "plural": "vallas",
+        "meaning": null
+      },
+      {
+        "type": 2,
+        "keyword": "verja",
+        "plural": "verjas",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "architectural element"
+    ],
+    "synsets": [],
+    "tags": [
+      "architecture",
+      "building",
+      "architectural element"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.459Z",
+    "last_updated": "2026-05-13T15:26:07.719Z"
+  },
+  "39862": {
+    "id": 39862,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "baúl de jardín",
+        "plural": "baúles de jardín",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "furniture",
+      "gardening"
+    ],
+    "synsets": [],
+    "tags": [
+      "object",
+      "furniture",
+      "work",
+      "primary sector",
+      "gardening"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.459Z",
+    "last_updated": "2026-05-13T15:29:53.714Z"
+  },
+  "39863": {
+    "id": 39863,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "bobina de cable",
+        "plural": "bobinas de cable",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "furniture",
+      "gardening",
+      "work tool"
+    ],
+    "synsets": [],
+    "tags": [
+      "object",
+      "furniture",
+      "work",
+      "primary sector",
+      "gardening",
+      "tool"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.459Z",
+    "last_updated": "2026-05-13T15:56:41.703Z"
+  },
+  "39864": {
+    "id": 39864,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "afta",
+        "plural": "aftas",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "symptom"
+    ],
+    "synsets": [],
+    "tags": [
+      "health",
+      "medicine",
+      "symptom"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.459Z",
+    "last_updated": "2026-05-13T11:48:54.721Z"
+  },
+  "39865": {
+    "id": 39865,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "reloj de lava",
+        "plural": "relojes de lava",
+        "meaning": null
+      },
+      {
+        "type": 2,
+        "keyword": "reloj de burbujas",
+        "plural": "relojes de burbujas",
+        "meaning": null
+      },
+      {
+        "type": 2,
+        "keyword": "reloj de líquido",
+        "plural": "relojes de líquido",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "sensory stimulation material",
+      "chronological device",
+      "chronological instrument"
+    ],
+    "synsets": [],
+    "tags": [
+      "object",
+      "sensory stimulation",
+      "appliance",
+      "time",
+      "chronological device"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.459Z",
+    "last_updated": "2026-05-13T16:05:45.254Z"
+  },
+  "39866": {
+    "id": 39866,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "rodillera",
+        "plural": "rodilleras",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "orthopedic product"
+    ],
+    "synsets": [],
+    "tags": [
+      "object",
+      "orthopedic product"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": true,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.459Z",
+    "last_updated": "2026-05-13T11:41:18.454Z"
+  },
+  "39867": {
+    "id": 39867,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "tobillera",
+        "plural": "tobilleras",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "orthopedic product"
+    ],
+    "synsets": [],
+    "tags": [
+      "object",
+      "orthopedic product"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.459Z",
+    "last_updated": "2026-05-13T11:34:59.748Z"
+  },
+  "39868": {
+    "id": 39868,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "muñequera",
+        "plural": "muñequeras",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "orthopedic product"
+    ],
+    "synsets": [],
+    "tags": [
+      "object",
+      "orthopedic product"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.459Z",
+    "last_updated": "2026-05-13T11:33:41.944Z"
+  },
+  "39869": {
+    "id": 39869,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "pastillero",
+        "plural": "pastilleros",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "medicament",
+      "nursing equipment"
+    ],
+    "synsets": [],
+    "tags": [
+      "health",
+      "medicine",
+      "medicament",
+      "medical equipment",
+      "nursing equipment"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.459Z",
+    "last_updated": "2026-05-13T16:15:47.189Z"
+  },
+  "39870": {
+    "id": 39870,
+    "keywords": [
+      {
+        "type": 3,
+        "keyword": "meter el dedo en el ojo",
+        "plural": null,
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "verb",
+      "disruptive behavior"
+    ],
+    "synsets": [],
+    "tags": [
+      "communication",
+      "language",
+      "verb",
+      "psychology",
+      "disruptive behavior"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": true,
+    "aac": false,
+    "aac_color": false,
+    "skin": true,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.459Z",
+    "last_updated": "2026-05-13T16:17:55.823Z"
+  },
+  "39871": {
+    "id": 39871,
+    "keywords": [
+      {
+        "type": 3,
+        "keyword": "tapar los oídos",
+        "plural": null,
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "verb"
+    ],
+    "synsets": [],
+    "tags": [
+      "communication",
+      "language",
+      "verb"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": true,
+    "aac": false,
+    "aac_color": false,
+    "skin": true,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.459Z",
+    "last_updated": "2026-05-13T16:20:33.950Z"
+  },
+  "39872": {
+    "id": 39872,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "bolsa de orina pediátrica",
+        "plural": null,
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "nursing equipment"
+    ],
+    "synsets": [],
+    "tags": [
+      "health",
+      "medicine",
+      "medical equipment",
+      "nursing equipment"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": true,
+    "created": "2026-05-13T11:26:14.459Z",
+    "last_updated": "2026-05-13T16:38:41.971Z"
+  },
+  "39873": {
+    "id": 39873,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "úvula",
+        "plural": "úvulas",
+        "meaning": null
+      },
+      {
+        "type": 2,
+        "keyword": "campanilla",
+        "plural": "campanillas",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "human anatomy",
+      "digestive system",
+      "odontology"
+    ],
+    "synsets": [],
+    "tags": [
+      "human body",
+      "anatomy",
+      "human anatomy",
+      "human physiology",
+      "physiology",
+      "digestive system",
+      "health",
+      "odontology"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.459Z",
+    "last_updated": "2026-05-13T16:13:24.732Z"
+  },
+  "39874": {
+    "id": 39874,
+    "keywords": [
+      {
+        "type": 3,
+        "keyword": "recolectar",
+        "plural": null,
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "verb",
+      "agriculture"
+    ],
+    "synsets": [],
+    "tags": [
+      "communication",
+      "language",
+      "verb",
+      "work",
+      "primary sector",
+      "agriculture"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": true,
+    "aac": false,
+    "aac_color": false,
+    "skin": true,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.459Z",
+    "last_updated": "2026-05-13T16:43:32.197Z"
+  },
+  "39875": {
+    "id": 39875,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "encía",
+        "plural": "encías",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "human anatomy",
+      "digestive system",
+      "odontology"
+    ],
+    "synsets": [],
+    "tags": [
+      "human body",
+      "anatomy",
+      "human anatomy",
+      "human physiology",
+      "physiology",
+      "digestive system",
+      "health",
+      "odontology"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.459Z",
+    "last_updated": "2026-05-13T11:51:27.475Z"
+  },
+  "39876": {
+    "id": 39876,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "colegio de abogados",
+        "plural": null,
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "group",
+      "law",
+      "signaling system"
+    ],
+    "synsets": [],
+    "tags": [
+      "person",
+      "group",
+      "law",
+      "communication",
+      "signaling system"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": true,
+    "hair": true,
+    "created": "2026-05-13T11:26:14.460Z",
+    "last_updated": "2026-05-13T16:39:39.603Z"
+  },
+  "39877": {
+    "id": 39877,
+    "keywords": [
+      {
+        "type": 3,
+        "keyword": "lanzar",
+        "plural": null,
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "verb",
+      "physical exercise"
+    ],
+    "synsets": [],
+    "tags": [
+      "communication",
+      "language",
+      "verb",
+      "leisure",
+      "sport",
+      "physical exercise"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": true,
+    "aac": false,
+    "aac_color": false,
+    "skin": true,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.460Z",
+    "last_updated": "2026-05-13T16:42:22.165Z"
+  },
+  "39879": {
+    "id": 39879,
+    "keywords": [
+      {
+        "type": 3,
+        "keyword": "dejar",
+        "plural": null,
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "verb"
+    ],
+    "synsets": [],
+    "tags": [
+      "communication",
+      "language",
+      "verb"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": true,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.460Z",
+    "last_updated": "2026-05-13T15:21:40.666Z"
+  },
+  "39880": {
+    "id": 39880,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "psicología",
+        "plural": null,
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "psychology"
+    ],
+    "synsets": [],
+    "tags": [
+      "psychology"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": true,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.460Z",
+    "last_updated": "2026-05-13T15:19:43.599Z"
   }
 }

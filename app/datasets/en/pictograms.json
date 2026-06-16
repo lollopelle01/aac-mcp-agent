@@ -4181,7 +4181,8 @@
       "work",
       "primary sector",
       "hunting",
-      "core vocabulary"
+      "core vocabulary",
+      "cattle farming"
     ],
     "sex": false,
     "violence": false,
@@ -4191,7 +4192,7 @@
     "skin": false,
     "hair": false,
     "created": "2007-12-13T11:02:48.000Z",
-    "last_updated": "2021-02-05T09:02:57.037Z"
+    "last_updated": "2026-05-28T12:40:51.393Z"
   },
   "2353": {
     "id": 2353,
@@ -70316,7 +70317,7 @@
     "skin": true,
     "hair": true,
     "created": "2008-10-27T12:16:51.000Z",
-    "last_updated": "2025-12-18T15:49:37.312Z"
+    "last_updated": "2026-05-25T12:46:49.043Z"
   },
   "5943": {
     "id": 5943,
@@ -103210,7 +103211,7 @@
     "id": 7227,
     "keywords": [
       {
-        "type": 3,
+        "type": 2,
         "keyword": "harvest",
         "plural": null,
         "meaning": "tr. Reap the fruits of the field"
@@ -103245,7 +103246,7 @@
     "skin": true,
     "hair": true,
     "created": "2009-01-21T12:47:18.000Z",
-    "last_updated": "2024-12-12T13:14:53.871Z"
+    "last_updated": "2026-05-13T16:43:44.938Z"
   },
   "7228": {
     "id": 7228,
@@ -176877,7 +176878,8 @@
     "tags": [
       "health",
       "medicine",
-      "disease"
+      "disease",
+      "work"
     ],
     "sex": false,
     "violence": false,
@@ -176887,7 +176889,7 @@
     "skin": true,
     "hair": true,
     "created": "2010-03-21T13:00:40.000Z",
-    "last_updated": "2020-12-29T09:33:27.002Z"
+    "last_updated": "2026-05-25T19:55:20.608Z"
   },
   "14550": {
     "id": 14550,
@@ -240209,9 +240211,7 @@
       }
     ],
     "categories": [
-      "mineral rich food",
-      "cookery",
-      "core vocabulary-feeding"
+      "condiment"
     ],
     "synsets": [
       "07829083-n"
@@ -240221,7 +240221,9 @@
       "food",
       "mineral rich food",
       "cookery",
-      "core vocabulary"
+      "core vocabulary",
+      "ultra-processed food",
+      "condiment"
     ],
     "sex": false,
     "violence": false,
@@ -240231,7 +240233,7 @@
     "skin": false,
     "hair": false,
     "created": "2011-08-16T20:49:42.000Z",
-    "last_updated": "2021-02-05T08:57:40.856Z"
+    "last_updated": "2026-05-17T07:43:41.524Z"
   },
   "25524": {
     "id": 25524,
@@ -544152,5 +544154,759 @@
     "hair": false,
     "created": "2026-04-13T10:31:28.954Z",
     "last_updated": "2026-04-13T11:36:11.282Z"
+  },
+  "39858": {
+    "id": 39858,
+    "keywords": [
+      {
+        "type": 3,
+        "keyword": "brown",
+        "plural": null,
+        "meaning": null
+      },
+      {
+        "type": 3,
+        "keyword": "broil",
+        "plural": null,
+        "meaning": null
+      },
+      {
+        "type": 3,
+        "keyword": "grill",
+        "plural": null,
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "verb",
+      "electrical appliance",
+      "cookery"
+    ],
+    "synsets": [],
+    "tags": [
+      "communication",
+      "language",
+      "verb",
+      "object",
+      "appliance",
+      "electrical appliance",
+      "home",
+      "feeding",
+      "cookery"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.455Z",
+    "last_updated": "2026-05-13T11:44:26.219Z"
+  },
+  "39861": {
+    "id": 39861,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "fence",
+        "plural": "fences",
+        "meaning": null
+      },
+      {
+        "type": 2,
+        "keyword": "metal fence",
+        "plural": "metal fences",
+        "meaning": null
+      },
+      {
+        "type": 2,
+        "keyword": "iron fence",
+        "plural": "iron fences",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "architectural element"
+    ],
+    "synsets": [],
+    "tags": [
+      "architecture",
+      "building",
+      "architectural element"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.455Z",
+    "last_updated": "2026-05-13T15:26:03.556Z"
+  },
+  "39862": {
+    "id": 39862,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "garden storage box",
+        "plural": "garden storage boxes",
+        "meaning": null
+      },
+      {
+        "type": 2,
+        "keyword": "deck box",
+        "plural": "deck boxes",
+        "meaning": null
+      },
+      {
+        "type": 2,
+        "keyword": "garden storage chest",
+        "plural": "garden storage chests",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "furniture",
+      "gardening"
+    ],
+    "synsets": [],
+    "tags": [
+      "object",
+      "furniture",
+      "work",
+      "primary sector",
+      "gardening"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.455Z",
+    "last_updated": "2026-05-13T15:30:04.745Z"
+  },
+  "39863": {
+    "id": 39863,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "cable reel",
+        "plural": "cable reels",
+        "meaning": null
+      },
+      {
+        "type": 2,
+        "keyword": "spool table",
+        "plural": "spool tables",
+        "meaning": null
+      },
+      {
+        "type": 2,
+        "keyword": "cable reel table",
+        "plural": "cable reel tables",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "furniture",
+      "gardening",
+      "work tool"
+    ],
+    "synsets": [],
+    "tags": [
+      "object",
+      "furniture",
+      "work",
+      "primary sector",
+      "gardening",
+      "tool"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.455Z",
+    "last_updated": "2026-05-13T15:56:47.174Z"
+  },
+  "39864": {
+    "id": 39864,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "canker sore",
+        "plural": "canker sores",
+        "meaning": null
+      },
+      {
+        "type": 2,
+        "keyword": "mouth ulcer",
+        "plural": "mouth ulcers",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "symptom"
+    ],
+    "synsets": [],
+    "tags": [
+      "health",
+      "medicine",
+      "symptom"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.455Z",
+    "last_updated": "2026-05-13T11:48:50.558Z"
+  },
+  "39865": {
+    "id": 39865,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "liquid motion timer",
+        "plural": "liquid motion timers",
+        "meaning": null
+      },
+      {
+        "type": 2,
+        "keyword": "bubble timer",
+        "plural": "bubble timers",
+        "meaning": null
+      },
+      {
+        "type": 2,
+        "keyword": "oil drip timer",
+        "plural": "oil drip timers",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "sensory stimulation material",
+      "chronological device",
+      "chronological instrument"
+    ],
+    "synsets": [],
+    "tags": [
+      "object",
+      "sensory stimulation",
+      "appliance",
+      "time",
+      "chronological device"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.455Z",
+    "last_updated": "2026-05-13T16:04:10.766Z"
+  },
+  "39866": {
+    "id": 39866,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "knee brace",
+        "plural": "knee braces",
+        "meaning": null
+      },
+      {
+        "type": 2,
+        "keyword": "knee support",
+        "plural": "knee supports",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "orthopedic product"
+    ],
+    "synsets": [],
+    "tags": [
+      "object",
+      "orthopedic product"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": true,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.455Z",
+    "last_updated": "2026-05-13T11:41:05.780Z"
+  },
+  "39867": {
+    "id": 39867,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "ankle brace",
+        "plural": "ankle braces",
+        "meaning": null
+      },
+      {
+        "type": 2,
+        "keyword": "ankle support",
+        "plural": "ankle supports",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "orthopedic product"
+    ],
+    "synsets": [],
+    "tags": [
+      "object",
+      "orthopedic product"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.455Z",
+    "last_updated": "2026-05-13T11:34:55.593Z"
+  },
+  "39868": {
+    "id": 39868,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "wrist brace",
+        "plural": "wrist braces",
+        "meaning": null
+      },
+      {
+        "type": 2,
+        "keyword": "wrist support",
+        "plural": "wrist supports",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "orthopedic product"
+    ],
+    "synsets": [],
+    "tags": [
+      "object",
+      "orthopedic product"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.455Z",
+    "last_updated": "2026-05-13T11:33:37.815Z"
+  },
+  "39869": {
+    "id": 39869,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "pill organizer",
+        "plural": "pill organizers",
+        "meaning": null
+      },
+      {
+        "type": 2,
+        "keyword": "weekly pill organizer",
+        "plural": "weekly pill organizers",
+        "meaning": null
+      },
+      {
+        "type": 2,
+        "keyword": "pill case",
+        "plural": "pill cases",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "medicament",
+      "nursing equipment"
+    ],
+    "synsets": [],
+    "tags": [
+      "health",
+      "medicine",
+      "medicament",
+      "medical equipment",
+      "nursing equipment"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.455Z",
+    "last_updated": "2026-05-13T16:15:43.134Z"
+  },
+  "39870": {
+    "id": 39870,
+    "keywords": [
+      {
+        "type": 3,
+        "keyword": "poke in the eye",
+        "plural": null,
+        "meaning": null
+      },
+      {
+        "type": 3,
+        "keyword": "poke someone in the eye",
+        "plural": null,
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "verb",
+      "disruptive behavior"
+    ],
+    "synsets": [],
+    "tags": [
+      "communication",
+      "language",
+      "verb",
+      "psychology",
+      "disruptive behavior"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": true,
+    "aac": false,
+    "aac_color": false,
+    "skin": true,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.455Z",
+    "last_updated": "2026-05-13T16:17:50.610Z"
+  },
+  "39871": {
+    "id": 39871,
+    "keywords": [
+      {
+        "type": 3,
+        "keyword": "cover the ears",
+        "plural": null,
+        "meaning": null
+      },
+      {
+        "type": 3,
+        "keyword": "plug the ears",
+        "plural": null,
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "verb"
+    ],
+    "synsets": [],
+    "tags": [
+      "communication",
+      "language",
+      "verb"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": true,
+    "aac": false,
+    "aac_color": false,
+    "skin": true,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.455Z",
+    "last_updated": "2026-05-13T16:20:29.882Z"
+  },
+  "39872": {
+    "id": 39872,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "urine bag",
+        "plural": "urine bags",
+        "meaning": null
+      },
+      {
+        "type": 2,
+        "keyword": "urine collection bag",
+        "plural": "urine collection bags",
+        "meaning": null
+      },
+      {
+        "type": 2,
+        "keyword": "urinary drainage bag",
+        "plural": "urinary drainage bags",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "nursing equipment"
+    ],
+    "synsets": [],
+    "tags": [
+      "health",
+      "medicine",
+      "medical equipment",
+      "nursing equipment"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": true,
+    "created": "2026-05-13T11:26:14.455Z",
+    "last_updated": "2026-05-13T16:38:36.918Z"
+  },
+  "39873": {
+    "id": 39873,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "uvula",
+        "plural": "uvulas",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "human anatomy",
+      "digestive system",
+      "odontology"
+    ],
+    "synsets": [],
+    "tags": [
+      "human body",
+      "anatomy",
+      "human anatomy",
+      "human physiology",
+      "physiology",
+      "digestive system",
+      "health",
+      "odontology"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.455Z",
+    "last_updated": "2026-05-13T16:13:22.143Z"
+  },
+  "39874": {
+    "id": 39874,
+    "keywords": [
+      {
+        "type": 3,
+        "keyword": "pick",
+        "plural": null,
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "verb",
+      "agriculture"
+    ],
+    "synsets": [],
+    "tags": [
+      "communication",
+      "language",
+      "verb",
+      "work",
+      "primary sector",
+      "agriculture"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": true,
+    "aac": false,
+    "aac_color": false,
+    "skin": true,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.455Z",
+    "last_updated": "2026-05-13T16:44:27.686Z"
+  },
+  "39875": {
+    "id": 39875,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "gum",
+        "plural": "gums",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "human anatomy",
+      "digestive system",
+      "odontology"
+    ],
+    "synsets": [],
+    "tags": [
+      "human body",
+      "anatomy",
+      "human anatomy",
+      "human physiology",
+      "physiology",
+      "digestive system",
+      "health",
+      "odontology"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.455Z",
+    "last_updated": "2026-05-13T11:51:23.208Z"
+  },
+  "39876": {
+    "id": 39876,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "bar association",
+        "plural": "bar associations",
+        "meaning": null
+      },
+      {
+        "type": 2,
+        "keyword": "law society",
+        "plural": "law societies",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "group",
+      "law",
+      "signaling system"
+    ],
+    "synsets": [],
+    "tags": [
+      "person",
+      "group",
+      "law",
+      "communication",
+      "signaling system"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": true,
+    "hair": true,
+    "created": "2026-05-13T11:26:14.455Z",
+    "last_updated": "2026-05-13T16:40:27.158Z"
+  },
+  "39877": {
+    "id": 39877,
+    "keywords": [
+      {
+        "type": 3,
+        "keyword": "throw",
+        "plural": null,
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "verb",
+      "physical exercise"
+    ],
+    "synsets": [],
+    "tags": [
+      "communication",
+      "language",
+      "verb",
+      "leisure",
+      "sport",
+      "physical exercise"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": true,
+    "aac": false,
+    "aac_color": false,
+    "skin": true,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.455Z",
+    "last_updated": "2026-05-13T16:42:15.202Z"
+  },
+  "39879": {
+    "id": 39879,
+    "keywords": [
+      {
+        "type": 3,
+        "keyword": "leave",
+        "plural": null,
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "verb"
+    ],
+    "synsets": [],
+    "tags": [
+      "communication",
+      "language",
+      "verb"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": true,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.456Z",
+    "last_updated": "2026-05-13T15:21:34.913Z"
+  },
+  "39880": {
+    "id": 39880,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "psychology",
+        "plural": null,
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "psychology"
+    ],
+    "synsets": [],
+    "tags": [
+      "psychology"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": true,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.456Z",
+    "last_updated": "2026-05-13T15:19:40.390Z"
   }
 }

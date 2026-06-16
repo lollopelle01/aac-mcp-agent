@@ -31,6 +31,7 @@ AGENT_MEMORY_TURNS        = _s.agent_memory_turns
 AGENT_FETCH_SCHEDULE      = _s.agent_fetch_schedule
 AGENT_SYNSET_EXPAND       = _s.agent_synset_expand
 AGENT_SYNSET_EXPAND_MAX   = _s.agent_synset_expand_max
+AGENT_USE_TWO_PHASE       = _s.agent_use_two_phase
 
 
 ####### Sensitive credentials from .env ##################################

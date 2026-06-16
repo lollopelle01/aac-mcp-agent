@@ -1,19 +1,10 @@
 from __future__ import annotations
 
-import json
 import logging
-import re
 import time
 from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Optional
-
-try:
-    import ollama as _ollama
-    _OLLAMA_AVAILABLE = True
-except ImportError:
-    _ollama = None  # type: ignore[assignment]
-    _OLLAMA_AVAILABLE = False
 
 from config import (
     AGENT_CANDIDATES_PER_TERM,
@@ -23,88 +14,121 @@ from config import (
     AGENT_MEMORY_TURNS,
     AGENT_SYNSET_EXPAND,
     AGENT_SYNSET_EXPAND_MAX,
+    AGENT_USE_TWO_PHASE,
     LANG,
     MODELS,
 )
-from mcp_server.models import Pictogram, ScheduleEvent, TimeInfo
-from mcp_server.tools.arasaac       import list_keywords, search_pictograms, search_pictograms_by_synset
-from agent.resolve import resolve_concept, RESOLVE_METHODS
-from mcp_server.tools.schedule_tool import get_schedule
-from mcp_server.tools.time_tool     import get_time
-from agent.prompts import build_planner_prompt, build_planner_message
-from agent.session import SessionMemory, Turn, _nlp
-from agent.backends import LLMBackend
+from mcp_server.models import Pictogram
+from mcp_server.tools.arasaac import list_keywords, search_pictograms, search_pictograms_by_synset
+from agent.resolve import resolve_concept
+from agent.prompts import (
+    build_planner_prompt,
+    build_planner_message,
+    parse_planner_response,
+    build_decision_prompt,
+    parse_decision_response,
+    parse_new_planner_response,
+)
+from agent.context import (
+    collect_context,
+    filter_schedule_by_time,
+    terms_from_schedule,
+    build_context_block,
+)
+from agent.session import SessionMemory, Turn
+from agent.backends import LLMBackend, OllamaBackend
+from agent.ranking import rank_and_fill
 
-logger      = logging.getLogger(__name__)
-agent_log   = logging.getLogger("agent.run")
-
-_SEP = "─" * 60
+logger    = logging.getLogger(__name__)
+agent_log = logging.getLogger("agent.run")
 
 
+### Eval context #################################################################
 @dataclass
 class EvalContext:
     """Frozen tool outputs injected during evaluation to replace live MCP calls."""
-    mock_time:     Optional[dict]       = None
-    mock_schedule: Optional[list[dict]] = None
-    tool_calls:    list[str]            = field(default_factory=list)
+    mock_time:          Optional[dict]       = None
+    mock_schedule:      Optional[list[dict]] = None
+    mock_needs_context: Optional[bool]       = None   # bypass decision LLM in eval
+    tool_calls:         list[str]            = field(default_factory=list)
 
 
-def _log_sep(turn_id: int, label: str) -> None:
-    agent_log.info("\n%s\n── Turn %d | %s\n%s", _SEP, turn_id, label, _SEP)
-
+################################################################################################################################################
+# AGENT                                                                                                                                        #
+################################################################################################################################################
 
 class AACAgent:
     """AAC pictogram selection agent with per-session memory.
 
-    Design: one LLM call per turn (planner only).
-    Candidate ranking is deterministic — no second LLM call.
-    The window is always filled to exactly `max_results` pictograms;
-    already-selected pictograms are excluded from subsequent windows.
+    Two-phase pipeline (when use_two_phase=True, the default):
+      Phase 1 DECISION  — fast LLM call: does this input need time/schedule context?
+      Phase 2 CONTEXT   — MCP tools (get_time, get_schedule) only if needed
+      Phase 3 PLANNING  — LLM planner with full context already available
+      Phase 4 RETRIEVAL — keyword search on ARASAAC
+      Phase 5 SYNSET    — optional pool expansion via synset siblings
+      Phase 6 RANKING   — deterministic ranking + window fill
 
-    Backend resolution order
-    ------------------------
-    1. ``backend`` argument (LlamaCppBackend, HuggingFaceBackend, …) — used
-       when explicitly provided.  This is how the FastAPI server and both eval
-       notebooks instantiate the agent.
-    2. Ollama HTTP — used when ``backend`` is None.  Requires the Ollama daemon
-       to be running locally (production fallback, legacy path).
+    Legacy mode (use_two_phase=False): single LLM call that returns call_tools + concepts,
+    context collected after. Kept for backward compatibility with eval scripts.
 
-    Unloading
-    ---------
+    Backend: pass a ``LLMBackend`` instance (LlamaCppBackend, HuggingFaceBackend,
+    OllamaBackend) or leave ``backend=None`` to auto-build an OllamaBackend from
+    the model alias and its parameters in MODELS.
     Call ``agent.unload()`` between models in a multi-model eval loop.
-    It delegates to ``backend.unload()`` if the backend implements it
-    (HuggingFaceBackend frees GPU memory; LlamaCppBackend frees the GGUF from
-    RAM).  Safe to call on an Ollama-backed agent — it is a no-op.
     """
 
     def __init__(
         self,
-        model:          str                    = AGENT_DEFAULT_MODEL,
-        lang:           str                    = LANG,
-        max_results:    int                    = AGENT_MAX_RESULTS,
-        fetch_schedule: bool                   = AGENT_FETCH_SCHEDULE,
-        synset_expand:  bool                   = AGENT_SYNSET_EXPAND,
-        backend:        Optional[LLMBackend]   = None,
+        model:            str                  = AGENT_DEFAULT_MODEL,
+        lang:             str                  = LANG,
+        max_results:      int                  = AGENT_MAX_RESULTS,
+        fetch_schedule:   bool                 = AGENT_FETCH_SCHEDULE,
+        synset_expand:    bool                 = AGENT_SYNSET_EXPAND,
+        ranking_strategy: str                  = "sequential_blocks",
+        use_two_phase:    bool                 = AGENT_USE_TWO_PHASE,
+        backend:          Optional[LLMBackend] = None,
     ) -> None:
-        self.model          = model
-        self.lang           = lang
-        self.max_results    = max_results
-        self.fetch_schedule = fetch_schedule
-        self.synset_expand  = synset_expand
-        self.backend        = backend   # if set, used instead of Ollama in _plan()
-        self.memory         = SessionMemory()
-        self._eval_ctx:     Optional[EvalContext] = None
-        self._kw_set:       set[str]              = self._load_kw_set()
-        self._concept_order: dict[int, int]       = {}   # pid → concept index, set per turn
-        self.last_candidates: list[Pictogram]     = []
-        self.last_call_tools: bool                = False  # exposed to API
-        self.last_resolve_info: list[dict]        = []     # exposed to eval: [{concept, queries, method}]
-        self.last_plan_method: str                = "llm"  # exposed to eval: "llm" | "fallback_spacy" | "fallback_empty"
-        self.last_synset_added: int               = 0      # exposed to eval: pictograms added by synset expansion
-        self.last_fresh_count: int                = 0      # exposed to eval: pictograms from fresh pool (not stale padding)
-        self.last_pool_ids: list[int]             = []     # exposed to eval: full ranked candidate pool, pre-window-truncation
+        self.model            = model
+        self.lang             = lang
+        self.max_results      = max_results
+        self.fetch_schedule   = fetch_schedule
+        self.synset_expand    = synset_expand
+        self.ranking_strategy = ranking_strategy
+        self.use_two_phase    = use_two_phase
+        self.memory           = SessionMemory()
 
-    # ── Public ────────────────────────────────────────────────────────────────
+        # If no backend is provided, build an OllamaBackend from the model alias.
+        # Parameters (num_predict, num_ctx) come from MODELS so the planner stays
+        # within the same token budget regardless of which code path is used.
+        if backend is not None:
+            self.backend: LLMBackend = backend
+        else:
+            model_meta = MODELS.get(model, {})
+            self.backend = OllamaBackend(
+                model       = model,
+                num_predict = model_meta.get("num_predict", 150),
+                num_ctx     = model_meta.get("num_ctx", 512),
+            )
+
+        self._eval_ctx:      Optional[EvalContext] = None
+        self._kw_set:        set[str]              = self._load_kw_set()
+        self._concept_order: dict[int, int]        = {}  # pid -> concept index, refreshed per turn
+
+        # Diagnostic fields exposed to the API and eval notebooks
+        self.last_candidates:      list[Pictogram] = []
+        self.last_call_tools:      bool            = False   # backward compat: True ↔ needs_context
+        self.last_resolve_info:    list[dict]      = []      # [{concept, queries, method}]
+        self.last_plan_method:     str             = "llm"   # "llm" | "fallback_spacy" | "fallback_empty"
+        self.last_synset_added:    int             = 0       # pictograms added by synset expansion
+        self.last_pool_ids:        list[int]       = []      # full ranked candidate pool, before window cut
+        self.last_needs_context:   bool            = False   # result of decision call
+        self.last_decision_reason: str             = ""      # reason string from decision call
+        self.last_context_block:   str             = ""      # context_block injected into planner
+        self.last_tool_calls:      list[str]       = []      # MCP tools actually called this turn
+
+    #######################################################################################################
+    # Public API                                                                                          #
+    #######################################################################################################
 
     def run(
         self,
@@ -112,61 +136,109 @@ class AACAgent:
         *,
         eval_ctx: Optional[EvalContext] = None,
     ) -> list[Pictogram]:
-        """Execute one agent turn and return the window of pictograms.
+        """Execute one turn: decide -> [context tools] -> plan -> search -> [synset expand] -> rank."""
 
-        Pipeline (single LLM call):
-          1. Planner LLM → call_tools + concepts
-          2. Optional: get_time / get_schedule (if call_tools=True)
-          3. Keyword search → candidate pool
-          4. Synset expansion (if enabled)
-          5. Deterministic ranking → exclude already-shown → fill window
-        """
         _t_run_start = time.perf_counter()
         self._eval_ctx = eval_ctx
         turn_id = self.memory.turn_count + 1
         logger.info("── Turn %d ── %r", turn_id, raw_input)
-        _log_sep(turn_id, "START")
         agent_log.info("User: %r", raw_input)
 
-        # ── Phase 1: planning (LLM) ───────────────────────────────────────────
-        history    = self.memory.prompt_summary(AGENT_MEMORY_TURNS)
-        agent_log.info("[TIMING] run→plan: %.2fs", time.perf_counter() - _t_run_start)
-        call_tools, concepts = self._plan(raw_input, history, turn_id)
-        self.last_call_tools = call_tools
+        history = self.memory.prompt_summary(AGENT_MEMORY_TURNS)
 
-        if not concepts:
-            base     = self._extract_terms(raw_input)
-            concepts = self._enrich_terms(base)
-            self.last_plan_method = "fallback_empty" if not raw_input.strip() else "fallback_spacy"
-            agent_log.info("[PLAN]   no concepts from LLM — fallback: %s  [plan_method=%s]", concepts, self.last_plan_method)
+        ####################################################################################################
+        # Phase 1: DECISION                                                                                #
+        ####################################################################################################
+
+        agent_log.info("[TIMING] run→decide: %.2fs", time.perf_counter() - _t_run_start)
+
+        if self.use_two_phase and raw_input.strip():
+            needs_context, reason = self._decide(raw_input, history)
         else:
-            self.last_plan_method = "llm"
+            # Legacy mode or empty input: skip decision, always collect context
+            needs_context = True
+            reason        = "legacy_mode"
 
-        # ── Phase 2: context enrichment (only when planner says so) ──────────
-        if call_tools:
-            time_of_day, schedule_events = self._collect_context(raw_input, turn_id)
+        ####################################################################################################
+        # Phase 2: CONTEXT (MCP tools — only if needed)                                                   #
+        ####################################################################################################
+
+        context_block:   str            = ""
+        time_of_day:     Optional[str]  = None
+        schedule_events: list           = []
+        tool_calls_done: list[str]      = []
+
+        if needs_context:
+            time_of_day, schedule_events = collect_context(self._eval_ctx, self.fetch_schedule)
+            tool_calls_done.append("get_time")
             if schedule_events:
-                # Filter to the single closest event to avoid distractor events
-                # from bleeding into the concept pool via _terms_from_schedule().
-                # This path is identical in production (live tools) and eval (mocks).
-                relevant = self._filter_schedule_by_time(schedule_events, time_of_day)
-                sched_terms = self._terms_from_schedule(relevant)
+                tool_calls_done.append("get_schedule")
+                relevant      = filter_schedule_by_time(schedule_events, time_of_day)
+                context_block = build_context_block(time_of_day, relevant)
+            agent_log.info(
+                "[CTX]    tool_calls=%s  events=%d  context_block=%r",
+                tool_calls_done,
+                len(schedule_events),
+                context_block[:80],
+            )
+        else:
+            agent_log.info(
+                "[CTX]    skipped — decision: needs_context=False  reason=%r", reason
+            )
+
+        # Update diagnostic fields
+        self.last_tool_calls       = tool_calls_done
+        self.last_needs_context    = needs_context
+        self.last_decision_reason  = reason
+        self.last_context_block    = context_block
+        self.last_call_tools       = needs_context   # backward compat for server.py / eval
+
+        ####################################################################################################
+        # Phase 3: PLANNING (LLM with context already available)                                          #
+        ####################################################################################################
+
+        agent_log.info("[TIMING] run→plan: %.2fs", time.perf_counter() - _t_run_start)
+
+        if self.use_two_phase:
+            concepts = self._plan(raw_input, history, context_block=context_block)
+        else:
+            # Legacy mode: old planner returns (call_tools, concepts)
+            _call_tools_legacy, concepts = self._plan_legacy(raw_input, history)
+            self.last_call_tools = _call_tools_legacy
+            # In legacy mode context was already collected above (needs_context=True always);
+            # inject schedule terms as the old flow did
+            if _call_tools_legacy and schedule_events:
+                relevant    = filter_schedule_by_time(schedule_events, time_of_day)
+                sched_terms = terms_from_schedule(relevant)
                 for t in sched_terms:
                     if t not in concepts:
                         concepts.append(t)
                 if sched_terms:
                     agent_log.info(
-                        "[CTX]    schedule terms injected (1/%d events used): %s",
-                        len(schedule_events), sched_terms
+                        "[CTX]    schedule terms injected legacy (1/%d events used): %s",
+                        len(schedule_events), sched_terms,
                     )
-        else:
-            time_of_day = None
-            agent_log.info("[CTX]    skipped (planner: input is explicit)")
 
-        # ── Phase 3: retrieval ────────────────────────────────────────────────
-        candidates = self._search_candidates(concepts, turn_id)
+        if not concepts:
+            # LLM returned no concepts: fall back to spaCy term extraction
+            concepts = self._extract_terms(raw_input)
+            self.last_plan_method = "fallback_empty" if not raw_input.strip() else "fallback_spacy"
+            agent_log.info(
+                "[PLAN]   no concepts from LLM — fallback: %s  [plan_method=%s]",
+                concepts, self.last_plan_method,
+            )
+        else:
+            self.last_plan_method = "llm"
+
+        #######################################################################################################################
+        # Phase 4: retrieval                                                                                                  #
+        #######################################################################################################################
+
+        candidates = self._search_candidates(concepts)
+
         if self.synset_expand and candidates:
-            candidates = self._expand_pool_by_synset(candidates, turn_id)
+            candidates = self._expand_pool_by_synset(candidates)
+
         self.last_candidates = list(candidates)
 
         if not candidates:
@@ -175,21 +247,25 @@ class AACAgent:
             self._eval_ctx = None
             return []
 
-        # ── Phase 4: deterministic ranking + window fill ──────────────────────
-        selected_ids = self.memory.recently_selected_ids(n_turns=AGENT_MEMORY_TURNS)
-        result       = self._rank_and_fill(candidates, selected_ids, turn_id)
+        #######################################################################################################################
+        # Phase 5: deterministic ranking + window fill                                                                        #
+        #######################################################################################################################
 
-        # ── Record turn ───────────────────────────────────────────────────────
-        topics = SessionMemory.extract_topics(result)
+        # Exclude only the pictograms the user actually selected (Option A, R22)
+        selected_ids = self.memory.recently_selected_ids(n_turns=AGENT_MEMORY_TURNS)
+        result       = self._rank_and_fill(candidates, selected_ids)
+
+        #######################################################################################################################
+        # Record turn in session memory                                                                                       #
+        #######################################################################################################################
+
         self.memory.add_turn(Turn(
-            turn_id      = turn_id,
-            timestamp    = datetime.now(),
-            raw_input    = raw_input,
-            search_terms = concepts,
-            presented    = list(result),
-            pictograms   = list(result),
-            topics       = topics,
-            time_of_day  = time_of_day,
+            turn_id     = turn_id,
+            timestamp   = datetime.now(),
+            raw_input   = raw_input,
+            presented   = list(result),
+            pictograms  = list(result),
+            time_of_day = time_of_day,
         ))
         self._eval_ctx = None
         agent_log.info(
@@ -204,25 +280,17 @@ class AACAgent:
         logger.info("Session reset.")
 
     def unload(self) -> None:
-        """Release the LLM backend from memory.
-
-        Delegates to ``self.backend.unload()`` when the backend implements it:
-          - HuggingFaceBackend: deletes model/tokenizer objects and clears the
-            CUDA cache — call this between models in a GPU eval loop.
-          - LlamaCppBackend: sets _llm to None so the GGUF is garbage-collected
-            from RAM — useful when running multiple GGUF models sequentially.
-          - OllamaBackend / None: no-op (Ollama manages its own lifecycle).
-
-        Always safe to call regardless of which backend is active.
-        """
-        if self.backend is not None and hasattr(self.backend, "unload"):
+        """Release backend memory (GGUF / GPU). No-op for OllamaBackend. Safe to always call."""
+        if hasattr(self.backend, "unload"):
             self.backend.unload()
-        logger.info("AACAgent.unload() called — backend=%s",
-                    type(self.backend).__name__ if self.backend else "Ollama")
+        logger.info("AACAgent.unload() called — backend=%s", type(self.backend).__name__)
 
-    # ── Init helpers ──────────────────────────────────────────────────────────
+    #########################################################################################################################
+    # Init helpers                                                                                                          #
+    #########################################################################################################################
 
     def _load_kw_set(self) -> set[str]:
+        """Load the full ARASAAC keyword index into a set for O(1) lookups."""
         try:
             raw = list_keywords(lang=self.lang)
             kws = raw.get("keywords", [])
@@ -232,66 +300,108 @@ class AACAgent:
             logger.warning("list_keywords(lang=%r) failed: %s", self.lang, exc)
             return set()
 
-    # ── Phase 1: planner ──────────────────────────────────────────────────────
+    #########################################################################################################################
+    # Phase 1: decision                                                                                                     #
+    #########################################################################################################################
+
+    def _decide(self, raw_input: str, history: str) -> tuple[bool, str]:
+        """Phase 1: fast LLM call to determine if time/schedule context is needed."""
+        # Eval bypass: if mock_needs_context is set, skip the LLM call entirely
+        if self._eval_ctx is not None and self._eval_ctx.mock_needs_context is not None:
+            needs = self._eval_ctx.mock_needs_context
+            agent_log.info("[DECISION] mocked  needs_context=%s", needs)
+            return needs, "mocked"
+
+        _t0        = time.perf_counter()
+        system_msg = build_decision_prompt()
+        user_msg   = build_planner_message(raw_input, history)   # reuses existing builder
+
+        try:
+            raw_text = self.backend.chat(system_msg, user_msg)
+            elapsed  = time.perf_counter() - _t0
+            parsed   = parse_decision_response(raw_text)
+            needs    = bool(parsed.get("needs_context", True))
+            reason   = str(parsed.get("reason", ""))
+            agent_log.info(
+                "[DECISION] needs_context=%s  reason=%r  elapsed=%.2fs  raw=%r",
+                needs, reason, elapsed, raw_text,
+            )
+            return needs, reason
+        except Exception as exc:
+            logger.warning("Decision LLM failed: %s — defaulting needs_context=True", exc)
+            return True, "decision_failed"
+
+    #########################################################################################################################
+    # Phase 3: planner                                                                                                      #
+    #########################################################################################################################
 
     def _plan(
         self,
+        raw_input:     str,
+        history:       str,
+        context_block: str = "",
+    ) -> list[str]:
+        """Phase 3 (two-phase mode): LLM planner. Returns concepts list only; no call_tools."""
+        _t_plan_start = time.perf_counter()
+        system_msg = build_planner_prompt(full=False)
+        user_msg   = build_planner_message(raw_input, history, context_block=context_block)
+
+        agent_log.debug(
+            "[PLAN IN] model=%s\n--- system ---\n%s\n--- user ---\n%s",
+            self.backend.model_id, system_msg, user_msg,
+        )
+
+        try:
+            agent_log.info(
+                "[PLAN CALL] backend=%s  model=%s  pre_call=%.2fs",
+                type(self.backend).__name__, self.backend.model_id,
+                time.perf_counter() - _t_plan_start,
+            )
+            _t0      = time.perf_counter()
+            raw_text = self.backend.chat(system_msg, user_msg)
+            _elapsed = time.perf_counter() - _t0
+            agent_log.info("[PLAN OUT] elapsed=%.2fs  raw=%r", _elapsed, raw_text)
+
+            parsed   = parse_new_planner_response(raw_text)   # no call_tools expected
+            concepts = [str(c).strip() for c in parsed.get("concepts", []) if c]
+            agent_log.info("[PLAN]   concepts=%s  elapsed=%.2fs", concepts, _elapsed)
+            return concepts
+
+        except Exception as exc:
+            logger.warning("Planner LLM failed: %s — falling back to regex.", exc)
+            return []
+
+    def _plan_legacy(
+        self,
         raw_input: str,
-        history: str,
-        turn_id: int,
+        history:   str,
     ) -> tuple[bool, list[str]]:
+        """Legacy planner (use_two_phase=False): returns (call_tools, concepts).
+
+        Kept for backward compatibility with eval scripts that depend on last_call_tools.
+        Body is identical to the original _plan(); only the name changed.
+        """
         _t_plan_start = time.perf_counter()
         system_msg = build_planner_prompt(full=False)
         user_msg   = build_planner_message(raw_input, history)
 
         agent_log.debug(
             "[PLAN IN] model=%s\n--- system ---\n%s\n--- user ---\n%s",
-            self.model, system_msg, user_msg,
+            self.backend.model_id, system_msg, user_msg,
         )
 
         try:
-            # ── pluggable backend (llama.cpp, HuggingFace, …) ────────────────
-            if self.backend is not None:
-                model_label = self.backend.model_id
-                agent_log.info(
-                    "[PLAN CALL] backend=%s  model=%s  pre_backend=%.2fs",
-                    type(self.backend).__name__, model_label,
-                    time.perf_counter() - _t_plan_start,
-                )
-                _t0      = time.perf_counter()
-                raw_text = self.backend.chat(system_msg, user_msg)
-                _elapsed = time.perf_counter() - _t0
-                agent_log.info("[PLAN OUT] elapsed=%.2fs  raw=%r", _elapsed, raw_text)
+            agent_log.info(
+                "[PLAN CALL] backend=%s  model=%s  pre_call=%.2fs",
+                type(self.backend).__name__, self.backend.model_id,
+                time.perf_counter() - _t_plan_start,
+            )
+            _t0      = time.perf_counter()
+            raw_text = self.backend.chat(system_msg, user_msg)
+            _elapsed = time.perf_counter() - _t0
+            agent_log.info("[PLAN OUT] elapsed=%.2fs  raw=%r", _elapsed, raw_text)
 
-            # ── Ollama backend (default) ───────────────────────────────────────
-            else:
-                if not _OLLAMA_AVAILABLE:
-                    raise RuntimeError("ollama not installed — pass a backend= to AACAgent.")
-
-                model_meta  = MODELS.get(self.model, {})
-                num_predict = model_meta.get("num_predict", 150)
-                num_ctx     = model_meta.get("num_ctx", 512)
-                options: dict = {"temperature": 0.0, "num_predict": num_predict, "num_ctx": num_ctx}
-
-                agent_log.info(
-                    "[PLAN CALL] model=%s  num_predict=%d  num_ctx=%d  pre_ollama=%.2fs  options=%s",
-                    self.model, num_predict, num_ctx,
-                    time.perf_counter() - _t_plan_start, options,
-                )
-                _t0 = time.perf_counter()
-                response = _ollama.chat(
-                    model    = self.model,
-                    messages = [
-                        {"role": "system", "content": system_msg},
-                        {"role": "user",   "content": user_msg},
-                    ],
-                    options = options,
-                )
-                _elapsed = time.perf_counter() - _t0
-                raw_text = response["message"]["content"].strip()
-                agent_log.info("[PLAN OUT] elapsed=%.2fs  raw=%r", _elapsed, raw_text)
-
-            parsed     = self._parse_planner_response(raw_text)
+            parsed     = parse_planner_response(raw_text)   # legacy parser — includes call_tools
             call_tools = bool(parsed.get("call_tools", True))
             concepts   = [str(c).strip() for c in parsed.get("concepts", []) if c]
             agent_log.info("[PLAN]   call_tools=%s  concepts=%s", call_tools, concepts)
@@ -301,131 +411,22 @@ class AACAgent:
             logger.warning("Planner LLM failed: %s — falling back to regex.", exc)
             return True, []
 
-    @staticmethod
-    def _parse_planner_response(text: str) -> dict:
-        text = re.sub(r"```(?:json)?", "", text).strip()
+    #########################################################################################################################
+    # Phase 4: search                                                                                                       #
+    #########################################################################################################################
 
-        # Pass 1: standard JSON object
-        match = re.search(r"\{.*\}", text, re.DOTALL)
-        if match:
-            try:
-                return json.loads(match.group())
-            except json.JSONDecodeError:
-                pass
-
-        # Pass 2: enriched regex fallback — try to salvage call_tools + concepts
-        result: dict = {}
-
-        ct_match = re.search(r"call_tools[\s:=]+([Tt]rue|[Ff]alse|1|0)", text)
-        if ct_match:
-            result["call_tools"] = ct_match.group(1).lower() in ("true", "1")
-
-        arr_match = re.search(r"\[\s*[\"'][\w\s]+[\"'](?:\s*,\s*[\"'][\w\s]+[\"'])*\s*\]", text)
-        if arr_match:
-            try:
-                concepts = json.loads(arr_match.group().replace("'", '"'))
-                if isinstance(concepts, list):
-                    result["concepts"] = [str(c) for c in concepts if c]
-            except (json.JSONDecodeError, ValueError):
-                pass
-
-        if "concepts" not in result:
-            kv_match = re.search(
-                r"concepts[\s:=]+([a-zA-Z][\w,\s-]*)", text, re.IGNORECASE
-            )
-            if kv_match:
-                words = [w.strip().strip(',') for w in kv_match.group(1).split(',')]
-                concepts = [w for w in words if w and not w.startswith('{')]
-                if concepts:
-                    result["concepts"] = concepts
-
-        if result:
-            logger.warning(
-                "[FALLBACK] planner JSON malformed — salvaged from text: %s", result
-            )
-            return result
-
-        logger.warning("[FALLBACK] Could not parse planner response at all: %r", text)
-        return {}
-
-    # ── Phase 2: context ──────────────────────────────────────────────────────
-
-    def _collect_context(self, raw_input: str, turn_id: int) -> tuple[Optional[str], list[ScheduleEvent]]:
-        """Call get_time and (optionally) get_schedule.
-
-        Returns (time_of_day, schedule_events).
-        When running under EvalContext, uses mock values instead of live calls.
-        """
-        time_info:   Optional[TimeInfo]  = None
-        schedule:    list[ScheduleEvent] = []
-        time_of_day: Optional[str]       = None
-        ctx = self._eval_ctx
-
-        if ctx is not None:
-            if ctx.mock_time is not None:
-                try:
-                    time_info   = TimeInfo.model_validate(ctx.mock_time)
-                    time_of_day = time_info.time_of_day
-                    ctx.tool_calls.append("get_time")
-                except Exception as exc:
-                    logger.warning("EvalContext mock_time invalid: %s", exc)
-            agent_log.info(
-                "[EVAL]   get_time() mocked → tod=%r  dt=%s",
-                time_of_day,
-                time_info.current_dt.isoformat() if time_info else "N/A",
-            )
-        else:
-            try:
-                time_raw    = get_time()
-                time_info   = TimeInfo.model_validate(time_raw)
-                time_of_day = time_info.time_of_day
-            except Exception as exc:
-                logger.warning("get_time() failed: %s", exc)
-            agent_log.info(
-                "[TOOL]   get_time() → tod=%r  dt=%s",
-                time_of_day,
-                time_info.current_dt.isoformat() if time_info else "N/A",
-            )
-
-        if ctx is not None:
-            raw_sched = ctx.mock_schedule or []
-            try:
-                schedule = [ScheduleEvent.model_validate(e) for e in raw_sched]
-                if schedule:
-                    ctx.tool_calls.append("get_schedule")
-            except Exception as exc:
-                logger.warning("EvalContext mock_schedule invalid: %s", exc)
-            _sched_detail = (
-                "  [" + ", ".join(f"{e.title}@{e.start_time}" for e in schedule[:5]) + "]"
-                if schedule else ""
-            )
-            agent_log.info("[EVAL]   get_schedule() mocked → %d events%s", len(schedule), _sched_detail)
-        elif self.fetch_schedule:
-            try:
-                schedule = [ScheduleEvent.model_validate(e) for e in get_schedule()]
-            except Exception as exc:
-                logger.warning("get_schedule() failed: %s", exc)
-            _sched_detail = (
-                "  [" + ", ".join(f"{e.title}@{e.start_time}" for e in schedule[:5]) + "]"
-                if schedule else ""
-            )
-            agent_log.info("[TOOL]   get_schedule() → %d events%s", len(schedule), _sched_detail)
-
-        return time_of_day, schedule
-
-    # ── Phase 3: search ───────────────────────────────────────────────────────
-
-    def _search_candidates(self, terms: list[str], turn_id: int) -> list[Pictogram]:
-        """Resolve each concept and fetch candidates from ARASAAC."""
-        seen:         set[int]        = set()
-        seen_queries: set[str]        = set()
-        candidates:   list[Pictogram] = []
-        concept_order: dict[int, int] = {}
-        resolve_info: list[dict]      = []
+    def _search_candidates(self, terms: list[str]) -> list[Pictogram]:
+        """Resolve each concept to ARASAAC keywords and fetch candidate pictograms."""
+        seen:          set[int]        = set()
+        seen_queries:  set[str]        = set()
+        candidates:    list[Pictogram] = []
+        concept_order: dict[int, int]  = {}
+        resolve_info:  list[dict]      = []
 
         for concept_idx, term in enumerate(terms):
             queries, method = resolve_concept(term, self._kw_set, return_method=True)
             resolve_info.append({"concept": term, "queries": queries, "method": method})
+
             if not queries:
                 agent_log.info("[RESOLVE] %r → no match in keyword index (skipped)  [method=none]", term)
                 continue
@@ -447,16 +448,17 @@ class AACAgent:
                         pic = Pictogram.model_validate(pic_dict)
                         if pic.id not in seen:
                             seen.add(pic.id)
-                            concept_order[pic.id] = concept_idx
+                            concept_order[pic.id] = concept_idx  # track which concept introduced this pictogram
                             candidates.append(pic)
                 except Exception as exc:
                     logger.warning("search_pictograms(%r) failed: %s", query, exc)
 
-        self._concept_order = concept_order
+        self._concept_order    = concept_order
         self.last_resolve_info = resolve_info
         return candidates
 
-    def _expand_pool_by_synset(self, candidates: list[Pictogram], turn_id: int) -> list[Pictogram]:
+    def _expand_pool_by_synset(self, candidates: list[Pictogram]) -> list[Pictogram]:
+        """Query ARASAAC for synset siblings of existing candidates (max AGENT_SYNSET_EXPAND_MAX synsets)."""
         seen_ids:      set[int] = {p.id for p in candidates}
         synsets_tried: set[str] = set()
         expanded       = list(candidates)
@@ -464,7 +466,7 @@ class AACAgent:
         for pic in candidates:
             if len(synsets_tried) >= AGENT_SYNSET_EXPAND_MAX:
                 break
-            for synset_id in pic.synsets[:2]:
+            for synset_id in pic.synsets[:2]:  # at most 2 synsets per pictogram to limit queries
                 if synset_id in synsets_tried:
                     continue
                 if len(synsets_tried) >= AGENT_SYNSET_EXPAND_MAX:
@@ -492,109 +494,44 @@ class AACAgent:
             )
         return expanded
 
-    # ── Phase 4: ranking + window fill ────────────────────────────────────────
+    #########################################################################################################################
+    # Phase 5: ranking + window fill                                                                                        #
+    #########################################################################################################################
 
     def _rank_and_fill(
         self,
         candidates:   list[Pictogram],
         selected_ids: set[int],
-        turn_id:      int,
     ) -> list[Pictogram]:
-        """Rank candidates deterministically and fill the window to max_results.
+        """Rank candidates and fill the window. Strategies defined in ranking.py."""
+        window, pool_ids = rank_and_fill(
+            candidates, selected_ids, self._concept_order,
+            self.max_results, self.ranking_strategy,
+        )
 
-        Strategy:
-          1. Hard-exclude pictograms the user SELECTED in recent turns.
-          2. Rank by (concept_order ASC, quality_score DESC).
-          3. Take up to max_results from the ranked pool.
-
-        Note: all PRESENTED (but not selected) pictograms are NOT excluded here
-        (R22 Opzione A) — see recently_presented_ids() in session.py.
-        """
-        concept_order = getattr(self, "_concept_order", {})
-        _MAX_CONCEPT = 9999
-
-        def _sort_key(pic: Pictogram) -> tuple[int, int]:
-            cidx  = concept_order.get(pic.id, _MAX_CONCEPT)
-            score = 0
-            if pic.aac_color: score += 4
-            if pic.aac:       score += 2
-            if not pic.violence: score += 1
-            if not pic.sex:      score += 1
-            return (cidx, -score)
-
-        pool = [p for p in candidates if p.id not in selected_ids]
-        pool.sort(key=_sort_key)
-
-        self.last_pool_ids = [p.id for p in pool]  # full ranked pool, pre-truncation — enables gold_rank in eval
-
-        window = pool[:self.max_results]
-        self.last_fresh_count = len(window)
+        self.last_pool_ids = pool_ids
 
         agent_log.info(
-            "[RANK]   total_candidates=%d  selected_hard_excluded=%d  pool=%d  window=%d",
+            "[RANK]   strategy=%s  total_candidates=%d  selected_hard_excluded=%d  pool=%d  window=%d",
+            self.ranking_strategy,
             len(candidates),
             len(selected_ids & {p.id for p in candidates}),
-            len(pool), len(window),
+            len(pool_ids), len(window),
         )
         return window
 
-    # ── Fallback helpers ──────────────────────────────────────────────────────
-
-    def _filter_schedule_by_time(
-        self,
-        events: list[ScheduleEvent],
-        time_of_day: Optional[str],
-    ) -> list[ScheduleEvent]:
-        """Return only the schedule event closest to the current time of day.
-
-        Used in production (no EvalContext) to prevent distractor events from
-        bleeding into the concept pool via _terms_from_schedule().
-        """
-        if not events:
-            return events
-        tod_to_hour = {
-            "morning": 9, "afternoon": 14, "evening": 19, "night": 22
-        }
-        target_h = tod_to_hour.get(time_of_day or "", 12)
-
-        def _event_hour(e: ScheduleEvent) -> int:
-            try:
-                return int(str(e.start_time).split(":")[0])
-            except Exception:
-                return 12
-
-        return [min(events, key=lambda e: abs(_event_hour(e) - target_h))]
-
-    def _terms_from_schedule(self, events: list[ScheduleEvent]) -> list[str]:
-        """Extract searchable terms from calendar event fields."""
-        import re as _re
-        seen:  set[str]  = set()
-        terms: list[str] = []
-
-        def _add(t: str) -> None:
-            if t not in seen:
-                seen.add(t)
-                terms.append(t)
-
-        for ev in events[:5]:
-            text = " ".join(filter(None, [ev.title, ev.description or "", ev.location or ""]))
-            words = _re.findall(r"[a-zA-Z\u00C0-\u024F]{3,}", text.lower())
-
-            for i in range(len(words) - 1):
-                _add(f"{words[i]} {words[i + 1]}")
-
-            for w in words:
-                _add(w)
-
-        return terms
+    #########################################################################################################################
+    # Fallback term extraction (spaCy)                                                                                      #
+    #########################################################################################################################
 
     def _extract_terms(self, raw_input: str) -> list[str]:
-        """Regex-free fallback term extractor using spaCy POS tags."""
+        """Fallback: extract non-stop NOUNs/VERBs/PROPNs via spaCy when the planner returns nothing."""
         if not raw_input.strip():
             return []
+        from agent.session import _nlp
         nlp  = _nlp()
         doc  = nlp(raw_input.lower())
-        seen: set[str]  = set()
+        seen:  set[str]  = set()
         terms: list[str] = []
         for token in doc:
             if token.pos_ not in ("NOUN", "VERB", "PROPN"):
@@ -606,14 +543,3 @@ class AACAgent:
                 seen.add(word)
                 terms.append(word)
         return terms
-
-    def _enrich_terms(self, base_terms: list[str]) -> list[str]:
-        enriched = list(base_terms)
-        recent   = self.memory.recent_topics(AGENT_MEMORY_TURNS)
-        if len(base_terms) <= 1 and recent:
-            for t in recent[:3]:
-                if t not in enriched:
-                    enriched.append(t)
-        elif recent and recent[0] not in enriched:
-            enriched.append(recent[0])
-        return enriched

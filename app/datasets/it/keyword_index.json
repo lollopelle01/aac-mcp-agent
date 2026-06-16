@@ -4355,6 +4355,9 @@
     "6011",
     "6282"
   ],
+  "afta": [
+    "39864"
+  ],
   "agenda": [
     "5898"
   ],
@@ -5967,7 +5970,8 @@
   "appoggiare": [
     "21377",
     "39435",
-    "39437"
+    "39437",
+    "39879"
   ],
   "appoggiarsi": [
     "21373",
@@ -6854,6 +6858,9 @@
   "associazione culturale": [
     "32344"
   ],
+  "associazione di avvocati": [
+    "39876"
+  ],
   "associazione di imprenditori": [
     "32342"
   ],
@@ -7552,6 +7559,9 @@
   ],
   "avvolgere": [
     "7084"
+  ],
+  "avvolgicavo": [
+    "39863"
   ],
   "avvoltoio": [
     "2998"
@@ -8434,6 +8444,9 @@
     "10332",
     "5966"
   ],
+  "baule da giardino": [
+    "39862"
+  ],
   "bavaglino": [
     "2267",
     "37411"
@@ -9012,6 +9025,9 @@
   ],
   "bobina e filo": [
     "7042"
+  ],
+  "bobina per cavo": [
+    "39863"
   ],
   "bocca": [
     "2663"
@@ -11700,6 +11716,9 @@
   "caviglia": [
     "3405"
   ],
+  "cavigliera": [
+    "39867"
+  ],
   "cavo": [
     "6948"
   ],
@@ -14365,6 +14384,9 @@
     "5575",
     "6501"
   ],
+  "contenitore da giardino": [
+    "39862"
+  ],
   "contenitore di altri rifiuti": [
     "38205"
   ],
@@ -14635,6 +14657,9 @@
   ],
   "coprire il naso": [
     "37680"
+  ],
+  "coprire le orecchie": [
+    "39871"
   ],
   "coprire un occhio": [
     "37617"
@@ -21512,6 +21537,9 @@
   "generosità": [
     "37231"
   ],
+  "gengiva": [
+    "39875"
+  ],
   "geniale": [
     "11599",
     "38564"
@@ -21773,7 +21801,8 @@
     "27109"
   ],
   "ginocchiera": [
-    "30680"
+    "30680",
+    "39866"
   ],
   "ginocchio": [
     "2810"
@@ -22757,6 +22786,9 @@
   ],
   "graticola": [
     "5811"
+  ],
+  "gratinare": [
+    "39858"
   ],
   "gratis": [
     "11582",
@@ -25446,6 +25478,7 @@
     "39180",
     "39413",
     "39832",
+    "39877",
     "6542",
     "6543"
   ],
@@ -25554,6 +25587,7 @@
   "lasciare": [
     "11748",
     "27717",
+    "39879",
     "6215"
   ],
   "lasciare le scarpe": [
@@ -29510,6 +29544,9 @@
     "33916",
     "38452"
   ],
+  "mettere un dito nell'occhio": [
+    "39870"
+  ],
   "mettere via i vestiti": [
     "37938"
   ],
@@ -32531,6 +32568,9 @@
     "5561",
     "7229",
     "7230"
+  ],
+  "orologio a bolle": [
+    "39865"
   ],
   "orologio a pendolo": [
     "5561"
@@ -35771,7 +35811,7 @@
   "platani fritti": [
     "37510"
   ],
-  "platano tritto": [
+  "platano fritto": [
     "39815"
   ],
   "platea": [
@@ -35962,6 +36002,9 @@
   "polpo": [
     "26350",
     "3379"
+  ],
+  "polsiera": [
+    "39868"
   ],
   "polsiere gomitiere e ginocchiere": [
     "30684"
@@ -36240,6 +36283,12 @@
   "portapacchi": [
     "25831"
   ],
+  "portapillole": [
+    "39869"
+  ],
+  "portapillole settimanale": [
+    "39869"
+  ],
   "portare": [
     "32061",
     "37223",
@@ -36332,6 +36381,7 @@
     "37045"
   ],
   "portiera": [
+    "39837",
     "6995"
   ],
   "portiere": [
@@ -36339,7 +36389,6 @@
     "32956",
     "37423",
     "37823",
-    "39837",
     "6995",
     "9015"
   ],
@@ -37574,7 +37623,8 @@
     "39201"
   ],
   "psicologia": [
-    "38872"
+    "38872",
+    "39880"
   ],
   "psicologia clinica": [
     "38871"
@@ -38465,6 +38515,7 @@
     "38073",
     "39443",
     "39444",
+    "39874",
     "6452",
     "6453",
     "7227",
@@ -38970,6 +39021,7 @@
     "9042"
   ],
   "recinzione": [
+    "39861",
     "6651"
   ],
   "recipiente": [
@@ -39691,6 +39743,9 @@
   ],
   "rinfrescarsi": [
     "9044"
+  ],
+  "ringhiera": [
+    "39861"
   ],
   "ringraziare": [
     "38783"
@@ -40470,6 +40525,9 @@
   ],
   "sacchetto di snack di mais": [
     "24555"
+  ],
+  "sacchetto per urine pediatrico": [
+    "39872"
   ],
   "sacchetto sensoriale": [
     "35131"
@@ -45920,6 +45978,9 @@
   "strofinare le mani con il sapone": [
     "35977"
   ],
+  "strofinarsi": [
+    "39803"
+  ],
   "strombazzare": [
     "22139"
   ],
@@ -46025,6 +46086,9 @@
   ],
   "studio di fisioterapia": [
     "5998"
+  ],
+  "studio legale": [
+    "39876"
   ],
   "studio notarile": [
     "35417"
@@ -46757,6 +46821,9 @@
   "tappare la bocca": [
     "31797",
     "7266"
+  ],
+  "tapparsi le orecchie": [
+    "39871"
   ],
   "tappe della vita": [
     "38617"
@@ -49057,6 +49124,15 @@
   "tutore gomito": [
     "21863"
   ],
+  "tutore per ginocchio": [
+    "39866"
+  ],
+  "tutore per il polso": [
+    "39868"
+  ],
+  "tutore per la caviglia": [
+    "39867"
+  ],
   "tutore spalla": [
     "21863"
   ],
@@ -49233,6 +49309,9 @@
   ],
   "ufo": [
     "7191"
+  ],
+  "ugola": [
+    "39873"
   ],
   "uguaglianza di genere": [
     "35183",

@@ -1,71 +1,30 @@
-"""
-backends.py — LLM backend abstraction for AACAgent.
+"""LLM backend abstraction for AACAgent.
 
-Three concrete backends:
-  OllamaBackend        — local inference via Ollama HTTP API (default for production)
-  LlamaCppBackend      — local inference via llama-cpp-python (faster on CPU, no HTTP overhead)
-  HuggingFaceBackend   — GPU/cluster inference via HuggingFace Transformers
-
-All backends share the same interface: a single `chat(system, user)` method
-that returns the raw assistant string. Parsing and timing stay in AACAgent.
-
-Model selection per backend
----------------------------
-OllamaBackend:
-    model = Ollama alias, e.g. "qwen2.5:3b"
-    Listed in settings.py under "models" -> used by AACAgent today.
-
-LlamaCppBackend:
-    model = absolute path to a .gguf file, e.g. "/models/qwen2.5-3b-q4_k_m.gguf"
-    GGUF files are downloaded from HuggingFace (bartowski or lmstudio-community
-    namespaces have pre-quantized versions of all models in settings.py).
-    Recommended quantization for CPU: Q4_K_M (best speed/quality tradeoff).
-    The model alias -> path mapping lives in settings.py under "gguf_models"
-    (to be added when llama.cpp backend is wired into AACAgent).
-
-HuggingFaceBackend:
-    model = HF repo id, e.g. "Qwen/Qwen2.5-3B-Instruct"
-    Used for cluster eval only; not intended for CPU production use.
-    Equivalent to what HFAACAgent._hf_chat does today -- extracted here so the
-    same logic can be reused without subclassing AACAgent.
-
-Future wiring (not yet done):
-    agent = AACAgent(backend=OllamaBackend("qwen2.5:3b"))
-    agent = AACAgent(backend=LlamaCppBackend("/models/qwen2.5-3b-q4_k_m.gguf"))
-    agent = AACAgent(backend=HuggingFaceBackend("Qwen/Qwen2.5-3B-Instruct"))
-    # HFAACAgent will become: AACAgent(backend=HuggingFaceBackend(...))
+Three backends, same interface — chat(system, user) → str:
+  OllamaBackend      — Ollama HTTP daemon (default for production)
+  LlamaCppBackend    — in-process GGUF via llama-cpp-python (faster on CPU)
+  HuggingFaceBackend — HuggingFace Transformers (GPU / cluster eval)
 """
 
 from __future__ import annotations
 
 import logging
-import re
 from abc import ABC, abstractmethod
 from typing import Optional
 
 logger = logging.getLogger(__name__)
 
 
-####### Base ###############################################################
+################################################################################
+# Abstract base
+################################################################################
 
 class LLMBackend(ABC):
-    """Abstract base — all LLM backends implement this interface.
-
-    Subclasses must implement `chat()` and `model_id`.
-    All planner logic (prompt building, response parsing, timing) stays in AACAgent.
-    """
+    """Abstract base for all LLM backends. Subclasses implement chat() and model_id."""
 
     @abstractmethod
     def chat(self, system: str, user: str) -> str:
-        """Run one inference call and return the raw assistant string.
-
-        Args:
-            system: System prompt string.
-            user:   User message string.
-
-        Returns:
-            Raw text from the model (not yet parsed).
-        """
+        """Run one inference call and return the raw assistant string."""
         ...
 
     @property
@@ -75,20 +34,18 @@ class LLMBackend(ABC):
         ...
 
 
-####### Ollama #############################################################
+################################################################################
+# Ollama backend
+################################################################################
 
 class OllamaBackend(LLMBackend):
-    """Ollama HTTP backend.
-
-    Talks to a locally running Ollama daemon via the `ollama` Python package.
-    Model is identified by its Ollama alias (e.g. "qwen2.5:3b").
+    """Ollama HTTP backend. Model identified by Ollama alias (e.g. "qwen2.5:3b").
 
     Args:
         model:       Ollama model alias.
-        num_predict: Max tokens to generate. 150 is safe for the planner JSON.
-        num_ctx:     Context window. 512 is sufficient for the planner prompt
-                     and reduces KV-cache allocation on CPU vs Ollama default.
-        temperature: 0.0 = greedy decoding (recommended for structured JSON output).
+        num_predict: Max tokens to generate (150 is safe for the planner JSON).
+        num_ctx:     Context window (512 reduces KV-cache vs. Ollama default).
+        temperature: 0.0 = greedy decoding.
     """
 
     def __init__(
@@ -129,18 +86,16 @@ class OllamaBackend(LLMBackend):
         return response["message"]["content"].strip()
 
 
-####### llama.cpp ##########################################################
+################################################################################
+# llama.cpp backend
+################################################################################
 
 def _extract_first_json_object(text: str) -> str:
-    """Extract the first well-formed {...} JSON object from raw model output.
+    """Return the first balanced {...} block from raw model output.
 
-    llama.cpp Instruct models occasionally produce a valid JSON object followed
-    by repeated tokens or extra text before EOS. This function extracts only
-    the first complete {...} block so the upstream JSON parser always receives
-    clean input.
-
-    Strategy: scan forward tracking brace depth; stop at the first balanced `}`.
-    Falls back to the full stripped text when no `{` is found.
+    llama.cpp models occasionally append repeated tokens or extra text after the
+    JSON object. Scans forward tracking brace depth and stops at the first balanced '}';
+    falls back to the full stripped text when no '{' is found.
     """
     start = text.find("{")
     if start == -1:
@@ -153,54 +108,27 @@ def _extract_first_json_object(text: str) -> str:
             depth -= 1
             if depth == 0:
                 return text[start : i + 1]
-    # Unbalanced — return from start to end and let the parser handle it
+    # Unbalanced braces — return from start to end and let the parser handle it
     return text[start:].strip()
 
 
 class LlamaCppBackend(LLMBackend):
-    """llama-cpp-python backend.
-
-    Loads a GGUF model file directly into RAM — no HTTP daemon, no Ollama
-    overhead. Faster prefill on CPU because the model is in-process and n_ctx
-    can be set precisely.
+    """In-process GGUF backend via llama-cpp-python. No HTTP daemon, faster CPU prefill.
 
     Installation:
         pip install llama-cpp-python
-        # For CPU-optimised build (OpenBLAS):
-        CMAKE_ARGS="-DLLAMA_BLAS=ON -DLLAMA_BLAS_VENDOR=OpenBLAS" pip install llama-cpp-python
-
-    GGUF models:
-        https://huggingface.co/bartowski          (all models in settings.py available)
-        https://huggingface.co/lmstudio-community
-        Recommended quantization: Q4_K_M
+        # OpenBLAS build: CMAKE_ARGS="-DLLAMA_BLAS=ON -DLLAMA_BLAS_VENDOR=OpenBLAS" pip install llama-cpp-python
 
     Args:
         model_path:  Absolute path to the .gguf file.
-        n_ctx:       Context window. Default 2048 — 512 was too small: by turn 3
-                     the prompt (system + session history + user message) exceeds
-                     512 tokens, causing llama.cpp to truncate the input and
-                     corrupt the generation.
-        n_threads:   CPU threads. None = llama.cpp auto-detects (uses all cores).
+        n_ctx:       Context window. Default 2048 — 512 caused truncation from turn 3 onward.
+        n_threads:   CPU threads. None = llama.cpp auto-detects.
         temperature: 0.0 = greedy decoding.
         max_tokens:  Max tokens to generate per call.
-        verbose:     If False, suppresses llama.cpp's C-level stdout logs.
+        verbose:     If False, suppresses llama.cpp C-level stdout.
 
-    Notes on stop tokens
-    --------------------
-    We use stop=["\n\n"] to block extra prose after the JSON object without
-    interfering with the closing brace.
-
-    Previous versions used stop=["\n}", "}\n"], which caused consistent parse
-    failures: those sequences match exactly at the point where the model is
-    about to emit the final "}" — so generation halted with the concepts array
-    still open and the top-level object never closed.
-
-    _extract_first_json_object() handles the remaining failure modes:
-    1. Greedy-repetition loops: the brace-depth scanner returns whatever
-       balanced fragment is available; if malformed the JSON parser rejects it
-       and the spaCy fallback takes over.
-    2. Tail junk / second JSON object: the scanner stops at the first balanced
-       "}" so any trailing content is safely ignored.
+    stop=["\n\n"] is used instead of ["\n}"] — the latter caused consistent parse
+    failures by halting generation before the closing brace was emitted.
     """
 
     def __init__(
@@ -230,13 +158,14 @@ class LlamaCppBackend(LLMBackend):
         self._temperature = temperature
         self._max_tokens  = max_tokens
         self._verbose     = verbose
-        self._llm: Optional[object] = None   # lazy-loaded on first call
+        self._llm: Optional[object] = None   # lazy-loaded on first chat() call
 
     @property
     def model_id(self) -> str:
         return self._model_path
 
     def _ensure_loaded(self) -> None:
+        """Load the GGUF model on first use (lazy init)."""
         if self._llm is not None:
             return
         kwargs: dict = {
@@ -259,42 +188,29 @@ class LlamaCppBackend(LLMBackend):
             ],
             temperature = self._temperature,
             max_tokens  = self._max_tokens,
-            # stop=["\n\n"] blocks extra prose after the JSON object without
-            # truncating the closing brace.
-            # Previous stop=["\n}", "}\n"] caused consistent parse failures:
-            # those sequences match at the point where the model is about to
-            # emit the final "}" — so generation halted with the array still
-            # open and the top-level object never closed.
-            stop=["\n\n"],
+            stop=["\n\n"],  # block extra prose without truncating the closing brace
         )
         raw = response["choices"][0]["message"]["content"].strip()
         return _extract_first_json_object(raw)
 
     def unload(self) -> None:
-        """Release the GGUF model from RAM.
-
-        Sets _llm to None so the llama.cpp Llama object is garbage-collected.
-        Call between models in a multi-model eval loop to avoid OOM.
-        """
+        """Set _llm to None so the GGUF is garbage-collected. Call between models in eval loops."""
         if self._llm is not None:
             self._llm = None
             logger.info("LlamaCppBackend: model unloaded from RAM.")
 
 
-####### HuggingFace ########################################################
+################################################################################
+# HuggingFace backend
+################################################################################
 
 class HuggingFaceBackend(LLMBackend):
-    """HuggingFace Transformers backend.
-
-    Used for cluster evaluation (GPU). Not intended for CPU production use.
-    Extracts the inference logic from HFAACAgent._hf_chat so it can be reused
-    without subclassing AACAgent. Once AACAgent accepts a backend argument,
-    HFAACAgent becomes simply: AACAgent(backend=HuggingFaceBackend(...)).
+    """HuggingFace Transformers backend for GPU / cluster eval. Not for CPU production.
 
     Args:
         model:          HF model name or local path (e.g. "Qwen/Qwen2.5-3B-Instruct").
-        device:         "auto" | "cuda" | "cpu". "auto" lets Accelerate choose.
-        load_in_8bit:   INT8 quantization via bitsandbytes (~50% VRAM saving).
+        device:         "auto" | "cuda" | "cpu".
+        load_in_8bit:   INT8 via bitsandbytes (~50% VRAM saving).
         max_new_tokens: Max tokens to generate.
         dtype:          "float16" | "bfloat16" | "float32".
     """
@@ -320,6 +236,7 @@ class HuggingFaceBackend(LLMBackend):
         return self._model_name
 
     def _ensure_loaded(self) -> None:
+        """Load the model and tokenizer on first use (lazy init)."""
         if self._tokenizer is not None:
             return
         try:
@@ -345,6 +262,7 @@ class HuggingFaceBackend(LLMBackend):
 
         load_kwargs: dict = {"trust_remote_code": True}
         if self._load_in_8bit:
+            # INT8 via bitsandbytes — requires device_map="auto"
             load_kwargs["load_in_8bit"] = True
             load_kwargs["device_map"]   = "auto"
         else:
@@ -389,7 +307,7 @@ class HuggingFaceBackend(LLMBackend):
                 messages, tokenize=False, add_generation_prompt=True
             )
         else:
-            # Minimal fallback for models without a chat template.
+            # Minimal fallback for models without a chat template
             text = f"<|system|>\n{system}\n<|user|>\n{user}\n<|assistant|>\n"
 
         inputs = tok(text, return_tensors="pt").to(mdl.device)
@@ -399,7 +317,8 @@ class HuggingFaceBackend(LLMBackend):
             output_ids = mdl.generate(
                 **inputs,
                 max_new_tokens = self._max_new_tokens,
-                do_sample      = False,       # greedy = temperature 0.0
+                do_sample      = False,           # greedy = temperature 0.0
                 pad_token_id   = tok.eos_token_id,
             )
+        # Decode only the newly generated tokens, not the prompt
         return tok.decode(output_ids[0, in_len:], skip_special_tokens=True).strip()

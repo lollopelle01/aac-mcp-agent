@@ -72,6 +72,7 @@ _DEFAULTS: dict[str, Any] = {
     "agent_fetch_schedule":      True,
     "agent_synset_expand":       True,
     "agent_synset_expand_max":   8,
+    "agent_use_two_phase":       True,
 
     # Dataset
     # en_eval is the merged eval dataset (local + HF clean) used by run_eval_hf.py.
@@ -205,6 +206,10 @@ class _SettingsManager:
     @property
     def dataset_langs(self) -> list[str]:
         return list(self._data["dataset_langs"])
+
+    @property
+    def agent_use_two_phase(self) -> bool:
+        return bool(self._data["agent_use_two_phase"])
 
 
 ####### Singleton ########################################################

@@ -4210,7 +4210,8 @@
       "work",
       "primary sector",
       "hunting",
-      "core vocabulary"
+      "core vocabulary",
+      "cattle farming"
     ],
     "sex": false,
     "violence": false,
@@ -4220,7 +4221,7 @@
     "skin": false,
     "hair": false,
     "created": "2007-12-13T11:02:48.000Z",
-    "last_updated": "2021-02-05T09:02:57.037Z"
+    "last_updated": "2026-05-28T12:40:51.393Z"
   },
   "2352": {
     "id": 2352,
@@ -68795,7 +68796,7 @@
     "skin": true,
     "hair": true,
     "created": "2008-10-27T12:16:51.000Z",
-    "last_updated": "2025-12-18T15:49:37.312Z"
+    "last_updated": "2026-05-25T12:46:49.043Z"
   },
   "5943": {
     "id": 5943,
@@ -169769,7 +169770,8 @@
     "tags": [
       "health",
       "medicine",
-      "disease"
+      "disease",
+      "work"
     ],
     "sex": false,
     "violence": false,
@@ -169779,7 +169781,7 @@
     "skin": true,
     "hair": true,
     "created": "2010-03-21T13:00:40.000Z",
-    "last_updated": "2021-05-07T18:36:06.616Z"
+    "last_updated": "2026-05-25T19:55:20.608Z"
   },
   "14680": {
     "id": 14680,
@@ -229560,9 +229562,7 @@
       }
     ],
     "categories": [
-      "mineral rich food",
-      "cookery",
-      "core vocabulary-feeding"
+      "condiment"
     ],
     "synsets": [
       "07829083-n"
@@ -229572,7 +229572,9 @@
       "food",
       "mineral rich food",
       "cookery",
-      "core vocabulary"
+      "core vocabulary",
+      "ultra-processed food",
+      "condiment"
     ],
     "sex": false,
     "violence": false,
@@ -229582,7 +229584,7 @@
     "skin": false,
     "hair": false,
     "created": "2011-08-16T20:49:42.000Z",
-    "last_updated": "2021-03-23T12:13:07.026Z"
+    "last_updated": "2026-05-17T07:43:41.524Z"
   },
   "25622": {
     "id": 25622,
@@ -516629,7 +516631,7 @@
     "skin": true,
     "hair": false,
     "created": "2025-12-05T08:41:11.887Z",
-    "last_updated": "2026-02-06T16:25:09.385Z"
+    "last_updated": "2026-05-15T14:11:09.558Z"
   },
   "29396": {
     "id": 29396,
@@ -517222,7 +517224,7 @@
     "id": 39794,
     "keywords": [
       {
-        "type": null,
+        "type": 2,
         "keyword": "marmotta",
         "plural": "marmotte",
         "meaning": null
@@ -517251,7 +517253,7 @@
     "skin": false,
     "hair": false,
     "created": "2026-02-13T10:17:41.105Z",
-    "last_updated": "2026-02-27T13:14:14.531Z"
+    "last_updated": "2026-05-15T14:09:11.714Z"
   },
   "39795": {
     "id": 39795,
@@ -517509,6 +517511,12 @@
         "keyword": "strofinare",
         "plural": null,
         "meaning": null
+      },
+      {
+        "type": 3,
+        "keyword": "strofinarsi",
+        "plural": null,
+        "meaning": null
       }
     ],
     "categories": [
@@ -517532,7 +517540,7 @@
     "skin": true,
     "hair": false,
     "created": "2026-02-13T10:17:41.105Z",
-    "last_updated": "2026-03-27T13:54:31.770Z"
+    "last_updated": "2026-05-15T14:07:59.145Z"
   },
   "39805": {
     "id": 39805,
@@ -517892,7 +517900,7 @@
     "keywords": [
       {
         "type": 2,
-        "keyword": "platano tritto",
+        "keyword": "platano fritto",
         "plural": "platani fritti",
         "meaning": null
       }
@@ -517915,7 +517923,7 @@
     "skin": false,
     "hair": false,
     "created": "2026-03-17T08:28:09.348Z",
-    "last_updated": "2026-04-17T12:57:53.246Z"
+    "last_updated": "2026-05-15T14:06:30.025Z"
   },
   "39816": {
     "id": 39816,
@@ -518734,8 +518742,8 @@
     "keywords": [
       {
         "type": 2,
-        "keyword": "portiere",
-        "plural": "portieri",
+        "keyword": "portiera",
+        "plural": "portiere",
         "meaning": null
       }
     ],
@@ -518758,7 +518766,7 @@
     "skin": true,
     "hair": true,
     "created": "2026-03-17T11:17:59.118Z",
-    "last_updated": "2026-03-20T22:12:37.665Z"
+    "last_updated": "2026-05-15T14:05:09.042Z"
   },
   "39838": {
     "id": 39838,
@@ -519533,5 +519541,693 @@
     "hair": false,
     "created": "2026-04-13T10:31:28.978Z",
     "last_updated": "2026-04-14T09:51:30.007Z"
+  },
+  "39858": {
+    "id": 39858,
+    "keywords": [
+      {
+        "type": 3,
+        "keyword": "gratinare",
+        "plural": null,
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "verb",
+      "electrical appliance",
+      "cookery"
+    ],
+    "synsets": [],
+    "tags": [
+      "communication",
+      "language",
+      "verb",
+      "object",
+      "appliance",
+      "electrical appliance",
+      "home",
+      "feeding",
+      "cookery"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.494Z",
+    "last_updated": "2026-05-15T13:37:52.982Z"
+  },
+  "39861": {
+    "id": 39861,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "recinzione",
+        "plural": "recinzioni",
+        "meaning": null
+      },
+      {
+        "type": 2,
+        "keyword": "ringhiera",
+        "plural": "ringhere",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "architectural element"
+    ],
+    "synsets": [],
+    "tags": [
+      "architecture",
+      "building",
+      "architectural element"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.494Z",
+    "last_updated": "2026-05-15T14:03:39.332Z"
+  },
+  "39862": {
+    "id": 39862,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "contenitore da giardino",
+        "plural": "contenitori da giardino",
+        "meaning": null
+      },
+      {
+        "type": 2,
+        "keyword": "baule da giardino",
+        "plural": "bauli da giardino",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "furniture",
+      "gardening"
+    ],
+    "synsets": [],
+    "tags": [
+      "object",
+      "furniture",
+      "work",
+      "primary sector",
+      "gardening"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.494Z",
+    "last_updated": "2026-05-15T13:35:42.984Z"
+  },
+  "39863": {
+    "id": 39863,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "avvolgicavo",
+        "plural": "avvolgicavi",
+        "meaning": null
+      },
+      {
+        "type": 2,
+        "keyword": "bobina per cavo",
+        "plural": "bobine per cavo",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "furniture",
+      "gardening",
+      "work tool"
+    ],
+    "synsets": [],
+    "tags": [
+      "object",
+      "furniture",
+      "work",
+      "primary sector",
+      "gardening",
+      "tool"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.494Z",
+    "last_updated": "2026-05-15T13:34:19.766Z"
+  },
+  "39864": {
+    "id": 39864,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "afta",
+        "plural": "afte",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "symptom"
+    ],
+    "synsets": [],
+    "tags": [
+      "health",
+      "medicine",
+      "symptom"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.494Z",
+    "last_updated": "2026-05-15T13:32:43.374Z"
+  },
+  "39865": {
+    "id": 39865,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "orologio a bolle",
+        "plural": "orologi a bolle",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "sensory stimulation material",
+      "chronological device",
+      "chronological instrument"
+    ],
+    "synsets": [],
+    "tags": [
+      "object",
+      "sensory stimulation",
+      "appliance",
+      "time",
+      "chronological device"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.494Z",
+    "last_updated": "2026-05-15T13:32:27.583Z"
+  },
+  "39866": {
+    "id": 39866,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "ginocchiera",
+        "plural": "ginocchiere",
+        "meaning": null
+      },
+      {
+        "type": 2,
+        "keyword": "tutore per ginocchio",
+        "plural": "tutori per ginocchio",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "orthopedic product"
+    ],
+    "synsets": [],
+    "tags": [
+      "object",
+      "orthopedic product"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": true,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.494Z",
+    "last_updated": "2026-05-15T13:30:37.342Z"
+  },
+  "39867": {
+    "id": 39867,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "tutore per la caviglia",
+        "plural": "tutori per la caviglia",
+        "meaning": null
+      },
+      {
+        "type": 2,
+        "keyword": "cavigliera",
+        "plural": "cavigliere",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "orthopedic product"
+    ],
+    "synsets": [],
+    "tags": [
+      "object",
+      "orthopedic product"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.494Z",
+    "last_updated": "2026-05-15T13:29:58.347Z"
+  },
+  "39868": {
+    "id": 39868,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "tutore per il polso",
+        "plural": "tutori per il polso",
+        "meaning": null
+      },
+      {
+        "type": 2,
+        "keyword": "polsiera",
+        "plural": "polsiere",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "orthopedic product"
+    ],
+    "synsets": [],
+    "tags": [
+      "object",
+      "orthopedic product"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.494Z",
+    "last_updated": "2026-05-15T13:28:06.868Z"
+  },
+  "39869": {
+    "id": 39869,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "portapillole settimanale",
+        "plural": "portapillole settimanali",
+        "meaning": null
+      },
+      {
+        "type": 2,
+        "keyword": "portapillole",
+        "plural": "portapillole",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "medicament",
+      "nursing equipment"
+    ],
+    "synsets": [],
+    "tags": [
+      "health",
+      "medicine",
+      "medicament",
+      "medical equipment",
+      "nursing equipment"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.494Z",
+    "last_updated": "2026-05-15T13:26:39.266Z"
+  },
+  "39870": {
+    "id": 39870,
+    "keywords": [
+      {
+        "type": 3,
+        "keyword": "mettere un dito nell'occhio",
+        "plural": null,
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "verb",
+      "disruptive behavior"
+    ],
+    "synsets": [],
+    "tags": [
+      "communication",
+      "language",
+      "verb",
+      "psychology",
+      "disruptive behavior"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": true,
+    "aac": false,
+    "aac_color": false,
+    "skin": true,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.494Z",
+    "last_updated": "2026-05-15T13:25:50.194Z"
+  },
+  "39871": {
+    "id": 39871,
+    "keywords": [
+      {
+        "type": 3,
+        "keyword": "tapparsi le orecchie",
+        "plural": null,
+        "meaning": null
+      },
+      {
+        "type": 3,
+        "keyword": "coprire le orecchie",
+        "plural": null,
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "verb"
+    ],
+    "synsets": [],
+    "tags": [
+      "communication",
+      "language",
+      "verb"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": true,
+    "aac": false,
+    "aac_color": false,
+    "skin": true,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.494Z",
+    "last_updated": "2026-05-15T13:25:00.535Z"
+  },
+  "39872": {
+    "id": 39872,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "sacchetto per urine pediatrico",
+        "plural": "sacchetti per urine pediatrici",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "nursing equipment"
+    ],
+    "synsets": [],
+    "tags": [
+      "health",
+      "medicine",
+      "medical equipment",
+      "nursing equipment"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": true,
+    "created": "2026-05-13T11:26:14.494Z",
+    "last_updated": "2026-05-15T13:24:17.463Z"
+  },
+  "39873": {
+    "id": 39873,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "ugola",
+        "plural": "ugole",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "human anatomy",
+      "digestive system",
+      "odontology"
+    ],
+    "synsets": [],
+    "tags": [
+      "human body",
+      "anatomy",
+      "human anatomy",
+      "human physiology",
+      "physiology",
+      "digestive system",
+      "health",
+      "odontology"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.494Z",
+    "last_updated": "2026-05-15T13:23:42.309Z"
+  },
+  "39874": {
+    "id": 39874,
+    "keywords": [
+      {
+        "type": 3,
+        "keyword": "raccogliere",
+        "plural": null,
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "verb",
+      "agriculture"
+    ],
+    "synsets": [],
+    "tags": [
+      "communication",
+      "language",
+      "verb",
+      "work",
+      "primary sector",
+      "agriculture"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": true,
+    "aac": false,
+    "aac_color": false,
+    "skin": true,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.495Z",
+    "last_updated": "2026-05-15T13:22:59.711Z"
+  },
+  "39875": {
+    "id": 39875,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "gengiva",
+        "plural": "gengive",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "human anatomy",
+      "digestive system",
+      "odontology"
+    ],
+    "synsets": [],
+    "tags": [
+      "human body",
+      "anatomy",
+      "human anatomy",
+      "human physiology",
+      "physiology",
+      "digestive system",
+      "health",
+      "odontology"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.495Z",
+    "last_updated": "2026-05-15T13:50:04.786Z"
+  },
+  "39876": {
+    "id": 39876,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "associazione di avvocati",
+        "plural": "associazioni di avvocati",
+        "meaning": null
+      },
+      {
+        "type": 2,
+        "keyword": "studio legale",
+        "plural": "studi legali",
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "group",
+      "law",
+      "signaling system"
+    ],
+    "synsets": [],
+    "tags": [
+      "person",
+      "group",
+      "law",
+      "communication",
+      "signaling system"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": true,
+    "hair": true,
+    "created": "2026-05-13T11:26:14.495Z",
+    "last_updated": "2026-05-15T13:22:13.727Z"
+  },
+  "39877": {
+    "id": 39877,
+    "keywords": [
+      {
+        "type": 3,
+        "keyword": "lanciare",
+        "plural": null,
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "verb",
+      "physical exercise"
+    ],
+    "synsets": [],
+    "tags": [
+      "communication",
+      "language",
+      "verb",
+      "leisure",
+      "sport",
+      "physical exercise"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": true,
+    "aac": false,
+    "aac_color": false,
+    "skin": true,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.495Z",
+    "last_updated": "2026-05-15T13:20:26.434Z"
+  },
+  "39879": {
+    "id": 39879,
+    "keywords": [
+      {
+        "type": 3,
+        "keyword": "lasciare",
+        "plural": null,
+        "meaning": null
+      },
+      {
+        "type": 3,
+        "keyword": "appoggiare",
+        "plural": null,
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "verb"
+    ],
+    "synsets": [],
+    "tags": [
+      "communication",
+      "language",
+      "verb"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": false,
+    "aac": false,
+    "aac_color": false,
+    "skin": true,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.495Z",
+    "last_updated": "2026-05-15T13:20:06.027Z"
+  },
+  "39880": {
+    "id": 39880,
+    "keywords": [
+      {
+        "type": 2,
+        "keyword": "psicologia",
+        "plural": null,
+        "meaning": null
+      }
+    ],
+    "categories": [
+      "psychology"
+    ],
+    "synsets": [],
+    "tags": [
+      "psychology"
+    ],
+    "sex": false,
+    "violence": false,
+    "schematic": true,
+    "aac": false,
+    "aac_color": false,
+    "skin": false,
+    "hair": false,
+    "created": "2026-05-13T11:26:14.495Z",
+    "last_updated": "2026-05-15T13:17:24.451Z"
   }
 }

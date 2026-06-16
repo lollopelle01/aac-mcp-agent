@@ -286,11 +286,8 @@ def select(req: SelectRequest) -> dict:
 
     # Narrow pictograms to the single selection so prompt_summary reflects
     # what was actually chosen. `presented` is preserved unchanged so that
-    # recently_presented_ids() keeps excluding the full previous window.
+    # recently_presented_ids() keeps the full previous window for audit.
     last.pictograms = [chosen]
-    last.topics     = agent.memory.extract_topics([chosen])
-    for t in last.topics:
-        agent.memory.topic_frequency[t] = agent.memory.topic_frequency.get(t, 0) + 1
 
     logger.info("/select  pid=%d  label=%r", pid, chosen.keywords[0].keyword if chosen.keywords else "?")
     return {"ok": True}
