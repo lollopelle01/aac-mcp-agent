@@ -126,17 +126,26 @@ def build_context_block(
     time_of_day: Optional[str],
     schedule_events: list[ScheduleEvent],
 ) -> str:
-    """Format time and schedule data into a compact string for the planner prompt."""
-    lines: list[str] = []
+    """Format time and schedule data into a single compact line for the planner prompt.
+
+    The output is intentionally flat (no newlines) so that:
+    - the log line shows the full context without escaped \\n sequences;
+    - the LLM receives a clean, unambiguous inline string.
+
+    Example output:
+        "time=afternoon | schedule: Math class at 14:30:00 @ school"
+    """
+    parts: list[str] = []
     if time_of_day:
-        lines.append(f"Current time of day: {time_of_day}")
+        parts.append(f"time={time_of_day}")
     if schedule_events:
-        lines.append("Today's schedule:")
+        event_strs: list[str] = []
         for ev in schedule_events[:5]:
             loc  = f" @ {ev.location}"    if ev.location    else ""
-            desc = f" — {ev.description}" if ev.description else ""
-            lines.append(f"  - {ev.title} at {ev.start_time}{loc}{desc}")
-    return "\n".join(lines)
+            desc = f" ({ev.description})" if ev.description else ""
+            event_strs.append(f"{ev.title} at {ev.start_time}{loc}{desc}")
+        parts.append("schedule: " + "; ".join(event_strs))
+    return " | ".join(parts)
 
 
 ########################################################################

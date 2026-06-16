@@ -176,10 +176,10 @@ class AACAgent:
                 relevant      = filter_schedule_by_time(schedule_events, time_of_day)
                 context_block = build_context_block(time_of_day, relevant)
             agent_log.info(
-                "[CTX]    tool_calls=%s  events=%d  context_block=%r",
+                "[CTX]    tool_calls=%s  events=%d  context_block=%s",
                 tool_calls_done,
                 len(schedule_events),
-                context_block[:80],
+                context_block,
             )
         else:
             agent_log.info(
