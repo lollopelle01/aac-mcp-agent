@@ -151,7 +151,12 @@ class AACAgent:
 
         agent_log.info("[TIMING] run→decide: %.2fs", time.perf_counter() - _t_run_start)
 
-        if self.use_two_phase and raw_input.strip():
+        if eval_ctx is not None and eval_ctx.mock_needs_context is not None:
+            # Eval bypass: honor the mock even with empty raw_input (turn_pos > 0
+            # in multi-turn eval, where context is assumed to already be in history).
+            needs_context = eval_ctx.mock_needs_context
+            agent_log.info("[DECISION] mocked  needs_context=%s", needs_context)
+        elif self.use_two_phase and raw_input.strip():
             needs_context = self._decide(raw_input, history)
         else:
             # Legacy mode or empty input: skip decision, always collect context
