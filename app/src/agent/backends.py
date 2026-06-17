@@ -190,6 +190,11 @@ class LlamaCppBackend(LLMBackend):
             max_tokens  = self._max_tokens,
             stop=["\n\n"],  # block extra prose without truncating the closing brace
         )
+        usage = response.get("usage", {})
+        logger.info(
+            "[LLAMACPP] prompt_tokens=%s completion_tokens=%s",
+            usage.get("prompt_tokens"), usage.get("completion_tokens"),
+        )
         raw = response["choices"][0]["message"]["content"].strip()
         return _extract_first_json_object(raw)
 
