@@ -159,8 +159,12 @@ class AACAgent:
         elif self.use_two_phase and raw_input.strip():
             needs_context = self._decide(raw_input, history)
         else:
-            # Legacy mode or empty input: skip decision, always collect context
-            needs_context = True
+            # Empty input (turn_pos > 0 in multi-turn eval) or legacy mode with
+            # no mock set: don't force context collection — the context is already
+            # in session history from turn 0.  Forcing True here caused
+            # called_get_time=True / called_get_schedule=False bleed-through in
+            # the eval CSV for all subsequent turns.
+            needs_context = False
 
         ####################################################################################################
         # Phase 2: CONTEXT (MCP tools — only if needed)                                                   #
@@ -277,6 +281,17 @@ class AACAgent:
 
     def reset_session(self) -> None:
         self.memory.reset()
+        # Reset diagnostic fields so stale values from the previous session
+        # don't bleed into turn_pos > 0 rows when the session is reused.
+        self.last_candidates    = []
+        self.last_call_tools    = False
+        self.last_resolve_info  = []
+        self.last_plan_method   = "llm"
+        self.last_synset_added  = 0
+        self.last_pool_ids      = []
+        self.last_needs_context = False
+        self.last_context_block = ""
+        self.last_tool_calls    = []
         logger.info("Session reset.")
 
     def unload(self) -> None:
