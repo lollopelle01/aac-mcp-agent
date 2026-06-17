@@ -41,16 +41,17 @@ _DEFAULTS: dict[str, Any] = {
     # num_predict: cap on generated tokens for the planner call. The expected
     #   JSON output is ~50 tokens; 150 is a safe ceiling that avoids runaway
     #   generation while leaving room for slightly verbose models.
-    # num_ctx: context window. The planner prompt is well under 512 tokens in
-    #   both full and short variants; 512 reduces KV-cache on CPU vs Ollama default.
+    # num_ctx: context window raised to 2048 — the two-phase pipeline sends
+    #   decision + planner prompts separately, each easily exceeding the old
+    #   512-token budget by turn 3+, causing degraded generation quality.
     # NOTE: the -h suffix on granite4:3b-h is the hybrid mamba-2 architecture,
     #   NOT a reasoning/thinking mode. None of these models activate reasoning
     #   by default.
     "models": {
-        "granite4:3b-h": {"size_gb": 2.1, "num_predict": 150, "num_ctx": 512},
-        "qwen2.5:3b":    {"size_gb": 2.0, "num_predict": 150, "num_ctx": 512},
-        "llama3.2:3b":   {"size_gb": 1.9, "num_predict": 150, "num_ctx": 512},
-        "mistral:7b":    {"size_gb": 4.1, "num_predict": 150, "num_ctx": 512},
+        "granite4:3b-h": {"size_gb": 2.1, "num_predict": 150, "num_ctx": 2048},
+        "qwen2.5:3b":    {"size_gb": 2.0, "num_predict": 150, "num_ctx": 2048},
+        "llama3.2:3b":   {"size_gb": 1.9, "num_predict": 150, "num_ctx": 2048},
+        "mistral:7b":    {"size_gb": 4.1, "num_predict": 150, "num_ctx": 2048},
     },
 
     # GGUF model paths for llama-cpp-python backend.

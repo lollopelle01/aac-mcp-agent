@@ -12,10 +12,12 @@ logger = logging.getLogger(__name__)
 ################################################################################
 
 # Decision prompt — Phase 1 of the two-phase pipeline.
+# Stripped to bare minimum: no "reason" field (adds tokens for no downstream value),
+# 2 examples instead of 5 (enough for few-shot, saves ~80 tokens on every call).
 _DECISION_SYSTEM_PROMPT = """\
 You are deciding whether temporal or schedule context is needed to understand a caregiver's input.
 Return ONLY a JSON object, no explanation, no markdown.
-Format: {"needs_context": <bool>, "reason": "<one short phrase>"}
+Format: {"needs_context": <bool>}
 
 needs_context is true when the input is vague, references a routine, implies shared knowledge,
 or leaves the specific activity or objects unstated.
@@ -24,11 +26,8 @@ needs_context is false ONLY when the input explicitly names the activity, timing
 Empty input → false.
 
 Examples:
-"he keeps covering his ears"          → {"needs_context": true,  "reason": "behaviour observed, activity unknown"}
-"she keeps reaching for the snacks"   → {"needs_context": true,  "reason": "implicit hunger/want context"}
-"coat and shoes, we are going out"    → {"needs_context": false, "reason": "activity and objects explicit"}
-"she is doing physiotherapy at 10:45" → {"needs_context": false, "reason": "explicit time and activity"}
-"his usual"                           → {"needs_context": true,  "reason": "routine reference, needs schedule"}
+"he keeps covering his ears"          → {"needs_context": true}
+"she is doing physiotherapy at 10:45" → {"needs_context": false}
 """
 
 # ~650 tokens — higher quality, slower inference.
@@ -236,7 +235,7 @@ def parse_new_planner_response(text: str) -> dict:
 
 
 def parse_decision_response(text: str) -> dict:
-    """Parse raw LLM output into {needs_context: bool, reason: str}.
+    """Parse raw LLM output into {needs_context: bool}.
 
     Pass 1: standard JSON extraction.
     Pass 2: regex salvage on needs_context only.
@@ -257,9 +256,6 @@ def parse_decision_response(text: str) -> dict:
     nc_match = re.search(r"needs_context[\s:=]+([Tt]rue|[Ff]alse|1|0)", text)
     if nc_match:
         result["needs_context"] = nc_match.group(1).lower() in ("true", "1")
-    r_match = re.search(r'"reason"\s*:\s*"([^"]+)"', text)
-    if r_match:
-        result["reason"] = r_match.group(1)
 
     if result:
         logger.warning("[FALLBACK] decision JSON malformed — salvaged: %s", result)

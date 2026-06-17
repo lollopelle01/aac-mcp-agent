@@ -148,11 +148,13 @@ def _get_agent() -> AACAgent:
             gguf_models = settings.gguf_models
             gguf_rel    = gguf_models.get(current_model)
             if gguf_rel:
-                gguf_path = str(_APP / gguf_rel)
-                logger.info("Using LlamaCppBackend: %s", gguf_path)
+                gguf_path  = str(_APP / gguf_rel)
+                model_meta = settings.models.get(current_model, {})
+                n_ctx      = model_meta.get("num_ctx", 2048)
+                logger.info("Using LlamaCppBackend: %s  (n_ctx=%d)", gguf_path, n_ctx)
                 backend = LlamaCppBackend(
                     model_path = gguf_path,
-                    n_ctx      = 512,
+                    n_ctx      = n_ctx,
                     n_threads  = 4,
                     verbose    = False,
                 )

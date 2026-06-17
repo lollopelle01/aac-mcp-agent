@@ -107,7 +107,7 @@ class AACAgent:
             self.backend = OllamaBackend(
                 model       = model,
                 num_predict = model_meta.get("num_predict", 150),
-                num_ctx     = model_meta.get("num_ctx", 512),
+                num_ctx     = model_meta.get("num_ctx", 2048),
             )
 
         self._eval_ctx:      Optional[EvalContext] = None
@@ -115,16 +115,15 @@ class AACAgent:
         self._concept_order: dict[int, int]        = {}  # pid -> concept index, refreshed per turn
 
         # Diagnostic fields exposed to the API and eval notebooks
-        self.last_candidates:      list[Pictogram] = []
-        self.last_call_tools:      bool            = False   # backward compat: True ↔ needs_context
-        self.last_resolve_info:    list[dict]      = []      # [{concept, queries, method}]
-        self.last_plan_method:     str             = "llm"   # "llm" | "fallback_spacy" | "fallback_empty"
-        self.last_synset_added:    int             = 0       # pictograms added by synset expansion
-        self.last_pool_ids:        list[int]       = []      # full ranked candidate pool, before window cut
-        self.last_needs_context:   bool            = False   # result of decision call
-        self.last_decision_reason: str             = ""      # reason string from decision call
-        self.last_context_block:   str             = ""      # context_block injected into planner
-        self.last_tool_calls:      list[str]       = []      # MCP tools actually called this turn
+        self.last_candidates:   list[Pictogram] = []
+        self.last_call_tools:   bool            = False   # backward compat: True ↔ needs_context
+        self.last_resolve_info: list[dict]      = []      # [{concept, queries, method}]
+        self.last_plan_method:  str             = "llm"   # "llm" | "fallback_spacy" | "fallback_empty"
+        self.last_synset_added: int             = 0       # pictograms added by synset expansion
+        self.last_pool_ids:     list[int]       = []      # full ranked candidate pool, before window cut
+        self.last_needs_context: bool           = False   # result of decision call
+        self.last_context_block: str            = ""      # context_block injected into planner
+        self.last_tool_calls:   list[str]       = []      # MCP tools actually called this turn
 
     #######################################################################################################
     # Public API                                                                                          #
@@ -153,11 +152,10 @@ class AACAgent:
         agent_log.info("[TIMING] run→decide: %.2fs", time.perf_counter() - _t_run_start)
 
         if self.use_two_phase and raw_input.strip():
-            needs_context, reason = self._decide(raw_input, history)
+            needs_context = self._decide(raw_input, history)
         else:
             # Legacy mode or empty input: skip decision, always collect context
             needs_context = True
-            reason        = "legacy_mode"
 
         ####################################################################################################
         # Phase 2: CONTEXT (MCP tools — only if needed)                                                   #
@@ -182,16 +180,13 @@ class AACAgent:
                 context_block,
             )
         else:
-            agent_log.info(
-                "[CTX]    skipped — decision: needs_context=False  reason=%r", reason
-            )
+            agent_log.info("[CTX]    skipped — decision: needs_context=False")
 
         # Update diagnostic fields
-        self.last_tool_calls       = tool_calls_done
-        self.last_needs_context    = needs_context
-        self.last_decision_reason  = reason
-        self.last_context_block    = context_block
-        self.last_call_tools       = needs_context   # backward compat for server.py / eval
+        self.last_tool_calls    = tool_calls_done
+        self.last_needs_context = needs_context
+        self.last_context_block = context_block
+        self.last_call_tools    = needs_context   # backward compat for server.py / eval
 
         ####################################################################################################
         # Phase 3: PLANNING (LLM with context already available)                                          #
@@ -304,13 +299,18 @@ class AACAgent:
     # Phase 1: decision                                                                                                     #
     #########################################################################################################################
 
-    def _decide(self, raw_input: str, history: str) -> tuple[bool, str]:
-        """Phase 1: fast LLM call to determine if time/schedule context is needed."""
+    def _decide(self, raw_input: str, history: str) -> bool:
+        """Phase 1: fast LLM call to determine if time/schedule context is needed.
+
+        Returns True if context is needed, False otherwise.
+        The decision prompt no longer requests a "reason" field — the choice is
+        objective enough that the extra token cost is not justified.
+        """
         # Eval bypass: if mock_needs_context is set, skip the LLM call entirely
         if self._eval_ctx is not None and self._eval_ctx.mock_needs_context is not None:
             needs = self._eval_ctx.mock_needs_context
             agent_log.info("[DECISION] mocked  needs_context=%s", needs)
-            return needs, "mocked"
+            return needs
 
         _t0        = time.perf_counter()
         system_msg = build_decision_prompt()
@@ -321,15 +321,14 @@ class AACAgent:
             elapsed  = time.perf_counter() - _t0
             parsed   = parse_decision_response(raw_text)
             needs    = bool(parsed.get("needs_context", True))
-            reason   = str(parsed.get("reason", ""))
             agent_log.info(
-                "[DECISION] needs_context=%s  reason=%r  elapsed=%.2fs  raw=%r",
-                needs, reason, elapsed, raw_text,
+                "[DECISION] needs_context=%s  elapsed=%.2fs  raw=%r",
+                needs, elapsed, raw_text,
             )
-            return needs, reason
+            return needs
         except Exception as exc:
             logger.warning("Decision LLM failed: %s — defaulting needs_context=True", exc)
-            return True, "decision_failed"
+            return True
 
     #########################################################################################################################
     # Phase 3: planner                                                                                                      #
