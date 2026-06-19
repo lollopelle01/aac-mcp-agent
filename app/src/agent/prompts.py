@@ -226,6 +226,23 @@ def parse_new_planner_response(text: str) -> dict:
             if concepts:
                 result["concepts"] = concepts
 
+    # Pass 3: JSON troncato da max_tokens — lista senza ']' finale, oppure con
+    # apici singoli non gestiti dai pass precedenti.
+    # Cerca la chiave "concepts" o 'concepts', estrae tutti i token quotati
+    # (doppi o singoli apici) e deduplica per rimuovere loop di ripetizione.
+    if "concepts" not in result:
+        trunc_match = re.search(r'["\']concepts["\']\s*:\s*\[([^\]]*)', text)
+        if trunc_match:
+            tokens = re.findall(r'["\']([^"\']+)["\']', trunc_match.group(1))
+            seen: set[str] = set()
+            deduped: list[str] = []
+            for t in tokens:
+                if t not in seen:
+                    seen.add(t)
+                    deduped.append(t)
+            if deduped:
+                result["concepts"] = deduped
+
     if result:
         logger.warning("[FALLBACK] new planner JSON malformed — salvaged: %s", result)
         return result

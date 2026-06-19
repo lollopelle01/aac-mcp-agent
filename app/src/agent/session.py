@@ -27,7 +27,7 @@ def _nlp() -> spacy.language.Language:
 class Turn:
     """Single conversation turn stored by SessionMemory."""
 
-    turn_id:     int              # 1-based index within the session
+    turn_id:     int              # 0-based index within the session
     timestamp:   datetime         # wall-clock time of the turn
     raw_input:   str              # original caregiver description
     presented:   list[Pictogram]  # full window shown to the user this turn

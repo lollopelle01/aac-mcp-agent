@@ -34,6 +34,7 @@ from agent.context import (
     filter_schedule_by_time,
     terms_from_schedule,
     build_context_block,
+    _sched_detail,
 )
 from agent.session import SessionMemory, Turn
 from agent.backends import LLMBackend, OllamaBackend
@@ -139,23 +140,30 @@ class AACAgent:
 
         _t_run_start = time.perf_counter()
         self._eval_ctx = eval_ctx
-        turn_id = self.memory.turn_count + 1
+        turn_id = self.memory.turn_count   # 0-based: first turn of a session is turn_id=0
         logger.info("── Turn %d ── %r", turn_id, raw_input)
-        agent_log.info("User: %r", raw_input)
 
         history = self.memory.prompt_summary(AGENT_MEMORY_TURNS)
+        history_turns = len(self.memory.turns)
+
+        # [INPUT] — one line: turn index, raw input, memory state
+        agent_log.info(
+            "[INPUT]  turn=%d  user=%r  history_turns=%d  history=%r",
+            turn_id, raw_input, history_turns, history or "(none)",
+        )
 
         ####################################################################################################
         # Phase 1: DECISION                                                                                #
         ####################################################################################################
 
-        agent_log.info("[TIMING] run→decide: %.2fs", time.perf_counter() - _t_run_start)
-
         if eval_ctx is not None and eval_ctx.mock_needs_context is not None:
             # Eval bypass: honor the mock even with empty raw_input (turn_pos > 0
             # in multi-turn eval, where context is assumed to already be in history).
             needs_context = eval_ctx.mock_needs_context
-            agent_log.info("[DECISION] mocked  needs_context=%s", needs_context)
+            agent_log.info(
+                "[DECIDE] mocked  needs_context=%s  elapsed=%.2fs",
+                needs_context, time.perf_counter() - _t_run_start,
+            )
         elif self.use_two_phase and raw_input.strip():
             needs_context = self._decide(raw_input, history)
         else:
@@ -165,6 +173,10 @@ class AACAgent:
             # called_get_time=True / called_get_schedule=False bleed-through in
             # the eval CSV for all subsequent turns.
             needs_context = False
+            agent_log.info(
+                "[DECIDE] skipped (empty input or legacy mode)  needs_context=False  elapsed=%.2fs",
+                time.perf_counter() - _t_run_start,
+            )
 
         ####################################################################################################
         # Phase 2: CONTEXT (MCP tools — only if needed)                                                   #
@@ -176,20 +188,29 @@ class AACAgent:
         tool_calls_done: list[str]      = []
 
         if needs_context:
-            time_of_day, schedule_events = collect_context(self._eval_ctx, self.fetch_schedule)
+            time_of_day, schedule_events, time_info = collect_context(self._eval_ctx, self.fetch_schedule)
             tool_calls_done.append("get_time")
+            exact_time = None
+            if time_info is not None:
+                exact_time = time_info.current_dt.strftime("%H:%M")
             if schedule_events:
                 tool_calls_done.append("get_schedule")
                 relevant      = filter_schedule_by_time(schedule_events, time_of_day)
-                context_block = build_context_block(time_of_day, relevant)
+                context_block = build_context_block(time_of_day, relevant, exact_time=exact_time)
+            elif time_of_day:
+                # No schedule events, but we still want the exact time surfaced
+                # to the planner instead of just the coarse slot.
+                context_block = build_context_block(time_of_day, [], exact_time=exact_time)
+            # Single informative line for the whole context phase — includes the
+            # event detail that used to be duplicated across [EVAL]/[TOOL] lines
+            # in context.py (now removed in favour of this one line).
             agent_log.info(
-                "[CTX]    tool_calls=%s  events=%d  context_block=%s",
-                tool_calls_done,
-                len(schedule_events),
-                context_block,
+                "[CTX]    tool_calls=%s  time_of_day=%r  exact_time=%r  events=%d%s  context_block=%r",
+                tool_calls_done, time_of_day, exact_time, len(schedule_events),
+                _sched_detail(schedule_events), context_block or "(none)",
             )
         else:
-            agent_log.info("[CTX]    skipped — decision: needs_context=False")
+            agent_log.info("[CTX]    skipped")
 
         # Update diagnostic fields
         self.last_tool_calls    = tool_calls_done
@@ -200,8 +221,6 @@ class AACAgent:
         ####################################################################################################
         # Phase 3: PLANNING (LLM with context already available)                                          #
         ####################################################################################################
-
-        agent_log.info("[TIMING] run→plan: %.2fs", time.perf_counter() - _t_run_start)
 
         if self.use_two_phase:
             concepts = self._plan(raw_input, history, context_block=context_block)
@@ -228,8 +247,8 @@ class AACAgent:
             concepts = self._extract_terms(raw_input)
             self.last_plan_method = "fallback_empty" if not raw_input.strip() else "fallback_spacy"
             agent_log.info(
-                "[PLAN]   no concepts from LLM — fallback: %s  [plan_method=%s]",
-                concepts, self.last_plan_method,
+                "[PLAN]   fallback  method=%s  concepts=%s",
+                self.last_plan_method, concepts,
             )
         else:
             self.last_plan_method = "llm"
@@ -273,7 +292,8 @@ class AACAgent:
         ))
         self._eval_ctx = None
         agent_log.info(
-            "[RESULT] window=%d  selected_excluded=%d  ids=%s",
+            "[RESULT] elapsed=%.2fs  window=%d  memory_excluded=%d  ids=%s",
+            time.perf_counter() - _t_run_start,
             len(result), len(selected_ids), [p.id for p in result],
         )
         logger.info("Turn %d done — %d pictograms", turn_id, len(result))
@@ -326,11 +346,10 @@ class AACAgent:
         The decision prompt no longer requests a "reason" field — the choice is
         objective enough that the extra token cost is not justified.
         """
-        # Eval bypass: if mock_needs_context is set, skip the LLM call entirely
+        # Eval bypass: if mock_needs_context is set, skip the LLM call entirely.
+        # [DECIDE] is already logged by the caller (run()) in this case — don't log again.
         if self._eval_ctx is not None and self._eval_ctx.mock_needs_context is not None:
-            needs = self._eval_ctx.mock_needs_context
-            agent_log.info("[DECISION] mocked  needs_context=%s", needs)
-            return needs
+            return self._eval_ctx.mock_needs_context
 
         _t0        = time.perf_counter()
         system_msg = build_decision_prompt()
@@ -341,13 +360,17 @@ class AACAgent:
             elapsed  = time.perf_counter() - _t0
             parsed   = parse_decision_response(raw_text)
             needs    = bool(parsed.get("needs_context", True))
+            # Single informative line: result + timing + raw model output.
+            # NOTE: the mocked branch in run() already logs [DECIDE] before
+            # calling _decide(), so we only log here for the real LLM path.
             agent_log.info(
-                "[DECISION] needs_context=%s  elapsed=%.2fs  raw=%r",
+                "[DECIDE] needs_context=%s  elapsed=%.2fs  raw=%r",
                 needs, elapsed, raw_text,
             )
             return needs
         except Exception as exc:
             logger.warning("Decision LLM failed: %s — defaulting needs_context=True", exc)
+            agent_log.info("[DECIDE] LLM failed — defaulting needs_context=True")
             return True
 
     #########################################################################################################################
@@ -361,7 +384,6 @@ class AACAgent:
         context_block: str = "",
     ) -> list[str]:
         """Phase 3 (two-phase mode): LLM planner. Returns concepts list only; no call_tools."""
-        _t_plan_start = time.perf_counter()
         system_msg = build_planner_prompt(full=False)
         user_msg   = build_planner_message(raw_input, history, context_block=context_block)
 
@@ -371,19 +393,22 @@ class AACAgent:
         )
 
         try:
-            agent_log.info(
-                "[PLAN CALL] backend=%s  model=%s  pre_call=%.2fs",
-                type(self.backend).__name__, self.backend.model_id,
-                time.perf_counter() - _t_plan_start,
-            )
             _t0      = time.perf_counter()
             raw_text = self.backend.chat(system_msg, user_msg)
             _elapsed = time.perf_counter() - _t0
-            agent_log.info("[PLAN OUT] elapsed=%.2fs  raw=%r", _elapsed, raw_text)
 
             parsed   = parse_new_planner_response(raw_text)   # no call_tools expected
-            concepts = [str(c).strip() for c in parsed.get("concepts", []) if c]
-            agent_log.info("[PLAN]   concepts=%s  elapsed=%.2fs", concepts, _elapsed)
+            # Deduplicate while preserving order — Llama-class models sometimes
+            # loop a single token (e.g. 80× "look") when the JSON is truncated
+            # at max_tokens. dict.fromkeys keeps first occurrence, discards rest.
+            raw_concepts = [str(c).strip() for c in parsed.get("concepts", []) if c]
+            concepts     = list(dict.fromkeys(raw_concepts))
+            dedup_note   = f"  (deduped {len(raw_concepts)}→{len(concepts)})" if len(raw_concepts) != len(concepts) else ""
+            # Single informative line: timing + concepts + raw model output
+            agent_log.info(
+                "[PLAN]   elapsed=%.2fs  concepts=%s%s  raw=%r",
+                _elapsed, concepts, dedup_note, raw_text,
+            )
             return concepts
 
         except Exception as exc:
@@ -400,7 +425,6 @@ class AACAgent:
         Kept for backward compatibility with eval scripts that depend on last_call_tools.
         Body is identical to the original _plan(); only the name changed.
         """
-        _t_plan_start = time.perf_counter()
         system_msg = build_planner_prompt(full=False)
         user_msg   = build_planner_message(raw_input, history)
 
@@ -410,20 +434,18 @@ class AACAgent:
         )
 
         try:
-            agent_log.info(
-                "[PLAN CALL] backend=%s  model=%s  pre_call=%.2fs",
-                type(self.backend).__name__, self.backend.model_id,
-                time.perf_counter() - _t_plan_start,
-            )
             _t0      = time.perf_counter()
             raw_text = self.backend.chat(system_msg, user_msg)
             _elapsed = time.perf_counter() - _t0
-            agent_log.info("[PLAN OUT] elapsed=%.2fs  raw=%r", _elapsed, raw_text)
 
             parsed     = parse_planner_response(raw_text)   # legacy parser — includes call_tools
             call_tools = bool(parsed.get("call_tools", True))
             concepts   = [str(c).strip() for c in parsed.get("concepts", []) if c]
-            agent_log.info("[PLAN]   call_tools=%s  concepts=%s", call_tools, concepts)
+            # Single informative line: timing + call_tools + concepts + raw model output
+            agent_log.info(
+                "[PLAN]   elapsed=%.2fs  call_tools=%s  concepts=%s  raw=%r",
+                _elapsed, call_tools, concepts, raw_text,
+            )
             return call_tools, concepts
 
         except Exception as exc:
@@ -447,10 +469,10 @@ class AACAgent:
             resolve_info.append({"concept": term, "queries": queries, "method": method})
 
             if not queries:
-                agent_log.info("[RESOLVE] %r → no match in keyword index (skipped)  [method=none]", term)
+                agent_log.info("[RESOLVE] %r → no match  [method=none]", term)
                 continue
-            agent_log.info("[RESOLVE] %r → %s  [method=%s]", term, queries, method)
 
+            n_new = 0
             for query in queries:
                 if query in seen_queries:
                     continue
@@ -459,18 +481,21 @@ class AACAgent:
                     raw     = search_pictograms(keyword=query, lang=self.lang,
                                                 max_results=AGENT_CANDIDATES_PER_TERM)
                     results = raw.get("results", [])
-                    agent_log.info(
-                        "[TOOL]   search_pictograms(keyword=%r) → %d results",
-                        query, len(results),
-                    )
                     for pic_dict in results:
                         pic = Pictogram.model_validate(pic_dict)
                         if pic.id not in seen:
                             seen.add(pic.id)
-                            concept_order[pic.id] = concept_idx  # track which concept introduced this pictogram
+                            concept_order[pic.id] = concept_idx
                             candidates.append(pic)
+                            n_new += 1
                 except Exception as exc:
                     logger.warning("search_pictograms(%r) failed: %s", query, exc)
+
+            # Single line per concept: term → keywords → new candidates added
+            agent_log.info(
+                "[RESOLVE] %r → queries=%s  new_candidates=%d  [method=%s]",
+                term, queries, n_new, method,
+            )
 
         self._concept_order    = concept_order
         self.last_resolve_info = resolve_info
@@ -531,11 +556,12 @@ class AACAgent:
         self.last_pool_ids = pool_ids
 
         agent_log.info(
-            "[RANK]   strategy=%s  total_candidates=%d  selected_hard_excluded=%d  pool=%d  window=%d",
+            "[RANK]   strategy=%s  pool=%d→%d  excl=%d  window=%d",
             self.ranking_strategy,
             len(candidates),
+            len(pool_ids),
             len(selected_ids & {p.id for p in candidates}),
-            len(pool_ids), len(window),
+            len(window),
         )
         return window
 
