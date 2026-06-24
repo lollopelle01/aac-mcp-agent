@@ -465,7 +465,7 @@ class AACAgent:
         resolve_info:  list[dict]      = []
 
         for concept_idx, term in enumerate(terms):
-            queries, method = resolve_concept(term, self._kw_set, return_method=True)
+            queries, method = resolve_concept(term, self._kw_set, lang=self.lang, return_method=True)
             resolve_info.append({"concept": term, "queries": queries, "method": method})
 
             if not queries:

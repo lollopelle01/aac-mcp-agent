@@ -339,11 +339,14 @@ def build_lang_dataset(
     # All keyword strings across all pictogram records, with no hierarchy.
     # This stays in sync with the pictogram data automatically — no separate
     # /keywords/{lang} call required.
+    # Keywords are lowercased here so that keywords.json (and therefore the
+    # kw_set loaded at runtime) uses the same case as resolve_concept(), which
+    # always lowercases the input concept before matching.
     keyword_set: set[str] = set()
     for rec in pictograms.values():
         for kw in rec.get("keywords", []):
             if isinstance(kw, dict) and kw.get("keyword"):
-                keyword_set.add(kw["keyword"])
+                keyword_set.add(kw["keyword"].lower())
 
     keywords = sorted(keyword_set)
     _write_json(
@@ -354,10 +357,11 @@ def build_lang_dataset(
     meta["keywords"] = {"built_at": run_ts, "count": len(keywords)}
 
     # -- 4a. Rebuild keyword_index --------------------------------------------
+    # Keys are lowercased to match keywords.json and the runtime kw_set.
     keyword_index: dict[str, list[str]] = {}
     for pid_str, rec in pictograms.items():
         for kw in rec.get("keywords", []):
-            term = kw.get("keyword") if isinstance(kw, dict) else None
+            term = kw.get("keyword").lower() if isinstance(kw, dict) and kw.get("keyword") else None
             if term:
                 keyword_index.setdefault(term, [])
                 if pid_str not in keyword_index[term]:

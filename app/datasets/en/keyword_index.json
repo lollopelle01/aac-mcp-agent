@@ -751,19 +751,19 @@
   "3:45": [
     "29534"
   ],
-  "3D": [
+  "3d": [
     "34995"
   ],
-  "3D cinema": [
+  "3d cinema": [
     "34997"
   ],
-  "3D image": [
+  "3d image": [
     "34995"
   ],
-  "3D printer": [
+  "3d printer": [
     "38039"
   ],
-  "3D shooting ride": [
+  "3d shooting ride": [
     "39588"
   ],
   "3rd": [
@@ -827,11 +827,11 @@
   "4:45": [
     "29536"
   ],
-  "4WD": [
-    "3223"
-  ],
   "4d cinema": [
     "34333"
+  ],
+  "4wd": [
+    "3223"
   ],
   "4x4": [
     "3223"
@@ -1134,3879 +1134,12 @@
   "@": [
     "3177"
   ],
-  "A": [
-    "3049"
-  ],
-  "A.M.": [
-    "32848"
-  ],
-  "AAC book": [
-    "7004"
-  ],
-  "AAC communication book": [
-    "7004"
-  ],
-  "ABC": [
-    "3050"
-  ],
-  "AI": [
-    "39705"
-  ],
-  "AIDS": [
-    "24402"
-  ],
-  "ALS ambulance": [
-    "28163"
-  ],
-  "ALT": [
-    "32706"
-  ],
-  "AMBU bag": [
-    "37221"
-  ],
-  "ARASAAC": [
-    "35071"
-  ],
-  "ATM": [
-    "17190"
-  ],
-  "ATM machine": [
-    "17190"
-  ],
-  "ATM terminal": [
-    "17190"
-  ],
-  "ATV": [
-    "13360"
-  ],
-  "AV": [
-    "32854",
-    "32855"
-  ],
-  "Adam and Eve": [
-    "23729"
-  ],
-  "Adult Life Transition": [
-    "32706"
-  ],
-  "Advent": [
-    "37174"
-  ],
-  "Advent Calendar": [
-    "37985"
-  ],
-  "Afghanistan": [
-    "24831"
-  ],
-  "Africa": [
-    "5364"
-  ],
-  "African": [
-    "6011",
-    "6282"
-  ],
-  "Age of metals": [
-    "32640"
-  ],
-  "Alava": [
-    "14759"
-  ],
-  "Albacete": [
-    "14762"
-  ],
-  "Albania": [
-    "29584",
-    "29585"
-  ],
-  "Alcalá Gate": [
-    "22056"
-  ],
-  "Algeria": [
-    "26668"
-  ],
-  "Alhambra": [
-    "31027"
-  ],
-  "Alicante": [
-    "14767"
-  ],
-  "Aljaferi­a castle": [
-    "5421"
-  ],
-  "All Saints": [
-    "6951"
-  ],
-  "All Saints Day": [
-    "32460",
-    "6951"
-  ],
-  "Almeria": [
-    "14683"
-  ],
-  "Altamira": [
-    "11177"
-  ],
-  "Alzheimer": [
-    "16349"
-  ],
-  "Alzheimer's disease": [
-    "16349"
-  ],
-  "Amazon": [
-    "34941"
-  ],
-  "Amazon River": [
-    "34941"
-  ],
-  "America": [
-    "5377"
-  ],
-  "American football": [
-    "39851"
-  ],
-  "American lobster": [
-    "36983"
-  ],
-  "Andalucia": [
-    "8024",
-    "8489"
-  ],
-  "Andalusia": [
-    "8024",
-    "8489"
-  ],
-  "Andorra": [
-    "26666",
-    "28979"
-  ],
-  "Andres Guazurari's monument": [
-    "38044"
-  ],
-  "Angola": [
-    "26667"
-  ],
-  "Annunciation": [
-    "29957"
-  ],
-  "Antarctica": [
-    "21363"
-  ],
-  "Antequera": [
-    "31029",
-    "31031",
-    "31129",
-    "31131",
-    "31133",
-    "31135"
-  ],
-  "Apalpador": [
-    "27017"
-  ],
-  "April": [
-    "35935",
-    "6024"
-  ],
-  "AraWord": [
-    "25748",
-    "25749"
-  ],
-  "Arabian": [
-    "6010",
-    "6150"
-  ],
-  "Aragon": [
-    "5383",
-    "5384",
-    "5608",
-    "5610"
-  ],
-  "Aragon emblem": [
-    "5610"
-  ],
-  "Aragonese Parliament": [
-    "5421"
-  ],
-  "Aragosaurus ischiaticus": [
-    "34437"
-  ],
-  "Argentina": [
-    "29590",
-    "8030"
-  ],
-  "Ark of the Covenant": [
-    "36087"
-  ],
-  "Armenia": [
-    "26669",
-    "29569"
-  ],
-  "Art lesson": [
-    "13634",
-    "32550"
-  ],
-  "Artic person": [
-    "6135",
-    "6151"
-  ],
-  "Artificial Manual Breathing Unit": [
-    "37221"
-  ],
-  "Asia": [
-    "5390"
-  ],
-  "Asturias": [
-    "14829",
-    "8034",
-    "8494"
-  ],
-  "Atlantic Ocean": [
-    "32699"
-  ],
-  "Atlantic mudskipper": [
-    "38326"
-  ],
-  "Atlantic pomfret": [
-    "37586"
-  ],
-  "Atlantic wolffish": [
-    "38330"
-  ],
-  "Atomium": [
-    "23769"
-  ],
-  "August": [
-    "35941",
-    "6034"
-  ],
-  "Augustus": [
-    "24978"
-  ],
-  "Australia": [
-    "21393",
-    "37646"
-  ],
-  "Austria": [
-    "21394",
-    "28980"
-  ],
-  "Austrian costume": [
-    "27298"
-  ],
-  "Avila": [
-    "14770"
-  ],
-  "Azerbaijan": [
-    "26670",
-    "29570"
-  ],
-  "B": [
-    "3061"
-  ],
-  "BCD": [
-    "31117"
-  ],
-  "BG meter": [
-    "24173"
-  ],
-  "BLT": [
-    "3383"
-  ],
-  "BMX": [
-    "39237"
-  ],
-  "BMX bike": [
-    "39236"
-  ],
-  "BMX circuit": [
-    "39237"
-  ],
-  "BR player": [
-    "4957"
-  ],
-  "Baby Jesus": [
-    "7177"
-  ],
-  "Bach": [
-    "35023"
-  ],
-  "Badajoz": [
-    "14830",
-    "25357"
-  ],
-  "Badajoz's citadel": [
-    "38651"
-  ],
-  "Bahamas": [
-    "26671",
-    "29730"
-  ],
-  "Bahrain": [
-    "27591"
-  ],
-  "Balearic Islands": [
-    "8036",
-    "8498"
-  ],
-  "Balthasar": [
-    "7048"
-  ],
-  "Bangladesh": [
-    "38460"
-  ],
-  "Barbados": [
-    "26672",
-    "29732"
-  ],
-  "Barbie": [
-    "3063"
-  ],
-  "Barcelona": [
-    "14832",
-    "9858"
-  ],
-  "Baryonyx": [
-    "34439"
-  ],
-  "Basi­lica del Pilar": [
-    "5394"
-  ],
-  "Basque Country": [
-    "8118",
-    "8576"
-  ],
-  "Basque pelota": [
-    "29171"
-  ],
-  "Bastille": [
-    "37929"
-  ],
-  "Batman": [
-    "8039"
-  ],
-  "Be careful!": [
-    "25618"
-  ],
-  "Beethoven": [
-    "35057"
-  ],
-  "Belarus": [
-    "26673",
-    "29571"
-  ],
-  "Belgique": [
-    "8040"
-  ],
-  "Belgium": [
-    "28972",
-    "8040"
-  ],
-  "Belize": [
-    "27598",
-    "29729"
-  ],
-  "Berrugon": [
-    "5407"
-  ],
-  "Bhutan": [
-    "27625"
-  ],
-  "Bible": [
-    "23833",
-    "26539"
-  ],
-  "Big Bad Wolf": [
-    "36608",
-    "6140"
-  ],
-  "Big Ben": [
-    "21445"
-  ],
-  "Big Pig": [
-    "5954"
-  ],
-  "Biscay": [
-    "14761"
-  ],
-  "Blind man's buff": [
-    "21882",
-    "28693",
-    "28695"
-  ],
-  "Blu Ray movie": [
-    "36427"
-  ],
-  "Bolivia": [
-    "29594",
-    "29595"
-  ],
-  "Bombay toast": [
-    "39540"
-  ],
-  "Bosnia and Herzegovina": [
-    "21459",
-    "28966"
-  ],
-  "Botafumeiro": [
-    "35867"
-  ],
-  "Boticario": [
-    "5461"
-  ],
-  "Botswana": [
-    "26674"
-  ],
-  "Brachiosaurus": [
-    "34441"
-  ],
-  "Brandenburg Gate": [
-    "22058"
-  ],
-  "Brasil": [
-    "8044"
-  ],
-  "Brazil": [
-    "29589",
-    "8044"
-  ],
-  "Brit milah": [
-    "36123"
-  ],
-  "British bulldog": [
-    "36647"
-  ],
-  "Brunei": [
-    "27624"
-  ],
-  "Brussels sprout": [
-    "23949"
-  ],
-  "Buddha": [
-    "23857"
-  ],
-  "Bulgaria": [
-    "17185",
-    "28984"
-  ],
-  "Bullrush": [
-    "36647"
-  ],
-  "Burgos": [
-    "14771"
-  ],
-  "Burgos' Cathedral": [
-    "36897"
-  ],
-  "Burkina Faso": [
-    "26675"
-  ],
-  "Burma": [
-    "27603"
-  ],
-  "Burundi": [
-    "26676"
-  ],
-  "C": [
-    "3069"
-  ],
-  "C-130": [
-    "36641"
-  ],
-  "C-clef": [
-    "9130"
-  ],
-  "CBE": [
-    "32720"
-  ],
-  "CD": [
-    "15349",
-    "2322",
-    "39044"
-  ],
-  "CD Rom": [
-    "25614"
-  ],
-  "CD player": [
-    "24509"
-  ],
-  "CD reader": [
-    "9156"
-  ],
-  "CD-ROM": [
-    "2322"
-  ],
-  "CD-ROM drive": [
-    "9156"
-  ],
-  "CD-Rom": [
-    "25614"
-  ],
-  "CGAC": [
-    "36898"
-  ],
-  "CO2": [
-    "24015"
-  ],
-  "CPAP therapy": [
-    "37679"
-  ],
-  "CPU": [
-    "9150"
-  ],
-  "CRMF": [
-    "16151"
-  ],
-  "CS": [
-    "36739"
-  ],
-  "CV": [
-    "39177"
-  ],
-  "Ca": [
-    "25898"
-  ],
-  "Cabezudo Berrugon": [
-    "5407"
-  ],
-  "Cabezudo Boticario": [
-    "5461"
-  ],
-  "Cabezudo El Azutero": [
-    "36175"
-  ],
-  "Cabezudo Forana": [
-    "5409"
-  ],
-  "Cabezudo Forano": [
-    "5410"
-  ],
-  "Cabezudo La Cigarrera": [
-    "36173"
-  ],
-  "Cabezudo Morico": [
-    "5411"
-  ],
-  "Cabezudo Pilara": [
-    "5412"
-  ],
-  "Cabezudo Robaculeros": [
-    "5413"
-  ],
-  "Cabezudo Torero": [
-    "5414"
-  ],
-  "Cabezudo Tuerto": [
-    "5415"
-  ],
-  "Caceres": [
-    "14831"
-  ],
-  "Cadiz": [
-    "14684"
-  ],
-  "Calvary": [
-    "38730"
-  ],
-  "Cambodia": [
-    "27646"
-  ],
-  "Cameroon": [
-    "8055"
-  ],
-  "Camino de Santiago": [
-    "35835"
-  ],
-  "Canada": [
-    "29587",
-    "8057"
-  ],
-  "Canarian wrestling": [
-    "37039"
-  ],
-  "Canary Islands": [
-    "8058",
-    "8525"
-  ],
-  "Cantabria": [
-    "14836",
-    "8060",
-    "8527"
-  ],
-  "Cape Verde": [
-    "26677"
-  ],
-  "Capitol": [
-    "24941"
-  ],
-  "Carmen Gate": [
-    "22060"
-  ],
-  "Castañada": [
-    "15501",
-    "24951"
-  ],
-  "Castellon": [
-    "14768"
-  ],
-  "Castile-Leon": [
-    "8068",
-    "8530"
-  ],
-  "Castille-La Mancha": [
-    "8067",
-    "8529"
-  ],
-  "Cat and Mouse": [
-    "36647"
-  ],
-  "Catalonia": [
-    "8069",
-    "8532"
-  ],
-  "Cervantes": [
-    "15351"
-  ],
-  "Ceuta": [
-    "14837",
-    "31330",
-    "31331",
-    "8070",
-    "8535"
-  ],
-  "Chad": [
-    "26752"
-  ],
-  "Chamber of Deputies": [
-    "21551"
-  ],
-  "Channukah": [
-    "36125"
-  ],
-  "Channukkah": [
-    "36125"
-  ],
-  "Chile": [
-    "29598",
-    "8071"
-  ],
-  "China": [
-    "37647",
-    "8074"
-  ],
-  "China pink": [
-    "37584"
-  ],
-  "Chinese": [
-    "37525",
-    "37526"
-  ],
-  "Chinese Wall": [
-    "10272"
-  ],
-  "Chinese fried rice": [
-    "28923"
-  ],
-  "Chinese man": [
-    "37526"
-  ],
-  "Chinese woman": [
-    "37525"
-  ],
-  "Christ": [
-    "24135",
-    "39831"
-  ],
-  "Christ the Redeemer": [
-    "25036"
-  ],
-  "Christian": [
-    "23993",
-    "25028",
-    "25033"
-  ],
-  "Christmas": [
-    "3134"
-  ],
-  "Christmas Day": [
-    "3092"
-  ],
-  "Christmas Eve": [
-    "8260"
-  ],
-  "Christmas Star": [
-    "3100"
-  ],
-  "Christmas card": [
-    "7269"
-  ],
-  "Christmas flower": [
-    "36394"
-  ],
-  "Christmas garland": [
-    "6885"
-  ],
-  "Christmas lights": [
-    "5083"
-  ],
-  "Christmas ornament": [
-    "6885"
-  ],
-  "Christmas star": [
-    "36394"
-  ],
-  "Christmas stocking": [
-    "5065"
-  ],
-  "Christmas tree": [
-    "24859",
-    "3058"
-  ],
-  "Christmas' Eve": [
-    "8260"
-  ],
-  "Christopher Columbus": [
-    "37932"
-  ],
-  "Cinderella": [
-    "21527"
-  ],
-  "Ciudad Real": [
-    "14763"
-  ],
-  "Coca-Cola": [
-    "2338"
-  ],
-  "Coke": [
-    "2338"
-  ],
-  "Cola-Cao": [
-    "4940"
-  ],
-  "Coliseum": [
-    "23957"
-  ],
-  "Cologne seller": [
-    "16921"
-  ],
-  "Colombia": [
-    "29593",
-    "8080"
-  ],
-  "Columbus": [
-    "37932"
-  ],
-  "Community of Madrid": [
-    "8622"
-  ],
-  "Compulsory Basic Education": [
-    "32720"
-  ],
-  "Compulsory Education for Special Needs Children": [
-    "32720"
-  ],
-  "Conference Hall": [
-    "25542",
-    "25545"
-  ],
-  "Cordoba": [
-    "14685"
-  ],
-  "Costa Rica": [
-    "21567",
-    "29726"
-  ],
-  "Cremá": [
-    "25024"
-  ],
-  "Cri du chat syndrome": [
-    "30239"
-  ],
-  "Cristobal Colon": [
-    "37932"
-  ],
-  "Cro-magnon": [
-    "25928"
-  ],
-  "Croatia": [
-    "21572",
-    "28986"
-  ],
-  "Cuba": [
-    "17218",
-    "29607"
-  ],
-  "Cuenca": [
-    "14764"
-  ],
-  "Cupid": [
-    "16637"
-  ],
-  "Cyprus": [
-    "21536"
-  ],
-  "Czech Republic": [
-    "21535"
-  ],
-  "D": [
-    "3088"
-  ],
-  "DEXA scan": [
-    "38668"
-  ],
-  "DIY show": [
-    "8199"
-  ],
-  "DIY store": [
-    "29979"
-  ],
-  "DJ": [
-    "9193"
-  ],
-  "DNA": [
-    "10268"
-  ],
-  "DVD": [
-    "9152"
-  ],
-  "DVD drive": [
-    "9156"
-  ],
-  "DVD movie": [
-    "36427"
-  ],
-  "DVD player": [
-    "4957"
-  ],
-  "DVD reader": [
-    "9156"
-  ],
-  "DXA scan": [
-    "38668"
-  ],
-  "DYA": [
-    "30000"
-  ],
-  "DZ": [
-    "36742"
-  ],
-  "DZS": [
-    "36741"
-  ],
-  "Dacentrurus Armatus": [
-    "34595"
-  ],
-  "Dali": [
-    "21581"
-  ],
-  "Dec 24": [
-    "8260"
-  ],
-  "Dec 25": [
-    "3092"
-  ],
-  "December": [
-    "35937",
-    "6476"
-  ],
-  "December 31": [
-    "32534",
-    "39109",
-    "8261"
-  ],
-  "Democratic Republic of Congo": [
-    "26769"
-  ],
-  "Democratic Republic of São Tomé and Príncipe": [
-    "39169"
-  ],
-  "Denmark": [
-    "21799",
-    "28981"
-  ],
-  "Dewy Decimal Classification": [
-    "28369",
-    "28370",
-    "28371",
-    "28372",
-    "28373",
-    "28374",
-    "28375",
-    "28376",
-    "28377",
-    "28378",
-    "28379",
-    "28380",
-    "28381",
-    "28382",
-    "28383",
-    "28384",
-    "33962",
-    "33963",
-    "33964",
-    "33965",
-    "38152",
-    "38153",
-    "38154",
-    "38155",
-    "38156",
-    "38157",
-    "38158",
-    "38159",
-    "38160",
-    "38161",
-    "38162",
-    "38163",
-    "38164",
-    "38165",
-    "38166",
-    "38167",
-    "38168",
-    "38169",
-    "38170",
-    "38171",
-    "38172",
-    "38173",
-    "38174",
-    "38175",
-    "38176",
-    "38177",
-    "38178",
-    "38179",
-    "38180",
-    "38181",
-    "38182",
-    "38183",
-    "38184",
-    "38185",
-    "38186",
-    "38187",
-    "38188",
-    "38189",
-    "38190",
-    "38191",
-    "38192",
-    "38193",
-    "38194",
-    "38195",
-    "38196",
-    "38197",
-    "38198",
-    "38608",
-    "38614",
-    "38615",
-    "38616"
-  ],
-  "Dewy Decimal System": [
-    "28369",
-    "28370",
-    "28371",
-    "28372",
-    "28373",
-    "28374",
-    "28375",
-    "28376",
-    "28377",
-    "28378",
-    "28379",
-    "28380",
-    "28381",
-    "28382",
-    "28383",
-    "28384",
-    "33962",
-    "33963",
-    "33964",
-    "33965",
-    "38152",
-    "38153",
-    "38154",
-    "38155",
-    "38156",
-    "38157",
-    "38158",
-    "38159",
-    "38160",
-    "38161",
-    "38162",
-    "38163",
-    "38164",
-    "38165",
-    "38166",
-    "38167",
-    "38168",
-    "38169",
-    "38170",
-    "38171",
-    "38172",
-    "38173",
-    "38174",
-    "38175",
-    "38176",
-    "38177",
-    "38178",
-    "38179",
-    "38180",
-    "38181",
-    "38182",
-    "38183",
-    "38184",
-    "38185",
-    "38186",
-    "38187",
-    "38188",
-    "38189",
-    "38190",
-    "38191",
-    "38192",
-    "38193",
-    "38194",
-    "38195",
-    "38196",
-    "38197",
-    "38198",
-    "38608",
-    "38614",
-    "38615",
-    "38616"
-  ],
-  "Diego de Marcilla": [
-    "34927"
-  ],
-  "Digital Audio Player": [
-    "7783"
-  ],
-  "Dolmen de Viera": [
-    "31135"
-  ],
-  "Dominican Republic": [
-    "27308",
-    "29727"
-  ],
-  "Don Quixote": [
-    "10359"
-  ],
-  "Don't use the lift in case of fire": [
-    "24653"
-  ],
-  "Donostia": [
-    "28960"
-  ],
-  "Down syndrome": [
-    "30233",
-    "37455",
-    "8222"
-  ],
-  "Down's Syndrome": [
-    "30233",
-    "37455",
-    "8222"
-  ],
-  "Dr.": [
-    "8263"
-  ],
-  "Drinking forbidden": [
-    "29177"
-  ],
-  "Dulcinea": [
-    "15373"
-  ],
-  "Dulcinea del Toboso": [
-    "15373"
-  ],
-  "E": [
-    "3096"
-  ],
-  "ECG": [
-    "30802",
-    "30805",
-    "8100"
-  ],
-  "EEG": [
-    "30090",
-    "30091",
-    "30170",
-    "30171",
-    "30249",
-    "8101"
-  ],
-  "EKG": [
-    "30802",
-    "30805",
-    "8100"
-  ],
-  "ESPLAI": [
-    "11647"
-  ],
-  "EV charger": [
-    "38334",
-    "38335"
-  ],
-  "Earth": [
-    "30014"
-  ],
-  "East": [
-    "8114"
-  ],
-  "Easter Bunny": [
-    "39162"
-  ],
-  "Easter Rabbit": [
-    "39162"
-  ],
-  "Easter chocolate figures": [
-    "37450"
-  ],
-  "Easter egg": [
-    "11304",
-    "12307",
-    "29678",
-    "32478"
-  ],
-  "Easter eggs": [
-    "37452",
-    "37466"
-  ],
-  "Eating forbidden": [
-    "29179"
-  ],
-  "Ebro": [
-    "5446"
-  ],
-  "Ebro river": [
-    "5446"
-  ],
-  "Ecuador": [
-    "19550",
-    "29600"
-  ],
-  "Egypt": [
-    "37648",
-    "8099"
-  ],
-  "Egyptologist": [
-    "32095"
-  ],
-  "Egyptology": [
-    "32095"
-  ],
-  "Eiffel Tower": [
-    "10271"
-  ],
-  "El Hierro": [
-    "14843"
-  ],
-  "El Peine del Viento": [
-    "28899"
-  ],
-  "El Salvador": [
-    "29652",
-    "29653"
-  ],
-  "El Salvador tower": [
-    "31388"
-  ],
-  "Emmental cheese": [
-    "38899"
-  ],
-  "Entierro de la Sardina": [
-    "27737"
-  ],
-  "Epiphany": [
-    "5072"
-  ],
-  "Equatorial Guinea": [
-    "26877"
-  ],
-  "Eritrea": [
-    "26833"
-  ],
-  "Estonia": [
-    "21856",
-    "29574"
-  ],
-  "Ethiopia": [
-    "26844"
-  ],
-  "Europe": [
-    "5468",
-    "8117"
-  ],
-  "European Parliament": [
-    "30247"
-  ],
-  "European grouse": [
-    "29690"
-  ],
-  "European lobster": [
-    "36982"
-  ],
-  "Europelta carbonensis": [
-    "34591"
-  ],
-  "Extremadura": [
-    "8120",
-    "8580"
-  ],
-  "F": [
-    "3101"
-  ],
-  "F clef": [
-    "9128"
-  ],
-  "FAO": [
-    "9076"
-  ],
-  "FFP1 mask": [
-    "36789"
-  ],
-  "FFP3 mask": [
-    "36787"
-  ],
-  "FFP3 respirator": [
-    "36787"
-  ],
-  "Faeroe Islands": [
-    "39459"
-  ],
-  "Fat Thursday": [
-    "28279",
-    "28281"
-  ],
-  "Father Bear": [
-    "6165"
-  ],
-  "Father Christmas": [
-    "25297",
-    "25298",
-    "3139",
-    "32454"
-  ],
-  "Father Christmas cap": [
-    "3109"
-  ],
-  "Father's Day": [
-    "3093"
-  ],
-  "Feast of Tabernacles": [
-    "37848"
-  ],
-  "Feast of Weeks": [
-    "38964"
-  ],
-  "February": [
-    "35945",
-    "6498"
-  ],
-  "Festival of Lights": [
-    "36125"
-  ],
-  "Fiestas del Pilar": [
-    "5073"
-  ],
-  "Finland": [
-    "21873",
-    "28983"
-  ],
-  "Finnish sauna": [
-    "25433"
-  ],
-  "Flintstones' car attraction": [
-    "35011"
-  ],
-  "Flower Offering": [
-    "39695",
-    "39696",
-    "5529"
-  ],
-  "Food and Agriculture Organization": [
-    "9076"
-  ],
-  "Forana": [
-    "5409"
-  ],
-  "Forano": [
-    "5410"
-  ],
-  "Foreign Language lesson": [
-    "24469"
-  ],
-  "Formentera": [
-    "14848"
-  ],
-  "Four corners": [
-    "37449"
-  ],
-  "France": [
-    "28968",
-    "8121"
-  ],
-  "Francisco de Goya": [
-    "15493"
-  ],
-  "Francisco de Goya y Lucientes": [
-    "15493"
-  ],
-  "Frankenstein": [
-    "8279"
-  ],
-  "French Guiana": [
-    "26879"
-  ],
-  "French Guyana": [
-    "26879"
-  ],
-  "French Revolution": [
-    "37926"
-  ],
-  "French bread": [
-    "2494"
-  ],
-  "Friday": [
-    "37726",
-    "6629"
-  ],
-  "Fuerteventura": [
-    "24478"
-  ],
-  "Fujiyama": [
-    "37069"
-  ],
-  "G": [
-    "3104"
-  ],
-  "G clef": [
-    "9129"
-  ],
-  "GPS": [
-    "9154"
-  ],
-  "GY": [
-    "36747"
-  ],
-  "Gabon": [
-    "26871"
-  ],
-  "Galicia": [
-    "8123",
-    "8588"
-  ],
-  "Galician Centre of Contemporary Art": [
-    "36898"
-  ],
-  "Galician lesson": [
-    "34798"
-  ],
-  "Gambia": [
-    "8124"
-  ],
-  "Gaspar": [
-    "7769"
-  ],
-  "Georgia": [
-    "26872",
-    "29575"
-  ],
-  "Germany": [
-    "28970",
-    "8011"
-  ],
-  "Gerona": [
-    "14833"
-  ],
-  "Ghana": [
-    "26873"
-  ],
-  "God": [
-    "24013",
-    "35069"
-  ],
-  "Goldilocks": [
-    "6207"
-  ],
-  "Good Friday": [
-    "32950",
-    "32951"
-  ],
-  "Goya": [
-    "15493"
-  ],
-  "Gran Canaria": [
-    "24477"
-  ],
-  "Granada": [
-    "14686"
-  ],
-  "Grandmother's Footsteps": [
-    "31193"
-  ],
-  "Great Britain": [
-    "8206"
-  ],
-  "Great Pyramid": [
-    "8190"
-  ],
-  "Great Wall": [
-    "10272"
-  ],
-  "Greco-Roman wrestling": [
-    "29806"
-  ],
-  "Greece": [
-    "28973",
-    "8130"
-  ],
-  "Greenland": [
-    "26875"
-  ],
-  "Grenada": [
-    "26874",
-    "29733"
-  ],
-  "Guadalajara": [
-    "14765"
-  ],
-  "Guatemala": [
-    "21916",
-    "29724"
-  ],
-  "Guinea": [
-    "26876"
-  ],
-  "Guinea-Bissau": [
-    "39170"
-  ],
-  "Guipuzcoa": [
-    "14760"
-  ],
-  "Guyana": [
-    "26878",
-    "29601"
-  ],
-  "H": [
-    "3112"
-  ],
-  "HDTV": [
-    "25498"
-  ],
-  "HIV": [
-    "24402"
-  ],
-  "Haiti": [
-    "27835",
-    "29728"
-  ],
-  "Halloween": [
-    "6951"
-  ],
-  "Hamsa": [
-    "24158"
-  ],
-  "Hands up!": [
-    "38053"
-  ],
-  "Hansel and Gretel": [
-    "21923"
-  ],
-  "Hanukkah": [
-    "36125"
-  ],
-  "Happy Birthday": [
-    "16635",
-    "26786",
-    "26788",
-    "5997",
-    "6499"
-  ],
-  "Happy Birthday!": [
-    "16635",
-    "26786",
-    "26788",
-    "5997",
-    "6499"
-  ],
-  "Happy New Year": [
-    "32480"
-  ],
-  "Happy New Year!": [
-    "32480"
-  ],
-  "Havana cigar": [
-    "4728"
-  ],
-  "Have you heard that?": [
-    "10364"
-  ],
-  "Heaven": [
-    "25948"
-  ],
-  "Hebrew Bible": [
-    "36183"
-  ],
-  "Heimlich maneuver": [
-    "38966"
-  ],
-  "Heimlich manoeuvre": [
-    "38966"
-  ],
-  "Heracles": [
-    "37316"
-  ],
-  "Hercules": [
-    "36641",
-    "37316"
-  ],
-  "Hindooism": [
-    "38517"
-  ],
-  "Hinduism": [
-    "38517"
-  ],
-  "Hispanic Day": [
-    "5073"
-  ],
-  "History": [
-    "32632"
-  ],
-  "Holland": [
-    "19547",
-    "29568"
-  ],
-  "Holy Column": [
-    "36959"
-  ],
-  "Holy Innocents' Day": [
-    "27152"
-  ],
-  "Holy Spirit": [
-    "24029"
-  ],
-  "Holy Week": [
-    "25441",
-    "3153",
-    "32538"
-  ],
-  "Homo sapiens": [
-    "37713"
-  ],
-  "Honduras": [
-    "29605",
-    "29606"
-  ],
-  "Hong Kong": [
-    "39462"
-  ],
-  "How many days?": [
-    "29149"
-  ],
-  "How much does he weigh?": [
-    "33128"
-  ],
-  "How much does she weigh?": [
-    "33128"
-  ],
-  "How serious is it?": [
-    "39516"
-  ],
-  "Huelva": [
-    "14687"
-  ],
-  "Huesca": [
-    "14680",
-    "38923",
-    "5488"
-  ],
-  "Hungary": [
-    "10251",
-    "29576"
-  ],
-  "I": [
-    "2617",
-    "3117",
-    "31807",
-    "6632",
-    "7309",
-    "7310"
-  ],
-  "I am fine": [
-    "13630"
-  ],
-  "I am not able to read": [
-    "32308"
-  ],
-  "I am not okay": [
-    "37182",
-    "37183"
-  ],
-  "I am ready": [
-    "32820"
-  ],
-  "I am unwell": [
-    "37183"
-  ],
-  "I can't understand you": [
-    "7180"
-  ],
-  "I cannot read": [
-    "32308"
-  ],
-  "I do not know": [
-    "7180"
-  ],
-  "I do not like that": [
-    "22005",
-    "31760",
-    "37825",
-    "38888",
-    "38890",
-    "6155",
-    "7179"
-  ],
-  "I do not like this": [
-    "6155",
-    "7179"
-  ],
-  "I do not need help": [
-    "31664"
-  ],
-  "I do not understand": [
-    "27363",
-    "37827"
-  ],
-  "I do not understand what you say": [
-    "27363"
-  ],
-  "I do not want": [
-    "6156"
-  ],
-  "I don't know": [
-    "7180"
-  ],
-  "I don't like that": [
-    "22005",
-    "37825",
-    "38888",
-    "38890"
-  ],
-  "I don't need help": [
-    "31664"
-  ],
-  "I don't see well": [
-    "36259"
-  ],
-  "I don't understand": [
-    "27363",
-    "37827"
-  ],
-  "I don't understand what you say": [
-    "37827"
-  ],
-  "I don't want": [
-    "6156"
-  ],
-  "I don´t know the word": [
-    "9851"
-  ],
-  "I have finished": [
-    "28429"
-  ],
-  "I have finished!": [
-    "28429"
-  ],
-  "I like that": [
-    "21917",
-    "37826",
-    "38889",
-    "38891"
-  ],
-  "I need help": [
-    "7171"
-  ],
-  "I spy": [
-    "26150"
-  ],
-  "I spy game": [
-    "26150"
-  ],
-  "I spy with my little eye": [
-    "26150"
-  ],
-  "I want": [
-    "5441"
-  ],
-  "I want more": [
-    "32753"
-  ],
-  "I want that one": [
-    "5441"
-  ],
-  "I'm fine!": [
-    "13630"
-  ],
-  "I'm not okay": [
-    "37183"
-  ],
-  "I'm not okay!": [
-    "37182"
-  ],
-  "I'm so sorry!": [
-    "11625",
-    "38360",
-    "38361"
-  ],
-  "I'm so-so": [
-    "37183"
-  ],
-  "I'm sorry!": [
-    "11625",
-    "38360",
-    "38361"
-  ],
-  "I'm unwell": [
-    "37183"
-  ],
-  "IA": [
-    "39704"
-  ],
-  "ICU": [
-    "30468"
-  ],
-  "ID": [
-    "5987",
-    "6073"
-  ],
-  "ID card": [
-    "5987"
-  ],
-  "ID card processing office": [
-    "38291"
-  ],
-  "ILO": [
-    "9078"
-  ],
-  "IMF": [
-    "9077"
-  ],
-  "IT and new technologies": [
-    "37347"
-  ],
-  "IUD": [
-    "32035"
-  ],
-  "IV line": [
-    "29812"
-  ],
-  "IV therapy": [
-    "38749"
-  ],
-  "IWB": [
-    "30512",
-    "9162"
-  ],
-  "Iberian pig": [
-    "37365"
-  ],
-  "Iberian soldier": [
-    "37121"
-  ],
-  "Iberian warrior": [
-    "37121"
-  ],
-  "Iberians": [
-    "37130"
-  ],
-  "Ibiza": [
-    "14850"
-  ],
-  "Ice Age": [
-    "34268"
-  ],
-  "Iceland": [
-    "21942"
-  ],
-  "Iguanodon Galvensis": [
-    "34983"
-  ],
-  "Ileostomy bag": [
-    "37391",
-    "37395",
-    "37396"
-  ],
-  "Ilex paraguariensis": [
-    "37013"
-  ],
-  "India": [
-    "25165",
-    "25484"
-  ],
-  "Indonesia": [
-    "27852"
-  ],
-  "Inka Kola": [
-    "31021"
-  ],
-  "Innocents' Day": [
-    "27152"
-  ],
-  "Interactive White Board": [
-    "30512",
-    "9162"
-  ],
-  "International Labor Organization": [
-    "9078"
-  ],
-  "International Monetary Fund": [
-    "9077"
-  ],
-  "Irak": [
-    "25168"
-  ],
-  "Iran": [
-    "25169"
-  ],
-  "Iraq": [
-    "25168"
-  ],
-  "Ireland": [
-    "21941",
-    "37651"
-  ],
-  "Isabel and Diego": [
-    "34935"
-  ],
-  "Isabel de Segura": [
-    "34929"
-  ],
-  "Isidore the Laborer": [
-    "36850"
-  ],
-  "Islam": [
-    "22793"
-  ],
-  "Israel": [
-    "25170"
-  ],
-  "It": [
-    "31670"
-  ],
-  "It is finished!": [
-    "28429"
-  ],
-  "Italy": [
-    "28971",
-    "8143"
-  ],
-  "Ivory Coast": [
-    "26778"
-  ],
-  "J": [
-    "3119"
-  ],
-  "Jaen": [
-    "14688"
-  ],
-  "Jamaica": [
-    "26880",
-    "29731"
-  ],
-  "James the Great": [
-    "35871"
-  ],
-  "James the Great's Day": [
-    "35865"
-  ],
-  "January": [
-    "35923",
-    "6488"
-  ],
-  "January 1": [
-    "5071"
-  ],
-  "January 6": [
-    "5072"
-  ],
-  "Japan": [
-    "8144"
-  ],
-  "Jesus": [
-    "24135",
-    "39831"
-  ],
-  "Jesus Christ": [
-    "24135",
-    "39831"
-  ],
-  "Jesus Christ lizard": [
-    "38342"
-  ],
-  "Jewish badge": [
-    "37879"
-  ],
-  "Jewish cementary": [
-    "35457"
-  ],
-  "Jewish star": [
-    "22795"
-  ],
-  "Johann Sebastian Bach": [
-    "35023"
-  ],
-  "John Dory": [
-    "25664",
-    "37606"
-  ],
-  "John the Baptist": [
-    "24386"
-  ],
-  "Jordan": [
-    "25319",
-    "27857"
-  ],
-  "Joseph": [
-    "7238"
-  ],
-  "Judaism": [
-    "22795"
-  ],
-  "July": [
-    "35931",
-    "6538"
-  ],
-  "June": [
-    "35933",
-    "6539"
-  ],
-  "Jupiter": [
-    "10293"
-  ],
-  "K": [
-    "3120"
-  ],
-  "K1 canoe": [
-    "39670"
-  ],
-  "K2 canoe": [
-    "39669"
-  ],
-  "Kazakhstan": [
-    "27858"
-  ],
-  "Kenya": [
-    "37649",
-    "37650"
-  ],
-  "Klöße": [
-    "38747"
-  ],
-  "Knödel": [
-    "38747"
-  ],
-  "Koran": [
-    "23973"
-  ],
-  "Kuwait": [
-    "27860"
-  ],
-  "Kyrgyzstan": [
-    "27859"
-  ],
-  "L": [
-    "3121"
-  ],
-  "LCD screen": [
-    "25498"
-  ],
-  "LY": [
-    "36745"
-  ],
-  "La Compostela": [
-    "35913"
-  ],
-  "La Coruña": [
-    "14755"
-  ],
-  "La Gomera": [
-    "14845"
-  ],
-  "La Palma": [
-    "14846"
-  ],
-  "La Rioja": [
-    "14839",
-    "8149",
-    "8613"
-  ],
-  "La Sagrada Familia": [
-    "22098"
-  ],
-  "La Seo": [
-    "5423"
-  ],
-  "La Seo Cathedral": [
-    "5423"
-  ],
-  "Lacasitos": [
-    "28305"
-  ],
-  "Lanzarote": [
-    "14847"
-  ],
-  "Laos": [
-    "27861"
-  ],
-  "Las Pajaritas": [
-    "38923"
-  ],
-  "Latin": [
-    "32697"
-  ],
-  "Latin lesson": [
-    "32697"
-  ],
-  "Latvia": [
-    "21961",
-    "29577"
-  ],
-  "Lebanon": [
-    "27862"
-  ],
-  "Lego bricks": [
-    "8508"
-  ],
-  "Leon": [
-    "14772"
-  ],
-  "Leonardo da Vinci": [
-    "38259"
-  ],
-  "Lerida": [
-    "14834"
-  ],
-  "Liechtenstein": [
-    "27303",
-    "29578"
-  ],
-  "Lithuania": [
-    "21968"
-  ],
-  "Little Bear": [
-    "6162"
-  ],
-  "Little Miss Goldilocks": [
-    "6207"
-  ],
-  "Little Pig": [
-    "5956"
-  ],
-  "Little Red Riding Hood": [
-    "5942"
-  ],
-  "Loarre castle": [
-    "5422"
-  ],
-  "Lord's Prayer": [
-    "30850",
-    "30889"
-  ],
-  "Los Amantes": [
-    "5503"
-  ],
-  "Lugo": [
-    "14756"
-  ],
-  "Lutheran minister": [
-    "26575"
-  ],
-  "Luxembourg": [
-    "21973"
-  ],
-  "M": [
-    "3125"
-  ],
-  "MP3 player": [
-    "7783"
-  ],
-  "MPV": [
-    "3206"
-  ],
-  "MRI": [
-    "33112",
-    "38354"
-  ],
-  "Machu Picchu": [
-    "25207"
-  ],
-  "Madagascar": [
-    "30204",
-    "37645"
-  ],
-  "Madagascar day gecko": [
-    "38322"
-  ],
-  "Madonna lily": [
-    "29772"
-  ],
-  "Madrid": [
-    "14840"
-  ],
-  "Madrid Region": [
-    "8156",
-    "8622"
-  ],
-  "Magen David Adom": [
-    "36195",
-    "36227"
-  ],
-  "Magic Marker": [
-    "7807"
-  ],
-  "Magosto": [
-    "15501",
-    "24951"
-  ],
-  "Majorca": [
-    "14851"
-  ],
-  "Majorcan sausage": [
-    "8692"
-  ],
-  "Malaga": [
-    "14689",
-    "24153"
-  ],
-  "Malaga's Cathedral": [
-    "25550"
-  ],
-  "Malaga's Exhibition and Congress Centre": [
-    "25544"
-  ],
-  "Malaga's citadel": [
-    "25411"
-  ],
-  "Malawi dolphin": [
-    "38388"
-  ],
-  "Malaysia": [
-    "27863"
-  ],
-  "Maldives": [
-    "27864"
-  ],
-  "Malta": [
-    "21975",
-    "29579"
-  ],
-  "March": [
-    "35939",
-    "6558"
-  ],
-  "Mari Domingui": [
-    "38439"
-  ],
-  "Maria": [
-    "7301"
-  ],
-  "Mars": [
-    "10296"
-  ],
-  "Martinique": [
-    "27304"
-  ],
-  "May": [
-    "35925",
-    "6559"
-  ],
-  "Mecca": [
-    "36550"
-  ],
-  "Medium Pig": [
-    "5955"
-  ],
-  "Mekong": [
-    "34943"
-  ],
-  "Mekong river": [
-    "34943"
-  ],
-  "Melchior": [
-    "8264"
-  ],
-  "Melilla": [
-    "14838",
-    "8164",
-    "8628"
-  ],
-  "Menor Sea": [
-    "33040"
-  ],
-  "Mercury": [
-    "10297"
-  ],
-  "Merida": [
-    "25494"
-  ],
-  "Merida Roman theatre": [
-    "25494"
-  ],
-  "Merry Christmas": [
-    "32456",
-    "32458"
-  ],
-  "Merry Christmas!": [
-    "32456",
-    "32458"
-  ],
-  "Mexico": [
-    "29591",
-    "8167"
-  ],
-  "Middle Ages": [
-    "39846"
-  ],
-  "Miguel de Cervantes": [
-    "15351"
-  ],
-  "Minerva": [
-    "37117"
-  ],
-  "Minorca": [
-    "14852"
-  ],
-  "Moldova": [
-    "27305",
-    "29580"
-  ],
-  "Mommy Bear": [
-    "6144"
-  ],
-  "Monaco": [
-    "27306"
-  ],
-  "Monasterio de Piedra": [
-    "5518"
-  ],
-  "Moncayo": [
-    "5520"
-  ],
-  "Monday": [
-    "37730",
-    "6554"
-  ],
-  "Mongolia": [
-    "28061"
-  ],
-  "Montenegro": [
-    "27307"
-  ],
-  "Moon": [
-    "2933"
-  ],
-  "Moors and Christians": [
-    "37044"
-  ],
-  "Morico": [
-    "5411"
-  ],
-  "Morocco": [
-    "38139",
-    "8159"
-  ],
-  "Moses": [
-    "24194"
-  ],
-  "Mother's Day": [
-    "3091"
-  ],
-  "Mount Calvary": [
-    "38730"
-  ],
-  "Mount Fuji": [
-    "37069"
-  ],
-  "Mount Teide": [
-    "10305"
-  ],
-  "Murcia": [
-    "14841",
-    "8174",
-    "8636"
-  ],
-  "Murray River": [
-    "34391"
-  ],
-  "Muslim cemetery": [
-    "35459"
-  ],
-  "N": [
-    "3133"
-  ],
-  "NATO": [
-    "27302"
-  ],
-  "NE": [
-    "27913"
-  ],
-  "NW": [
-    "27915"
-  ],
-  "NY": [
-    "36746"
-  ],
-  "Napoleon": [
-    "37705"
-  ],
-  "Napoleon Bonaparte": [
-    "37705"
-  ],
-  "Nativity": [
-    "24873"
-  ],
-  "Nativity scene": [
-    "24873"
-  ],
-  "Natural Science books": [
-    "6639"
-  ],
-  "Navarre": [
-    "14842",
-    "8177",
-    "8639"
-  ],
-  "Nefertiti": [
-    "26252"
-  ],
-  "Neolithic": [
-    "32638"
-  ],
-  "Nepal": [
-    "28062",
-    "37644"
-  ],
-  "Neptune": [
-    "10298"
-  ],
-  "New Testament": [
-    "24039",
-    "30845",
-    "30846",
-    "30847",
-    "30848"
-  ],
-  "New Year": [
-    "32536",
-    "5071"
-  ],
-  "New Year's Day": [
-    "5071"
-  ],
-  "New Year's Eve": [
-    "32534",
-    "39109",
-    "8261"
-  ],
-  "New Zealand": [
-    "25273"
-  ],
-  "Nicaragua": [
-    "22004",
-    "29604"
-  ],
-  "Nigeria": [
-    "39708"
-  ],
-  "Nile": [
-    "34389"
-  ],
-  "Nile River": [
-    "34389"
-  ],
-  "Nile crocodile": [
-    "34433"
-  ],
-  "No alcohol allowed": [
-    "37215"
-  ],
-  "No bikes allowed": [
-    "9208"
-  ],
-  "No cell phones": [
-    "8676"
-  ],
-  "No cochlear implants allowed": [
-    "28013"
-  ],
-  "No disturbing": [
-    "25718"
-  ],
-  "No drinking": [
-    "8673"
-  ],
-  "No drinking allowed": [
-    "29177"
-  ],
-  "No drinking allowed during pregnancy": [
-    "32172"
-  ],
-  "No drugs allowed": [
-    "37216"
-  ],
-  "No eating": [
-    "8674"
-  ],
-  "No eating allowed": [
-    "29179"
-  ],
-  "No littering": [
-    "8677"
-  ],
-  "No looking": [
-    "25716"
-  ],
-  "No mobile phones": [
-    "8676"
-  ],
-  "No pacemakers allowed": [
-    "28010"
-  ],
-  "No pedestrians": [
-    "9207"
-  ],
-  "No recording allowed": [
-    "29183"
-  ],
-  "No smoking": [
-    "8675"
-  ],
-  "Noah": [
-    "24198"
-  ],
-  "Noah's Ark": [
-    "23751"
-  ],
-  "North": [
-    "8178"
-  ],
-  "North Korea": [
-    "25014"
-  ],
-  "North Macedonia": [
-    "21974"
-  ],
-  "North Pole": [
-    "6187"
-  ],
-  "Northern lobster": [
-    "36983"
-  ],
-  "Norway": [
-    "10252",
-    "28982"
-  ],
-  "November": [
-    "35927",
-    "6570"
-  ],
-  "Nutella": [
-    "7763"
-  ],
-  "O": [
-    "3136"
-  ],
-  "OAP Day Care Centre": [
-    "25692",
-    "25693"
-  ],
-  "OK": [
-    "31410"
-  ],
-  "Oceania": [
-    "5528"
-  ],
-  "October": [
-    "35943",
-    "6571"
-  ],
-  "Olentzero": [
-    "27017"
-  ],
-  "Olympic cauldron": [
-    "39239"
-  ],
-  "Olympic games": [
-    "5064"
-  ],
-  "Olympic rings": [
-    "5064"
-  ],
-  "Olympic torch": [
-    "5905"
-  ],
-  "Olympics": [
-    "5064"
-  ],
-  "Oman": [
-    "28063"
-  ],
-  "Once upon a time": [
-    "8277"
-  ],
-  "Orense": [
-    "14757"
-  ],
-  "Our Lady of the Pillar": [
-    "5606"
-  ],
-  "P": [
-    "3137"
-  ],
-  "P.M.": [
-    "32850"
-  ],
-  "PC": [
-    "2487",
-    "7190"
-  ],
-  "PCR": [
-    "36841"
-  ],
-  "PCR test": [
-    "36841"
-  ],
-  "PE teacher": [
-    "7798",
-    "7823"
-  ],
-  "PET": [
-    "38355"
-  ],
-  "PET/CT": [
-    "38355"
-  ],
-  "POS": [
-    "39712",
-    "9185"
-  ],
-  "POS system": [
-    "9185"
-  ],
-  "PPE": [
-    "36855"
-  ],
-  "PTSA": [
-    "32724"
-  ],
-  "Pablo Picasso": [
-    "25325"
-  ],
-  "Pac man": [
-    "9131"
-  ],
-  "Pakistan": [
-    "25288",
-    "38140"
-  ],
-  "Palencia": [
-    "14773"
-  ],
-  "Paleolithic": [
-    "32636"
-  ],
-  "Palestine": [
-    "39689"
-  ],
-  "Palmas Door": [
-    "25357"
-  ],
-  "Panama": [
-    "17283",
-    "29725"
-  ],
-  "Paraguay": [
-    "29599",
-    "8181"
-  ],
-  "Paraguay tea": [
-    "37013"
-  ],
-  "Paraguayan anaconda": [
-    "38634"
-  ],
-  "Paralympics": [
-    "21953"
-  ],
-  "Park Güell": [
-    "35863"
-  ],
-  "Passion Week": [
-    "32538"
-  ],
-  "Passover": [
-    "36131"
-  ],
-  "Pedro de Azagra": [
-    "34933"
-  ],
-  "Pedro de Segura": [
-    "34931"
-  ],
-  "Peninsular War": [
-    "36925"
-  ],
-  "People's Republic of Bangladesh": [
-    "38460"
-  ],
-  "Peru": [
-    "29592",
-    "8185"
-  ],
-  "Pesach": [
-    "36131"
-  ],
-  "Peter's fish": [
-    "37606"
-  ],
-  "Petra": [
-    "25319"
-  ],
-  "Peña de los Enamorados": [
-    "31131"
-  ],
-  "Philippines": [
-    "27761"
-  ],
-  "Physical Education lesson": [
-    "10258",
-    "32548"
-  ],
-  "Physically Handicapped People Rehabilitation Center": [
-    "16151"
-  ],
-  "Picasso": [
-    "25325",
-    "25413"
-  ],
-  "Pilar's Virgin": [
-    "5394"
-  ],
-  "Pilara": [
-    "5412"
-  ],
-  "Pinocchio": [
-    "6177"
-  ],
-  "Pinocchio tale": [
-    "6471"
-  ],
-  "Pluto": [
-    "10299"
-  ],
-  "Poetry and Art books": [
-    "6642"
-  ],
-  "Poetry and Art's books": [
-    "6642"
-  ],
-  "Point of Sale Terminal": [
-    "9185"
-  ],
-  "Point-of-Sale Terminal": [
-    "9185"
-  ],
-  "Poland": [
-    "22051",
-    "28985"
-  ],
-  "Pontevedra": [
-    "14758"
-  ],
-  "Pope": [
-    "24234"
-  ],
-  "Popsicle": [
-    "3348"
-  ],
-  "Port-a-Cath": [
-    "31316",
-    "31317",
-    "31318",
-    "31319",
-    "31354"
-  ],
-  "Portugal": [
-    "28969",
-    "8196"
-  ],
-  "Pre-history": [
-    "32630"
-  ],
-  "Prehistory": [
-    "32630"
-  ],
-  "President of Aragon": [
-    "16377"
-  ],
-  "President of Parliament": [
-    "37563"
-  ],
-  "President of the Senate": [
-    "37563"
-  ],
-  "Princess of Burundi": [
-    "34571"
-  ],
-  "Proa valdearinnoensis": [
-    "34587"
-  ],
-  "Prying is forbidden": [
-    "25714"
-  ],
-  "Puerto Rico": [
-    "17296"
-  ],
-  "Pyrenees": [
-    "5541"
-  ],
-  "Q": [
-    "3146"
-  ],
-  "QR": [
-    "38514"
-  ],
-  "QR code": [
-    "38514"
-  ],
-  "Qatar": [
-    "28064"
-  ],
-  "R": [
-    "3147"
-  ],
-  "RGN": [
-    "2375",
-    "31390",
-    "38883",
-    "6050",
-    "9196"
-  ],
-  "Ramadan": [
-    "36438"
-  ],
-  "Rawlplug": [
-    "3390"
-  ],
-  "Ray's bream": [
-    "37586"
-  ],
-  "Red Crescent": [
-    "36197",
-    "36225"
-  ],
-  "Red Cross": [
-    "30253",
-    "9075"
-  ],
-  "Red Light, Green Light": [
-    "31193"
-  ],
-  "Religion lesson": [
-    "24471",
-    "39178"
-  ],
-  "Republic of Guinea-Bissau": [
-    "39170"
-  ],
-  "Republic of Kenya": [
-    "37649",
-    "37650"
-  ],
-  "Republic of Tunisia": [
-    "39168"
-  ],
-  "Republic of Türkiye": [
-    "22161",
-    "29582"
-  ],
-  "Rio de Janeiro": [
-    "25036"
-  ],
-  "Robaculeros": [
-    "5413"
-  ],
-  "Roman": [
-    "32088"
-  ],
-  "Roman goddess": [
-    "37117"
-  ],
-  "Roman helmet": [
-    "36509"
-  ],
-  "Roman legionary": [
-    "37126"
-  ],
-  "Roman road": [
-    "28627"
-  ],
-  "Roman soldier": [
-    "37126"
-  ],
-  "Romania": [
-    "28975",
-    "8214"
-  ],
-  "Rome Coliseum": [
-    "23957"
-  ],
-  "Roscon de San Valero": [
-    "5565"
-  ],
-  "Rubik's Cube": [
-    "9134"
-  ],
-  "Rudolf the Red-Nosed Reindeer": [
-    "3150"
-  ],
-  "Rudolph": [
-    "3150"
-  ],
-  "Rumania": [
-    "8214"
-  ],
-  "Russia": [
-    "28976",
-    "8215"
-  ],
-  "Russian egg": [
-    "36409"
-  ],
-  "S": [
-    "3152"
-  ],
-  "SALT": [
-    "32706"
-  ],
-  "SALT classroom": [
-    "33084"
-  ],
-  "SE": [
-    "28095"
-  ],
-  "SOS": [
-    "29016"
-  ],
-  "SW": [
-    "28096"
-  ],
-  "SZ": [
-    "36748"
-  ],
-  "Sagrada Familia": [
-    "22098"
-  ],
-  "Saint Anthony the Great": [
-    "39221"
-  ],
-  "Saint Fermin": [
-    "38225"
-  ],
-  "Saint George": [
-    "12309",
-    "25427",
-    "5576"
-  ],
-  "Saint George and the Dragon": [
-    "5576"
-  ],
-  "Saint George's Day": [
-    "28267"
-  ],
-  "Saint John": [
-    "24386"
-  ],
-  "Saint John's day": [
-    "15036",
-    "32452"
-  ],
-  "Saint Joseph": [
-    "7238"
-  ],
-  "Saint Kitts and Nevis": [
-    "29734",
-    "29735"
-  ],
-  "Saint Lawrence": [
-    "5577"
-  ],
-  "Saint Peter": [
-    "39220"
-  ],
-  "Saint Valerius": [
-    "28701"
-  ],
-  "Saint Valerius of Saragossa": [
-    "28701"
-  ],
-  "Saint Vincent and the Grenadines": [
-    "27310"
-  ],
-  "Salamanca": [
-    "14774"
-  ],
-  "Salvador Dali": [
-    "21581"
-  ],
-  "San Juan de la Peña Monastery": [
-    "5519"
-  ],
-  "San Marino": [
-    "27309",
-    "29581"
-  ],
-  "San Sebastian": [
-    "28960"
-  ],
-  "Sancho Panza": [
-    "15495"
-  ],
-  "Santa Claus": [
-    "25297",
-    "25298",
-    "3139",
-    "32454"
-  ],
-  "Santa's 9th Reindeer": [
-    "3150"
-  ],
-  "Santa's reindeer": [
-    "3150"
-  ],
-  "Santa's sledge": [
-    "3161"
-  ],
-  "Santa's sock": [
-    "5065"
-  ],
-  "Santas cap": [
-    "3109"
-  ],
-  "Santas sledge": [
-    "3161"
-  ],
-  "Santiago de Compostela": [
-    "35831"
-  ],
-  "Santiago de Compostela Cathedral": [
-    "35833"
-  ],
-  "Saragossa": [
-    "14682",
-    "5607"
-  ],
-  "Saturday": [
-    "37725",
-    "6605"
-  ],
-  "Saturn": [
-    "10300"
-  ],
-  "Saudi Arabia": [
-    "24858"
-  ],
-  "Sauriopark's carousel": [
-    "35013"
-  ],
-  "Scandinavia": [
-    "34069"
-  ],
-  "Scandinavian Peninsula": [
-    "34069"
-  ],
-  "School to Adult Life Transition": [
-    "32706"
-  ],
-  "Science book": [
-    "9820"
-  ],
-  "Science books": [
-    "6639"
-  ],
-  "Science's books": [
-    "6639"
-  ],
-  "Scotch tape": [
-    "2325"
-  ],
-  "Scotch tape case": [
-    "34047"
-  ],
-  "Scotland": [
-    "21844"
-  ],
-  "Scout sign": [
-    "27238"
-  ],
-  "Segovia": [
-    "14775"
-  ],
-  "Sellotape": [
-    "2325"
-  ],
-  "Senegal": [
-    "8221"
-  ],
-  "September": [
-    "35929",
-    "6613"
-  ],
-  "Serbia": [
-    "22112",
-    "27311",
-    "28987"
-  ],
-  "Seville": [
-    "14690"
-  ],
-  "Shabbat": [
-    "36133"
-  ],
-  "Shavuot": [
-    "38964"
-  ],
-  "Shiva": [
-    "24400"
-  ],
-  "Singapore": [
-    "28065"
-  ],
-  "Sleeping Beauty": [
-    "21433"
-  ],
-  "Slovakia": [
-    "21853",
-    "29572"
-  ],
-  "Slovenia": [
-    "29573",
-    "29586"
-  ],
-  "Snow White": [
-    "21447"
-  ],
-  "Social Science book": [
-    "9823"
-  ],
-  "Social Sciences books": [
-    "6640"
-  ],
-  "Social Sciences' books": [
-    "6640"
-  ],
-  "Somalia": [
-    "36665",
-    "36666"
-  ],
-  "Soria": [
-    "14776"
-  ],
-  "South": [
-    "8228"
-  ],
-  "South Africa": [
-    "22113"
-  ],
-  "South America": [
-    "34387"
-  ],
-  "South Korea": [
-    "25015"
-  ],
-  "Spain": [
-    "10476",
-    "28967",
-    "8108"
-  ],
-  "Spanish War of Independence": [
-    "36925"
-  ],
-  "Spanish omelette": [
-    "4966"
-  ],
-  "Speaker of the House": [
-    "37563"
-  ],
-  "Special Needs Education": [
-    "32720"
-  ],
-  "Spiderman": [
-    "8224"
-  ],
-  "Spätzle": [
-    "38742"
-  ],
-  "Sri Lanka": [
-    "28067"
-  ],
-  "St. Valentine": [
-    "19541",
-    "19543",
-    "19545"
-  ],
-  "St. Valentine's Day": [
-    "19541",
-    "19543",
-    "19545"
-  ],
-  "Star of David": [
-    "22795"
-  ],
-  "Statue of Liberty": [
-    "21854"
-  ],
-  "Statues": [
-    "31193"
-  ],
-  "Stillson wrench": [
-    "28533"
-  ],
-  "Stone age": [
-    "32636",
-    "32638"
-  ],
-  "Stonebridge": [
-    "5557"
-  ],
-  "Sudan": [
-    "39463"
-  ],
-  "Sukkot": [
-    "37848"
-  ],
-  "Sukkoth": [
-    "37848"
-  ],
-  "Sun": [
-    "2798",
-    "7252"
-  ],
-  "Sunday": [
-    "37723",
-    "6478"
-  ],
-  "Superman": [
-    "8227"
-  ],
-  "Surinam": [
-    "27312",
-    "29603"
-  ],
-  "Sweden": [
-    "10253",
-    "28977"
-  ],
-  "Swiss chard": [
-    "2981"
-  ],
-  "Switzerland": [
-    "22114",
-    "28978"
-  ],
-  "Sydney Opera House": [
-    "31386"
-  ],
-  "Syria": [
-    "28066",
-    "38820"
-  ],
-  "São Tomé and Príncipe": [
-    "39169"
-  ],
-  "T": [
-    "3158"
-  ],
-  "T-Rex show": [
-    "34673"
-  ],
-  "T-shirt": [
-    "2309"
-  ],
-  "TAL": [
-    "32706"
-  ],
-  "TMS": [
-    "39834"
-  ],
-  "TNS": [
-    "36456"
-  ],
-  "TV": [
-    "25498"
-  ],
-  "TV and video room": [
-    "37336"
-  ],
-  "TV station": [
-    "37878"
-  ],
-  "TY": [
-    "36755"
-  ],
-  "Tadzhikistan": [
-    "28068"
-  ],
-  "Taj Mahal": [
-    "25484"
-  ],
-  "Tamborrada": [
-    "28944",
-    "28952"
-  ],
-  "Tamborrada of Donostia": [
-    "28944",
-    "28952"
-  ],
-  "Tanach": [
-    "36183"
-  ],
-  "Tanakh": [
-    "36183"
-  ],
-  "Tanzania": [
-    "39464"
-  ],
-  "Tarragona": [
-    "14835"
-  ],
-  "Tarzan": [
-    "29800"
-  ],
-  "Tastavinsaurus": [
-    "34579"
-  ],
-  "Taylor hammer": [
-    "30134"
-  ],
-  "Teacch": [
-    "30648",
-    "32868",
-    "32869",
-    "32966",
-    "32967",
-    "36971",
-    "36976"
-  ],
-  "Teide": [
-    "10305"
-  ],
-  "Tenerife": [
-    "14849"
-  ],
-  "Terere": [
-    "31033"
-  ],
-  "Teruel": [
-    "14681",
-    "5594"
-  ],
-  "Tetris": [
-    "9132"
-  ],
-  "Thailand": [
-    "25483"
-  ],
-  "The Alhambra of Granada": [
-    "31027"
-  ],
-  "The Conceited Little Rat": [
-    "38686"
-  ],
-  "The Earth": [
-    "30014"
-  ],
-  "The Lovers' Rock": [
-    "31131"
-  ],
-  "The Puss in Boots": [
-    "21888"
-  ],
-  "The Three Kings": [
-    "26390",
-    "3124"
-  ],
-  "The Wind Comb": [
-    "28899"
-  ],
-  "The pied piper of Hamelin": [
-    "5999"
-  ],
-  "The shoe behind game": [
-    "32216"
-  ],
-  "Tholos de El Romeral": [
-    "31133"
-  ],
-  "Three Wise Men": [
-    "3124"
-  ],
-  "Three Wise Men's Day": [
-    "5072"
-  ],
-  "Thursday": [
-    "37727",
-    "6536"
-  ],
-  "Time-Timer": [
-    "37659"
-  ],
-  "Tio de nadal": [
-    "12303"
-  ],
-  "Toledo": [
-    "14766"
-  ],
-  "Tom Thumb": [
-    "22062"
-  ],
-  "Torah": [
-    "24463"
-  ],
-  "Torcal de Antequera": [
-    "31129"
-  ],
-  "Torero": [
-    "5414"
-  ],
-  "Torico square": [
-    "5543"
-  ],
-  "Tornillo of the Torcal": [
-    "31031"
-  ],
-  "Tornillo rock formation": [
-    "31031"
-  ],
-  "Torta del Casar": [
-    "28149"
-  ],
-  "Torvosaurus": [
-    "34435"
-  ],
-  "Transition to Adult Life": [
-    "32706"
-  ],
-  "Treasury": [
-    "35449"
-  ],
-  "Triceratops": [
-    "34593"
-  ],
-  "Triceratops skull": [
-    "34967"
-  ],
-  "Trinidad and Tobago": [
-    "29654",
-    "29655"
-  ],
-  "Tronca de nadal": [
-    "12303",
-    "12305"
-  ],
-  "Tuerto": [
-    "5415"
-  ],
-  "Tuesday": [
-    "37729",
-    "6557"
-  ],
-  "Tunisia": [
-    "39168"
-  ],
-  "Turiasaurus": [
-    "34585"
-  ],
-  "Turkish bath": [
-    "25429",
-    "34902"
-  ],
-  "Turkmenistan": [
-    "28069"
-  ],
-  "Turn mobile telephones off": [
-    "8676"
-  ],
-  "Tutankhamon": [
-    "26521"
-  ],
-  "Tutankhamun": [
-    "26521"
-  ],
-  "Twister game": [
-    "29004"
-  ],
-  "Txotx!": [
-    "29246"
-  ],
-  "Tyrannosaurus Rex": [
-    "34981"
-  ],
-  "Tyrannosaurus Rex skull": [
-    "34969"
-  ],
-  "Türkiye": [
-    "22161",
-    "29582"
-  ],
-  "U": [
-    "3164"
-  ],
-  "UDC": [
-    "28369",
-    "28370",
-    "28371",
-    "28372",
-    "28373",
-    "28374",
-    "28375",
-    "28376",
-    "28377",
-    "28378",
-    "28379",
-    "28380",
-    "28381",
-    "28382",
-    "28383",
-    "28384",
-    "33962",
-    "33963",
-    "33964",
-    "33965",
-    "38152",
-    "38153",
-    "38154",
-    "38155",
-    "38156",
-    "38157",
-    "38158",
-    "38159",
-    "38160",
-    "38161",
-    "38162",
-    "38163",
-    "38164",
-    "38165",
-    "38166",
-    "38167",
-    "38168",
-    "38169",
-    "38170",
-    "38171",
-    "38172",
-    "38173",
-    "38174",
-    "38175",
-    "38176",
-    "38177",
-    "38178",
-    "38179",
-    "38180",
-    "38181",
-    "38182",
-    "38183",
-    "38184",
-    "38185",
-    "38186",
-    "38187",
-    "38188",
-    "38189",
-    "38190",
-    "38191",
-    "38192",
-    "38193",
-    "38194",
-    "38195",
-    "38196",
-    "38197",
-    "38198",
-    "38608",
-    "38614",
-    "38615",
-    "38616",
-    "39825"
-  ],
-  "UFO": [
-    "7191"
-  ],
-  "UK": [
-    "8206"
-  ],
-  "UN": [
-    "9079"
-  ],
-  "UNESCO": [
-    "9082"
-  ],
-  "UNHCR": [
-    "9073"
-  ],
-  "UNICEF": [
-    "9083"
-  ],
-  "UNIFOR": [
-    "16184"
-  ],
-  "US": [
-    "29588",
-    "8112"
-  ],
-  "USA": [
-    "29588",
-    "8112"
-  ],
-  "USB charger station": [
-    "38255"
-  ],
-  "USB memory": [
-    "9800"
-  ],
-  "USB wall charger": [
-    "38255"
-  ],
-  "Ukraine": [
-    "27313",
-    "29583"
-  ],
-  "United Arab Emirates": [
-    "27730"
-  ],
-  "United Kingdom": [
-    "28974",
-    "8206"
-  ],
-  "United Nations": [
-    "9079"
-  ],
-  "United States": [
-    "29588",
-    "8112"
-  ],
-  "United States of America": [
-    "29588",
-    "8112"
-  ],
-  "Universal Decimal Classification": [
-    "28369",
-    "28370",
-    "28371",
-    "28372",
-    "28373",
-    "28374",
-    "28375",
-    "28376",
-    "28377",
-    "28378",
-    "28379",
-    "28380",
-    "28381",
-    "28382",
-    "28383",
-    "28384",
-    "33962",
-    "33963",
-    "33964",
-    "33965",
-    "38152",
-    "38153",
-    "38154",
-    "38155",
-    "38156",
-    "38157",
-    "38158",
-    "38159",
-    "38160",
-    "38161",
-    "38162",
-    "38163",
-    "38164",
-    "38165",
-    "38166",
-    "38167",
-    "38168",
-    "38169",
-    "38170",
-    "38171",
-    "38172",
-    "38173",
-    "38174",
-    "38175",
-    "38176",
-    "38177",
-    "38178",
-    "38179",
-    "38180",
-    "38181",
-    "38182",
-    "38183",
-    "38184",
-    "38185",
-    "38186",
-    "38187",
-    "38188",
-    "38189",
-    "38190",
-    "38191",
-    "38192",
-    "38193",
-    "38194",
-    "38195",
-    "38196",
-    "38197",
-    "38198",
-    "38608",
-    "38614",
-    "38615",
-    "38616"
-  ],
-  "University": [
-    "15537"
-  ],
-  "Uranus": [
-    "10302"
-  ],
-  "Uruguay": [
-    "29602",
-    "8244"
-  ],
-  "Uzbekistan": [
-    "28070"
-  ],
-  "V": [
-    "3165"
-  ],
-  "VCR": [
-    "26535"
-  ],
-  "Valencia": [
-    "14769"
-  ],
-  "Valencia Region": [
-    "8246",
-    "8713"
-  ],
-  "Valencian Community": [
-    "8246",
-    "8713"
-  ],
-  "Valencian trinquet": [
-    "37053"
-  ],
-  "Valladolid": [
-    "14777"
-  ],
-  "Vatican City": [
-    "27314"
-  ],
-  "Velociraptor": [
-    "39827"
-  ],
-  "Venezuela": [
-    "29596",
-    "29597"
-  ],
-  "Venus": [
-    "10303"
-  ],
-  "Vespa scooter": [
-    "28167"
-  ],
-  "Video and TV room": [
-    "37336"
-  ],
-  "Vieja Cuaresma": [
-    "14550"
-  ],
-  "Vietnam": [
-    "28071"
-  ],
-  "Virgin Mary": [
-    "7301"
-  ],
-  "W": [
-    "3167"
-  ],
-  "W.C.": [
-    "15810",
-    "15812",
-    "15814",
-    "27475",
-    "27559",
-    "27561",
-    "33934",
-    "33935",
-    "33936",
-    "37331",
-    "37710",
-    "37904",
-    "38625",
-    "38626",
-    "38627",
-    "39122",
-    "5921",
-    "6929",
-    "6930"
-  ],
-  "WBG": [
-    "9074"
-  ],
-  "WFP": [
-    "9081"
-  ],
-  "WHO": [
-    "9080"
-  ],
-  "WLAN": [
-    "35503"
-  ],
-  "Wales": [
-    "39461"
-  ],
-  "Water tower": [
-    "22145"
-  ],
-  "We don't understand each other": [
-    "11315"
-  ],
-  "Wednesday": [
-    "37728",
-    "6563"
-  ],
-  "West": [
-    "8179"
-  ],
-  "What are you doing?": [
-    "37330"
-  ],
-  "What are you looking at?": [
-    "7801"
-  ],
-  "What are you reading?": [
-    "7800"
-  ],
-  "What color is it?": [
-    "32137"
-  ],
-  "What do you do?": [
-    "37330"
-  ],
-  "What do you have?": [
-    "7802"
-  ],
-  "What is the gravity?": [
-    "39516"
-  ],
-  "What is the severity?": [
-    "39516"
-  ],
-  "What's her gender?": [
-    "10274"
-  ],
-  "What's his gender?": [
-    "10274"
-  ],
-  "Whats its gender?": [
-    "10274"
-  ],
-  "Where is it?": [
-    "32872"
-  ],
-  "Which color is it?": [
-    "7075"
-  ],
-  "Which is the difference?": [
-    "32792"
-  ],
-  "Which is the result?": [
-    "32775"
-  ],
-  "Who's calling?": [
-    "7803"
-  ],
-  "Who's he?": [
-    "9853"
-  ],
-  "Who's she?": [
-    "9854"
-  ],
-  "Wi-Fi": [
-    "35503"
-  ],
-  "Wiphala": [
-    "36981"
-  ],
-  "Wonder Woman": [
-    "36737"
-  ],
-  "World Autism Awareness Day": [
-    "29927"
-  ],
-  "World Bank": [
-    "9074"
-  ],
-  "World Health Organization": [
-    "9080"
-  ],
-  "X": [
-    "3168"
-  ],
-  "X-Ray diagnosis service": [
-    "38353"
-  ],
-  "X-ray": [
-    "6198"
-  ],
-  "X-ray diagnosis": [
-    "38353"
-  ],
-  "X-ray machine": [
-    "33104",
-    "33105"
-  ],
-  "X-ray picture": [
-    "6198"
-  ],
-  "X-rays": [
-    "33104",
-    "33105",
-    "6198"
-  ],
-  "Xmas": [
-    "3092"
-  ],
-  "Y": [
-    "3171"
-  ],
-  "Yemen": [
-    "28072"
-  ],
-  "Z": [
-    "3173"
-  ],
-  "ZS": [
-    "36753"
-  ],
-  "Zamora": [
-    "14778"
-  ],
-  "Zaragoza's Conference Hall": [
-    "25545"
-  ],
-  "Zimmer": [
-    "5902"
-  ],
-  "Zimmer frame": [
-    "5902"
-  ],
   "\\": [
     "3413"
   ],
   "a": [
     "3021",
+    "3049",
     "8474"
   ],
   "a few": [
@@ -5048,6 +1181,12 @@
   "a.m.": [
     "32848"
   ],
+  "aac book": [
+    "7004"
+  ],
+  "aac communication book": [
+    "7004"
+  ],
   "aac implementation": [
     "37989",
     "37990",
@@ -5075,6 +1214,9 @@
   ],
   "abbocaths": [
     "39227"
+  ],
+  "abc": [
+    "3050"
   ],
   "abdominal": [
     "23703"
@@ -5357,6 +1499,9 @@
   "acupuncture": [
     "38119"
   ],
+  "adam and eve": [
+    "23729"
+  ],
   "adapt": [
     "11687"
   ],
@@ -5575,6 +1720,9 @@
     "38791",
     "4703"
   ],
+  "adult life transition": [
+    "32706"
+  ],
   "adult male": [
     "38788",
     "4665"
@@ -5591,6 +1739,12 @@
   ],
   "advanced life support ambulance": [
     "28163"
+  ],
+  "advent": [
+    "37174"
+  ],
+  "advent calendar": [
+    "37985"
   ],
   "adventure": [
     "21401",
@@ -5682,6 +1836,16 @@
     "8979",
     "8980"
   ],
+  "afghanistan": [
+    "24831"
+  ],
+  "africa": [
+    "5364"
+  ],
+  "african": [
+    "6011",
+    "6282"
+  ],
   "after": [
     "13080",
     "32749",
@@ -5706,6 +1870,9 @@
   ],
   "age": [
     "7072"
+  ],
+  "age of metals": [
+    "32640"
   ],
   "age-worn": [
     "4770"
@@ -5739,6 +1906,9 @@
   "ahead": [
     "5438"
   ],
+  "ai": [
+    "39705"
+  ],
   "aid": [
     "10141",
     "25620",
@@ -5748,6 +1918,7 @@
     "4570"
   ],
   "aids": [
+    "24402",
     "25620"
   ],
   "aikido": [
@@ -5886,8 +2057,21 @@
   "alarm clock": [
     "5560"
   ],
+  "alava": [
+    "14759"
+  ],
+  "albacete": [
+    "14762"
+  ],
+  "albania": [
+    "29584",
+    "29585"
+  ],
   "album": [
     "6039"
+  ],
+  "alcalá gate": [
+    "22056"
   ],
   "alcohol": [
     "26626",
@@ -5917,6 +2101,15 @@
   "alfonsino": [
     "37588"
   ],
+  "algeria": [
+    "26668"
+  ],
+  "alhambra": [
+    "31027"
+  ],
+  "alicante": [
+    "14767"
+  ],
   "alien": [
     "7154"
   ],
@@ -5932,6 +2125,9 @@
   "alive": [
     "11397"
   ],
+  "aljaferi­a castle": [
+    "5421"
+  ],
   "all": [
     "27091",
     "32438",
@@ -5943,6 +2139,13 @@
   ],
   "all right": [
     "5397"
+  ],
+  "all saints": [
+    "6951"
+  ],
+  "all saints day": [
+    "32460",
+    "6951"
   ],
   "all-electric car": [
     "38332"
@@ -6008,6 +2211,9 @@
   "almanac": [
     "3071"
   ],
+  "almeria": [
+    "14683"
+  ],
   "almohad house": [
     "38650"
   ],
@@ -6059,8 +2265,17 @@
     "26813",
     "3207"
   ],
+  "als ambulance": [
+    "28163"
+  ],
   "alsatian sauerkraut": [
     "38308"
+  ],
+  "alt": [
+    "32706"
+  ],
+  "altamira": [
+    "11177"
   ],
   "altar": [
     "23737"
@@ -6086,8 +2301,23 @@
   "always": [
     "17322"
   ],
+  "alzheimer": [
+    "16349"
+  ],
+  "alzheimer's disease": [
+    "16349"
+  ],
+  "amazon": [
+    "34941"
+  ],
+  "amazon river": [
+    "34941"
+  ],
   "ambassador": [
     "38343"
+  ],
+  "ambu bag": [
+    "37221"
   ],
   "ambulance": [
     "2251",
@@ -6096,6 +2326,15 @@
     "36203",
     "36214",
     "6899"
+  ],
+  "america": [
+    "5377"
+  ],
+  "american football": [
+    "39851"
+  ],
+  "american lobster": [
+    "36983"
   ],
   "ammonite": [
     "26857",
@@ -6218,6 +2457,21 @@
   "and they all lived happily ever after": [
     "8115"
   ],
+  "andalucia": [
+    "8024",
+    "8489"
+  ],
+  "andalusia": [
+    "8024",
+    "8489"
+  ],
+  "andorra": [
+    "26666",
+    "28979"
+  ],
+  "andres guazurari's monument": [
+    "38044"
+  ],
   "anemometer": [
     "37479"
   ],
@@ -6262,6 +2516,9 @@
   "angiology": [
     "31168",
     "31170"
+  ],
+  "angola": [
+    "26667"
   ],
   "angriness": [
     "35567"
@@ -6344,6 +2601,9 @@
   "annualry": [
     "7045"
   ],
+  "annunciation": [
+    "29957"
+  ],
   "anonymous": [
     "9853",
     "9857"
@@ -6371,6 +2631,9 @@
   "ant": [
     "2425"
   ],
+  "antarctica": [
+    "21363"
+  ],
   "ante meridiem": [
     "32848"
   ],
@@ -6383,6 +2646,14 @@
   "antenna": [
     "3252",
     "39068"
+  ],
+  "antequera": [
+    "31029",
+    "31031",
+    "31129",
+    "31131",
+    "31133",
+    "31135"
   ],
   "anthill": [
     "36993"
@@ -6447,6 +2718,9 @@
     "26779",
     "36513",
     "37779"
+  ],
+  "apalpador": [
+    "27017"
   ],
   "apartment": [
     "8491"
@@ -6587,6 +2861,10 @@
   "apricot tree": [
     "39391"
   ],
+  "april": [
+    "35935",
+    "6024"
+  ],
   "apron": [
     "2366"
   ],
@@ -6616,6 +2894,10 @@
   "arab house": [
     "38650"
   ],
+  "arabian": [
+    "6010",
+    "6150"
+  ],
   "arabic house": [
     "38650"
   ],
@@ -6631,11 +2913,33 @@
   "arabic palace": [
     "38653"
   ],
+  "aragon": [
+    "5383",
+    "5384",
+    "5608",
+    "5610"
+  ],
+  "aragon emblem": [
+    "5610"
+  ],
   "aragonese bar": [
     "28611"
   ],
+  "aragonese parliament": [
+    "5421"
+  ],
+  "aragosaurus ischiaticus": [
+    "34437"
+  ],
   "arapaima": [
     "34601"
+  ],
+  "arasaac": [
+    "35071"
+  ],
+  "araword": [
+    "25748",
+    "25749"
   ],
   "arbitrate": [
     "37781",
@@ -6723,12 +3027,19 @@
   "arepa": [
     "37359"
   ],
+  "argentina": [
+    "29590",
+    "8030"
+  ],
   "argue": [
     "4634",
     "6477"
   ],
   "aristocracy": [
     "36942"
+  ],
+  "ark of the covenant": [
+    "36087"
   ],
   "arm": [
     "25746",
@@ -6754,6 +3065,10 @@
   ],
   "armed forces": [
     "11246"
+  ],
+  "armenia": [
+    "26669",
+    "29569"
   ],
   "armor": [
     "5406"
@@ -6832,7 +3147,9 @@
     "36928"
   ],
   "art lesson": [
-    "11245"
+    "11245",
+    "13634",
+    "32550"
   ],
   "art school": [
     "29917"
@@ -6846,6 +3163,10 @@
   ],
   "artery": [
     "10269"
+  ],
+  "artic person": [
+    "6135",
+    "6151"
   ],
   "artichoke": [
     "5370"
@@ -6871,6 +3192,9 @@
   "artificial intelligence": [
     "39704",
     "39705"
+  ],
+  "artificial manual breathing unit": [
+    "37221"
   ],
   "artificial respiration": [
     "28043"
@@ -6913,6 +3237,9 @@
   ],
   "ashtray": [
     "4594"
+  ],
+  "asia": [
+    "5390"
   ],
   "ask": [
     "11251",
@@ -7038,6 +3365,11 @@
     "15339",
     "38818"
   ],
+  "asturias": [
+    "14829",
+    "8034",
+    "8494"
+  ],
   "at": [
     "7041"
   ],
@@ -7078,6 +3410,27 @@
   "athletics track": [
     "5086"
   ],
+  "atlantic mudskipper": [
+    "38326"
+  ],
+  "atlantic ocean": [
+    "32699"
+  ],
+  "atlantic pomfret": [
+    "37586"
+  ],
+  "atlantic wolffish": [
+    "38330"
+  ],
+  "atm": [
+    "17190"
+  ],
+  "atm machine": [
+    "17190"
+  ],
+  "atm terminal": [
+    "17190"
+  ],
   "atmosphere": [
     "10289",
     "20385"
@@ -7097,6 +3450,9 @@
   "atomic energy": [
     "34914",
     "9199"
+  ],
+  "atomium": [
+    "23769"
   ],
   "atomizer": [
     "26571"
@@ -7149,6 +3505,9 @@
   ],
   "attributes": [
     "32584"
+  ],
+  "atv": [
+    "13360"
   ],
   "aubergine": [
     "2660"
@@ -7210,6 +3569,13 @@
     "36723",
     "6991"
   ],
+  "august": [
+    "35941",
+    "6034"
+  ],
+  "augustus": [
+    "24978"
+  ],
   "aunt": [
     "30271",
     "30272",
@@ -7234,8 +3600,19 @@
     "30692",
     "31904"
   ],
+  "australia": [
+    "21393",
+    "37646"
+  ],
   "australian arowana": [
     "34429"
+  ],
+  "austria": [
+    "21394",
+    "28980"
+  ],
+  "austrian costume": [
+    "27298"
   ],
   "authenticate": [
     "29955"
@@ -7314,11 +3691,18 @@
   "autumn tree": [
     "5063"
   ],
+  "av": [
+    "32854",
+    "32855"
+  ],
   "avalanche": [
     "29686"
   ],
   "avenue": [
     "2299"
+  ],
+  "avila": [
+    "14770"
   ],
   "avocado": [
     "8009"
@@ -7372,6 +3756,10 @@
   "axilla": [
     "2989"
   ],
+  "azerbaijan": [
+    "26670",
+    "29570"
+  ],
   "açaí": [
     "38494"
   ],
@@ -7379,7 +3767,8 @@
     "38494"
   ],
   "b": [
-    "3023"
+    "3023",
+    "3061"
   ],
   "baa": [
     "26664",
@@ -7418,6 +3807,9 @@
     "7785",
     "7793"
   ],
+  "baby jesus": [
+    "7177"
+  ],
   "baby squid": [
     "28934"
   ],
@@ -7445,6 +3837,9 @@
     "29891",
     "32726",
     "32727"
+  ],
+  "bach": [
+    "35023"
   ],
   "bachelor's degree": [
     "31997"
@@ -7554,6 +3949,13 @@
     "32272",
     "34689"
   ],
+  "badajoz": [
+    "14830",
+    "25357"
+  ],
+  "badajoz's citadel": [
+    "38651"
+  ],
   "baddie": [
     "38390"
   ],
@@ -7621,6 +4023,13 @@
   ],
   "baguette": [
     "2494"
+  ],
+  "bahamas": [
+    "26671",
+    "29730"
+  ],
+  "bahrain": [
+    "27591"
   ],
   "bait": [
     "5906"
@@ -7703,6 +4112,10 @@
   "bale": [
     "6163"
   ],
+  "balearic islands": [
+    "8036",
+    "8498"
+  ],
   "ball": [
     "2269",
     "3241"
@@ -7768,6 +4181,9 @@
   ],
   "balsamic vinegar": [
     "38539"
+  ],
+  "balthasar": [
+    "7048"
   ],
   "bamboo": [
     "21413"
@@ -7860,6 +4276,9 @@
   ],
   "banger": [
     "16851"
+  ],
+  "bangladesh": [
+    "38460"
   ],
   "banister": [
     "37021"
@@ -7970,6 +4389,10 @@
   "bar's kitchen": [
     "16147"
   ],
+  "barbados": [
+    "26672",
+    "29732"
+  ],
   "barbecue": [
     "36039",
     "5393"
@@ -7993,6 +4416,13 @@
   "barbershop": [
     "2850",
     "6587"
+  ],
+  "barbie": [
+    "3063"
+  ],
+  "barcelona": [
+    "14832",
+    "9858"
   ],
   "barcode": [
     "10320"
@@ -8074,6 +4504,9 @@
   "barwoman": [
     "11198"
   ],
+  "baryonyx": [
+    "34439"
+  ],
   "bas mitzvah": [
     "36119",
     "36121"
@@ -8117,6 +4550,9 @@
   "basilisk": [
     "38342"
   ],
+  "basi­lica del pilar": [
+    "5394"
+  ],
   "basket": [
     "3012",
     "3260",
@@ -8150,6 +4586,10 @@
   "basketball team": [
     "39791"
   ],
+  "basque country": [
+    "8118",
+    "8576"
+  ],
   "basque language and literature": [
     "37060"
   ],
@@ -8160,6 +4600,7 @@
     "37060"
   ],
   "basque pelota": [
+    "29171",
     "37074",
     "37076",
     "37077",
@@ -8184,6 +4625,9 @@
   ],
   "baste": [
     "5486"
+  ],
+  "bastille": [
+    "37929"
   ],
   "bat": [
     "2903",
@@ -8285,6 +4729,9 @@
     "2272",
     "32142"
   ],
+  "batman": [
+    "8039"
+  ],
   "batter": [
     "24749",
     "27057"
@@ -8334,6 +4781,9 @@
   ],
   "bazar": [
     "36351"
+  ],
+  "bcd": [
+    "31117"
   ],
   "be": [
     "36392",
@@ -8391,6 +4841,9 @@
     "8176"
   ],
   "be careful": [
+    "25618"
+  ],
+  "be careful!": [
     "25618"
   ],
   "be cold": [
@@ -8733,6 +5186,9 @@
   "beet": [
     "26370"
   ],
+  "beethoven": [
+    "35057"
+  ],
   "beetle": [
     "3301"
   ],
@@ -8784,10 +5240,25 @@
     "10250",
     "32572"
   ],
+  "belarus": [
+    "26673",
+    "29571"
+  ],
   "belch": [
     "25068",
     "25069",
     "28249"
+  ],
+  "belgique": [
+    "8040"
+  ],
+  "belgium": [
+    "28972",
+    "8040"
+  ],
+  "belize": [
+    "27598",
+    "29729"
   ],
   "bell": [
     "5938",
@@ -8890,6 +5361,9 @@
   "berries": [
     "35145"
   ],
+  "berrugon": [
+    "5407"
+  ],
   "beseech": [
     "38907",
     "8194",
@@ -8936,9 +5410,19 @@
   "bewitch": [
     "8132"
   ],
+  "bg meter": [
+    "24173"
+  ],
+  "bhutan": [
+    "27625"
+  ],
   "bib": [
     "2267",
     "37411"
+  ],
+  "bible": [
+    "23833",
+    "26539"
   ],
   "bibliothec": [
     "34529",
@@ -8990,6 +5474,16 @@
   ],
   "big": [
     "4658"
+  ],
+  "big bad wolf": [
+    "36608",
+    "6140"
+  ],
+  "big ben": [
+    "21445"
+  ],
+  "big pig": [
+    "5954"
   ],
   "big-heads": [
     "5416"
@@ -9208,6 +5702,9 @@
   "birthing bed": [
     "32248"
   ],
+  "biscay": [
+    "14761"
+  ],
   "biscuit": [
     "8312"
   ],
@@ -9281,9 +5778,6 @@
   "black": [
     "2886"
   ],
-  "black Iberian pig": [
-    "37365"
-  ],
   "black cat": [
     "9879",
     "9881"
@@ -9302,6 +5796,9 @@
   ],
   "black hair": [
     "8171"
+  ],
+  "black iberian pig": [
+    "37365"
   ],
   "black light": [
     "39418"
@@ -9418,6 +5915,7 @@
     "4600"
   ],
   "blind man's buff": [
+    "21882",
     "28693",
     "28695"
   ],
@@ -9604,6 +6102,12 @@
     "2779",
     "35107"
   ],
+  "blt": [
+    "3383"
+  ],
+  "blu ray movie": [
+    "36427"
+  ],
   "blue": [
     "3355",
     "4869"
@@ -9638,6 +6142,15 @@
   ],
   "blusher": [
     "3017"
+  ],
+  "bmx": [
+    "39237"
+  ],
+  "bmx bike": [
+    "39236"
+  ],
+  "bmx circuit": [
+    "39237"
   ],
   "boar": [
     "2965"
@@ -9785,6 +6298,10 @@
     "24276",
     "8281"
   ],
+  "bolivia": [
+    "29594",
+    "29595"
+  ],
   "bologna sausage": [
     "8634"
   ],
@@ -9807,6 +6324,9 @@
   ],
   "bombarde": [
     "17223"
+  ],
+  "bombay toast": [
+    "39540"
   ],
   "bon appetit!": [
     "11627"
@@ -9941,8 +6461,15 @@
   "borrower's card": [
     "6073"
   ],
+  "bosnia and herzegovina": [
+    "21459",
+    "28966"
+  ],
   "bosom": [
     "8372"
+  ],
+  "botafumeiro": [
+    "35867"
   ],
   "botanic garden": [
     "25650"
@@ -9961,8 +6488,14 @@
     "37824",
     "7157"
   ],
+  "boticario": [
+    "5461"
+  ],
   "botijo": [
     "6940"
+  ],
+  "botswana": [
+    "26674"
   ],
   "bottle": [
     "2288",
@@ -10154,9 +6687,6 @@
   "boy wearing nappy": [
     "36716"
   ],
-  "boy with Down syndrome": [
-    "8222"
-  ],
   "boy with autism": [
     "26594",
     "26606",
@@ -10166,6 +6696,9 @@
   "boy with cerebral palsy": [
     "36940",
     "36941"
+  ],
+  "boy with down syndrome": [
+    "8222"
   ],
   "boy with eyepatch": [
     "30709",
@@ -10211,6 +6744,9 @@
   "boys": [
     "6975"
   ],
+  "br player": [
+    "4957"
+  ],
   "bra": [
     "2576"
   ],
@@ -10224,6 +6760,9 @@
   ],
   "brachiate": [
     "37977"
+  ],
+  "brachiosaurus": [
+    "34441"
   ],
   "brackets": [
     "10316"
@@ -10266,6 +6805,12 @@
   "branchia": [
     "6941"
   ],
+  "brandenburg gate": [
+    "22058"
+  ],
+  "brasil": [
+    "8044"
+  ],
   "brave": [
     "36163"
   ],
@@ -10275,6 +6820,10 @@
   ],
   "bray": [
     "7702"
+  ],
+  "brazil": [
+    "29589",
+    "8044"
   ],
   "bread": [
     "10230",
@@ -10562,6 +7111,12 @@
   "bring out": [
     "5568"
   ],
+  "brit milah": [
+    "36123"
+  ],
+  "british bulldog": [
+    "36647"
+  ],
   "brittle": [
     "38734"
   ],
@@ -10680,6 +7235,9 @@
   "bruise": [
     "8170"
   ],
+  "brunei": [
+    "27624"
+  ],
   "brunette": [
     "8171"
   ],
@@ -10716,6 +7274,9 @@
   "brushed": [
     "16327",
     "16331"
+  ],
+  "brussels sprout": [
+    "23949"
   ],
   "bubble": [
     "8389"
@@ -10764,6 +7325,9 @@
   ],
   "bud": [
     "11202"
+  ],
+  "buddha": [
+    "23857"
   ],
   "budgerigar": [
     "2562"
@@ -10831,6 +7395,10 @@
   "bulb holder": [
     "27029"
   ],
+  "bulgaria": [
+    "17185",
+    "28984"
+  ],
   "bulk store": [
     "38253"
   ],
@@ -10849,6 +7417,9 @@
   ],
   "bullring": [
     "6185"
+  ],
+  "bullrush": [
+    "36647"
   ],
   "bully": [
     "12321",
@@ -10928,6 +7499,12 @@
     "11292",
     "4674"
   ],
+  "burgos": [
+    "14771"
+  ],
+  "burgos' cathedral": [
+    "36897"
+  ],
   "burial": [
     "3195"
   ],
@@ -10935,6 +7512,12 @@
     "35455",
     "36289",
     "4591"
+  ],
+  "burkina faso": [
+    "26675"
+  ],
+  "burma": [
+    "27603"
   ],
   "burn": [
     "10266",
@@ -10966,6 +7549,9 @@
   ],
   "burst the balloon": [
     "7206"
+  ],
+  "burundi": [
+    "26676"
   ],
   "bus": [
     "2262",
@@ -11131,7 +7717,17 @@
     "6028"
   ],
   "c": [
-    "3024"
+    "3024",
+    "3069"
+  ],
+  "c-130": [
+    "36641"
+  ],
+  "c-clef": [
+    "9130"
+  ],
+  "ca": [
+    "25898"
   ],
   "ca-ca": [
     "16709",
@@ -11171,6 +7767,39 @@
     "5461",
     "8300"
   ],
+  "cabezudo berrugon": [
+    "5407"
+  ],
+  "cabezudo boticario": [
+    "5461"
+  ],
+  "cabezudo el azutero": [
+    "36175"
+  ],
+  "cabezudo forana": [
+    "5409"
+  ],
+  "cabezudo forano": [
+    "5410"
+  ],
+  "cabezudo la cigarrera": [
+    "36173"
+  ],
+  "cabezudo morico": [
+    "5411"
+  ],
+  "cabezudo pilara": [
+    "5412"
+  ],
+  "cabezudo robaculeros": [
+    "5413"
+  ],
+  "cabezudo torero": [
+    "5414"
+  ],
+  "cabezudo tuerto": [
+    "5415"
+  ],
   "cabin": [
     "21478",
     "8049"
@@ -11198,6 +7827,9 @@
   "cacao bean": [
     "25891"
   ],
+  "caceres": [
+    "14831"
+  ],
   "cachopo": [
     "30508"
   ],
@@ -11212,6 +7844,9 @@
   ],
   "cactus plant": [
     "3070"
+  ],
+  "cadiz": [
+    "14684"
   ],
   "caesarean": [
     "32020"
@@ -11371,8 +8006,14 @@
   "calorie-free": [
     "8496"
   ],
+  "calvary": [
+    "38730"
+  ],
   "calyx": [
     "37145"
+  ],
+  "cambodia": [
+    "27646"
   ],
   "camel": [
     "8522"
@@ -11384,6 +8025,12 @@
   ],
   "camera store": [
     "30422"
+  ],
+  "cameroon": [
+    "8055"
+  ],
+  "camino de santiago": [
+    "35835"
   ],
   "camion": [
     "2306"
@@ -11452,10 +8099,10 @@
     "6545",
     "8280"
   ],
-  "can I help you?": [
+  "can i help you?": [
     "16125"
   ],
-  "can I play?": [
+  "can i play?": [
     "7221"
   ],
   "can of anchovies": [
@@ -11517,17 +8164,28 @@
     "17342",
     "17346"
   ],
+  "canada": [
+    "29587",
+    "8057"
+  ],
   "canal": [
     "25920"
   ],
   "canape": [
     "10221"
   ],
+  "canarian wrestling": [
+    "37039"
+  ],
   "canary": [
     "3004"
   ],
   "canary bird": [
     "3004"
+  ],
+  "canary islands": [
+    "8058",
+    "8525"
   ],
   "cancel": [
     "17194",
@@ -11627,6 +8285,11 @@
   "canopy": [
     "37697"
   ],
+  "cantabria": [
+    "14836",
+    "8060",
+    "8527"
+  ],
   "canteen": [
     "4587",
     "9824"
@@ -11647,6 +8310,9 @@
   ],
   "cape": [
     "23859"
+  ],
+  "cape verde": [
+    "26677"
   ],
   "capercaillie": [
     "29690"
@@ -11876,6 +8542,9 @@
   "caries": [
     "21494"
   ],
+  "carmen gate": [
+    "22060"
+  ],
   "carnation flower": [
     "3080"
   ],
@@ -12050,11 +8719,26 @@
   "castanets": [
     "2318"
   ],
+  "castañada": [
+    "15501",
+    "24951"
+  ],
   "castell": [
     "35995"
   ],
+  "castellon": [
+    "14768"
+  ],
   "caster table": [
     "7052"
+  ],
+  "castile-leon": [
+    "8068",
+    "8530"
+  ],
+  "castille-la mancha": [
+    "8067",
+    "8529"
   ],
   "castle": [
     "17279",
@@ -12069,6 +8753,9 @@
     "7114",
     "9879",
     "9881"
+  ],
+  "cat and mouse": [
+    "36647"
   ],
   "cat bed": [
     "26724"
@@ -12088,6 +8775,10 @@
   ],
   "catalogue": [
     "28717"
+  ],
+  "catalonia": [
+    "8069",
+    "8532"
   ],
   "catamaran": [
     "28901"
@@ -12205,6 +8896,30 @@
   ],
   "cayman": [
     "23863"
+  ],
+  "cbe": [
+    "32720"
+  ],
+  "cd": [
+    "15349",
+    "2322",
+    "39044"
+  ],
+  "cd player": [
+    "24509"
+  ],
+  "cd reader": [
+    "9156"
+  ],
+  "cd rom": [
+    "25614"
+  ],
+  "cd-rom": [
+    "2322",
+    "25614"
+  ],
+  "cd-rom drive": [
+    "9156"
   ],
   "ceiling": [
     "2583"
@@ -12383,6 +9098,9 @@
   "certified letter": [
     "21514"
   ],
+  "cervantes": [
+    "15351"
+  ],
   "cervical collar": [
     "30686",
     "30687"
@@ -12393,8 +9111,21 @@
   "cesarian": [
     "32020"
   ],
+  "ceuta": [
+    "14837",
+    "31330",
+    "31331",
+    "8070",
+    "8535"
+  ],
+  "cgac": [
+    "36898"
+  ],
   "chacoli": [
     "29197"
+  ],
+  "chad": [
+    "26752"
   ],
   "chain": [
     "5934",
@@ -12454,6 +9185,9 @@
   ],
   "chamber entrance": [
     "37542"
+  ],
+  "chamber of deputies": [
+    "21551"
   ],
   "chameleon": [
     "3003"
@@ -12520,6 +9254,12 @@
   ],
   "changing table": [
     "39560"
+  ],
+  "channukah": [
+    "36125"
+  ],
+  "channukkah": [
+    "36125"
   ],
   "chapel": [
     "29963"
@@ -12952,7 +9692,7 @@
   "chickpeas package": [
     "38594"
   ],
-  "chief Information Technology officer": [
+  "chief information technology officer": [
     "37571"
   ],
   "chief of protocol": [
@@ -13031,6 +9771,10 @@
   "children's table": [
     "37831"
   ],
+  "chile": [
+    "29598",
+    "8071"
+  ],
   "chili pepper": [
     "39782",
     "4661"
@@ -13059,11 +9803,34 @@
   "chin": [
     "2991"
   ],
+  "china": [
+    "37647",
+    "8074"
+  ],
+  "china pink": [
+    "37584"
+  ],
+  "chinese": [
+    "37525",
+    "37526"
+  ],
   "chinese box": [
     "4924"
   ],
+  "chinese fried rice": [
+    "28923"
+  ],
+  "chinese man": [
+    "37526"
+  ],
   "chinese restaurant": [
     "36440"
+  ],
+  "chinese wall": [
+    "10272"
+  ],
+  "chinese woman": [
+    "37525"
   ],
   "chip": [
     "3369",
@@ -13257,15 +10024,68 @@
   "chotis": [
     "37892"
   ],
+  "christ": [
+    "24135",
+    "39831"
+  ],
+  "christ the redeemer": [
+    "25036"
+  ],
   "christen": [
     "3064",
     "39830"
+  ],
+  "christian": [
+    "23993",
+    "25028",
+    "25033"
+  ],
+  "christmas": [
+    "3134"
   ],
   "christmas ball": [
     "8296"
   ],
   "christmas balls": [
     "3067"
+  ],
+  "christmas card": [
+    "7269"
+  ],
+  "christmas day": [
+    "3092"
+  ],
+  "christmas eve": [
+    "8260"
+  ],
+  "christmas flower": [
+    "36394"
+  ],
+  "christmas garland": [
+    "6885"
+  ],
+  "christmas lights": [
+    "5083"
+  ],
+  "christmas ornament": [
+    "6885"
+  ],
+  "christmas star": [
+    "3100",
+    "36394"
+  ],
+  "christmas stocking": [
+    "5065"
+  ],
+  "christmas tree": [
+    "24859",
+    "3058"
+  ],
+  "christmas' eve": [
+    "8260"
+  ],
+  "christopher columbus": [
+    "37932"
   ],
   "chroma key": [
     "38691"
@@ -13381,6 +10201,9 @@
   "cilantro": [
     "39291"
   ],
+  "cinderella": [
+    "21527"
+  ],
   "cinema": [
     "30387",
     "32484",
@@ -13475,6 +10298,9 @@
   ],
   "city walls' interpretation centre": [
     "29851"
+  ],
+  "ciudad real": [
+    "14763"
   ],
   "civic center": [
     "36247"
@@ -14139,6 +10965,9 @@
   "clyster": [
     "30668"
   ],
+  "co2": [
+    "24015"
+  ],
   "coach": [
     "2262",
     "27005",
@@ -14205,6 +11034,9 @@
   ],
   "coca": [
     "12311"
+  ],
+  "coca-cola": [
+    "2338"
   ],
   "cochlear implant": [
     "27840",
@@ -14392,8 +11224,14 @@
     "34533",
     "34537"
   ],
+  "coke": [
+    "2338"
+  ],
   "cola": [
     "2338"
+  ],
+  "cola-cao": [
+    "4940"
   ],
   "colaboration": [
     "12252",
@@ -14512,7 +11350,12 @@
     "35673"
   ],
   "cologne seller": [
-    "16917"
+    "16917",
+    "16921"
+  ],
+  "colombia": [
+    "29593",
+    "8080"
   ],
   "colon": [
     "3420"
@@ -14589,6 +11432,9 @@
   ],
   "colours": [
     "5968"
+  ],
+  "columbus": [
+    "37932"
   ],
   "column": [
     "31308"
@@ -14776,6 +11622,9 @@
   "community center": [
     "36247"
   ],
+  "community of madrid": [
+    "8622"
+  ],
   "compact disc": [
     "2322"
   ],
@@ -14857,6 +11706,12 @@
   ],
   "compression bandage": [
     "30144"
+  ],
+  "compulsory basic education": [
+    "32720"
+  ],
+  "compulsory education for special needs children": [
+    "32720"
   ],
   "compulsory height": [
     "34703"
@@ -15011,6 +11866,10 @@
   ],
   "conference center": [
     "25542"
+  ],
+  "conference hall": [
+    "25542",
+    "25545"
   ],
   "conference house": [
     "25542"
@@ -15431,6 +12290,9 @@
   "cordless telephone": [
     "15923"
   ],
+  "cordoba": [
+    "14685"
+  ],
   "core": [
     "38004"
   ],
@@ -15556,6 +12418,10 @@
   ],
   "cost": [
     "9874"
+  ],
+  "costa rica": [
+    "21567",
+    "29726"
   ],
   "costless": [
     "11582",
@@ -15844,6 +12710,12 @@
   "coyote": [
     "29768"
   ],
+  "cpap therapy": [
+    "37679"
+  ],
+  "cpu": [
+    "9150"
+  ],
   "crab": [
     "11200",
     "2312"
@@ -15997,6 +12869,9 @@
     "25111",
     "3317"
   ],
+  "cremá": [
+    "25024"
+  ],
   "crepe": [
     "34233"
   ],
@@ -16008,6 +12883,9 @@
   ],
   "crewet": [
     "7300"
+  ],
+  "cri du chat syndrome": [
+    "30239"
   ],
   "crib": [
     "26320",
@@ -16044,6 +12922,9 @@
     "2505",
     "8653"
   ],
+  "cristobal colon": [
+    "37932"
+  ],
   "critically ill": [
     "39512"
   ],
@@ -16056,8 +12937,18 @@
   "critter": [
     "8025"
   ],
+  "crmf": [
+    "16151"
+  ],
+  "cro-magnon": [
+    "25928"
+  ],
   "croak": [
     "7003"
+  ],
+  "croatia": [
+    "21572",
+    "28986"
   ],
   "crochet": [
     "3353"
@@ -16272,7 +13163,12 @@
     "3317"
   ],
   "cs": [
+    "36739",
     "36784"
+  ],
+  "cuba": [
+    "17218",
+    "29607"
   ],
   "cubby": [
     "21522"
@@ -16303,6 +13199,9 @@
   ],
   "cue stick": [
     "22013"
+  ],
+  "cuenca": [
+    "14764"
   ],
   "cuff": [
     "8996"
@@ -16365,6 +13264,9 @@
   "cupcake": [
     "25211",
     "8623"
+  ],
+  "cupid": [
+    "16637"
   ],
   "cupola": [
     "36514"
@@ -16582,6 +13484,9 @@
     "28465",
     "28466"
   ],
+  "cv": [
+    "39177"
+  ],
   "cyber scammer": [
     "38478",
     "38479",
@@ -16648,15 +13553,25 @@
   "cypress tree": [
     "3079"
   ],
+  "cyprus": [
+    "21536"
+  ],
   "cystitis": [
     "31773"
   ],
+  "czech republic": [
+    "21535"
+  ],
   "d": [
-    "3025"
+    "3025",
+    "3088"
   ],
   "dabble": [
     "15507",
     "16745"
+  ],
+  "dacentrurus armatus": [
+    "34595"
   ],
   "dad": [
     "31146"
@@ -16681,6 +13596,9 @@
   ],
   "daisy": [
     "3127"
+  ],
+  "dali": [
+    "21581"
   ],
   "dam": [
     "6191"
@@ -16932,6 +13850,12 @@
     "35633",
     "35751"
   ],
+  "dec 24": [
+    "8260"
+  ],
+  "dec 25": [
+    "3092"
+  ],
   "decaffeinated coffee": [
     "24487"
   ],
@@ -16941,6 +13865,15 @@
     "29869",
     "29870",
     "36191"
+  ],
+  "december": [
+    "35937",
+    "6476"
+  ],
+  "december 31": [
+    "32534",
+    "39109",
+    "8261"
   ],
   "decide": [
     "11694",
@@ -16987,7 +13920,7 @@
     "32622",
     "7008"
   ],
-  "decorate the Christmas tree": [
+  "decorate the christmas tree": [
     "27715"
   ],
   "decoration": [
@@ -17130,6 +14063,12 @@
   "dementia": [
     "16347"
   ],
+  "democratic republic of congo": [
+    "26769"
+  ],
+  "democratic republic of são tomé and príncipe": [
+    "39169"
+  ],
   "demolish": [
     "11230"
   ],
@@ -17152,6 +14091,10 @@
   ],
   "den": [
     "7149"
+  ],
+  "denmark": [
+    "21799",
+    "28981"
   ],
   "densitometry equipment": [
     "38668"
@@ -17424,6 +14367,155 @@
   "dew": [
     "39419"
   ],
+  "dewy decimal classification": [
+    "28369",
+    "28370",
+    "28371",
+    "28372",
+    "28373",
+    "28374",
+    "28375",
+    "28376",
+    "28377",
+    "28378",
+    "28379",
+    "28380",
+    "28381",
+    "28382",
+    "28383",
+    "28384",
+    "33962",
+    "33963",
+    "33964",
+    "33965",
+    "38152",
+    "38153",
+    "38154",
+    "38155",
+    "38156",
+    "38157",
+    "38158",
+    "38159",
+    "38160",
+    "38161",
+    "38162",
+    "38163",
+    "38164",
+    "38165",
+    "38166",
+    "38167",
+    "38168",
+    "38169",
+    "38170",
+    "38171",
+    "38172",
+    "38173",
+    "38174",
+    "38175",
+    "38176",
+    "38177",
+    "38178",
+    "38179",
+    "38180",
+    "38181",
+    "38182",
+    "38183",
+    "38184",
+    "38185",
+    "38186",
+    "38187",
+    "38188",
+    "38189",
+    "38190",
+    "38191",
+    "38192",
+    "38193",
+    "38194",
+    "38195",
+    "38196",
+    "38197",
+    "38198",
+    "38608",
+    "38614",
+    "38615",
+    "38616"
+  ],
+  "dewy decimal system": [
+    "28369",
+    "28370",
+    "28371",
+    "28372",
+    "28373",
+    "28374",
+    "28375",
+    "28376",
+    "28377",
+    "28378",
+    "28379",
+    "28380",
+    "28381",
+    "28382",
+    "28383",
+    "28384",
+    "33962",
+    "33963",
+    "33964",
+    "33965",
+    "38152",
+    "38153",
+    "38154",
+    "38155",
+    "38156",
+    "38157",
+    "38158",
+    "38159",
+    "38160",
+    "38161",
+    "38162",
+    "38163",
+    "38164",
+    "38165",
+    "38166",
+    "38167",
+    "38168",
+    "38169",
+    "38170",
+    "38171",
+    "38172",
+    "38173",
+    "38174",
+    "38175",
+    "38176",
+    "38177",
+    "38178",
+    "38179",
+    "38180",
+    "38181",
+    "38182",
+    "38183",
+    "38184",
+    "38185",
+    "38186",
+    "38187",
+    "38188",
+    "38189",
+    "38190",
+    "38191",
+    "38192",
+    "38193",
+    "38194",
+    "38195",
+    "38196",
+    "38197",
+    "38198",
+    "38608",
+    "38614",
+    "38615",
+    "38616"
+  ],
+  "dexa scan": [
+    "38668"
+  ],
   "dharmachakra": [
     "38599"
   ],
@@ -17525,6 +14617,9 @@
     "29863",
     "32250"
   ],
+  "diego de marcilla": [
+    "34927"
+  ],
   "diet": [
     "11239"
   ],
@@ -17569,6 +14664,9 @@
   ],
   "digger": [
     "2390"
+  ],
+  "digital audio player": [
+    "7783"
   ],
   "digital clock": [
     "23408"
@@ -18229,6 +15327,12 @@
     "15026",
     "15028"
   ],
+  "diy show": [
+    "8199"
+  ],
+  "diy store": [
+    "29979"
+  ],
   "dizygotic twins": [
     "34002"
   ],
@@ -18241,11 +15345,17 @@
     "31795",
     "35543"
   ],
+  "dj": [
+    "9193"
+  ],
   "djellaba": [
     "36626"
   ],
   "djembe": [
     "38105"
+  ],
+  "dna": [
+    "10268"
   ],
   "do": [
     "11749",
@@ -18376,6 +15486,9 @@
     "31133",
     "31135"
   ],
+  "dolmen de viera": [
+    "31135"
+  ],
   "dolphin": [
     "2732"
   ],
@@ -18401,17 +15514,27 @@
   "domesticate": [
     "38055"
   ],
+  "dominican republic": [
+    "27308",
+    "29727"
+  ],
   "dominoes": [
     "3095"
   ],
   "dominos": [
     "3095"
   ],
+  "don quixote": [
+    "10359"
+  ],
   "don't touch": [
     "11595"
   ],
   "don't touch!": [
     "11595"
+  ],
+  "don't use the lift in case of fire": [
+    "24653"
   ],
   "donate": [
     "35319"
@@ -18421,6 +15544,9 @@
   ],
   "donkey": [
     "2291"
+  ],
+  "donostia": [
+    "28960"
   ],
   "donut": [
     "2368",
@@ -18496,6 +15622,16 @@
   "down button": [
     "38754"
   ],
+  "down syndrome": [
+    "30233",
+    "37455",
+    "8222"
+  ],
+  "down's syndrome": [
+    "30233",
+    "37455",
+    "8222"
+  ],
   "downhearted": [
     "32328",
     "32329",
@@ -18503,6 +15639,9 @@
   ],
   "download": [
     "27397"
+  ],
+  "dr.": [
+    "8263"
   ],
   "drag over the floor": [
     "37089"
@@ -18684,6 +15823,9 @@
   "drinking chocolate": [
     "21326",
     "4940"
+  ],
+  "drinking forbidden": [
+    "29177"
   ],
   "drinking fountain": [
     "3273",
@@ -19001,6 +16143,12 @@
   "dulce de leche alfajor": [
     "38525"
   ],
+  "dulcinea": [
+    "15373"
+  ],
+  "dulcinea del toboso": [
+    "15373"
+  ],
   "dull": [
     "2245",
     "28705",
@@ -19071,11 +16219,32 @@
   "duvet": [
     "16297"
   ],
+  "dvd": [
+    "9152"
+  ],
+  "dvd drive": [
+    "9156"
+  ],
+  "dvd movie": [
+    "36427"
+  ],
+  "dvd player": [
+    "4957"
+  ],
+  "dvd reader": [
+    "9156"
+  ],
   "dwarf": [
     "5450"
   ],
   "dwell": [
     "38394"
+  ],
+  "dxa scan": [
+    "38668"
+  ],
+  "dya": [
+    "30000"
   ],
   "dye": [
     "6620",
@@ -19088,13 +16257,16 @@
     "32558"
   ],
   "dz": [
+    "36742",
     "36782"
   ],
   "dzs": [
+    "36741",
     "36781"
   ],
   "e": [
-    "3026"
+    "3026",
+    "3096"
   ],
   "e-learning": [
     "24617"
@@ -19198,6 +16370,7 @@
     "2515"
   ],
   "earth": [
+    "30014",
     "3160"
   ],
   "earth house": [
@@ -19220,6 +16393,28 @@
   ],
   "easel": [
     "8723"
+  ],
+  "east": [
+    "8114"
+  ],
+  "easter bunny": [
+    "39162"
+  ],
+  "easter chocolate figures": [
+    "37450"
+  ],
+  "easter egg": [
+    "11304",
+    "12307",
+    "29678",
+    "32478"
+  ],
+  "easter eggs": [
+    "37452",
+    "37466"
+  ],
+  "easter rabbit": [
+    "39162"
   ],
   "eastern long-necked turtle": [
     "34589"
@@ -19259,8 +16454,22 @@
   "eat with the hand": [
     "38413"
   ],
+  "eating forbidden": [
+    "29179"
+  ],
   "eating place": [
     "32408"
+  ],
+  "ebro": [
+    "5446"
+  ],
+  "ebro river": [
+    "5446"
+  ],
+  "ecg": [
+    "30802",
+    "30805",
+    "8100"
   ],
   "echinotherapy": [
     "35481"
@@ -19312,6 +16521,10 @@
   ],
   "economy and finances department": [
     "37329"
+  ],
+  "ecuador": [
+    "19550",
+    "29600"
   ],
   "eczema": [
     "5578"
@@ -19371,6 +16584,14 @@
     "32497",
     "38581"
   ],
+  "eeg": [
+    "30090",
+    "30091",
+    "30170",
+    "30171",
+    "30249",
+    "8101"
+  ],
   "eel": [
     "5378"
   ],
@@ -19420,8 +16641,21 @@
   "eggy bread": [
     "39540"
   ],
+  "egypt": [
+    "37648",
+    "8099"
+  ],
+  "egyptologist": [
+    "32095"
+  ],
+  "egyptology": [
+    "32095"
+  ],
   "eiderdown": [
     "16297"
+  ],
+  "eiffel tower": [
+    "10271"
   ],
   "eight": [
     "2634",
@@ -19517,6 +16751,24 @@
   ],
   "ejection from the game": [
     "11260"
+  ],
+  "ekg": [
+    "30802",
+    "30805",
+    "8100"
+  ],
+  "el hierro": [
+    "14843"
+  ],
+  "el peine del viento": [
+    "28899"
+  ],
+  "el salvador": [
+    "29652",
+    "29653"
+  ],
+  "el salvador tower": [
+    "31388"
   ],
   "elaboration": [
     "17032"
@@ -19875,6 +17127,9 @@
     "25644",
     "25645"
   ],
+  "emmental cheese": [
+    "38899"
+  ],
   "emotions": [
     "12359"
   ],
@@ -20106,6 +17361,9 @@
     "16647",
     "8992"
   ],
+  "entierro de la sardina": [
+    "27737"
+  ],
   "entourage": [
     "26439",
     "26440"
@@ -20179,6 +17437,9 @@
   "epileptic attack": [
     "31432"
   ],
+  "epiphany": [
+    "5072"
+  ],
   "episiotomy": [
     "32180"
   ],
@@ -20201,6 +17462,9 @@
   ],
   "equals": [
     "4667"
+  ],
+  "equatorial guinea": [
+    "26877"
   ],
   "equestrian trail": [
     "37987",
@@ -20243,6 +17507,9 @@
   ],
   "erection": [
     "16661"
+  ],
+  "eritrea": [
+    "26833"
   ],
   "erosion": [
     "37717"
@@ -20292,6 +17559,9 @@
   "esparto grass": [
     "37114"
   ],
+  "esplai": [
+    "11647"
+  ],
   "essence": [
     "38004"
   ],
@@ -20300,6 +17570,10 @@
   ],
   "estate agent's": [
     "29893"
+  ],
+  "estonia": [
+    "21856",
+    "29574"
   ],
   "estuary": [
     "36906"
@@ -20313,8 +17587,21 @@
   "ethics and values lesson": [
     "34709"
   ],
+  "ethiopia": [
+    "26844"
+  ],
   "euro": [
     "5092"
+  ],
+  "europe": [
+    "5468",
+    "8117"
+  ],
+  "european grouse": [
+    "29690"
+  ],
+  "european lobster": [
+    "36982"
   ],
   "european parliament": [
     "30247"
@@ -20322,8 +17609,15 @@
   "european pond turtle": [
     "34581"
   ],
+  "europelta carbonensis": [
+    "34591"
+  ],
   "euros": [
     "35165"
+  ],
+  "ev charger": [
+    "38334",
+    "38335"
   ],
   "evacuate": [
     "16709",
@@ -20636,7 +17930,7 @@
   "explore the throat": [
     "27719"
   ],
-  "explore through a CT Scan": [
+  "explore through a ct scan": [
     "30797"
   ],
   "explorer": [
@@ -20744,6 +18038,10 @@
   "extraterrestrial": [
     "7154"
   ],
+  "extremadura": [
+    "8120",
+    "8580"
+  ],
   "extremities": [
     "29086"
   ],
@@ -20821,7 +18119,11 @@
     "26757"
   ],
   "f": [
-    "3027"
+    "3027",
+    "3101"
+  ],
+  "f clef": [
+    "9128"
   ],
   "fabada": [
     "31821"
@@ -20874,6 +18176,9 @@
     "24507",
     "35393",
     "8581"
+  ],
+  "faeroe islands": [
+    "39459"
   ],
   "fail": [
     "22115",
@@ -21072,6 +18377,9 @@
     "11599",
     "38564"
   ],
+  "fao": [
+    "9076"
+  ],
   "far": [
     "30385",
     "36759"
@@ -21165,8 +18473,27 @@
     "26110",
     "4656"
   ],
+  "fat thursday": [
+    "28279",
+    "28281"
+  ],
   "father": [
     "2497"
+  ],
+  "father bear": [
+    "6165"
+  ],
+  "father christmas": [
+    "25297",
+    "25298",
+    "3139",
+    "32454"
+  ],
+  "father christmas cap": [
+    "3109"
+  ],
+  "father's day": [
+    "3093"
   ],
   "fatigue": [
     "35573"
@@ -21218,6 +18545,12 @@
   "feast": [
     "37517"
   ],
+  "feast of tabernacles": [
+    "37848"
+  ],
+  "feast of weeks": [
+    "38964"
+  ],
   "feather": [
     "5545",
     "7208"
@@ -21229,6 +18562,10 @@
     "28729",
     "32530",
     "5470"
+  ],
+  "february": [
+    "35945",
+    "6498"
   ],
   "fecal occult test": [
     "32852"
@@ -21459,6 +18796,9 @@
   "festival": [
     "25103"
   ],
+  "festival of lights": [
+    "36125"
+  ],
   "festivities": [
     "32800"
   ],
@@ -21487,6 +18827,15 @@
   ],
   "fez": [
     "35109"
+  ],
+  "ffp1 mask": [
+    "36789"
+  ],
+  "ffp3 mask": [
+    "36787"
+  ],
+  "ffp3 respirator": [
+    "36787"
   ],
   "fiber optic lamp": [
     "36410"
@@ -21538,6 +18887,9 @@
   "field-hockey player": [
     "34401",
     "5081"
+  ],
+  "fiestas del pilar": [
+    "5073"
   ],
   "fifteen": [
     "29268"
@@ -21815,6 +19167,13 @@
   ],
   "finishing line": [
     "16817"
+  ],
+  "finland": [
+    "21873",
+    "28983"
+  ],
+  "finnish sauna": [
+    "25433"
   ],
   "fins": [
     "5373"
@@ -22239,6 +19598,9 @@
   "flight ticket": [
     "39492"
   ],
+  "flintstones' car attraction": [
+    "35011"
+  ],
   "flip-flop": [
     "8343"
   ],
@@ -22322,6 +19684,11 @@
   ],
   "flower bed": [
     "39094"
+  ],
+  "flower offering": [
+    "39695",
+    "39696",
+    "5529"
   ],
   "flower shop": [
     "3319",
@@ -22501,25 +19868,25 @@
   "following": [
     "27331"
   ],
-  "following Friday": [
+  "following friday": [
     "39720"
   ],
-  "following Monday": [
+  "following monday": [
     "39728"
   ],
-  "following Saturday": [
+  "following saturday": [
     "39717"
   ],
-  "following Sunday": [
+  "following sunday": [
     "39730"
   ],
-  "following Thursday": [
+  "following thursday": [
     "39722"
   ],
-  "following Tuesday": [
+  "following tuesday": [
     "39724"
   ],
-  "following Wednesday": [
+  "following wednesday": [
     "39723"
   ],
   "fondue": [
@@ -22527,6 +19894,9 @@
   ],
   "food": [
     "4610"
+  ],
+  "food and agriculture organization": [
+    "9076"
   ],
   "food and drinks": [
     "32602"
@@ -22696,6 +20066,12 @@
   "for years": [
     "39857"
   ],
+  "forana": [
+    "5409"
+  ],
+  "forano": [
+    "5410"
+  ],
   "forbear": [
     "36600"
   ],
@@ -22744,6 +20120,9 @@
   "forehead": [
     "3326"
   ],
+  "foreign language lesson": [
+    "24469"
+  ],
   "foreigners office": [
     "38293"
   ],
@@ -22791,6 +20170,9 @@
   ],
   "formation": [
     "8098"
+  ],
+  "formentera": [
+    "14848"
   ],
   "formula": [
     "7785"
@@ -22916,6 +20298,9 @@
     "4892",
     "7005"
   ],
+  "four corners": [
+    "37449"
+  ],
   "four corners game": [
     "37449"
   ],
@@ -22967,9 +20352,22 @@
   "framed photo": [
     "3281"
   ],
+  "france": [
+    "28968",
+    "8121"
+  ],
   "franciscan": [
     "30818",
     "30820"
+  ],
+  "francisco de goya": [
+    "15493"
+  ],
+  "francisco de goya y lucientes": [
+    "15493"
+  ],
+  "frankenstein": [
+    "8279"
   ],
   "frankfurter": [
     "6647"
@@ -23012,17 +20410,29 @@
   "french": [
     "36367"
   ],
+  "french bread": [
+    "2494"
+  ],
   "french class": [
     "36367"
   ],
   "french fries": [
     "2505"
   ],
+  "french guiana": [
+    "26879"
+  ],
+  "french guyana": [
+    "26879"
+  ],
   "french omelette": [
     "4967"
   ],
   "french pancake": [
     "34233"
+  ],
+  "french revolution": [
+    "37926"
   ],
   "french soldier": [
     "36967"
@@ -23044,6 +20454,10 @@
   ],
   "fresh yeast": [
     "38689"
+  ],
+  "friday": [
+    "37726",
+    "6629"
   ],
   "fridge": [
     "3272",
@@ -23248,7 +20662,7 @@
     "28339",
     "4653"
   ],
-  "fruits of Aragon": [
+  "fruits of aragon": [
     "11268"
   ],
   "fry": [
@@ -23276,8 +20690,14 @@
     "24896",
     "24930"
   ],
+  "fuerteventura": [
+    "24478"
+  ],
   "fufu": [
     "39810"
+  ],
+  "fujiyama": [
+    "37069"
   ],
   "fulfillment": [
     "17030"
@@ -23431,12 +20851,19 @@
     "9829"
   ],
   "g": [
-    "3028"
+    "3028",
+    "3104"
+  ],
+  "g clef": [
+    "9129"
   ],
   "gab": [
     "3345",
     "36544",
     "6517"
+  ],
+  "gabon": [
+    "26871"
   ],
   "gag": [
     "37520"
@@ -23457,6 +20884,16 @@
   "gale": [
     "34296"
   ],
+  "galicia": [
+    "8123",
+    "8588"
+  ],
+  "galician centre of contemporary art": [
+    "36898"
+  ],
+  "galician lesson": [
+    "34798"
+  ],
   "gall": [
     "38268"
   ],
@@ -23468,6 +20905,9 @@
   ],
   "galoubet": [
     "38466"
+  ],
+  "gambia": [
+    "8124"
   ],
   "game": [
     "6170"
@@ -23695,6 +21135,9 @@
     "30501",
     "30504"
   ],
+  "gaspar": [
+    "7769"
+  ],
   "gastritis": [
     "10264"
   ],
@@ -23844,6 +21287,10 @@
   "geometric shapes": [
     "9109"
   ],
+  "georgia": [
+    "26872",
+    "29575"
+  ],
   "geosphere": [
     "24073"
   ],
@@ -23882,9 +21329,16 @@
   "german class": [
     "37740"
   ],
+  "germany": [
+    "28970",
+    "8011"
+  ],
   "germinate": [
     "17183",
     "36921"
+  ],
+  "gerona": [
+    "14833"
   ],
   "gerontologist": [
     "38835"
@@ -24223,6 +21677,9 @@
   "get worn out": [
     "6959"
   ],
+  "ghana": [
+    "26873"
+  ],
   "gherkin": [
     "36567"
   ],
@@ -24347,9 +21804,6 @@
   "girl wearing nappy": [
     "36715"
   ],
-  "girl with Down syndrome": [
-    "37455"
-  ],
   "girl with autism": [
     "26595",
     "26606",
@@ -24359,6 +21813,9 @@
   "girl with cerebral palsy": [
     "36939",
     "36941"
+  ],
+  "girl with down syndrome": [
+    "37455"
   ],
   "girl with eyepatch": [
     "30711",
@@ -24881,6 +22338,10 @@
   "goblin": [
     "5445"
   ],
+  "god": [
+    "24013",
+    "35069"
+  ],
   "goddess": [
     "37117"
   ],
@@ -24901,6 +22362,9 @@
   ],
   "goldfinch": [
     "27853"
+  ],
+  "goldilocks": [
+    "6207"
   ],
   "golf": [
     "10160",
@@ -24967,6 +22431,10 @@
   "good evening": [
     "38567"
   ],
+  "good friday": [
+    "32950",
+    "32951"
+  ],
   "good morning": [
     "38568",
     "6944"
@@ -25026,6 +22494,12 @@
     "37462",
     "37463"
   ],
+  "goya": [
+    "15493"
+  ],
+  "gps": [
+    "9154"
+  ],
   "grab": [
     "17042",
     "17044",
@@ -25058,6 +22532,12 @@
   ],
   "gramophone": [
     "10323"
+  ],
+  "gran canaria": [
+    "24477"
+  ],
+  "granada": [
+    "14686"
   ],
   "granary": [
     "27810"
@@ -25098,6 +22578,9 @@
     "2243",
     "23709",
     "23710"
+  ],
+  "grandmother's footsteps": [
+    "31193"
   ],
   "grandpa": [
     "2244",
@@ -25232,6 +22715,15 @@
     "11599",
     "38564"
   ],
+  "great britain": [
+    "8206"
+  ],
+  "great pyramid": [
+    "8190"
+  ],
+  "great wall": [
+    "10272"
+  ],
   "great!": [
     "11599",
     "38564"
@@ -25246,6 +22738,13 @@
   "greater than": [
     "16119",
     "4658"
+  ],
+  "greco-roman wrestling": [
+    "29806"
+  ],
+  "greece": [
+    "28973",
+    "8130"
   ],
   "greedy": [
     "21898",
@@ -25323,6 +22822,9 @@
   "greenhouse": [
     "7135"
   ],
+  "greenland": [
+    "26875"
+  ],
   "greet": [
     "6610"
   ],
@@ -25332,6 +22834,10 @@
   ],
   "greeting card": [
     "7269"
+  ],
+  "grenada": [
+    "26874",
+    "29733"
   ],
   "grenade": [
     "8594"
@@ -25492,6 +22998,9 @@
   "guacamole": [
     "39132"
   ],
+  "guadalajara": [
+    "14765"
+  ],
   "guanábana": [
     "39630"
   ],
@@ -25507,6 +23016,10 @@
     "27170",
     "27171",
     "27172"
+  ],
+  "guatemala": [
+    "21916",
+    "29724"
   ],
   "guava": [
     "39824"
@@ -25546,8 +23059,17 @@
   "guillotine trimmer": [
     "37512"
   ],
+  "guinea": [
+    "26876"
+  ],
   "guinea pig": [
     "3346"
+  ],
+  "guinea-bissau": [
+    "39170"
+  ],
+  "guipuzcoa": [
+    "14760"
   ],
   "guiro": [
     "35461"
@@ -25621,7 +23143,12 @@
   "guyabano": [
     "39630"
   ],
+  "guyana": [
+    "26878",
+    "29601"
+  ],
   "gy": [
+    "36747",
     "36780"
   ],
   "gym": [
@@ -25693,7 +23220,8 @@
     "39540"
   ],
   "h": [
-    "3029"
+    "3029",
+    "3112"
   ],
   "haberdasher": [
     "7779",
@@ -25814,6 +23342,10 @@
   ],
   "hairy": [
     "11332"
+  ],
+  "haiti": [
+    "27835",
+    "29728"
   ],
   "hake": [
     "37589",
@@ -25939,6 +23471,9 @@
   "hallah": [
     "36127"
   ],
+  "halloween": [
+    "6951"
+  ],
   "ham": [
     "2433",
     "2963",
@@ -26010,6 +23545,9 @@
     "30229",
     "31050"
   ],
+  "hamsa": [
+    "24158"
+  ],
   "hamster": [
     "3346"
   ],
@@ -26052,7 +23590,7 @@
   "hand mixer": [
     "38038"
   ],
-  "hand of Fatima": [
+  "hand of fatima": [
     "24158"
   ],
   "hand out": [
@@ -26257,6 +23795,9 @@
     "13062",
     "13064"
   ],
+  "hands up!": [
+    "38053"
+  ],
   "handsaw": [
     "2799"
   ],
@@ -26388,6 +23929,12 @@
     "17288",
     "33046"
   ],
+  "hansel and gretel": [
+    "21923"
+  ],
+  "hanukkah": [
+    "36125"
+  ],
   "happiness": [
     "8582"
   ],
@@ -26403,6 +23950,26 @@
     "35547",
     "39814",
     "9907"
+  ],
+  "happy birthday": [
+    "16635",
+    "26786",
+    "26788",
+    "5997",
+    "6499"
+  ],
+  "happy birthday!": [
+    "16635",
+    "26786",
+    "26788",
+    "5997",
+    "6499"
+  ],
+  "happy new year": [
+    "32480"
+  ],
+  "happy new year!": [
+    "32480"
   ],
   "happyness": [
     "8582"
@@ -26521,17 +24088,14 @@
   "haul": [
     "16591"
   ],
+  "havana cigar": [
+    "4728"
+  ],
   "have": [
     "2349",
     "28641",
     "32761",
     "7271"
-  ],
-  "have a CT": [
-    "30797"
-  ],
-  "have a DXA scan": [
-    "38669"
   ],
   "have a bath": [
     "6058"
@@ -26540,6 +24104,12 @@
     "37263"
   ],
   "have a bone density scan": [
+    "38669"
+  ],
+  "have a ct": [
+    "30797"
+  ],
+  "have a dxa scan": [
     "38669"
   ],
   "have a good time": [
@@ -26640,6 +24210,7 @@
     "11609"
   ],
   "have you heard that?": [
+    "10364",
     "11609"
   ],
   "have you seen it?": [
@@ -26667,6 +24238,9 @@
   ],
   "hazy": [
     "2885"
+  ],
+  "hdtv": [
+    "25498"
   ],
   "he": [
     "6480",
@@ -26697,9 +24271,6 @@
   "head massager": [
     "36415"
   ],
-  "head of IT": [
-    "37571"
-  ],
   "head of commissionaires": [
     "37880"
   ],
@@ -26710,6 +24281,9 @@
     "37572"
   ],
   "head of information technology": [
+    "37571"
+  ],
+  "head of it": [
     "37571"
   ],
   "head of protocol": [
@@ -26916,6 +24490,9 @@
   "heating": [
     "34872"
   ],
+  "heaven": [
+    "25948"
+  ],
   "heavenly bodies": [
     "35073"
   ],
@@ -26924,6 +24501,9 @@
   ],
   "heavy": [
     "27025"
+  ],
+  "hebrew bible": [
+    "36183"
   ],
   "hedgehog": [
     "26829"
@@ -26943,6 +24523,12 @@
     "31286",
     "31287",
     "8013"
+  ],
+  "heimlich maneuver": [
+    "38966"
+  ],
+  "heimlich manoeuvre": [
+    "38966"
   ],
   "helicopter": [
     "2421",
@@ -27031,6 +24617,9 @@
     "12272",
     "7029"
   ],
+  "heracles": [
+    "37316"
+  ],
   "herbalist's": [
     "26126"
   ],
@@ -27039,6 +24628,10 @@
   ],
   "herbivorous": [
     "8133"
+  ],
+  "hercules": [
+    "36641",
+    "37316"
   ],
   "herd": [
     "10246",
@@ -27098,7 +24691,7 @@
     "4642",
     "6493"
   ],
-  "hide Easter egg": [
+  "hide easter egg": [
     "37454"
   ],
   "hide under the table": [
@@ -27196,6 +24789,12 @@
   "himself": [
     "6481"
   ],
+  "hindooism": [
+    "38517"
+  ],
+  "hinduism": [
+    "38517"
+  ],
   "hip": [
     "3000"
   ],
@@ -27218,6 +24817,9 @@
     "12272",
     "12276"
   ],
+  "hispanic day": [
+    "5073"
+  ],
   "hisser": [
     "38421"
   ],
@@ -27228,6 +24830,7 @@
     "36249"
   ],
   "history": [
+    "32632",
     "32634",
     "36368"
   ],
@@ -27259,6 +24862,9 @@
   ],
   "hit the head": [
     "39685"
+  ],
+  "hiv": [
+    "24402"
   ],
   "hive": [
     "26761",
@@ -27379,6 +24985,10 @@
     "39446",
     "39447"
   ],
+  "holland": [
+    "19547",
+    "29568"
+  ],
   "holly": [
     "3052"
   ],
@@ -27394,8 +25004,22 @@
   "holy": [
     "10197"
   ],
+  "holy column": [
+    "36959"
+  ],
+  "holy innocents' day": [
+    "27152"
+  ],
+  "holy spirit": [
+    "24029"
+  ],
   "holy water": [
     "30859"
+  ],
+  "holy week": [
+    "25441",
+    "3153",
+    "32538"
   ],
   "holy week palm": [
     "38049"
@@ -27437,6 +25061,9 @@
     "30838",
     "30839"
   ],
+  "homo sapiens": [
+    "37713"
+  ],
   "homoparental family": [
     "11733",
     "11735"
@@ -27456,12 +25083,19 @@
   "homosexuals": [
     "11554"
   ],
+  "honduras": [
+    "29605",
+    "29606"
+  ],
   "honey": [
     "2911"
   ],
   "honeycomb": [
     "10247",
     "7192"
+  ],
+  "hong kong": [
+    "39462"
   ],
   "honk": [
     "22139",
@@ -27858,6 +25492,9 @@
   "how many days": [
     "29149"
   ],
+  "how many days?": [
+    "29149"
+  ],
   "how many?": [
     "24731",
     "7073"
@@ -27865,10 +25502,16 @@
   "how much": [
     "7073"
   ],
+  "how much does he weigh?": [
+    "33128"
+  ],
   "how much does it measure?": [
     "11294",
     "9833",
     "9834"
+  ],
+  "how much does she weigh?": [
+    "33128"
   ],
   "how much is it?": [
     "7071"
@@ -27880,6 +25523,9 @@
   ],
   "how old are you?": [
     "7072"
+  ],
+  "how serious is it?": [
+    "39516"
   ],
   "how tall is he?": [
     "33102"
@@ -27907,6 +25553,14 @@
   ],
   "hubby": [
     "8111"
+  ],
+  "huelva": [
+    "14687"
+  ],
+  "huesca": [
+    "14680",
+    "38923",
+    "5488"
   ],
   "huesos de santo": [
     "13366"
@@ -27949,6 +25603,10 @@
   "hunchback": [
     "6020"
   ],
+  "hungary": [
+    "10251",
+    "29576"
+  ],
   "hunger": [
     "35559",
     "7272"
@@ -27973,7 +25631,7 @@
     "39191",
     "8533"
   ],
-  "hunt Easter eggs": [
+  "hunt easter eggs": [
     "37453"
   ],
   "hunter": [
@@ -28110,17 +25768,181 @@
     "25157"
   ],
   "i": [
-    "3030"
+    "2617",
+    "3030",
+    "3117",
+    "31807",
+    "6632",
+    "7309",
+    "7310"
+  ],
+  "i am fine": [
+    "13630"
+  ],
+  "i am not able to read": [
+    "32308"
+  ],
+  "i am not okay": [
+    "37182",
+    "37183"
+  ],
+  "i am ready": [
+    "32820"
+  ],
+  "i am unwell": [
+    "37183"
+  ],
+  "i can't understand you": [
+    "7180"
+  ],
+  "i cannot read": [
+    "32308"
+  ],
+  "i do not know": [
+    "7180"
+  ],
+  "i do not like that": [
+    "22005",
+    "31760",
+    "37825",
+    "38888",
+    "38890",
+    "6155",
+    "7179"
+  ],
+  "i do not like this": [
+    "6155",
+    "7179"
+  ],
+  "i do not need help": [
+    "31664"
+  ],
+  "i do not understand": [
+    "27363",
+    "37827"
+  ],
+  "i do not understand what you say": [
+    "27363"
+  ],
+  "i do not want": [
+    "6156"
+  ],
+  "i don't know": [
+    "7180"
+  ],
+  "i don't like that": [
+    "22005",
+    "37825",
+    "38888",
+    "38890"
+  ],
+  "i don't need help": [
+    "31664"
+  ],
+  "i don't see well": [
+    "36259"
+  ],
+  "i don't understand": [
+    "27363",
+    "37827"
+  ],
+  "i don't understand what you say": [
+    "37827"
+  ],
+  "i don't want": [
+    "6156"
+  ],
+  "i don´t know the word": [
+    "9851"
+  ],
+  "i have finished": [
+    "28429"
+  ],
+  "i have finished!": [
+    "28429"
+  ],
+  "i like that": [
+    "21917",
+    "37826",
+    "38889",
+    "38891"
+  ],
+  "i need help": [
+    "7171"
+  ],
+  "i spy": [
+    "26150"
+  ],
+  "i spy game": [
+    "26150"
+  ],
+  "i spy with my little eye": [
+    "26150"
+  ],
+  "i want": [
+    "5441"
+  ],
+  "i want more": [
+    "32753"
+  ],
+  "i want that one": [
+    "5441"
+  ],
+  "i'm fine!": [
+    "13630"
+  ],
+  "i'm not okay": [
+    "37183"
+  ],
+  "i'm not okay!": [
+    "37182"
+  ],
+  "i'm so sorry!": [
+    "11625",
+    "38360",
+    "38361"
+  ],
+  "i'm so-so": [
+    "37183"
+  ],
+  "i'm sorry!": [
+    "11625",
+    "38360",
+    "38361"
+  ],
+  "i'm unwell": [
+    "37183"
+  ],
+  "ia": [
+    "39704"
   ],
   "iberian man": [
     "37119",
     "37122"
   ],
+  "iberian pig": [
+    "37365"
+  ],
+  "iberian soldier": [
+    "37121"
+  ],
+  "iberian warrior": [
+    "37121"
+  ],
   "iberian woman": [
     "37125"
   ],
+  "iberians": [
+    "37130"
+  ],
+  "ibiza": [
+    "14850"
+  ],
   "ice": [
     "7128"
+  ],
+  "ice age": [
+    "34268"
   ],
   "ice axe": [
     "4721"
@@ -28258,6 +26080,9 @@
   "iced tea": [
     "37734"
   ],
+  "iceland": [
+    "21942"
+  ],
   "ichnite": [
     "34973",
     "34974",
@@ -28274,6 +26099,19 @@
     "31768",
     "31879",
     "32075"
+  ],
+  "icu": [
+    "30468"
+  ],
+  "id": [
+    "5987",
+    "6073"
+  ],
+  "id card": [
+    "5987"
+  ],
+  "id card processing office": [
+    "38291"
   ],
   "identical": [
     "32392"
@@ -28308,6 +26146,17 @@
   ],
   "iguanodon": [
     "34983"
+  ],
+  "iguanodon galvensis": [
+    "34983"
+  ],
+  "ileostomy bag": [
+    "37391",
+    "37395",
+    "37396"
+  ],
+  "ilex paraguariensis": [
+    "37013"
   ],
   "ill": [
     "28741",
@@ -28347,6 +26196,9 @@
   "illusionist": [
     "10157"
   ],
+  "ilo": [
+    "9078"
+  ],
   "images cube": [
     "8276"
   ],
@@ -28355,6 +26207,9 @@
   ],
   "imam": [
     "24113"
+  ],
+  "imf": [
+    "9077"
   ],
   "imitate": [
     "36797"
@@ -28550,6 +26405,10 @@
   "index finger": [
     "7791"
   ],
+  "india": [
+    "25165",
+    "25484"
+  ],
   "indian": [
     "6152"
   ],
@@ -28568,7 +26427,7 @@
   "indifference": [
     "30634"
   ],
-  "indigenous Artic person": [
+  "indigenous artic person": [
     "6135",
     "6151"
   ],
@@ -28576,18 +26435,18 @@
     "6135",
     "6151"
   ],
-  "indigenous person of Africa": [
+  "indigenous person of africa": [
     "6011",
     "6282"
   ],
-  "indigenous person of Asia": [
+  "indigenous person of asia": [
     "5958",
     "5959"
   ],
-  "indigenous person of India": [
+  "indigenous person of india": [
     "6152"
   ],
-  "indigenous person of the Americas": [
+  "indigenous person of the americas": [
     "10339",
     "5489",
     "6137",
@@ -28595,6 +26454,9 @@
   ],
   "indigent": [
     "16843"
+  ],
+  "indonesia": [
+    "27852"
   ],
   "indoor cycling": [
     "34102"
@@ -28815,6 +26677,9 @@
   "ink-jet printer": [
     "2970"
   ],
+  "inka kola": [
+    "31021"
+  ],
   "inmate": [
     "11349",
     "4725"
@@ -28824,6 +26689,9 @@
   ],
   "inner yard": [
     "39552"
+  ],
+  "innocents' day": [
+    "27152"
   ],
   "inorganic compounds": [
     "33032"
@@ -28999,6 +26867,10 @@
   "interact with": [
     "37217"
   ],
+  "interactive white board": [
+    "30512",
+    "9162"
+  ],
   "interchange": [
     "31953",
     "37360",
@@ -29056,6 +26928,12 @@
   ],
   "international cooperation": [
     "39772"
+  ],
+  "international labor organization": [
+    "9078"
+  ],
+  "international monetary fund": [
+    "9077"
   ],
   "internet": [
     "37366",
@@ -29195,8 +27073,21 @@
   "involvement": [
     "11486"
   ],
+  "irak": [
+    "25168"
+  ],
+  "iran": [
+    "25169"
+  ],
+  "iraq": [
+    "25168"
+  ],
   "ire": [
     "35567"
+  ],
+  "ireland": [
+    "21941",
+    "37651"
   ],
   "iridescent shark": [
     "38323"
@@ -29281,6 +27172,18 @@
   "is the wind blowing?": [
     "10726"
   ],
+  "isabel and diego": [
+    "34935"
+  ],
+  "isabel de segura": [
+    "34929"
+  ],
+  "isidore the laborer": [
+    "36850"
+  ],
+  "islam": [
+    "22793"
+  ],
   "island": [
     "24127",
     "2966"
@@ -29301,11 +27204,23 @@
   "isotonic drink": [
     "32830"
   ],
+  "israel": [
+    "25170"
+  ],
   "israeli couscous": [
     "36099"
   ],
   "isthmus": [
     "24131"
+  ],
+  "it": [
+    "31670"
+  ],
+  "it and new technologies": [
+    "37347"
+  ],
+  "it is finished!": [
+    "28429"
   ],
   "it matters me": [
     "38123"
@@ -29348,6 +27263,10 @@
   "italian restaurant": [
     "38094"
   ],
+  "italy": [
+    "28971",
+    "8143"
+  ],
   "itch": [
     "11356"
   ],
@@ -29358,14 +27277,31 @@
   "itself": [
     "31670"
   ],
+  "iud": [
+    "32035"
+  ],
+  "iv line": [
+    "29812"
+  ],
+  "iv therapy": [
+    "38749"
+  ],
   "ivf": [
     "14986"
+  ],
+  "ivory coast": [
+    "26778"
   ],
   "ivy": [
     "28725"
   ],
+  "iwb": [
+    "30512",
+    "9162"
+  ],
   "j": [
-    "3031"
+    "3031",
+    "3119"
   ],
   "jabador": [
     "36643"
@@ -29382,6 +27318,9 @@
   ],
   "jacuzzi": [
     "25175"
+  ],
+  "jaen": [
+    "14688"
   ],
   "jai alai": [
     "29171"
@@ -29413,6 +27352,29 @@
   "jam": [
     "21389",
     "2470"
+  ],
+  "jamaica": [
+    "26880",
+    "29731"
+  ],
+  "james the great": [
+    "35871"
+  ],
+  "james the great's day": [
+    "35865"
+  ],
+  "january": [
+    "35923",
+    "6488"
+  ],
+  "january 1": [
+    "5071"
+  ],
+  "january 6": [
+    "5072"
+  ],
+  "japan": [
+    "8144"
   ],
   "japanese panels": [
     "36422"
@@ -29484,6 +27446,17 @@
     "2436",
     "39029"
   ],
+  "jesus": [
+    "24135",
+    "39831"
+  ],
+  "jesus christ": [
+    "24135",
+    "39831"
+  ],
+  "jesus christ lizard": [
+    "38342"
+  ],
   "jet": [
     "9205"
   ],
@@ -29534,11 +27507,20 @@
   "jewels": [
     "29088"
   ],
+  "jewish badge": [
+    "37879"
+  ],
+  "jewish cementary": [
+    "35457"
+  ],
   "jewish graveyard": [
     "35457"
   ],
   "jewish necropolis": [
     "35457"
+  ],
+  "jewish star": [
+    "22795"
   ],
   "jitters": [
     "11312",
@@ -29565,8 +27547,16 @@
   "jogging suit": [
     "2332"
   ],
+  "johann sebastian bach": [
+    "35023"
+  ],
   "john dory": [
-    "21884"
+    "21884",
+    "25664",
+    "37606"
+  ],
+  "john the baptist": [
+    "24386"
   ],
   "join": [
     "8243"
@@ -29586,6 +27576,13 @@
   "joke": [
     "21537",
     "26905"
+  ],
+  "jordan": [
+    "25319",
+    "27857"
+  ],
+  "joseph": [
+    "7238"
   ],
   "jota": [
     "5495"
@@ -29621,6 +27618,9 @@
   ],
   "joystick": [
     "6201"
+  ],
+  "judaism": [
+    "22795"
   ],
   "judge": [
     "11291",
@@ -29664,6 +27664,10 @@
   ],
   "jukebox": [
     "9177"
+  ],
+  "july": [
+    "35931",
+    "6538"
   ],
   "jump": [
     "2804",
@@ -29723,6 +27727,10 @@
     "38629",
     "38632"
   ],
+  "june": [
+    "35933",
+    "6539"
+  ],
   "jungle": [
     "3385"
   ],
@@ -29734,6 +27742,9 @@
   ],
   "junkyard": [
     "35921"
+  ],
+  "jupiter": [
+    "10293"
   ],
   "juror": [
     "36546",
@@ -29760,7 +27771,14 @@
     "32994"
   ],
   "k": [
-    "3032"
+    "3032",
+    "3120"
+  ],
+  "k1 canoe": [
+    "39670"
+  ],
+  "k2 canoe": [
+    "39669"
   ],
   "kaftan": [
     "36648"
@@ -29823,6 +27841,9 @@
   "katana": [
     "10319"
   ],
+  "kazakhstan": [
+    "27858"
+  ],
   "kebab": [
     "36171",
     "36994"
@@ -29830,11 +27851,11 @@
   "keep": [
     "17050"
   ],
-  "keep AAC book": [
-    "37189"
-  ],
   "keep a secret": [
     "39842"
+  ],
+  "keep aac book": [
+    "37189"
   ],
   "keep balance": [
     "37976"
@@ -29889,6 +27910,10 @@
   ],
   "kentia": [
     "35399"
+  ],
+  "kenya": [
+    "37649",
+    "37650"
   ],
   "kerb": [
     "19526"
@@ -30183,6 +28208,9 @@
   "kiwi fruit": [
     "2955"
   ],
+  "klöße": [
+    "38747"
+  ],
   "km": [
     "29076"
   ],
@@ -30293,6 +28321,9 @@
   "knuckle": [
     "31182"
   ],
+  "knödel": [
+    "38747"
+  ],
   "koala": [
     "2954"
   ],
@@ -30306,14 +28337,50 @@
   "koi": [
     "34427"
   ],
+  "koran": [
+    "23973"
+  ],
   "kumite": [
     "31246"
   ],
   "kumite karate": [
     "31246"
   ],
+  "kuwait": [
+    "27860"
+  ],
+  "kyrgyzstan": [
+    "27859"
+  ],
   "l": [
-    "3033"
+    "3033",
+    "3121"
+  ],
+  "la compostela": [
+    "35913"
+  ],
+  "la coruña": [
+    "14755"
+  ],
+  "la gomera": [
+    "14845"
+  ],
+  "la palma": [
+    "14846"
+  ],
+  "la rioja": [
+    "14839",
+    "8149",
+    "8613"
+  ],
+  "la sagrada familia": [
+    "22098"
+  ],
+  "la seo": [
+    "5423"
+  ],
+  "la seo cathedral": [
+    "5423"
   ],
   "lab": [
     "8150"
@@ -30398,6 +28465,9 @@
   "labyrinth": [
     "29626",
     "29627"
+  ],
+  "lacasitos": [
+    "28305"
   ],
   "lace": [
     "15363"
@@ -30562,6 +28632,12 @@
     "29911",
     "38620"
   ],
+  "lanzarote": [
+    "14847"
+  ],
+  "laos": [
+    "27861"
+  ],
   "laptop": [
     "7214"
   ],
@@ -30584,6 +28660,9 @@
   "larva": [
     "26164"
   ],
+  "las pajaritas": [
+    "38923"
+  ],
   "lasagna": [
     "9051"
   ],
@@ -30603,29 +28682,14 @@
     "37751",
     "4765"
   ],
-  "last Friday": [
-    "39719"
-  ],
-  "last Monday": [
-    "39727"
-  ],
-  "last Saturday": [
-    "39718"
-  ],
-  "last Sunday": [
-    "39729"
-  ],
-  "last Thursday": [
-    "39721"
-  ],
-  "last Tuesday": [
-    "39726"
-  ],
-  "last Wednesday": [
-    "39725"
-  ],
   "last floor": [
     "37865"
+  ],
+  "last friday": [
+    "39719"
+  ],
+  "last monday": [
+    "39727"
   ],
   "last month": [
     "39734"
@@ -30639,11 +28703,26 @@
   "last quarter": [
     "10291"
   ],
+  "last saturday": [
+    "39718"
+  ],
   "last storey": [
     "37865"
   ],
+  "last sunday": [
+    "39729"
+  ],
+  "last thursday": [
+    "39721"
+  ],
   "last time": [
     "37744"
+  ],
+  "last tuesday": [
+    "39726"
+  ],
+  "last wednesday": [
+    "39725"
   ],
   "last week": [
     "39735"
@@ -30684,11 +28763,21 @@
     "30506",
     "35977"
   ],
+  "latin": [
+    "32697"
+  ],
   "latin cross floor plan": [
     "39507"
   ],
   "latin cross plan": [
     "39507"
+  ],
+  "latin lesson": [
+    "32697"
+  ],
+  "latvia": [
+    "21961",
+    "29577"
   ],
   "laugh": [
     "13354",
@@ -30824,6 +28913,9 @@
     "37830",
     "8245"
   ],
+  "lcd screen": [
+    "25498"
+  ],
   "lead": [
     "38642",
     "8994"
@@ -30947,6 +29039,9 @@
   "leave the toothbrush": [
     "11744"
   ],
+  "lebanon": [
+    "27862"
+  ],
   "lectern": [
     "23773",
     "30891"
@@ -31042,6 +29137,9 @@
     "34457",
     "9859"
   ],
+  "lego bricks": [
+    "8508"
+  ],
   "legumes": [
     "24805"
   ],
@@ -31103,11 +29201,20 @@
   "lentils package": [
     "38593"
   ],
+  "leon": [
+    "14772"
+  ],
+  "leonardo da vinci": [
+    "38259"
+  ],
   "leopard": [
     "2942"
   ],
   "leotards": [
     "3278"
+  ],
+  "lerida": [
+    "14834"
   ],
   "lesbian": [
     "11556"
@@ -31166,7 +29273,7 @@
   "letter opener": [
     "35115"
   ],
-  "letter to Santa Claus": [
+  "letter to santa claus": [
     "36356"
   ],
   "letters": [
@@ -31283,6 +29390,10 @@
   ],
   "lie upwards": [
     "31312"
+  ],
+  "liechtenstein": [
+    "27303",
+    "29578"
   ],
   "life": [
     "8717"
@@ -31626,6 +29737,9 @@
   "lithosphere": [
     "24073"
   ],
+  "lithuania": [
+    "21968"
+  ],
   "litre": [
     "7145"
   ],
@@ -31652,6 +29766,9 @@
     "5546",
     "7209"
   ],
+  "little bear": [
+    "6162"
+  ],
   "little finger": [
     "7778"
   ],
@@ -31668,7 +29785,16 @@
   "little girls": [
     "6974"
   ],
+  "little miss goldilocks": [
+    "6207"
+  ],
+  "little pig": [
+    "5956"
+  ],
   "little red riding": [
+    "5942"
+  ],
+  "little red riding hood": [
     "5942"
   ],
   "little time": [
@@ -31756,6 +29882,9 @@
   ],
   "loafs of bread": [
     "36586"
+  ],
+  "loarre castle": [
+    "5422"
   ],
   "lobby": [
     "38427"
@@ -31900,7 +30029,7 @@
   "long shirt": [
     "24881"
   ],
-  "long sleeve T-shirt": [
+  "long sleeve t-shirt": [
     "25908"
   ],
   "long time": [
@@ -31912,7 +30041,7 @@
   "long-haired": [
     "7159"
   ],
-  "long-sleeve T-shirt": [
+  "long-sleeve t-shirt": [
     "25908"
   ],
   "long-stay unit": [
@@ -32001,10 +30130,17 @@
   "loquats": [
     "37509"
   ],
+  "lord's prayer": [
+    "30850",
+    "30889"
+  ],
   "lorry": [
     "2306",
     "4926",
     "6956"
+  ],
+  "los amantes": [
+    "5503"
   ],
   "lose": [
     "19533",
@@ -32174,6 +30310,9 @@
     "25831",
     "34617"
   ],
+  "lugo": [
+    "14756"
+  ],
   "lukewarm": [
     "27053"
   ],
@@ -32249,7 +30388,14 @@
   "lupines": [
     "38359"
   ],
+  "lutheran minister": [
+    "26575"
+  ],
+  "luxembourg": [
+    "21973"
+  ],
   "ly": [
+    "36745",
     "36778"
   ],
   "lying down": [
@@ -32281,7 +30427,8 @@
   ],
   "m": [
     "29074",
-    "3035"
+    "3035",
+    "3125"
   ],
   "macaroni": [
     "2455",
@@ -32313,11 +30460,31 @@
   "machismo": [
     "36712"
   ],
+  "machu picchu": [
+    "25207"
+  ],
   "mackerel": [
     "37597"
   ],
+  "madagascar": [
+    "30204",
+    "37645"
+  ],
+  "madagascar day gecko": [
+    "38322"
+  ],
   "madeleine": [
     "25211"
+  ],
+  "madonna lily": [
+    "29772"
+  ],
+  "madrid": [
+    "14840"
+  ],
+  "madrid region": [
+    "8156",
+    "8622"
   ],
   "mag": [
     "2813"
@@ -32326,12 +30493,19 @@
     "24364",
     "2813"
   ],
+  "magen david adom": [
+    "36195",
+    "36227"
+  ],
   "maghrebi mint tea": [
     "38312"
   ],
   "magic": [
     "10157",
     "36299"
+  ],
+  "magic marker": [
+    "7807"
   ],
   "magic sand": [
     "39059"
@@ -32365,6 +30539,10 @@
   ],
   "magnifying glass": [
     "9927"
+  ],
+  "magosto": [
+    "15501",
+    "24951"
   ],
   "magpie": [
     "4766"
@@ -32432,6 +30610,12 @@
     "5559",
     "5563"
   ],
+  "majorca": [
+    "14851"
+  ],
+  "majorcan sausage": [
+    "8692"
+  ],
   "majordomo": [
     "8162"
   ],
@@ -32440,7 +30624,7 @@
     "32751",
     "6190"
   ],
-  "make a CT Scan": [
+  "make a ct scan": [
     "30797"
   ],
   "make a fuss": [
@@ -32539,6 +30723,28 @@
   "makey makey": [
     "37657"
   ],
+  "malaga": [
+    "14689",
+    "24153"
+  ],
+  "malaga's cathedral": [
+    "25550"
+  ],
+  "malaga's citadel": [
+    "25411"
+  ],
+  "malaga's exhibition and congress centre": [
+    "25544"
+  ],
+  "malawi dolphin": [
+    "38388"
+  ],
+  "malaysia": [
+    "27863"
+  ],
+  "maldives": [
+    "27864"
+  ],
   "male": [
     "38895"
   ],
@@ -32561,6 +30767,10 @@
   ],
   "mallow": [
     "8157"
+  ],
+  "malta": [
+    "21975",
+    "29579"
   ],
   "maltreat": [
     "24749"
@@ -32732,13 +30942,21 @@
   ],
   "march": [
     "21976",
-    "38346"
+    "35939",
+    "38346",
+    "6558"
   ],
   "margarin": [
     "26196"
   ],
   "margarine": [
     "26196"
+  ],
+  "mari domingui": [
+    "38439"
+  ],
+  "maria": [
+    "7301"
   ],
   "mariachi hat": [
     "30973"
@@ -32842,6 +31060,9 @@
   "marry": [
     "6965"
   ],
+  "mars": [
+    "10296"
+  ],
   "marsh": [
     "26290"
   ],
@@ -32859,6 +31080,9 @@
   ],
   "martian": [
     "7154"
+  ],
+  "martinique": [
+    "27304"
   ],
   "marzipan": [
     "13346"
@@ -33032,7 +31256,11 @@
   "maxilla bone": [
     "37472"
   ],
-  "may I?": [
+  "may": [
+    "35925",
+    "6559"
+  ],
+  "may i?": [
     "7221"
   ],
   "mayonnaise": [
@@ -33168,6 +31396,9 @@
   "meats": [
     "6961"
   ],
+  "mecca": [
+    "36550"
+  ],
   "mechanic": [
     "11301",
     "2921",
@@ -33272,6 +31503,9 @@
     "35877",
     "4693"
   ],
+  "medium pig": [
+    "5955"
+  ],
   "medium rare": [
     "35873"
   ],
@@ -33309,6 +31543,20 @@
   "megrim": [
     "21884",
     "25664"
+  ],
+  "mekong": [
+    "34943"
+  ],
+  "mekong river": [
+    "34943"
+  ],
+  "melchior": [
+    "8264"
+  ],
+  "melilla": [
+    "14838",
+    "8164",
+    "8628"
   ],
   "melodica": [
     "39771"
@@ -33378,6 +31626,9 @@
     "30717",
     "30718"
   ],
+  "menor sea": [
+    "33040"
+  ],
   "menorah": [
     "23901"
   ],
@@ -33434,6 +31685,15 @@
   "merchant vessel": [
     "21421"
   ],
+  "mercury": [
+    "10297"
+  ],
+  "merida": [
+    "25494"
+  ],
+  "merida roman theatre": [
+    "25494"
+  ],
   "meringue": [
     "38493"
   ],
@@ -33443,6 +31703,14 @@
   "mermaid's purse": [
     "38920",
     "38921"
+  ],
+  "merry christmas": [
+    "32456",
+    "32458"
+  ],
+  "merry christmas!": [
+    "32456",
+    "32458"
   ],
   "merry-go-round": [
     "17204",
@@ -33556,6 +31824,10 @@
   "mexican charro hat": [
     "30973"
   ],
+  "mexico": [
+    "29591",
+    "8167"
+  ],
   "mezuzah": [
     "36786"
   ],
@@ -33604,6 +31876,9 @@
     "32007",
     "5449"
   ],
+  "middle ages": [
+    "39846"
+  ],
   "middle finger": [
     "6996"
   ],
@@ -33627,6 +31902,9 @@
     "28754",
     "31871",
     "32160"
+  ],
+  "miguel de cervantes": [
+    "15351"
   ],
   "mild": [
     "27053",
@@ -33735,6 +32013,9 @@
   "minerals": [
     "26226"
   ],
+  "minerva": [
+    "37117"
+  ],
   "mineworker": [
     "11303",
     "8631"
@@ -33771,6 +32052,9 @@
   ],
   "minor": [
     "31843"
+  ],
+  "minorca": [
+    "14852"
   ],
   "mint": [
     "21982"
@@ -33991,6 +32275,10 @@
     "3283",
     "39404"
   ],
+  "moldova": [
+    "27305",
+    "29580"
+  ],
   "mole": [
     "9070"
   ],
@@ -34026,11 +32314,20 @@
   "mommy": [
     "2458"
   ],
+  "mommy bear": [
+    "6144"
+  ],
+  "monaco": [
+    "27306"
+  ],
   "monarch": [
     "5563"
   ],
   "monarchy": [
     "36069"
+  ],
+  "monasterio de piedra": [
+    "5518"
   ],
   "monastery": [
     "32677",
@@ -34038,11 +32335,21 @@
     "32790",
     "5519"
   ],
+  "moncayo": [
+    "5520"
+  ],
+  "monday": [
+    "37730",
+    "6554"
+  ],
   "money": [
     "4630"
   ],
   "money transfer service": [
     "39789"
+  ],
+  "mongolia": [
+    "28061"
   ],
   "monitor": [
     "27897",
@@ -34092,6 +32399,9 @@
   "monster": [
     "11306"
   ],
+  "montenegro": [
+    "27307"
+  ],
   "month": [
     "37724",
     "7161"
@@ -34108,6 +32418,9 @@
   "moo": [
     "7169"
   ],
+  "moon": [
+    "2933"
+  ],
   "moon eclipse": [
     "8096"
   ],
@@ -34116,6 +32429,9 @@
   ],
   "moorii": [
     "38388"
+  ],
+  "moors and christians": [
+    "37044"
   ],
   "moose": [
     "8010"
@@ -34140,6 +32456,9 @@
   "morgue": [
     "31215"
   ],
+  "morico": [
+    "5411"
+  ],
   "morning": [
     "25704"
   ],
@@ -34149,8 +32468,15 @@
   "moroccan mint tea": [
     "38312"
   ],
+  "morocco": [
+    "38139",
+    "8159"
+  ],
   "mortar": [
     "17275"
+  ],
+  "moses": [
+    "24194"
   ],
   "mosey": [
     "16461"
@@ -34184,6 +32510,9 @@
   "mother": [
     "2458",
     "31148"
+  ],
+  "mother's day": [
+    "3091"
   ],
   "mothers": [
     "35067"
@@ -34293,6 +32622,15 @@
   ],
   "mount a pony": [
     "39117"
+  ],
+  "mount calvary": [
+    "38730"
+  ],
+  "mount fuji": [
+    "37069"
+  ],
+  "mount teide": [
+    "10305"
   ],
   "mount up": [
     "33016"
@@ -34451,6 +32789,16 @@
   "mp3": [
     "7783"
   ],
+  "mp3 player": [
+    "7783"
+  ],
+  "mpv": [
+    "3206"
+  ],
+  "mri": [
+    "33112",
+    "38354"
+  ],
   "much": [
     "22629",
     "5521",
@@ -34539,10 +32887,18 @@
   "mural": [
     "36011"
   ],
+  "murcia": [
+    "14841",
+    "8174",
+    "8636"
+  ],
   "murder": [
     "16363",
     "8160",
     "8161"
+  ],
+  "murray river": [
+    "34391"
   ],
   "muscle": [
     "2891"
@@ -34592,13 +32948,13 @@
     "24791",
     "24795"
   ],
-  "music CD": [
-    "15349",
-    "39044"
-  ],
   "music band": [
     "23811",
     "38948"
+  ],
+  "music cd": [
+    "15349",
+    "39044"
   ],
   "music class": [
     "35433",
@@ -34670,6 +33026,9 @@
     "2890",
     "6567"
   ],
+  "muslim cemetery": [
+    "35459"
+  ],
   "muslim graveyard": [
     "35459"
   ],
@@ -34719,7 +33078,8 @@
     "7158"
   ],
   "n": [
-    "3036"
+    "3036",
+    "3133"
   ],
   "nachos": [
     "37070"
@@ -34798,6 +33158,12 @@
   "napkin holder": [
     "7812"
   ],
+  "napoleon": [
+    "37705"
+  ],
+  "napoleon bonaparte": [
+    "37705"
+  ],
   "nappy": [
     "22017",
     "2863"
@@ -34845,11 +33211,11 @@
     "29757",
     "29758"
   ],
-  "national ID card processing office": [
-    "38291"
-  ],
-  "national day of Catalonia": [
+  "national day of catalonia": [
     "27723"
+  ],
+  "national id card processing office": [
+    "38291"
   ],
   "national identity document": [
     "5987"
@@ -34860,8 +33226,15 @@
   "nationality": [
     "12338"
   ],
+  "nativity": [
+    "24873"
+  ],
   "nativity scene": [
+    "24873",
     "5089"
+  ],
+  "nato": [
+    "27302"
   ],
   "natural area": [
     "39848"
@@ -34876,6 +33249,9 @@
     "32542",
     "35437",
     "9820"
+  ],
+  "natural science books": [
+    "6639"
   ],
   "natural science class": [
     "13632"
@@ -34899,6 +33275,11 @@
   "naval officer": [
     "5507"
   ],
+  "navarre": [
+    "14842",
+    "8177",
+    "8639"
+  ],
   "navigate": [
     "16825",
     "7170",
@@ -34909,6 +33290,9 @@
   ],
   "nazareno": [
     "35475"
+  ],
+  "ne": [
+    "27913"
   ],
   "neanderthal": [
     "25928"
@@ -34981,6 +33365,9 @@
   "needlewoman": [
     "21996"
   ],
+  "nefertiti": [
+    "26252"
+  ],
   "negative": [
     "26937"
   ],
@@ -35026,8 +33413,11 @@
     "26941",
     "5800"
   ],
-  "neither do I": [
+  "neither do i": [
     "11593"
+  ],
+  "neolithic": [
+    "32638"
   ],
   "neon signs shop": [
     "34886"
@@ -35044,6 +33434,10 @@
   "neoprene suit": [
     "27284"
   ],
+  "nepal": [
+    "28062",
+    "37644"
+  ],
   "nephew": [
     "30286",
     "30287",
@@ -35058,6 +33452,9 @@
     "35309",
     "35311",
     "38842"
+  ],
+  "neptune": [
+    "10298"
   ],
   "nerve cell": [
     "30533"
@@ -35121,6 +33518,28 @@
   ],
   "new moon": [
     "10295"
+  ],
+  "new testament": [
+    "24039",
+    "30845",
+    "30846",
+    "30847",
+    "30848"
+  ],
+  "new year": [
+    "32536",
+    "5071"
+  ],
+  "new year's day": [
+    "5071"
+  ],
+  "new year's eve": [
+    "32534",
+    "39109",
+    "8261"
+  ],
+  "new zealand": [
+    "25273"
   ],
   "newborn baby": [
     "28215",
@@ -35202,36 +33621,36 @@
     "27331",
     "27341"
   ],
-  "next Friday": [
-    "39720"
-  ],
-  "next Monday": [
-    "39728"
-  ],
-  "next Saturday": [
-    "39717"
-  ],
-  "next Sunday": [
-    "39730"
-  ],
-  "next Thursday": [
-    "39722"
-  ],
-  "next Tuesday": [
-    "39724"
-  ],
-  "next Wednesday": [
-    "39723"
-  ],
   "next button": [
     "38223",
     "38252"
   ],
+  "next friday": [
+    "39720"
+  ],
+  "next monday": [
+    "39728"
+  ],
   "next month": [
     "39733"
   ],
+  "next saturday": [
+    "39717"
+  ],
+  "next sunday": [
+    "39730"
+  ],
+  "next thursday": [
+    "39722"
+  ],
   "next to": [
     "5367"
+  ],
+  "next tuesday": [
+    "39724"
+  ],
+  "next wednesday": [
+    "39723"
   ],
   "next week": [
     "39736"
@@ -35241,6 +33660,10 @@
   ],
   "nibble": [
     "26398"
+  ],
+  "nicaragua": [
+    "22004",
+    "29604"
   ],
   "nice": [
     "10212",
@@ -35263,6 +33686,9 @@
     "30307",
     "30308",
     "30309"
+  ],
+  "nigeria": [
+    "39708"
   ],
   "night": [
     "26997",
@@ -35291,6 +33717,15 @@
   ],
   "nighttime camping activity": [
     "38997"
+  ],
+  "nile": [
+    "34389"
+  ],
+  "nile crocodile": [
+    "34433"
+  ],
+  "nile river": [
+    "34389"
   ],
   "nine": [
     "2635",
@@ -35395,8 +33830,41 @@
     "5526",
     "5800"
   ],
+  "no alcohol allowed": [
+    "37215"
+  ],
+  "no bikes allowed": [
+    "9208"
+  ],
   "no bycicles allowed": [
     "9208"
+  ],
+  "no cell phones": [
+    "8676"
+  ],
+  "no cochlear implants allowed": [
+    "28013"
+  ],
+  "no disturbing": [
+    "25718"
+  ],
+  "no drinking": [
+    "8673"
+  ],
+  "no drinking allowed": [
+    "29177"
+  ],
+  "no drinking allowed during pregnancy": [
+    "32172"
+  ],
+  "no drugs allowed": [
+    "37216"
+  ],
+  "no eating": [
+    "8674"
+  ],
+  "no eating allowed": [
+    "29179"
   ],
   "no entry sign": [
     "7220"
@@ -35407,7 +33875,22 @@
   "no flash photos allowed": [
     "38383"
   ],
+  "no littering": [
+    "8677"
+  ],
+  "no looking": [
+    "25716"
+  ],
+  "no mobile phones": [
+    "8676"
+  ],
+  "no pacemakers allowed": [
+    "28010"
+  ],
   "no pedestrian allowed": [
+    "9207"
+  ],
+  "no pedestrians": [
     "9207"
   ],
   "no photographing allowed": [
@@ -35416,11 +33899,23 @@
   "no photos allowed": [
     "29181"
   ],
+  "no recording allowed": [
+    "29183"
+  ],
+  "no smoking": [
+    "8675"
+  ],
   "no walking allowed": [
     "31949"
   ],
   "no-one": [
     "11314"
+  ],
+  "noah": [
+    "24198"
+  ],
+  "noah's ark": [
+    "23751"
   ],
   "nobility": [
     "36942"
@@ -35481,6 +33976,18 @@
   "nordic walking": [
     "38426"
   ],
+  "north": [
+    "8178"
+  ],
+  "north korea": [
+    "25014"
+  ],
+  "north macedonia": [
+    "21974"
+  ],
+  "north pole": [
+    "6187"
+  ],
   "northeast": [
     "27913"
   ],
@@ -35490,8 +33997,15 @@
   "northern lights": [
     "38416"
   ],
+  "northern lobster": [
+    "36983"
+  ],
   "northwest": [
     "27915"
+  ],
+  "norway": [
+    "10252",
+    "28982"
   ],
   "nose": [
     "2887"
@@ -35587,6 +34101,10 @@
     "2626",
     "35693",
     "6972"
+  ],
+  "november": [
+    "35927",
+    "6570"
   ],
   "now": [
     "13026",
@@ -35711,6 +34229,9 @@
   "nutcracker": [
     "28517"
   ],
+  "nutella": [
+    "7763"
+  ],
   "nutmeg": [
     "39640"
   ],
@@ -35722,14 +34243,23 @@
   "nuts": [
     "20105"
   ],
+  "nw": [
+    "27915"
+  ],
   "ny": [
+    "36746",
     "36777"
   ],
   "o": [
-    "3037"
+    "3037",
+    "3136"
   ],
   "oak galls": [
     "38268"
+  ],
+  "oap day care centre": [
+    "25692",
+    "25693"
   ],
   "oar": [
     "6206"
@@ -35879,6 +34409,9 @@
   "ocean pollution": [
     "36902"
   ],
+  "oceania": [
+    "5528"
+  ],
   "ocher": [
     "25744",
     "9097"
@@ -35889,6 +34422,10 @@
   ],
   "octagonal tower": [
     "38648"
+  ],
+  "october": [
+    "35943",
+    "6571"
   ],
   "octopus": [
     "26350",
@@ -36059,6 +34596,9 @@
   "old-man-in-the-spring": [
     "38269"
   ],
+  "olentzero": [
+    "27017"
+  ],
   "olive": [
     "8316",
     "8317"
@@ -36077,11 +34617,29 @@
     "2874",
     "2875"
   ],
+  "olympic cauldron": [
+    "39239"
+  ],
+  "olympic games": [
+    "5064"
+  ],
   "olympic opening": [
     "39208"
   ],
+  "olympic rings": [
+    "5064"
+  ],
+  "olympic torch": [
+    "5905"
+  ],
   "olympic torch relay": [
     "39210"
+  ],
+  "olympics": [
+    "5064"
+  ],
+  "oman": [
+    "28063"
   ],
   "omelet": [
     "4966",
@@ -36109,6 +34667,9 @@
   ],
   "once more": [
     "37162"
+  ],
+  "once upon a time": [
+    "8277"
   ],
   "oncologist": [
     "34727",
@@ -36520,6 +35081,9 @@
   "oregano": [
     "14244"
   ],
+  "orense": [
+    "14757"
+  ],
   "oreo cookies": [
     "38501"
   ],
@@ -36608,7 +35172,7 @@
     "10318",
     "36905"
   ],
-  "ornament the Christmas tree": [
+  "ornament the christmas tree": [
     "27715"
   ],
   "ornamental comb": [
@@ -36709,6 +35273,9 @@
   "our": [
     "12268",
     "12270"
+  ],
+  "our lady of the pillar": [
+    "5606"
   ],
   "ours": [
     "12268",
@@ -36897,10 +35464,17 @@
     "10358"
   ],
   "p": [
-    "3038"
+    "3038",
+    "3137"
   ],
   "p.m.": [
     "32850"
+  ],
+  "pablo picasso": [
+    "25325"
+  ],
+  "pac man": [
+    "9131"
   ],
   "pacemaker": [
     "27877"
@@ -37003,7 +35577,7 @@
   "pads": [
     "30684"
   ],
-  "paediatric ICU": [
+  "paediatric icu": [
     "36337",
     "36339"
   ],
@@ -37152,6 +35726,10 @@
   "pajama": [
     "2522"
   ],
+  "pakistan": [
+    "25288",
+    "38140"
+  ],
   "palace": [
     "17279",
     "38653",
@@ -37164,6 +35742,12 @@
   "palate": [
     "25289"
   ],
+  "palencia": [
+    "14773"
+  ],
+  "paleolithic": [
+    "32636"
+  ],
   "paleontological excavation": [
     "35009"
   ],
@@ -37173,6 +35757,9 @@
   "paleontologist": [
     "34254",
     "34256"
+  ],
+  "palestine": [
+    "39689"
   ],
   "paleta cuir": [
     "4946"
@@ -37189,6 +35776,9 @@
   "palm tree": [
     "3138"
   ],
+  "palmas door": [
+    "25357"
+  ],
   "palms": [
     "38142"
   ],
@@ -37200,6 +35790,10 @@
   ],
   "pan loaf": [
     "2865"
+  ],
+  "panama": [
+    "17283",
+    "29725"
   ],
   "pancakes": [
     "37849"
@@ -37234,14 +35828,14 @@
   "pangolin": [
     "39693"
   ],
-  "panoramic X-ray machine": [
-    "31728",
-    "31825"
-  ],
   "panoramic radiograph": [
     "31728",
     "31825",
     "32078"
+  ],
+  "panoramic x-ray machine": [
+    "31728",
+    "31825"
   ],
   "panpipe": [
     "38785"
@@ -37366,6 +35960,16 @@
   "paragliding": [
     "6169"
   ],
+  "paraguay": [
+    "29599",
+    "8181"
+  ],
+  "paraguay tea": [
+    "37013"
+  ],
+  "paraguayan anaconda": [
+    "38634"
+  ],
   "parakeet": [
     "2562"
   ],
@@ -37418,6 +36022,9 @@
   ],
   "park": [
     "5379"
+  ],
+  "park güell": [
+    "35863"
   ],
   "park ranger": [
     "30494",
@@ -37603,11 +36210,17 @@
   "passion fruit": [
     "27776"
   ],
+  "passion week": [
+    "32538"
+  ],
   "passive pedal": [
     "39407"
   ],
   "passive pedal exerciser": [
     "39407"
+  ],
+  "passover": [
+    "36131"
   ],
   "passport": [
     "6171"
@@ -37722,14 +36335,14 @@
     "38908",
     "38912"
   ],
-  "patient ID wristband": [
-    "30790"
-  ],
   "patient defense service": [
     "31967"
   ],
   "patient gown": [
     "39240"
+  ],
+  "patient id wristband": [
+    "30790"
   ],
   "patient information service": [
     "31967"
@@ -37811,8 +36424,22 @@
   "payment terminal": [
     "39712"
   ],
+  "pc": [
+    "2487",
+    "7190"
+  ],
+  "pcr": [
+    "36841"
+  ],
+  "pcr test": [
+    "36841"
+  ],
   "pda": [
     "9161"
+  ],
+  "pe teacher": [
+    "7798",
+    "7823"
   ],
   "pea": [
     "23847"
@@ -37904,7 +36531,7 @@
   "pedestrian crossing": [
     "7197"
   ],
-  "pediatric ICU": [
+  "pediatric icu": [
     "36337",
     "36339"
   ],
@@ -37928,6 +36555,12 @@
     "31827",
     "38856",
     "5536"
+  ],
+  "pedro de azagra": [
+    "34933"
+  ],
+  "pedro de segura": [
+    "34931"
   ],
   "pee": [
     "16713",
@@ -38057,6 +36690,9 @@
   "peninsula": [
     "21006"
   ],
+  "peninsular war": [
+    "36925"
+  ],
   "penis": [
     "26306",
     "3362",
@@ -38096,6 +36732,9 @@
   ],
   "people with disability": [
     "8090"
+  ],
+  "people's republic of bangladesh": [
+    "38460"
   ],
   "pepper": [
     "25331",
@@ -38227,9 +36866,6 @@
     "26989",
     "27963"
   ],
-  "person with PPE": [
-    "36855"
-  ],
   "person with autism": [
     "26603",
     "37439"
@@ -38261,6 +36897,9 @@
   ],
   "person with nasal spectacles": [
     "30190"
+  ],
+  "person with ppe": [
+    "36855"
   ],
   "person with reduced mobility": [
     "26949",
@@ -38337,6 +36976,13 @@
     "35721",
     "8469"
   ],
+  "peru": [
+    "29592",
+    "8185"
+  ],
+  "pesach": [
+    "36131"
+  ],
   "pessimism": [
     "16371"
   ],
@@ -38345,7 +36991,8 @@
   ],
   "pet": [
     "25654",
-    "35471"
+    "35471",
+    "38355"
   ],
   "pet bowl": [
     "38506"
@@ -38359,6 +37006,9 @@
   ],
   "pet wash": [
     "34308"
+  ],
+  "pet/ct": [
+    "38355"
   ],
   "petal": [
     "34063"
@@ -38375,6 +37025,9 @@
   "petaurus": [
     "38337"
   ],
+  "peter's fish": [
+    "37606"
+  ],
   "petit suisse": [
     "37652"
   ],
@@ -38385,6 +37038,9 @@
     "15030",
     "15032",
     "15034"
+  ],
+  "petra": [
+    "25319"
   ],
   "petrol": [
     "8125"
@@ -38417,6 +37073,9 @@
   ],
   "pews": [
     "30887"
+  ],
+  "peña de los enamorados": [
+    "31131"
   ],
   "phalanges": [
     "24041",
@@ -38459,6 +37118,9 @@
   ],
   "phases": [
     "24984"
+  ],
+  "philippines": [
+    "27761"
   ],
   "philosophy": [
     "36365"
@@ -38628,6 +37290,10 @@
   "physical education equipment": [
     "11649"
   ],
+  "physical education lesson": [
+    "10258",
+    "32548"
+  ],
   "physical education materials": [
     "11649"
   ],
@@ -38666,6 +37332,9 @@
     "32497",
     "38581",
     "5998"
+  ],
+  "physically handicapped people rehabilitation center": [
+    "16151"
   ],
   "physician": [
     "39417"
@@ -38714,6 +37383,10 @@
   "pic": [
     "28271",
     "7107"
+  ],
+  "picasso": [
+    "25325",
+    "25413"
   ],
   "pick": [
     "26533",
@@ -38905,6 +37578,12 @@
   "pigsty": [
     "31392"
   ],
+  "pilar's virgin": [
+    "5394"
+  ],
+  "pilara": [
+    "5412"
+  ],
   "pilates": [
     "38793"
   ],
@@ -39032,6 +37711,12 @@
   ],
   "pinky": [
     "7778"
+  ],
+  "pinocchio": [
+    "6177"
+  ],
+  "pinocchio tale": [
+    "6471"
   ],
   "pins": [
     "2643"
@@ -39366,7 +38051,7 @@
     "37952",
     "6537"
   ],
-  "play a DVD": [
+  "play a dvd": [
     "27140"
   ],
   "play area": [
@@ -39642,6 +38327,9 @@
   "plush dinosaur": [
     "34989"
   ],
+  "pluto": [
+    "10299"
+  ],
   "pluviometer": [
     "37480"
   ],
@@ -39674,6 +38362,12 @@
   "poetry": [
     "22763"
   ],
+  "poetry and art books": [
+    "6642"
+  ],
+  "poetry and art's books": [
+    "6642"
+  ],
   "poinsettia": [
     "36394"
   ],
@@ -39687,8 +38381,14 @@
   "point of sale": [
     "39712"
   ],
+  "point of sale terminal": [
+    "9185"
+  ],
   "point sign": [
     "3218"
+  ],
+  "point-of-sale terminal": [
+    "9185"
   ],
   "points": [
     "25492"
@@ -39719,6 +38419,10 @@
   ],
   "poker pack": [
     "3182"
+  ],
+  "poland": [
+    "22051",
+    "28985"
   ],
   "polar bear": [
     "2868"
@@ -39924,6 +38628,9 @@
   "pond": [
     "39264"
   ],
+  "pontevedra": [
+    "14758"
+  ],
   "pontifical blessing": [
     "23828"
   ],
@@ -39991,11 +38698,17 @@
   "popcorn twists bag": [
     "24555"
   ],
+  "pope": [
+    "24234"
+  ],
   "poplar": [
     "3185"
   ],
   "poppy": [
     "6897"
+  ],
+  "popsicle": [
+    "3348"
   ],
   "popsicle stick": [
     "39480"
@@ -40035,6 +38748,13 @@
     "3145",
     "32410"
   ],
+  "port-a-cath": [
+    "31316",
+    "31317",
+    "31318",
+    "31319",
+    "31354"
+  ],
   "portable computer": [
     "7214"
   ],
@@ -40056,6 +38776,17 @@
   ],
   "portion": [
     "37270"
+  ],
+  "portugal": [
+    "28969",
+    "8196"
+  ],
+  "pos": [
+    "39712",
+    "9185"
+  ],
+  "pos system": [
+    "9185"
   ],
   "pose": [
     "25347",
@@ -40304,6 +39035,9 @@
   "powered exoskeleton": [
     "39406"
   ],
+  "ppe": [
+    "36855"
+  ],
   "practice sport": [
     "30604"
   ],
@@ -40396,7 +39130,10 @@
   "pre op": [
     "27986"
   ],
-  "pre-K": [
+  "pre-history": [
+    "32630"
+  ],
+  "pre-k": [
     "31470"
   ],
   "pre-operative period": [
@@ -40479,6 +39216,9 @@
     "34991",
     "38591"
   ],
+  "prehistory": [
+    "32630"
+  ],
   "preoperative care": [
     "27986"
   ],
@@ -40527,6 +39267,15 @@
     "16375",
     "16378",
     "22052"
+  ],
+  "president of aragon": [
+    "16377"
+  ],
+  "president of parliament": [
+    "37563"
+  ],
+  "president of the senate": [
+    "37563"
   ],
   "president's secretariat": [
     "37560"
@@ -40593,33 +39342,33 @@
     "27319",
     "27389"
   ],
-  "previous Friday": [
-    "39719"
-  ],
-  "previous Monday": [
-    "39727"
-  ],
-  "previous Saturday": [
-    "39718"
-  ],
-  "previous Sunday": [
-    "39729"
-  ],
-  "previous Thursday": [
-    "39721"
-  ],
-  "previous Tuesday": [
-    "39726"
-  ],
-  "previous Wednesday": [
-    "39725"
-  ],
   "previous button": [
     "38224",
     "38250"
   ],
+  "previous friday": [
+    "39719"
+  ],
+  "previous monday": [
+    "39727"
+  ],
   "previous month": [
     "39734"
+  ],
+  "previous saturday": [
+    "39718"
+  ],
+  "previous sunday": [
+    "39729"
+  ],
+  "previous thursday": [
+    "39721"
+  ],
+  "previous tuesday": [
+    "39726"
+  ],
+  "previous wednesday": [
+    "39725"
   ],
   "previous week": [
     "39735"
@@ -40688,6 +39437,9 @@
     "5554"
   ],
   "princess cichlid": [
+    "34571"
+  ],
+  "princess of burundi": [
     "34571"
   ],
   "principal": [
@@ -40773,6 +39525,9 @@
   ],
   "prize wheel": [
     "37961"
+  ],
+  "proa valdearinnoensis": [
+    "34587"
   ],
   "probe": [
     "35223"
@@ -40934,7 +39689,7 @@
   "prosecutor": [
     "37665"
   ],
-  "prostaglandin E2": [
+  "prostaglandin e2": [
     "31700"
   ],
   "prosthetic denture": [
@@ -41009,6 +39764,9 @@
     "27703",
     "27705",
     "27706"
+  ],
+  "prying is forbidden": [
+    "25714"
   ],
   "psalm": [
     "30830",
@@ -41087,6 +39845,9 @@
   "ptitim": [
     "36099"
   ],
+  "ptsa": [
+    "32724"
+  ],
   "pub": [
     "32358"
   ],
@@ -41129,6 +39890,9 @@
   ],
   "puddle": [
     "25936"
+  ],
+  "puerto rico": [
+    "17296"
   ],
   "puffed rice cake": [
     "36169"
@@ -41365,9 +40129,6 @@
     "6989",
     "8166"
   ],
-  "put AAC book": [
-    "37189"
-  ],
   "put a band aid": [
     "38452"
   ],
@@ -41387,6 +40148,9 @@
   ],
   "put a top on": [
     "22117"
+  ],
+  "put aac book": [
+    "37189"
   ],
   "put an egg": [
     "7211"
@@ -41799,6 +40563,9 @@
   "pyramid climbing net": [
     "37266"
   ],
+  "pyrenees": [
+    "5541"
+  ],
   "pyrex container": [
     "31091"
   ],
@@ -41807,7 +40574,17 @@
     "5474"
   ],
   "q": [
-    "3039"
+    "3039",
+    "3146"
+  ],
+  "qatar": [
+    "28064"
+  ],
+  "qr": [
+    "38514"
+  ],
+  "qr code": [
+    "38514"
   ],
   "quack": [
     "7119"
@@ -42071,7 +40848,8 @@
     "3190"
   ],
   "r": [
-    "3040"
+    "3040",
+    "3147"
   ],
   "rabbi": [
     "36037"
@@ -42321,6 +41099,9 @@
   "ram": [
     "9061"
   ],
+  "ramadan": [
+    "36438"
+  ],
   "ramble": [
     "4670",
     "6532"
@@ -42402,6 +41183,9 @@
   "raw material": [
     "26204"
   ],
+  "rawlplug": [
+    "3390"
+  ],
   "ray": [
     "30243",
     "34627"
@@ -42417,6 +41201,9 @@
   ],
   "ray of light": [
     "30243"
+  ],
+  "ray's bream": [
+    "37586"
   ],
   "razor": [
     "2726"
@@ -42446,9 +41233,6 @@
     "6461",
     "7141"
   ],
-  "read QR code": [
-    "39018"
-  ],
   "read aloud": [
     "39687"
   ],
@@ -42461,7 +41245,10 @@
   "read pictograms": [
     "36257"
   ],
-  "read the Holy Gospel": [
+  "read qr code": [
+    "39018"
+  ],
+  "read the gospel": [
     "30872",
     "30873",
     "30874",
@@ -42471,7 +41258,7 @@
     "30878",
     "30879"
   ],
-  "read the gospel": [
+  "read the holy gospel": [
     "30872",
     "30873",
     "30874",
@@ -42496,7 +41283,7 @@
   "reading light": [
     "7103"
   ],
-  "reading of Holy Gospel": [
+  "reading of holy gospel": [
     "30872",
     "30873",
     "30874",
@@ -42733,6 +41520,14 @@
   "red coral": [
     "35269"
   ],
+  "red crescent": [
+    "36197",
+    "36225"
+  ],
+  "red cross": [
+    "30253",
+    "9075"
+  ],
   "red green anaglyph glasses": [
     "37614"
   ],
@@ -42746,6 +41541,9 @@
     "37107",
     "37187",
     "4959"
+  ],
+  "red light, green light": [
+    "31193"
   ],
   "red nose": [
     "8637"
@@ -43030,6 +41828,10 @@
     "32544",
     "39178"
   ],
+  "religion lesson": [
+    "24471",
+    "39178"
+  ],
   "religions": [
     "27059"
   ],
@@ -43191,6 +41993,20 @@
   ],
   "reptiles": [
     "7806"
+  ],
+  "republic of guinea-bissau": [
+    "39170"
+  ],
+  "republic of kenya": [
+    "37649",
+    "37650"
+  ],
+  "republic of tunisia": [
+    "39168"
+  ],
+  "republic of türkiye": [
+    "22161",
+    "29582"
   ],
   "repugnance": [
     "30964"
@@ -43474,6 +42290,13 @@
   "rghayif": [
     "38358"
   ],
+  "rgn": [
+    "2375",
+    "31390",
+    "38883",
+    "6050",
+    "9196"
+  ],
   "rhea": [
     "29702"
   ],
@@ -43717,6 +42540,9 @@
     "8559",
     "8560"
   ],
+  "rio de janeiro": [
+    "25036"
+  ],
   "rip": [
     "2545"
   ],
@@ -43756,7 +42582,7 @@
   "rivers": [
     "10306"
   ],
-  "rivers in Spain": [
+  "rivers in spain": [
     "10306"
   ],
   "riverstones": [
@@ -43814,6 +42640,9 @@
   "rob": [
     "8209",
     "8210"
+  ],
+  "robaculeros": [
+    "5413"
   ],
   "robbery": [
     "8209",
@@ -44022,10 +42851,35 @@
   "rolls": [
     "29935"
   ],
+  "roman": [
+    "32088"
+  ],
+  "roman goddess": [
+    "37117"
+  ],
+  "roman helmet": [
+    "36509"
+  ],
+  "roman legionary": [
+    "37126"
+  ],
+  "roman road": [
+    "28627"
+  ],
+  "roman soldier": [
+    "37126"
+  ],
+  "romania": [
+    "28975",
+    "8214"
+  ],
   "romantic": [
     "11957",
     "31995",
     "7232"
+  ],
+  "rome coliseum": [
+    "23957"
   ],
   "roof": [
     "2584"
@@ -44066,6 +42920,9 @@
     "24766"
   ],
   "roscon": [
+    "5565"
+  ],
+  "roscon de san valero": [
     "5565"
   ],
   "rose": [
@@ -44190,6 +43047,9 @@
   "rubbish truck": [
     "8523"
   ],
+  "rubik's cube": [
+    "9134"
+  ],
   "ruby": [
     "25397"
   ],
@@ -44200,6 +43060,12 @@
   ],
   "rudder": [
     "33056"
+  ],
+  "rudolf the red-nosed reindeer": [
+    "3150"
+  ],
+  "rudolph": [
+    "3150"
   ],
   "rug": [
     "2249"
@@ -44228,6 +43094,9 @@
   "rules": [
     "34779",
     "34794"
+  ],
+  "rumania": [
+    "8214"
   ],
   "rummage": [
     "37116"
@@ -44315,6 +43184,13 @@
     "28225",
     "28926"
   ],
+  "russia": [
+    "28976",
+    "8215"
+  ],
+  "russian egg": [
+    "36409"
+  ],
   "russian salad": [
     "8104"
   ],
@@ -44331,7 +43207,8 @@
     "29808"
   ],
   "s": [
-    "3041"
+    "3041",
+    "3152"
   ],
   "saber": [
     "8569"
@@ -44417,6 +43294,9 @@
   "saffron flower": [
     "23781"
   ],
+  "sagrada familia": [
+    "22098"
+  ],
   "sail": [
     "7170",
     "7294"
@@ -44442,6 +43322,52 @@
     "24392",
     "39222"
   ],
+  "saint anthony the great": [
+    "39221"
+  ],
+  "saint fermin": [
+    "38225"
+  ],
+  "saint george": [
+    "12309",
+    "25427",
+    "5576"
+  ],
+  "saint george and the dragon": [
+    "5576"
+  ],
+  "saint george's day": [
+    "28267"
+  ],
+  "saint john": [
+    "24386"
+  ],
+  "saint john's day": [
+    "15036",
+    "32452"
+  ],
+  "saint joseph": [
+    "7238"
+  ],
+  "saint kitts and nevis": [
+    "29734",
+    "29735"
+  ],
+  "saint lawrence": [
+    "5577"
+  ],
+  "saint peter": [
+    "39220"
+  ],
+  "saint valerius": [
+    "28701"
+  ],
+  "saint valerius of saragossa": [
+    "28701"
+  ],
+  "saint vincent and the grenadines": [
+    "27310"
+  ],
   "saint's day": [
     "35155"
   ],
@@ -44463,6 +43389,9 @@
   ],
   "salad spinner": [
     "37061"
+  ],
+  "salamanca": [
+    "14774"
   ],
   "salamander": [
     "7236"
@@ -44530,7 +43459,11 @@
   ],
   "salt": [
     "25576",
+    "32706",
     "5579"
+  ],
+  "salt classroom": [
+    "33084"
   ],
   "salt pork": [
     "37595"
@@ -44556,12 +43489,28 @@
     "37759",
     "4739"
   ],
+  "salvador dali": [
+    "21581"
+  ],
   "same": [
     "32392",
     "4667"
   ],
   "sample tube": [
     "9186"
+  ],
+  "san juan de la peña monastery": [
+    "5519"
+  ],
+  "san marino": [
+    "27309",
+    "29581"
+  ],
+  "san sebastian": [
+    "28960"
+  ],
+  "sancho panza": [
+    "15495"
   ],
   "sand": [
     "4565",
@@ -44666,8 +43615,42 @@
   "sanitizing footbath mat": [
     "36875"
   ],
+  "santa claus": [
+    "25297",
+    "25298",
+    "3139",
+    "32454"
+  ],
+  "santa's 9th reindeer": [
+    "3150"
+  ],
+  "santa's reindeer": [
+    "3150"
+  ],
+  "santa's sledge": [
+    "3161"
+  ],
+  "santa's sock": [
+    "5065"
+  ],
+  "santas cap": [
+    "3109"
+  ],
+  "santas sledge": [
+    "3161"
+  ],
+  "santiago de compostela": [
+    "35831"
+  ],
+  "santiago de compostela cathedral": [
+    "35833"
+  ],
   "sap": [
     "37171"
+  ],
+  "saragossa": [
+    "14682",
+    "5607"
   ],
   "sarcophagus": [
     "26427",
@@ -44689,6 +43672,13 @@
   "saturated": [
     "39086"
   ],
+  "saturday": [
+    "37725",
+    "6605"
+  ],
+  "saturn": [
+    "10300"
+  ],
   "saturn peach": [
     "39093"
   ],
@@ -44701,6 +43691,9 @@
   ],
   "saucer": [
     "34088"
+  ],
+  "saudi arabia": [
+    "24858"
   ],
   "sauerkraut": [
     "38308",
@@ -44718,6 +43711,9 @@
     "37345",
     "8649",
     "8651"
+  ],
+  "sauriopark's carousel": [
+    "35013"
   ],
   "sausage": [
     "25883",
@@ -44832,6 +43828,12 @@
     "38058",
     "8718"
   ],
+  "scandinavia": [
+    "34069"
+  ],
+  "scandinavian peninsula": [
+    "34069"
+  ],
   "scanner": [
     "30705",
     "9153"
@@ -44941,6 +43943,9 @@
     "11302",
     "36285"
   ],
+  "school to adult life transition": [
+    "32706"
+  ],
   "school trip": [
     "11396"
   ],
@@ -44992,8 +43997,17 @@
     "35437",
     "9820"
   ],
+  "science book": [
+    "9820"
+  ],
+  "science books": [
+    "6639"
+  ],
   "science lab": [
     "8150"
+  ],
+  "science's books": [
+    "6639"
   ],
   "scientist": [
     "11217",
@@ -45052,6 +44066,15 @@
   "scorpion": [
     "8564"
   ],
+  "scotch tape": [
+    "2325"
+  ],
+  "scotch tape case": [
+    "34047"
+  ],
+  "scotland": [
+    "21844"
+  ],
   "scotoma": [
     "31734",
     "32005"
@@ -45067,6 +44090,9 @@
     "28054",
     "28865",
     "28866"
+  ],
+  "scout sign": [
+    "27238"
   ],
   "scrabble": [
     "21836",
@@ -45242,6 +44268,9 @@
   ],
   "scuttle": [
     "21847"
+  ],
+  "se": [
+    "28095"
   ],
   "sea": [
     "2925"
@@ -45567,6 +44596,9 @@
     "28521",
     "39614"
   ],
+  "segovia": [
+    "14775"
+  ],
   "seism": [
     "4755"
   ],
@@ -45645,6 +44677,9 @@
     "20121",
     "20123"
   ],
+  "sellotape": [
+    "2325"
+  ],
   "seltzer": [
     "38420"
   ],
@@ -45682,11 +44717,11 @@
   "send": [
     "21828"
   ],
-  "send a WhatsApp message": [
-    "37867"
-  ],
   "send a letter": [
     "21828"
+  ],
+  "send a whatsapp message": [
+    "37867"
   ],
   "send an email": [
     "27359"
@@ -45711,6 +44746,9 @@
   ],
   "senecio": [
     "38269"
+  ],
+  "senegal": [
+    "8221"
   ],
   "senior education classroom": [
     "29915"
@@ -45810,11 +44848,20 @@
     "6893",
     "6894"
   ],
+  "september": [
+    "35929",
+    "6613"
+  ],
   "sepulchre": [
     "39505"
   ],
   "sepulture": [
     "3195"
+  ],
+  "serbia": [
+    "22112",
+    "27311",
+    "28987"
   ],
   "serene": [
     "31310",
@@ -45996,6 +45043,9 @@
     "5374",
     "7168"
   ],
+  "seville": [
+    "14690"
+  ],
   "sew": [
     "2722",
     "7068"
@@ -46076,6 +45126,9 @@
   ],
   "sexual orientation": [
     "32828"
+  ],
+  "shabbat": [
+    "36133"
   ],
   "shack": [
     "8075"
@@ -46213,6 +45266,9 @@
   "shaving foam": [
     "2750"
   ],
+  "shavuot": [
+    "38964"
+  ],
   "shawl": [
     "26192"
   ],
@@ -46345,6 +45401,9 @@
     "35349",
     "39599",
     "4880"
+  ],
+  "shiva": [
+    "24400"
   ],
   "shiver": [
     "7109"
@@ -46910,6 +45969,9 @@
     "37066",
     "37067"
   ],
+  "singapore": [
+    "28065"
+  ],
   "singer": [
     "11201",
     "4585"
@@ -47427,6 +46489,9 @@
   "sleeping bag": [
     "4738"
   ],
+  "sleeping beauty": [
+    "21433"
+  ],
   "sleeping chair": [
     "38860"
   ],
@@ -47568,6 +46633,14 @@
   ],
   "slouch hat": [
     "35909"
+  ],
+  "slovakia": [
+    "21853",
+    "29572"
+  ],
+  "slovenia": [
+    "29573",
+    "29586"
   ],
   "slow": [
     "4676"
@@ -47809,6 +46882,9 @@
   "snow rackets": [
     "38125"
   ],
+  "snow white": [
+    "21447"
+  ],
   "snow-capped": [
     "2884"
   ],
@@ -47855,7 +46931,7 @@
   "so": [
     "13080"
   ],
-  "so do I": [
+  "so do i": [
     "11591"
   ],
   "soak": [
@@ -47984,10 +47060,16 @@
   "social justice": [
     "31983"
   ],
+  "social science book": [
+    "9823"
+  ],
   "social sciences": [
     "35401",
     "35402",
     "9823"
+  ],
+  "social sciences books": [
+    "6640"
   ],
   "social sciences class": [
     "35401",
@@ -47996,6 +47078,9 @@
   "social sciences lesson": [
     "35401",
     "35402"
+  ],
+  "social sciences' books": [
+    "6640"
   ],
   "social services": [
     "39780"
@@ -48118,6 +47203,10 @@
   "solve": [
     "37711"
   ],
+  "somalia": [
+    "36665",
+    "36666"
+  ],
   "some": [
     "11175",
     "5374",
@@ -48185,6 +47274,9 @@
     "28761",
     "28762"
   ],
+  "soria": [
+    "14776"
+  ],
   "sorrowfulness": [
     "16371"
   ],
@@ -48206,6 +47298,9 @@
   ],
   "sort out": [
     "2872"
+  ],
+  "sos": [
+    "29016"
   ],
   "soul": [
     "38666"
@@ -48250,6 +47345,18 @@
   ],
   "soursop": [
     "39630"
+  ],
+  "south": [
+    "8228"
+  ],
+  "south africa": [
+    "22113"
+  ],
+  "south america": [
+    "34387"
+  ],
+  "south korea": [
+    "25015"
   ],
   "south pole": [
     "6188"
@@ -48322,6 +47429,11 @@
   "spaguetti packet": [
     "25580"
   ],
+  "spain": [
+    "10476",
+    "28967",
+    "8108"
+  ],
   "spanish": [
     "11533",
     "11534",
@@ -48344,11 +47456,17 @@
     "10259",
     "36371"
   ],
+  "spanish omelette": [
+    "4966"
+  ],
   "spanish omelette bar snack": [
     "30401"
   ],
   "spanish omelette tapa": [
     "30401"
+  ],
+  "spanish war of independence": [
+    "36925"
   ],
   "spanner": [
     "2938"
@@ -48401,6 +47519,9 @@
     "26628",
     "8336"
   ],
+  "speaker of the house": [
+    "37563"
+  ],
   "speakers": [
     "2647"
   ],
@@ -48432,6 +47553,9 @@
   ],
   "special employment centre": [
     "34312"
+  ],
+  "special needs education": [
+    "32720"
   ],
   "specialist": [
     "38852"
@@ -48537,6 +47661,9 @@
   ],
   "spider's web": [
     "6286"
+  ],
+  "spiderman": [
+    "8224"
   ],
   "spike": [
     "37691"
@@ -48905,6 +48032,9 @@
   "spyglass": [
     "8531"
   ],
+  "spätzle": [
+    "38742"
+  ],
   "square": [
     "4616",
     "6184",
@@ -48949,8 +48079,21 @@
   "squirt gun": [
     "9137"
   ],
+  "sri lanka": [
+    "28067"
+  ],
   "ssweet cherries": [
     "37592"
+  ],
+  "st. valentine": [
+    "19541",
+    "19543",
+    "19545"
+  ],
+  "st. valentine's day": [
+    "19541",
+    "19543",
+    "19545"
   ],
   "stab": [
     "31273"
@@ -49164,6 +48307,9 @@
     "2752",
     "4644"
   ],
+  "star of david": [
+    "22795"
+  ],
   "starfish": [
     "3310"
   ],
@@ -49245,6 +48391,12 @@
     "25588",
     "38044",
     "8113"
+  ],
+  "statue of liberty": [
+    "21854"
+  ],
+  "statues": [
+    "31193"
   ],
   "statuette": [
     "2394"
@@ -49397,6 +48549,9 @@
   "still life": [
     "37688"
   ],
+  "stillson wrench": [
+    "28533"
+  ],
   "stilts": [
     "36678"
   ],
@@ -49465,6 +48620,10 @@
   "stone": [
     "6594"
   ],
+  "stone age": [
+    "32636",
+    "32638"
+  ],
   "stone marten": [
     "39680"
   ],
@@ -49476,6 +48635,9 @@
   ],
   "stone-lifting": [
     "29006"
+  ],
+  "stonebridge": [
+    "5557"
   ],
   "stones": [
     "28585"
@@ -49990,6 +49152,9 @@
   "suction device": [
     "35213"
   ],
+  "sudan": [
+    "39463"
+  ],
   "sudate": [
     "35721",
     "8469"
@@ -50041,6 +49206,12 @@
     "11297",
     "2931"
   ],
+  "sukkot": [
+    "37848"
+  ],
+  "sukkoth": [
+    "37848"
+  ],
   "sultan": [
     "17324"
   ],
@@ -50063,6 +49234,10 @@
   ],
   "summit": [
     "20391"
+  ],
+  "sun": [
+    "2798",
+    "7252"
   ],
   "sun cream": [
     "21568"
@@ -50095,6 +49270,10 @@
   ],
   "sunburn": [
     "22064"
+  ],
+  "sunday": [
+    "37723",
+    "6478"
   ],
   "sunday palm": [
     "38049"
@@ -50160,6 +49339,9 @@
   "superiority": [
     "30640"
   ],
+  "superman": [
+    "8227"
+  ],
   "supermarket": [
     "3389",
     "6618"
@@ -50189,10 +49371,10 @@
     "8982",
     "8983"
   ],
-  "support for Cri du chat syndrome": [
+  "support for cri du chat syndrome": [
     "30237"
   ],
-  "support for Down syndrome": [
+  "support for down syndrome": [
     "30235"
   ],
   "support products": [
@@ -50295,6 +49477,10 @@
   "surgical stapler": [
     "30772"
   ],
+  "surinam": [
+    "27312",
+    "29603"
+  ],
   "surname": [
     "27327"
   ],
@@ -50328,6 +49514,9 @@
   "suture": [
     "28837",
     "28838"
+  ],
+  "sw": [
+    "28096"
   ],
   "swab": [
     "33116",
@@ -50388,6 +49577,10 @@
   "sweaty": [
     "32125",
     "36598"
+  ],
+  "sweden": [
+    "10253",
+    "28977"
   ],
   "swedish bench": [
     "4919"
@@ -50528,6 +49721,9 @@
   "swing seat": [
     "38025"
   ],
+  "swiss chard": [
+    "2981"
+  ],
   "switch": [
     "2431",
     "27252",
@@ -50542,13 +49738,13 @@
   "switch off button": [
     "38247"
   ],
-  "switch off the TV": [
-    "20093"
-  ],
   "switch off the air-conditioning": [
     "29140"
   ],
   "switch off the monitor": [
+    "20093"
+  ],
+  "switch off the tv": [
     "20093"
   ],
   "switch on": [
@@ -50557,9 +49753,6 @@
   "switch on button": [
     "38212"
   ],
-  "switch on the TV": [
-    "8555"
-  ],
   "switch on the air-conditioning": [
     "29142"
   ],
@@ -50567,6 +49760,9 @@
     "8103"
   ],
   "switch on the monitor": [
+    "8555"
+  ],
+  "switch on the tv": [
     "8555"
   ],
   "switch over": [
@@ -50584,6 +49780,10 @@
   "switchboard room": [
     "15897"
   ],
+  "switzerland": [
+    "22114",
+    "28978"
+  ],
   "swivel chair": [
     "28085"
   ],
@@ -50597,6 +49797,9 @@
   ],
   "swordfish": [
     "2843"
+  ],
+  "sydney opera house": [
+    "31386"
   ],
   "syllable": [
     "32722"
@@ -50625,6 +49828,10 @@
     "28141",
     "36077"
   ],
+  "syria": [
+    "28066",
+    "38820"
+  ],
   "syringe": [
     "2960",
     "31732"
@@ -50636,13 +49843,24 @@
     "2962"
   ],
   "sz": [
+    "36748",
     "36773"
   ],
+  "são tomé and príncipe": [
+    "39169"
+  ],
   "t": [
-    "3042"
+    "3042",
+    "3158"
   ],
   "t-bone steak": [
     "29161"
+  ],
+  "t-rex show": [
+    "34673"
+  ],
+  "t-shirt": [
+    "2309"
   ],
   "t-shirt inside out": [
     "37219",
@@ -50736,6 +49954,9 @@
   "tadpole": [
     "25389"
   ],
+  "tadzhikistan": [
+    "28068"
+  ],
   "tag": [
     "25087",
     "27749",
@@ -50771,6 +49992,9 @@
   "tailor shop": [
     "29977"
   ],
+  "taj mahal": [
+    "25484"
+  ],
   "tajine": [
     "32673"
   ],
@@ -50790,9 +50014,6 @@
     "6453",
     "6553"
   ],
-  "take a DUI test": [
-    "38772"
-  ],
   "take a bath": [
     "6058"
   ],
@@ -50806,6 +50027,9 @@
     "38772"
   ],
   "take a breathalyzer test": [
+    "38772"
+  ],
+  "take a dui test": [
     "38772"
   ],
   "take a flash photo": [
@@ -51060,7 +50284,7 @@
     "5568",
     "5569"
   ],
-  "take out AAC book": [
+  "take out aac book": [
     "36447"
   ],
   "take out comb": [
@@ -51242,6 +50466,9 @@
     "35519",
     "39000"
   ],
+  "tal": [
+    "32706"
+  ],
   "talcum": [
     "14256"
   ],
@@ -51300,6 +50527,14 @@
   "tambaqui": [
     "34599"
   ],
+  "tamborrada": [
+    "28944",
+    "28952"
+  ],
+  "tamborrada of donostia": [
+    "28944",
+    "28952"
+  ],
   "tambourine": [
     "2495",
     "2564",
@@ -51321,6 +50556,12 @@
     "26500",
     "5402"
   ],
+  "tanach": [
+    "36183"
+  ],
+  "tanakh": [
+    "36183"
+  ],
   "tandem": [
     "28103"
   ],
@@ -51336,6 +50577,9 @@
   "tank": [
     "16285",
     "3400"
+  ],
+  "tanzania": [
+    "39464"
   ],
   "tap": [
     "2414",
@@ -51410,17 +50654,26 @@
   "taro": [
     "39820"
   ],
+  "tarragona": [
+    "14835"
+  ],
   "tarsus": [
     "37469"
   ],
   "tartar": [
     "31941"
   ],
+  "tarzan": [
+    "29800"
+  ],
   "task": [
     "11251",
     "11263",
     "25062",
     "37822"
+  ],
+  "tastavinsaurus": [
+    "34579"
   ],
   "taste buds": [
     "26294"
@@ -51477,6 +50730,9 @@
     "11383",
     "3221"
   ],
+  "taylor hammer": [
+    "30134"
+  ],
   "tchoukball": [
     "38516"
   ],
@@ -51497,6 +50753,15 @@
   ],
   "teacart": [
     "6077"
+  ],
+  "teacch": [
+    "30648",
+    "32868",
+    "32869",
+    "32966",
+    "32967",
+    "36971",
+    "36976"
   ],
   "teach": [
     "26809"
@@ -51610,6 +50875,9 @@
   ],
   "teething ring": [
     "7164"
+  ],
+  "teide": [
+    "10305"
   ],
   "teleassistance": [
     "37326"
@@ -51737,6 +51005,9 @@
   "tendon": [
     "24432"
   ],
+  "tenerife": [
+    "14849"
+  ],
   "tennis": [
     "10158",
     "35263",
@@ -51772,6 +51043,9 @@
   "tepee": [
     "13636"
   ],
+  "terere": [
+    "31033"
+  ],
   "terminal": [
     "39592"
   ],
@@ -51799,6 +51073,10 @@
   ],
   "terrorist": [
     "16111"
+  ],
+  "teruel": [
+    "14681",
+    "5594"
   ],
   "test": [
     "28825",
@@ -51835,6 +51113,9 @@
   "tetrahedron": [
     "9110"
   ],
+  "tetris": [
+    "9132"
+  ],
   "text": [
     "37340"
   ],
@@ -51847,6 +51128,9 @@
   "textile workshop": [
     "9806",
     "9809"
+  ],
+  "thailand": [
+    "25483"
   ],
   "thank": [
     "38783"
@@ -51883,8 +51167,11 @@
     "8476",
     "8477"
   ],
-  "the Netherlands": [
-    "19547"
+  "the alhambra of granada": [
+    "31027"
+  ],
+  "the conceited little rat": [
+    "38686"
   ],
   "the day after tomorrow": [
     "38277"
@@ -51892,14 +51179,29 @@
   "the day before yesterday": [
     "38272"
   ],
+  "the earth": [
+    "30014"
+  ],
   "the finger": [
     "36426"
+  ],
+  "the lovers' rock": [
+    "31131"
   ],
   "the middle finger": [
     "36426"
   ],
+  "the netherlands": [
+    "19547"
+  ],
   "the other day": [
     "39737"
+  ],
+  "the pied piper of hamelin": [
+    "5999"
+  ],
+  "the puss in boots": [
+    "21888"
   ],
   "the same": [
     "32392",
@@ -51913,6 +51215,13 @@
   ],
   "the third age": [
     "31075"
+  ],
+  "the three kings": [
+    "26390",
+    "3124"
+  ],
+  "the wind comb": [
+    "28899"
   ],
   "the wind is blowing!": [
     "10736",
@@ -52178,6 +51487,9 @@
   "this": [
     "7095"
   ],
+  "tholos de el romeral": [
+    "31133"
+  ],
   "thong": [
     "8343"
   ],
@@ -52228,6 +51540,12 @@
   ],
   "three quartes": [
     "9047"
+  ],
+  "three wise men": [
+    "3124"
+  ],
+  "three wise men's day": [
+    "5072"
   ],
   "three-delight-rice": [
     "28923"
@@ -52402,6 +51720,10 @@
   ],
   "thunderclap": [
     "3225"
+  ],
+  "thursday": [
+    "37727",
+    "6536"
   ],
   "thyme": [
     "14248"
@@ -52598,6 +51920,9 @@
   "time flies": [
     "33054"
   ],
+  "time-timer": [
+    "37659"
+  ],
   "timer": [
     "35127",
     "37659"
@@ -52679,6 +52004,9 @@
   "tiny": [
     "4716"
   ],
+  "tio de nadal": [
+    "12303"
+  ],
   "tip": [
     "38972",
     "38973"
@@ -52722,6 +52050,12 @@
   ],
   "tits": [
     "7275"
+  ],
+  "tms": [
+    "39834"
+  ],
+  "tns": [
+    "36456"
   ],
   "to": [
     "7041",
@@ -52848,11 +52182,17 @@
   "toka": [
     "39019"
   ],
+  "toledo": [
+    "14766"
+  ],
   "tolerance": [
     "33002"
   ],
   "tolerate": [
     "33000"
+  ],
+  "tom thumb": [
+    "22062"
   ],
   "tomato": [
     "2594"
@@ -53011,6 +52351,12 @@
   "topography": [
     "24360"
   ],
+  "torah": [
+    "24463"
+  ],
+  "torcal de antequera": [
+    "31129"
+  ],
   "torch": [
     "5905",
     "6138"
@@ -53018,11 +52364,23 @@
   "toreador": [
     "5597"
   ],
+  "torero": [
+    "5414"
+  ],
+  "torico square": [
+    "5543"
+  ],
   "torn clothes": [
     "31476"
   ],
   "tornado": [
     "5598"
+  ],
+  "tornillo of the torcal": [
+    "31031"
+  ],
+  "tornillo rock formation": [
+    "31031"
   ],
   "torrezno": [
     "39273"
@@ -53032,12 +52390,18 @@
     "27343",
     "29136"
   ],
+  "torta del casar": [
+    "28149"
+  ],
   "torticollis": [
     "7817"
   ],
   "tortoise": [
     "2596",
     "26503"
+  ],
+  "torvosaurus": [
+    "34435"
   ],
   "toss": [
     "5447"
@@ -53186,7 +52550,7 @@
     "38648",
     "6232"
   ],
-  "tower PC": [
+  "tower pc": [
     "9150"
   ],
   "town": [
@@ -53449,7 +52813,7 @@
     "38931",
     "38932"
   ],
-  "transcranial magnetic stimulation (TMS)": [
+  "transcranial magnetic stimulation (tms)": [
     "39834"
   ],
   "transfer": [
@@ -53470,6 +52834,9 @@
   ],
   "transgendered": [
     "36472"
+  ],
+  "transition to adult life": [
+    "32706"
   ],
   "translate": [
     "37085",
@@ -53647,6 +53014,9 @@
   "treasure map": [
     "8625"
   ],
+  "treasury": [
+    "35449"
+  ],
   "treat": [
     "3302"
   ],
@@ -53700,6 +53070,12 @@
   "triceps": [
     "24450"
   ],
+  "triceratops": [
+    "34593"
+  ],
+  "triceratops skull": [
+    "34967"
+  ],
   "trick": [
     "31195",
     "31414"
@@ -53725,6 +53101,10 @@
   ],
   "trilobite": [
     "34035"
+  ],
+  "trinidad and tobago": [
+    "29654",
+    "29655"
   ],
   "trinquet": [
     "37053"
@@ -53769,6 +53149,10 @@
     "6233"
   ],
   "tronca": [
+    "12305"
+  ],
+  "tronca de nadal": [
+    "12303",
     "12305"
   ],
   "troop": [
@@ -53871,6 +53255,13 @@
     "34465",
     "7265"
   ],
+  "tuerto": [
+    "5415"
+  ],
+  "tuesday": [
+    "37729",
+    "6557"
+  ],
   "tug": [
     "15481",
     "34121",
@@ -53936,6 +53327,9 @@
   "tuning fork": [
     "34181"
   ],
+  "tunisia": [
+    "39168"
+  ],
   "tunnel": [
     "8972"
   ],
@@ -53964,6 +53358,9 @@
   "tureen": [
     "10257"
   ],
+  "turiasaurus": [
+    "34585"
+  ],
   "turkey": [
     "2509",
     "25628"
@@ -53973,6 +53370,13 @@
   ],
   "turkey cold meat": [
     "25700"
+  ],
+  "turkish bath": [
+    "25429",
+    "34902"
+  ],
+  "turkmenistan": [
+    "28069"
   ],
   "turn": [
     "11275",
@@ -54010,13 +53414,13 @@
   "turn left": [
     "38458"
   ],
+  "turn mobile telephones off": [
+    "8676"
+  ],
   "turn off": [
     "11739",
     "21365",
     "37022"
-  ],
-  "turn off the TV": [
-    "20093"
   ],
   "turn off the light": [
     "8027"
@@ -54024,14 +53428,11 @@
   "turn off the monitor": [
     "20093"
   ],
+  "turn off the tv": [
+    "20093"
+  ],
   "turn on": [
     "21818"
-  ],
-  "turn on TV": [
-    "9802"
-  ],
-  "turn on the TV": [
-    "8555"
   ],
   "turn on the light": [
     "8103"
@@ -54040,6 +53441,12 @@
     "8555"
   ],
   "turn on the television": [
+    "9802"
+  ],
+  "turn on the tv": [
+    "8555"
+  ],
+  "turn on tv": [
     "9802"
   ],
   "turn out the light": [
@@ -54118,14 +53525,29 @@
   "tusk": [
     "39845"
   ],
+  "tutankhamon": [
+    "26521"
+  ],
+  "tutankhamun": [
+    "26521"
+  ],
   "tutorial": [
     "34004"
   ],
   "tutorship": [
     "36735"
   ],
+  "tv": [
+    "25498"
+  ],
+  "tv and video room": [
+    "37336"
+  ],
   "tv room": [
     "16139"
+  ],
+  "tv station": [
+    "37878"
   ],
   "tweet": [
     "8262"
@@ -54225,6 +53647,9 @@
   "twister": [
     "5598"
   ],
+  "twister game": [
+    "29004"
+  ],
   "two": [
     "2628",
     "35679",
@@ -54259,7 +53684,11 @@
   "txakoli": [
     "29197"
   ],
+  "txotx!": [
+    "29246"
+  ],
   "ty": [
+    "36755",
     "36770"
   ],
   "type": [
@@ -54271,20 +53700,115 @@
   "typhoon": [
     "8606"
   ],
+  "tyrannosaurus rex": [
+    "34981"
+  ],
+  "tyrannosaurus rex skull": [
+    "34969"
+  ],
   "tyre": [
     "37072",
     "37103"
   ],
+  "türkiye": [
+    "22161",
+    "29582"
+  ],
   "u": [
-    "3043"
+    "3043",
+    "3164"
+  ],
+  "udc": [
+    "28369",
+    "28370",
+    "28371",
+    "28372",
+    "28373",
+    "28374",
+    "28375",
+    "28376",
+    "28377",
+    "28378",
+    "28379",
+    "28380",
+    "28381",
+    "28382",
+    "28383",
+    "28384",
+    "33962",
+    "33963",
+    "33964",
+    "33965",
+    "38152",
+    "38153",
+    "38154",
+    "38155",
+    "38156",
+    "38157",
+    "38158",
+    "38159",
+    "38160",
+    "38161",
+    "38162",
+    "38163",
+    "38164",
+    "38165",
+    "38166",
+    "38167",
+    "38168",
+    "38169",
+    "38170",
+    "38171",
+    "38172",
+    "38173",
+    "38174",
+    "38175",
+    "38176",
+    "38177",
+    "38178",
+    "38179",
+    "38180",
+    "38181",
+    "38182",
+    "38183",
+    "38184",
+    "38185",
+    "38186",
+    "38187",
+    "38188",
+    "38189",
+    "38190",
+    "38191",
+    "38192",
+    "38193",
+    "38194",
+    "38195",
+    "38196",
+    "38197",
+    "38198",
+    "38608",
+    "38614",
+    "38615",
+    "38616",
+    "39825"
   ],
   "udder": [
     "25518"
+  ],
+  "ufo": [
+    "7191"
   ],
   "ugly": [
     "26090",
     "4647",
     "4648"
+  ],
+  "uk": [
+    "8206"
+  ],
+  "ukraine": [
+    "27313",
+    "29583"
   ],
   "ukulele": [
     "37887"
@@ -54332,6 +53856,9 @@
   ],
   "umbrella stand": [
     "3285"
+  ],
+  "un": [
+    "9079"
   ],
   "unagitated": [
     "31310",
@@ -54401,7 +53928,7 @@
   "underclothing": [
     "25680"
   ],
-  "undergo a CT scan": [
+  "undergo a ct scan": [
     "30797"
   ],
   "underground house": [
@@ -54470,6 +53997,9 @@
   "unequal": [
     "4628"
   ],
+  "unesco": [
+    "9082"
+  ],
   "uneven": [
     "32386",
     "32394",
@@ -54509,11 +54039,17 @@
     "31939",
     "35545"
   ],
+  "unhcr": [
+    "9073"
+  ],
   "unhealthy": [
     "39142"
   ],
   "unhorse": [
     "33014"
+  ],
+  "unicef": [
+    "9083"
   ],
   "unicorn": [
     "6237"
@@ -54522,17 +54058,114 @@
     "9853",
     "9857"
   ],
+  "unifor": [
+    "16184"
+  ],
   "unintelligible": [
     "15329"
   ],
   "union": [
     "39087"
   ],
+  "united arab emirates": [
+    "27730"
+  ],
+  "united kingdom": [
+    "28974",
+    "8206"
+  ],
+  "united nations": [
+    "9079"
+  ],
+  "united states": [
+    "29588",
+    "8112"
+  ],
+  "united states of america": [
+    "29588",
+    "8112"
+  ],
+  "universal decimal classification": [
+    "28369",
+    "28370",
+    "28371",
+    "28372",
+    "28373",
+    "28374",
+    "28375",
+    "28376",
+    "28377",
+    "28378",
+    "28379",
+    "28380",
+    "28381",
+    "28382",
+    "28383",
+    "28384",
+    "33962",
+    "33963",
+    "33964",
+    "33965",
+    "38152",
+    "38153",
+    "38154",
+    "38155",
+    "38156",
+    "38157",
+    "38158",
+    "38159",
+    "38160",
+    "38161",
+    "38162",
+    "38163",
+    "38164",
+    "38165",
+    "38166",
+    "38167",
+    "38168",
+    "38169",
+    "38170",
+    "38171",
+    "38172",
+    "38173",
+    "38174",
+    "38175",
+    "38176",
+    "38177",
+    "38178",
+    "38179",
+    "38180",
+    "38181",
+    "38182",
+    "38183",
+    "38184",
+    "38185",
+    "38186",
+    "38187",
+    "38188",
+    "38189",
+    "38190",
+    "38191",
+    "38192",
+    "38193",
+    "38194",
+    "38195",
+    "38196",
+    "38197",
+    "38198",
+    "38608",
+    "38614",
+    "38615",
+    "38616"
+  ],
   "universal design": [
     "14678"
   ],
   "universe": [
     "37375"
+  ],
+  "university": [
+    "15537"
   ],
   "unkempt": [
     "16289",
@@ -54652,6 +54285,9 @@
   "upwards": [
     "5388"
   ],
+  "uranus": [
+    "10302"
+  ],
   "urban bus": [
     "2263"
   ],
@@ -54746,20 +54382,39 @@
     "37378",
     "37379"
   ],
+  "uruguay": [
+    "29602",
+    "8244"
+  ],
   "us": [
+    "29588",
     "31672",
     "31674",
     "32306",
     "7183",
     "7184",
     "7185",
-    "7186"
+    "7186",
+    "8112"
+  ],
+  "usa": [
+    "29588",
+    "8112"
   ],
   "usage": [
     "17036"
   ],
+  "usb charger station": [
+    "38255"
+  ],
   "usb flash drive": [
     "9800"
+  ],
+  "usb memory": [
+    "9800"
+  ],
+  "usb wall charger": [
+    "38255"
   ],
   "use": [
     "15485",
@@ -54810,8 +54465,12 @@
   "uvula": [
     "39873"
   ],
+  "uzbekistan": [
+    "28070"
+  ],
   "v": [
-    "3044"
+    "3044",
+    "3165"
   ],
   "vacation": [
     "3166",
@@ -54883,24 +54542,41 @@
   "vaginal speculum": [
     "33120"
   ],
+  "valencia": [
+    "14769"
+  ],
+  "valencia region": [
+    "8246",
+    "8713"
+  ],
+  "valencian community": [
+    "8246",
+    "8713"
+  ],
   "valencian language lesson": [
     "36372"
   ],
   "valencian literacy": [
     "36372"
   ],
+  "valencian trinquet": [
+    "37053"
+  ],
   "validate": [
     "28291",
     "28292"
   ],
-  "validate ID wristband": [
-    "38916"
-  ],
   "validate card": [
     "38781"
   ],
+  "validate id wristband": [
+    "38916"
+  ],
   "validate wristband": [
     "38916"
+  ],
+  "valladolid": [
+    "14777"
   ],
   "valley": [
     "6238"
@@ -54972,6 +54648,9 @@
   "vasectomy": [
     "16681"
   ],
+  "vatican city": [
+    "27314"
+  ],
   "vault": [
     "36891"
   ],
@@ -54983,6 +54662,9 @@
   ],
   "vaulting box": [
     "37550"
+  ],
+  "vcr": [
+    "26535"
   ],
   "veal": [
     "25630",
@@ -55088,6 +54770,9 @@
   "velcro-strap sandals": [
     "37574"
   ],
+  "velociraptor": [
+    "39827"
+  ],
   "velocity": [
     "8247"
   ],
@@ -55100,6 +54785,10 @@
   "velvet crab": [
     "27909"
   ],
+  "venezuela": [
+    "29596",
+    "29597"
+  ],
   "venom": [
     "8248"
   ],
@@ -55111,6 +54800,9 @@
   ],
   "ventilator": [
     "2612"
+  ],
+  "venus": [
+    "10303"
   ],
   "verb": [
     "32067",
@@ -55165,6 +54857,9 @@
     "38564"
   ],
   "vespa": [
+    "28167"
+  ],
+  "vespa scooter": [
     "28167"
   ],
   "vest": [
@@ -55230,6 +54925,9 @@
   "video": [
     "26535"
   ],
+  "video and tv room": [
+    "37336"
+  ],
   "video call": [
     "8537"
   ],
@@ -55268,6 +54966,12 @@
     "27762",
     "37249",
     "37250"
+  ],
+  "vieja cuaresma": [
+    "14550"
+  ],
+  "vietnam": [
+    "28071"
   ],
   "viewpoint": [
     "27885",
@@ -55318,6 +55022,9 @@
   ],
   "virgin": [
     "5606",
+    "7301"
+  ],
+  "virgin mary": [
     "7301"
   ],
   "virgule": [
@@ -55491,7 +55198,29 @@
     "9187"
   ],
   "w": [
-    "3045"
+    "3045",
+    "3167"
+  ],
+  "w.c.": [
+    "15810",
+    "15812",
+    "15814",
+    "27475",
+    "27559",
+    "27561",
+    "33934",
+    "33935",
+    "33936",
+    "37331",
+    "37710",
+    "37904",
+    "38625",
+    "38626",
+    "38627",
+    "39122",
+    "5921",
+    "6929",
+    "6930"
   ],
   "wafer": [
     "24105",
@@ -55608,6 +55337,9 @@
     "31857",
     "8988",
     "8989"
+  ],
+  "wales": [
+    "39461"
   ],
   "walk": [
     "16461",
@@ -56010,16 +55742,6 @@
     "6564",
     "8718"
   ],
-  "watch TV": [
-    "16905",
-    "2782",
-    "28661",
-    "29123",
-    "29124",
-    "29125",
-    "6626",
-    "7296"
-  ],
   "watch a film": [
     "34319",
     "34320"
@@ -56043,6 +55765,16 @@
   ],
   "watch the fireworks": [
     "29198"
+  ],
+  "watch tv": [
+    "16905",
+    "2782",
+    "28661",
+    "29123",
+    "29124",
+    "29125",
+    "6626",
+    "7296"
   ],
   "watchman": [
     "3343",
@@ -56149,6 +55881,9 @@
   "water tap": [
     "32650"
   ],
+  "water tower": [
+    "22145"
+  ],
   "water treatment plant": [
     "24300"
   ],
@@ -56215,6 +55950,9 @@
   "waxing": [
     "10290"
   ],
+  "wbg": [
+    "9074"
+  ],
   "we": [
     "31672",
     "31674",
@@ -56225,6 +55963,9 @@
     "7186"
   ],
   "we don't agree": [
+    "11315"
+  ],
+  "we don't understand each other": [
     "11315"
   ],
   "weak": [
@@ -56354,6 +56095,10 @@
     "35237",
     "36433"
   ],
+  "wednesday": [
+    "37728",
+    "6563"
+  ],
   "weed": [
     "7013"
   ],
@@ -56446,6 +56191,9 @@
   "werewolf": [
     "8135"
   ],
+  "west": [
+    "8179"
+  ],
   "wet": [
     "25253",
     "36399",
@@ -56475,6 +56223,9 @@
     "27284",
     "33012"
   ],
+  "wfp": [
+    "9081"
+  ],
   "whale": [
     "2268"
   ],
@@ -56484,6 +56235,15 @@
   "what": [
     "22620",
     "22624"
+  ],
+  "what are you doing?": [
+    "37330"
+  ],
+  "what are you looking at?": [
+    "7801"
+  ],
+  "what are you reading?": [
+    "7800"
   ],
   "what are you saying?": [
     "11611"
@@ -56497,6 +56257,9 @@
   "what branch?": [
     "32292"
   ],
+  "what color is it?": [
+    "32137"
+  ],
   "what course?": [
     "32001",
     "32002"
@@ -56504,6 +56267,12 @@
   "what degree?": [
     "32001",
     "32002"
+  ],
+  "what do you do?": [
+    "37330"
+  ],
+  "what do you have?": [
+    "7802"
   ],
   "what do you want?": [
     "38229"
@@ -56524,6 +56293,12 @@
   ],
   "what is that?": [
     "10366"
+  ],
+  "what is the gravity?": [
+    "39516"
+  ],
+  "what is the severity?": [
+    "39516"
   ],
   "what is your address?": [
     "11603",
@@ -56578,6 +56353,12 @@
     "29175",
     "37370"
   ],
+  "what's her gender?": [
+    "10274"
+  ],
+  "what's his gender?": [
+    "10274"
+  ],
   "what's the weather like?": [
     "7223"
   ],
@@ -56586,6 +56367,9 @@
   ],
   "whatever": [
     "26779"
+  ],
+  "whats its gender?": [
+    "10274"
   ],
   "whatsapp": [
     "37867"
@@ -56680,14 +56464,26 @@
   "where is he going?": [
     "7079"
   ],
+  "where is it?": [
+    "32872"
+  ],
   "where is she going?": [
     "7079"
   ],
   "where?": [
     "7764"
   ],
+  "which color is it?": [
+    "7075"
+  ],
   "which game do you want?": [
     "10368"
+  ],
+  "which is the difference?": [
+    "32792"
+  ],
+  "which is the result?": [
+    "32775"
   ],
   "which?": [
     "26022"
@@ -56792,6 +56588,7 @@
   "who": [
     "10276",
     "13358",
+    "9080",
     "9853",
     "9854",
     "9857"
@@ -56813,6 +56610,15 @@
   ],
   "who is?": [
     "10276"
+  ],
+  "who's calling?": [
+    "7803"
+  ],
+  "who's he?": [
+    "9853"
+  ],
+  "who's she?": [
+    "9854"
   ],
   "who?": [
     "10276",
@@ -56851,6 +56657,7 @@
     "36719"
   ],
   "wi-fi": [
+    "35503",
     "9163"
   ],
   "wi-fi router": [
@@ -57108,6 +56915,9 @@
   "wipers": [
     "10331"
   ],
+  "wiphala": [
+    "36981"
+  ],
   "wire": [
     "7042"
   ],
@@ -57200,6 +57010,9 @@
   "wizard": [
     "38024"
   ],
+  "wlan": [
+    "35503"
+  ],
   "wok": [
     "39542"
   ],
@@ -57262,6 +57075,9 @@
   ],
   "women's resource center": [
     "32352"
+  ],
+  "wonder woman": [
+    "36737"
   ],
   "wonton": [
     "38994"
@@ -57435,6 +57251,15 @@
   "world": [
     "30015"
   ],
+  "world autism awareness day": [
+    "29927"
+  ],
+  "world bank": [
+    "9074"
+  ],
+  "world health organization": [
+    "9080"
+  ],
   "world-wide": [
     "8173"
   ],
@@ -57590,17 +57415,32 @@
     "34689"
   ],
   "x": [
-    "3046"
+    "3046",
+    "3168"
   ],
   "x-ray": [
     "30108",
-    "30109"
+    "30109",
+    "6198"
+  ],
+  "x-ray diagnosis": [
+    "38353"
+  ],
+  "x-ray diagnosis service": [
+    "38353"
   ],
   "x-ray lead apron": [
     "38975"
   ],
   "x-ray lead shield": [
     "38975"
+  ],
+  "x-ray machine": [
+    "33104",
+    "33105"
+  ],
+  "x-ray picture": [
+    "6198"
   ],
   "x-ray protector": [
     "38975"
@@ -57609,15 +57449,24 @@
     "31076",
     "31088"
   ],
+  "x-rays": [
+    "33104",
+    "33105",
+    "6198"
+  ],
   "xebec": [
     "38345"
+  ],
+  "xmas": [
+    "3092"
   ],
   "xylophone": [
     "2616",
     "6249"
   ],
   "y": [
-    "3047"
+    "3047",
+    "3171"
   ],
   "yacht": [
     "3172"
@@ -57682,6 +57531,9 @@
   ],
   "yellow pepper": [
     "39388"
+  ],
+  "yemen": [
+    "28072"
   ],
   "yerba mate": [
     "37005"
@@ -57794,16 +57646,23 @@
     "39819"
   ],
   "z": [
-    "3048"
+    "3048",
+    "3173"
   ],
   "zambomba": [
     "11400"
+  ],
+  "zamora": [
+    "14778"
   ],
   "zapallito": [
     "39634"
   ],
   "zapallo": [
     "39701"
+  ],
+  "zaragoza's conference hall": [
+    "25545"
   ],
   "zebec": [
     "38345"
@@ -57829,6 +57688,12 @@
   ],
   "zills": [
     "3266"
+  ],
+  "zimmer": [
+    "5902"
+  ],
+  "zimmer frame": [
+    "5902"
   ],
   "zip": [
     "16897",
@@ -57874,6 +57739,7 @@
     "4773"
   ],
   "zs": [
+    "36753",
     "36768"
   ],
   "zumba": [
@@ -57885,70 +57751,48 @@
   "¿": [
     "3415"
   ],
-  "Á": [
-    "36740"
-  ],
-  "Ç": [
-    "29078"
-  ],
-  "É": [
-    "36744"
-  ],
-  "Í": [
-    "36743"
-  ],
-  "Ñ": [
-    "5085"
-  ],
-  "Ó": [
-    "36749"
-  ],
-  "Ö": [
-    "36750"
-  ],
-  "Ú": [
-    "36754"
-  ],
-  "Ü": [
-    "36752"
-  ],
   "á": [
+    "36740",
     "36785"
   ],
   "ç": [
+    "29078",
     "29080"
   ],
   "é": [
+    "36744",
     "36783"
   ],
   "í": [
+    "36743",
     "36779"
   ],
   "ñ": [
-    "3412"
+    "3412",
+    "5085"
   ],
   "ó": [
+    "36749",
     "36776"
   ],
   "ö": [
+    "36750",
     "36774"
   ],
   "ú": [
+    "36754",
     "36769"
   ],
   "ü": [
+    "36752",
     "36772"
   ],
-  "Ő": [
-    "36738"
-  ],
   "ő": [
+    "36738",
     "36775"
   ],
-  "Ű": [
-    "36751"
-  ],
   "ű": [
+    "36751",
     "36771"
   ],
   "₪": [

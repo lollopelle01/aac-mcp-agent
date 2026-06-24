@@ -179,9 +179,6 @@
     "4889",
     "7291"
   ],
-  "1 Kg": [
-    "39481"
-  ],
   "1 centesimo": [
     "4775"
   ],
@@ -191,13 +188,16 @@
   "1 euro": [
     "4776"
   ],
+  "1 kg": [
+    "39481"
+  ],
   "1-2-3": [
     "19548"
   ],
-  "1/2 Kg": [
+  "1/2 chilo": [
     "39478"
   ],
-  "1/2 chilo": [
+  "1/2 kg": [
     "39478"
   ],
   "1/4": [
@@ -969,2556 +969,12 @@
   "@": [
     "3177"
   ],
-  "A": [
-    "3049"
-  ],
-  "ACNUR": [
-    "9073"
-  ],
-  "AI": [
-    "39705"
-  ],
-  "AIDS": [
-    "24402"
-  ],
-  "AMBU": [
-    "37221"
-  ],
-  "ARASAAC": [
-    "35071"
-  ],
-  "Aceto balsamico": [
-    "38539"
-  ],
-  "Acquario": [
-    "26618"
-  ],
-  "Adamo ed Eva": [
-    "23729"
-  ],
-  "Afghanistan": [
-    "24831"
-  ],
-  "Africa": [
-    "5364"
-  ],
-  "Agosto": [
-    "35941",
-    "6034"
-  ],
-  "Albacete": [
-    "14762"
-  ],
-  "Albania": [
-    "29584",
-    "29585"
-  ],
-  "Alcazaba de Badajoz": [
-    "38651"
-  ],
-  "Alcazaba di Malaga": [
-    "25411"
-  ],
-  "Algeria": [
-    "26668"
-  ],
-  "Alhambra": [
-    "31027"
-  ],
-  "Alicante": [
-    "14767"
-  ],
-  "Allergologia": [
-    "31172",
-    "31174"
-  ],
-  "Almería": [
-    "14683"
-  ],
-  "Altamira": [
-    "11177"
-  ],
-  "Alzheimer": [
-    "16349"
-  ],
-  "Ameria del Sud": [
-    "34387"
-  ],
-  "America": [
-    "5377"
-  ],
-  "Amore": [
-    "16637"
-  ],
-  "Andalusia": [
-    "8024",
-    "8489"
-  ],
-  "Andare in moto": [
-    "38117"
-  ],
-  "Andorra": [
-    "26666",
-    "28979"
-  ],
-  "Angola": [
-    "26667"
-  ],
-  "Anno Nuovo": [
-    "32536",
-    "5071"
-  ],
-  "Annunciazione": [
-    "29957"
-  ],
-  "Antartide": [
-    "21363"
-  ],
-  "Antequera": [
-    "31029",
-    "31031",
-    "31129",
-    "31131",
-    "31133",
-    "31135"
-  ],
-  "Aprile": [
-    "35935",
-    "6024"
-  ],
-  "AraWord": [
-    "25748",
-    "25749"
-  ],
-  "Arabia Saudita": [
-    "24858"
-  ],
-  "Aragona": [
-    "5383",
-    "5384",
-    "5608",
-    "5610"
-  ],
-  "Aragosauro": [
-    "34437"
-  ],
-  "Arca dell'Alleanza": [
-    "36087"
-  ],
-  "Arca di Noè": [
-    "23751"
-  ],
-  "Argentina": [
-    "29590",
-    "8030"
-  ],
-  "Armenia": [
-    "26669",
-    "29569"
-  ],
-  "Arowana australiano": [
-    "34429"
-  ],
-  "Asia": [
-    "5390"
-  ],
-  "Asturie": [
-    "14829",
-    "8034",
-    "8494"
-  ],
-  "Atomium": [
-    "23769"
-  ],
-  "Australia": [
-    "21393",
-    "37646"
-  ],
-  "Austria": [
-    "21394",
-    "28980"
-  ],
-  "Avvento": [
-    "37174"
-  ],
-  "Azerbaigian": [
-    "26670",
-    "29570"
-  ],
-  "Azutero": [
-    "36175"
-  ],
-  "B": [
-    "3061"
-  ],
-  "BMX": [
-    "39237"
-  ],
-  "Babbo Natale": [
-    "25297",
-    "25298",
-    "3139",
-    "32454"
-  ],
-  "Bach": [
-    "35023"
-  ],
-  "Badajoz": [
-    "14830",
-    "25357"
-  ],
-  "Bahamas": [
-    "26671",
-    "29730"
-  ],
-  "Bahrain": [
-    "27591"
-  ],
-  "Baldassarre": [
-    "7048"
-  ],
-  "Baleari": [
-    "8036",
-    "8498"
-  ],
-  "Bambino Gesù": [
-    "7177"
-  ],
-  "Banca Mondiale": [
-    "9074"
-  ],
-  "Bangladesh": [
-    "38460"
-  ],
-  "Barbados": [
-    "26672",
-    "29732"
-  ],
-  "Barbie": [
-    "3063"
-  ],
-  "Barcellona": [
-    "14832",
-    "9858"
-  ],
-  "Baryonyx": [
-    "34439"
-  ],
-  "Base 10": [
-    "31334",
-    "31335",
-    "31336",
-    "31337",
-    "31338"
-  ],
-  "Basilica del Pilar": [
-    "5394"
-  ],
-  "Batman": [
-    "8039"
-  ],
-  "Beciuania": [
-    "26674"
-  ],
-  "Beethoven": [
-    "35057"
-  ],
-  "Belgio": [
-    "28972",
-    "8040"
-  ],
-  "Belize": [
-    "27598",
-    "29729"
-  ],
-  "Berrugón": [
-    "5407"
-  ],
-  "Biancaneve": [
-    "21447"
-  ],
-  "Bibbia": [
-    "23833"
-  ],
-  "Bibbia ebraica": [
-    "36183"
-  ],
-  "Bielorussia": [
-    "26673",
-    "29571"
-  ],
-  "Big Ben": [
-    "21445"
-  ],
-  "Birmania": [
-    "27603"
-  ],
-  "Biscaglia": [
-    "14761"
-  ],
-  "Bolivia": [
-    "29594",
-    "29595"
-  ],
-  "Bosnia-Erzegovina": [
-    "21459",
-    "28966"
-  ],
-  "Botafumeiro": [
-    "35867"
-  ],
-  "Boticario": [
-    "5461"
-  ],
-  "Botswana": [
-    "26674"
-  ],
-  "Brachiosauro": [
-    "34441"
-  ],
-  "Brasile": [
-    "29589",
-    "8044"
-  ],
-  "Brunei": [
-    "27624"
-  ],
-  "Budda": [
-    "23857"
-  ],
-  "Bulgaria": [
-    "17185",
-    "28984"
-  ],
-  "Buon Compleanno": [
-    "26786",
-    "26788",
-    "6499"
-  ],
-  "Buon Compleanno!": [
-    "16635",
-    "26786",
-    "26788",
-    "5997",
-    "6499"
-  ],
-  "Buon Natale": [
-    "32456",
-    "32458"
-  ],
-  "Buon Natale!": [
-    "32456",
-    "32458"
-  ],
-  "Burgos": [
-    "14771"
-  ],
-  "Burkina Faso": [
-    "26675"
-  ],
-  "Burundi": [
-    "26676"
-  ],
-  "Butan": [
-    "27625"
-  ],
-  "C": [
-    "3069"
-  ],
-  "C'era una volta": [
-    "8277"
-  ],
-  "CAA": [
-    "6991"
-  ],
-  "CAP": [
-    "38565"
-  ],
-  "CD": [
-    "15349",
-    "2322",
-    "39044"
-  ],
-  "CD Rom": [
-    "25614"
-  ],
-  "CD musicale": [
-    "39044"
-  ],
-  "CD-ROM": [
-    "2322",
-    "25614"
-  ],
-  "CDD": [
-    "28369",
-    "28370",
-    "28371",
-    "28372",
-    "28373",
-    "28374",
-    "28375",
-    "28376",
-    "28377",
-    "28378",
-    "28379",
-    "28380",
-    "28381",
-    "28382",
-    "28383",
-    "28384"
-  ],
-  "CDU": [
-    "38608",
-    "38614",
-    "38615",
-    "38616",
-    "39825"
-  ],
-  "CTG": [
-    "32206"
-  ],
-  "CV": [
-    "39177"
-  ],
-  "Cachopo": [
-    "30508"
-  ],
-  "Cadice": [
-    "14684"
-  ],
-  "Calvario": [
-    "38730"
-  ],
-  "Cambogia": [
-    "27646"
-  ],
-  "Camera dei deputati": [
-    "21551"
-  ],
-  "Camerun": [
-    "8055"
-  ],
-  "Cammino di Santiago": [
-    "35835"
-  ],
-  "Campidoglio": [
-    "24941"
-  ],
-  "Canada": [
-    "29587",
-    "8057"
-  ],
-  "Canarie": [
-    "8058",
-    "8525"
-  ],
-  "Cantabria": [
-    "14836",
-    "8060",
-    "8527"
-  ],
-  "Capo Verde": [
-    "26677"
-  ],
-  "Capodanno": [
-    "32536",
-    "8261"
-  ],
-  "Cappuccetto Rosso": [
-    "5942"
-  ],
-  "Cardiotocografia": [
-    "32206"
-  ],
-  "Cartellata": [
-    "36627"
-  ],
-  "Castello dell'Aljafería": [
-    "5421"
-  ],
-  "Castello di Loarre": [
-    "5422"
-  ],
-  "Castellón": [
-    "14768"
-  ],
-  "Castiglia La Mancia": [
-    "8067",
-    "8529"
-  ],
-  "Castiglia León": [
-    "8530"
-  ],
-  "Castilla León": [
-    "8068"
-  ],
-  "Catalogna": [
-    "8069",
-    "8532"
-  ],
-  "Cattedrale della Seo": [
-    "5423"
-  ],
-  "Cattedrale di Burgo": [
-    "36897"
-  ],
-  "Cattedrale di Malaga": [
-    "25550"
-  ],
-  "Cattedrale di Santiago": [
-    "35833"
-  ],
-  "Cenachero": [
-    "25588"
-  ],
-  "Cenerentola": [
-    "21527"
-  ],
-  "Centro galiziano di arte contemporanea": [
-    "36898"
-  ],
-  "Centro mobile di rianimazione": [
-    "28163"
-  ],
-  "Cervantes": [
-    "15351"
-  ],
-  "Cesare Augusto": [
-    "24978"
-  ],
-  "Ceuta": [
-    "14837",
-    "31330",
-    "31331",
-    "8070",
-    "8535"
-  ],
-  "Ci sei riuscito!": [
-    "25752",
-    "25757"
-  ],
-  "Ciad": [
-    "26752"
-  ],
-  "Ciambella di San Valerio": [
-    "5565"
-  ],
-  "Cigarrera": [
-    "36173"
-  ],
-  "Cile": [
-    "29598",
-    "8071"
-  ],
-  "Cina": [
-    "37647",
-    "8074"
-  ],
-  "Cipro": [
-    "21536"
-  ],
-  "Città del Vaticano": [
-    "27314"
-  ],
-  "Ciudad Real": [
-    "14763"
-  ],
-  "Classificazione Decimale Dewey": [
-    "28369",
-    "28370",
-    "28371",
-    "28372",
-    "28373",
-    "28374",
-    "28375",
-    "28376",
-    "28377",
-    "28378",
-    "28379",
-    "28380",
-    "28381",
-    "28382",
-    "28383",
-    "28384"
-  ],
-  "Classificazione Decimale Universale": [
-    "38608",
-    "38614",
-    "38615",
-    "38616"
-  ],
-  "Classificazione decimale Dewey": [
-    "33962",
-    "33963",
-    "33964",
-    "33965"
-  ],
-  "Co2": [
-    "24015"
-  ],
-  "Coca Cola": [
-    "31021"
-  ],
-  "Coca catalana": [
-    "12311"
-  ],
-  "Coca-Cola": [
-    "2338"
-  ],
-  "Codice QR": [
-    "38514"
-  ],
-  "Colombia": [
-    "29593",
-    "8080"
-  ],
-  "Colombo": [
-    "37932"
-  ],
-  "Colosseo di Roma": [
-    "23957"
-  ],
-  "Compact Disc": [
-    "39044"
-  ],
-  "Compostela": [
-    "35913"
-  ],
-  "Comunità Valenzana": [
-    "8246",
-    "8713"
-  ],
-  "Comunità di Madrid": [
-    "8156",
-    "8622"
-  ],
-  "Congresso": [
-    "21551"
-  ],
-  "Corano": [
-    "23973"
-  ],
-  "Cordoba": [
-    "14685"
-  ],
-  "Cordon bleu": [
-    "30508"
-  ],
-  "Corea del Nord": [
-    "25014"
-  ],
-  "Corea del Sud": [
-    "25015"
-  ],
-  "Corona dell'Avvento": [
-    "37174"
-  ],
-  "Corti d'Aragona": [
-    "5421"
-  ],
-  "Costa Rica": [
-    "21567",
-    "29726"
-  ],
-  "Costa d'Avorio": [
-    "26778"
-  ],
-  "Cremà": [
-    "25024"
-  ],
-  "Cristo": [
-    "24135",
-    "39831"
-  ],
-  "Cristo Redentore": [
-    "25036"
-  ],
-  "Cristoforo Colombo": [
-    "37932"
-  ],
-  "Croazia": [
-    "21572",
-    "28986"
-  ],
-  "Croce": [
-    "24135"
-  ],
-  "Croce Rossa": [
-    "30253",
-    "9075"
-  ],
-  "Cuba": [
-    "17218",
-    "29607"
-  ],
-  "Cuenca": [
-    "14764"
-  ],
-  "Cupido": [
-    "16637"
-  ],
-  "Cáceres": [
-    "14831"
-  ],
-  "D": [
-    "3088"
-  ],
-  "DAS": [
-    "2529"
-  ],
-  "DJ": [
-    "9193"
-  ],
-  "DYA": [
-    "30000"
-  ],
-  "Dacentrurus Armatus": [
-    "34595"
-  ],
-  "Dalí": [
-    "21581"
-  ],
-  "Danimarca": [
-    "21799",
-    "28981"
-  ],
-  "Dare la Precedenza": [
-    "6968"
-  ],
-  "Dentiera": [
-    "37170"
-  ],
-  "Dicembre": [
-    "35937",
-    "6476"
-  ],
-  "Diego di Marcilla": [
-    "34927"
-  ],
-  "Dio": [
-    "24013",
-    "35069"
-  ],
-  "Dolmen": [
-    "31133",
-    "31135"
-  ],
-  "Dolmen d Viera": [
-    "31135"
-  ],
-  "Domenica": [
-    "6478"
-  ],
-  "Don Chisciotte": [
-    "10359"
-  ],
-  "Dracula": [
-    "6239"
-  ],
-  "Dulcinea": [
-    "15373"
-  ],
-  "Dulcinea del Toboso": [
-    "15373"
-  ],
-  "E": [
-    "3096"
-  ],
-  "ECG": [
-    "30802",
-    "30805"
-  ],
-  "EEG": [
-    "30090",
-    "30091",
-    "30170",
-    "30171",
-    "30249"
-  ],
-  "Ebro": [
-    "5446"
-  ],
-  "Ecuador": [
-    "19550",
-    "29600"
-  ],
-  "Egitto": [
-    "37648",
-    "8099"
-  ],
-  "Einsamada di Maiorca": [
-    "11253"
-  ],
-  "El Hierro": [
-    "14843"
-  ],
-  "El Salvador": [
-    "29652",
-    "29653"
-  ],
-  "Emergenza Unità Supporto Vitale": [
-    "28163"
-  ],
-  "Emirati Arabi Uniti": [
-    "27730"
-  ],
-  "Emmenthal": [
-    "38899"
-  ],
-  "Epifania": [
-    "5072"
-  ],
-  "Eracle": [
-    "37316"
-  ],
-  "Ercole": [
-    "37316"
-  ],
-  "Eritrea": [
-    "26833"
-  ],
-  "Eschimese": [
-    "6135",
-    "6151"
-  ],
-  "Est": [
-    "8114"
-  ],
-  "Estonia": [
-    "21856",
-    "29574"
-  ],
-  "Estremadura": [
-    "8120",
-    "8580"
-  ],
-  "Etiopia": [
-    "26844"
-  ],
-  "Età dei metalli": [
-    "32640"
-  ],
-  "Età della pietra": [
-    "32636",
-    "32638"
-  ],
-  "Europa": [
-    "5468",
-    "8117"
-  ],
-  "Europelta carbonensis": [
-    "34591"
-  ],
-  "Evra": [
-    "31779"
-  ],
-  "F": [
-    "3101"
-  ],
-  "FAO": [
-    "9076"
-  ],
-  "FIVET": [
-    "14986"
-  ],
-  "FMI": [
-    "9077"
-  ],
-  "Febbraio": [
-    "35945",
-    "6498"
-  ],
-  "Felice anno nuovo": [
-    "32480"
-  ],
-  "Felice anno nuovo!": [
-    "32480"
-  ],
-  "Festa del papà": [
-    "3093"
-  ],
-  "Festa della maggiore età": [
-    "36119"
-  ],
-  "Festa della mamma": [
-    "3091"
-  ],
-  "Festa delle Lampade": [
-    "36125"
-  ],
-  "Festa delle primizie": [
-    "38964"
-  ],
-  "Festa delle settimane": [
-    "38964"
-  ],
-  "Festa di Capodanno": [
-    "32534"
-  ],
-  "Festa di San Giacomo": [
-    "35865"
-  ],
-  "Festa di San Giovanni": [
-    "32452"
-  ],
-  "Feste del Pilar": [
-    "5073"
-  ],
-  "Filetti di pollo impanati": [
-    "35815"
-  ],
-  "Filippine": [
-    "27761"
-  ],
-  "Finlandia": [
-    "21873",
-    "28983"
-  ],
-  "Forana": [
-    "5409"
-  ],
-  "Forano": [
-    "5410"
-  ],
-  "Formentera": [
-    "14848"
-  ],
-  "Francia": [
-    "28968",
-    "8121"
-  ],
-  "Francisco Goya": [
-    "15493"
-  ],
-  "Frankenstein": [
-    "8279"
-  ],
-  "Fuerteventura": [
-    "24478"
-  ],
-  "G": [
-    "3104"
-  ],
-  "Gabon": [
-    "26871"
-  ],
-  "Galizia": [
-    "8123",
-    "8588"
-  ],
-  "Galles": [
-    "39461"
-  ],
-  "Gambia": [
-    "8124"
-  ],
-  "Gana": [
-    "26873"
-  ],
-  "Gaspare": [
-    "7769"
-  ],
-  "Gennaio": [
-    "35923",
-    "6488"
-  ],
-  "Georgia": [
-    "26872",
-    "29575"
-  ],
-  "Germania": [
-    "28970",
-    "8011"
-  ],
-  "Gesù": [
-    "24135",
-    "39831"
-  ],
-  "Gesù Bambino": [
-    "7177"
-  ],
-  "Gesù Cristo": [
-    "24135",
-    "39831"
-  ],
-  "Ggattonare a quattro zampe": [
-    "37969"
-  ],
-  "Giamaica": [
-    "26880",
-    "29731"
-  ],
-  "Giappone": [
-    "8144"
-  ],
-  "Giordania": [
-    "25319",
-    "27857"
-  ],
-  "Giornata Nazionale della Catalogna": [
-    "27723"
-  ],
-  "Giornata della strage degli innocenti": [
-    "27152"
-  ],
-  "Giornata mondiale per la consapevolezza sull'Autismo": [
-    "29927"
-  ],
-  "Giove": [
-    "10293"
-  ],
-  "Giovedi Grasso": [
-    "28281"
-  ],
-  "Giovedì": [
-    "6536"
-  ],
-  "Giovedì Grasso": [
-    "28279"
-  ],
-  "Girona": [
-    "14833"
-  ],
-  "Giugno": [
-    "35933",
-    "6539"
-  ],
-  "Giuseppe": [
-    "7238"
-  ],
-  "Gli Amanti": [
-    "5503"
-  ],
-  "Golgota": [
-    "38730"
-  ],
-  "Gorgonzola": [
-    "28018"
-  ],
-  "Gourami": [
-    "34425"
-  ],
-  "Goya": [
-    "15493"
-  ],
-  "Gran Canaria": [
-    "24477"
-  ],
-  "Granada": [
-    "14686",
-    "26874",
-    "29733"
-  ],
-  "Grande Muraglia Cinese": [
-    "10272"
-  ],
-  "Grecia": [
-    "28973",
-    "8130"
-  ],
-  "Groenlandia": [
-    "26875"
-  ],
-  "Guadalajara": [
-    "14765"
-  ],
-  "Guatemala": [
-    "21916",
-    "29724"
-  ],
-  "Guerra d'indipendenza spagnola": [
-    "36925"
-  ],
-  "Guiana": [
-    "26878",
-    "29601"
-  ],
-  "Guiana Francese": [
-    "26879"
-  ],
-  "Guinea": [
-    "26876"
-  ],
-  "Guinea Equatoriale": [
-    "26877"
-  ],
-  "Guinea- Bissau": [
-    "39170"
-  ],
-  "Guipúzcoa": [
-    "14760"
-  ],
-  "H": [
-    "3112"
-  ],
-  "HIV": [
-    "24402"
-  ],
-  "Haiti": [
-    "27835",
-    "29728"
-  ],
-  "Hannukah": [
-    "36125"
-  ],
-  "Hansel e Gretel": [
-    "21923"
-  ],
-  "Hercules C-130": [
-    "36641"
-  ],
-  "Homo Sapiens": [
-    "37713"
-  ],
-  "Honduras": [
-    "29605",
-    "29606"
-  ],
-  "Hong Kong": [
-    "39462"
-  ],
-  "Huelva": [
-    "14687"
-  ],
-  "Huesca": [
-    "14680",
-    "38923",
-    "5488"
-  ],
-  "I": [
-    "3117"
-  ],
-  "IA": [
-    "39704"
-  ],
-  "IUD": [
-    "32035"
-  ],
-  "Iberica": [
-    "37125"
-  ],
-  "Iberici": [
-    "37130"
-  ],
-  "Iberico": [
-    "37119",
-    "37122"
-  ],
-  "Ibiza": [
-    "14850"
-  ],
-  "Il Gatto con gli stivali": [
-    "21888"
-  ],
-  "Inca Kola": [
-    "31021"
-  ],
-  "India": [
-    "25165",
-    "25484"
-  ],
-  "Indiana": [
-    "6152"
-  ],
-  "Indiana Jones": [
-    "21405"
-  ],
-  "Indiano d'America": [
-    "5489"
-  ],
-  "Indonesia": [
-    "27852"
-  ],
-  "Induismo": [
-    "38517"
-  ],
-  "Iran": [
-    "25169"
-  ],
-  "Iraq": [
-    "25168"
-  ],
-  "Irlanda": [
-    "21941",
-    "37651"
-  ],
-  "Isabella di Segura": [
-    "34929"
-  ],
-  "Isabella e Diego": [
-    "34935"
-  ],
-  "Isidoro l'Agricoltore": [
-    "36850"
-  ],
-  "Islam": [
-    "22793"
-  ],
-  "Islanda": [
-    "21942"
-  ],
-  "Isole Faroe": [
-    "39459"
-  ],
-  "Israele": [
-    "25170"
-  ],
-  "Italia": [
-    "28971",
-    "8143"
-  ],
-  "J": [
-    "3119"
-  ],
-  "Jamsa": [
-    "24158"
-  ],
-  "Jaén": [
-    "14688"
-  ],
-  "Johann Sebastian Bach": [
-    "35023"
-  ],
-  "Joker": [
-    "5405"
-  ],
-  "K": [
-    "3120"
-  ],
-  "Karate seiza": [
-    "31236"
-  ],
-  "Kasakistan": [
-    "27858"
-  ],
-  "Kata": [
-    "31240"
-  ],
-  "Kefta di agnello": [
-    "36649"
-  ],
-  "Kefta di manzo": [
-    "36650"
-  ],
-  "Kenia": [
-    "37649",
-    "37650"
-  ],
-  "Kinesiologia": [
-    "38581"
-  ],
-  "Kirghizistan": [
-    "27859"
-  ],
-  "Kumite": [
-    "31246"
-  ],
-  "Kuwait": [
-    "27860"
-  ],
-  "L": [
-    "3121"
-  ],
-  "LIM": [
-    "30512",
-    "9162"
-  ],
-  "La Alfajería": [
-    "5421"
-  ],
-  "La Alhambra di Granada": [
-    "31027"
-  ],
-  "La Bella Addormentata": [
-    "21433"
-  ],
-  "La Coruña": [
-    "14755"
-  ],
-  "La Gomera": [
-    "14845"
-  ],
-  "La Palma": [
-    "14846"
-  ],
-  "La Rioja": [
-    "14839",
-    "8149",
-    "8613"
-  ],
-  "La Sagrada Familia": [
-    "22098"
-  ],
-  "La Seo": [
-    "5423"
-  ],
-  "La Topina Presuntuosa": [
-    "38686"
-  ],
-  "La sepoltura della sardina": [
-    "27737"
-  ],
-  "Lanzarote": [
-    "14847"
-  ],
-  "Laos": [
-    "27861"
-  ],
-  "Las Pajaritas": [
-    "38923"
-  ],
-  "Latino": [
-    "32697"
-  ],
-  "Lavagna Digitale Multimediale": [
-    "9162"
-  ],
-  "Lavagna Interattiva Multimediale": [
-    "30512"
-  ],
-  "Lei": [
-    "31801"
-  ],
-  "Leonardo da Vinci": [
-    "38259"
-  ],
-  "Lettonia": [
-    "21961",
-    "29577"
-  ],
-  "León": [
-    "14772"
-  ],
-  "Libano": [
-    "27862"
-  ],
-  "Liechtenstein": [
-    "27303",
-    "29578"
-  ],
-  "Lituania": [
-    "21968"
-  ],
-  "Loarre": [
-    "5422"
-  ],
-  "Luglio": [
-    "35931",
-    "6538"
-  ],
-  "Lugo": [
-    "14756"
-  ],
-  "Lunedì": [
-    "6554"
-  ],
-  "Lupo cattivo": [
-    "36608",
-    "6140"
-  ],
-  "Lussemburgo": [
-    "21973"
-  ],
-  "Lérida": [
-    "14834"
-  ],
-  "M": [
-    "3125"
-  ],
-  "Macedonia del Nord": [
-    "21974"
-  ],
-  "Macelleria": [
-    "31402"
-  ],
-  "Machu Picchu": [
-    "25207"
-  ],
-  "Madagascar": [
-    "30204",
-    "37645"
-  ],
-  "Madonna": [
-    "7301"
-  ],
-  "Madonna del Pilar": [
-    "5606"
-  ],
-  "Madrid": [
-    "14840"
-  ],
-  "Magen David Adom": [
-    "36195",
-    "36227"
-  ],
-  "Maggio": [
-    "35925",
-    "6559"
-  ],
-  "Maiorca": [
-    "14851"
-  ],
-  "Malaga": [
-    "14689",
-    "24153"
-  ],
-  "Malaisia": [
-    "27863"
-  ],
-  "Maldive": [
-    "27864"
-  ],
-  "Malta": [
-    "21975",
-    "29579"
-  ],
-  "Mano di Fatima": [
-    "24158"
-  ],
-  "Mar Menor": [
-    "33040"
-  ],
-  "Mari Domingi": [
-    "38439"
-  ],
-  "Maria": [
-    "7301"
-  ],
-  "Maria Vergine": [
-    "7301"
-  ],
-  "Marocco": [
-    "38139",
-    "8159"
-  ],
-  "Marte": [
-    "10296"
-  ],
-  "Martedì": [
-    "6557"
-  ],
-  "Martinica": [
-    "27304"
-  ],
-  "Marzo": [
-    "35939",
-    "6558"
-  ],
-  "Matè": [
-    "37013"
-  ],
-  "Mecca": [
-    "36550"
-  ],
-  "Medioevo": [
-    "39846"
-  ],
-  "Melchiorre": [
-    "8264"
-  ],
-  "Melilla": [
-    "14838",
-    "8164",
-    "8628"
-  ],
-  "Mercoledì": [
-    "6563"
-  ],
-  "Mercurio": [
-    "10297"
-  ],
-  "Messico": [
-    "29591",
-    "8167"
-  ],
-  "Mezzaluna Rossa": [
-    "36197",
-    "36225"
-  ],
-  "Miguel de Cervantes": [
-    "15351"
-  ],
-  "Minerva": [
-    "37117"
-  ],
-  "Ministero economia e finanze MEF": [
-    "37329"
-  ],
-  "Minorca": [
-    "14852"
-  ],
-  "Mojón!": [
-    "29246"
-  ],
-  "Moldavia": [
-    "27305",
-    "29580"
-  ],
-  "Monaco": [
-    "27306"
-  ],
-  "Monastero di Piedra": [
-    "5518"
-  ],
-  "Monastero di San Juan": [
-    "5519"
-  ],
-  "Moncayo": [
-    "5520"
-  ],
-  "Mongolia": [
-    "28061"
-  ],
-  "Monte Calvario": [
-    "38730"
-  ],
-  "Monte Fuji": [
-    "37069"
-  ],
-  "Montenegro": [
-    "27307"
-  ],
-  "Mori e Crociati": [
-    "37044"
-  ],
-  "Morico": [
-    "5411"
-  ],
-  "Mosè": [
-    "24194"
-  ],
-  "Murcia": [
-    "14841",
-    "8174",
-    "8636"
-  ],
-  "Mérida": [
-    "25494"
-  ],
-  "N": [
-    "3133"
-  ],
-  "NATO": [
-    "27302"
-  ],
-  "Napoleone": [
-    "37705"
-  ],
-  "Napoleone Bonaparte": [
-    "37705"
-  ],
-  "Natale": [
-    "3134"
-  ],
-  "Natività": [
-    "24873",
-    "5089"
-  ],
-  "Navarra": [
-    "14842",
-    "8177",
-    "8639"
-  ],
-  "Nazioni Unite": [
-    "9079"
-  ],
-  "Nefertiti": [
-    "26252"
-  ],
-  "Neolitico": [
-    "32638"
-  ],
-  "Nepal": [
-    "28062",
-    "37644"
-  ],
-  "Nettuno": [
-    "10298"
-  ],
-  "Nicaragua": [
-    "22004",
-    "29604"
-  ],
-  "Nigeria": [
-    "39708"
-  ],
-  "Nord": [
-    "8178"
-  ],
-  "Nord Est": [
-    "27913"
-  ],
-  "Nord Ovest": [
-    "27915"
-  ],
-  "Norvegia": [
-    "10252",
-    "28982"
-  ],
-  "Novembre": [
-    "35927",
-    "6570"
-  ],
-  "Noè": [
-    "24198"
-  ],
-  "Nuova Zelanda": [
-    "25273"
-  ],
-  "Nuovo Testamento": [
-    "24039"
-  ],
-  "Nutella": [
-    "7763"
-  ],
-  "O": [
-    "3136"
-  ],
-  "OIT": [
-    "9078"
-  ],
-  "OMS": [
-    "9080"
-  ],
-  "ONU": [
-    "9079"
-  ],
-  "Oceania": [
-    "5528"
-  ],
-  "Offerta dei fiori": [
-    "5529"
-  ],
-  "Ognissanti": [
-    "32460",
-    "6951"
-  ],
-  "Olanda": [
-    "19547",
-    "29568"
-  ],
-  "Olentzero": [
-    "27017"
-  ],
-  "Oman": [
-    "28063"
-  ],
-  "Opera di Sidney": [
-    "31386"
-  ],
-  "Orense": [
-    "14757"
-  ],
-  "Orso piccolo": [
-    "6162"
-  ],
-  "Ottobre": [
-    "35943",
-    "6571"
-  ],
-  "Ovario": [
-    "37151"
-  ],
-  "Ovest": [
-    "8179"
-  ],
-  "P": [
-    "3137"
-  ],
-  "PC": [
-    "2487"
-  ],
-  "PC fisso": [
-    "9150"
-  ],
-  "PEG": [
-    "30474",
-    "30475",
-    "30476"
-  ],
-  "PET": [
-    "38355"
-  ],
-  "PMA": [
-    "9081"
-  ],
-  "POS": [
-    "9185"
-  ],
-  "Pablo Picasso": [
-    "25325"
-  ],
-  "Padre Nostro": [
-    "30850"
-  ],
-  "Paesi Baschi": [
-    "8118",
-    "8576"
-  ],
-  "Paesi Bassi": [
-    "19547",
-    "29568"
-  ],
-  "Pakistan": [
-    "25288",
-    "38140"
-  ],
-  "Palazzo dei Congressi di Saragozza": [
-    "25545"
-  ],
-  "Palazzo delle Fiere e Congressi di Malaga": [
-    "25544"
-  ],
-  "Palencia": [
-    "14773"
-  ],
-  "Paleolitico": [
-    "32636"
-  ],
-  "Palestina": [
-    "39689"
-  ],
-  "Panama": [
-    "29725"
-  ],
-  "Panamá": [
-    "17283"
-  ],
-  "Pangasio gigante": [
-    "34575"
-  ],
-  "Papa": [
-    "24234"
-  ],
-  "Papà orso": [
-    "6165"
-  ],
-  "Paradiso": [
-    "25948"
-  ],
-  "Paraguai": [
-    "8181"
-  ],
-  "Paraguay": [
-    "29599"
-  ],
-  "Parchis": [
-    "2501"
-  ],
-  "Parco Guell": [
-    "35863"
-  ],
-  "Parlamento": [
-    "21551"
-  ],
-  "Pasqua ebraica": [
-    "36131"
-  ],
-  "Patacòn": [
-    "37510"
-  ],
-  "Pedro di Azagra": [
-    "34933"
-  ],
-  "Pedro di Segura": [
-    "34931"
-  ],
-  "Peine del Viento": [
-    "28899"
-  ],
-  "Perù": [
-    "29592",
-    "8185"
-  ],
-  "Pesach": [
-    "36131"
-  ],
-  "Petra": [
-    "25319"
-  ],
-  "Piazza del Torico": [
-    "5543"
-  ],
-  "Picasso": [
-    "25325",
-    "25413"
-  ],
-  "Pifferaio di Hamelin": [
-    "5999"
-  ],
-  "Pilar": [
-    "5394",
-    "5606"
-  ],
-  "Pilara": [
-    "5412"
-  ],
-  "Pinocchio": [
-    "6177"
-  ],
-  "Pirenei": [
-    "5541"
-  ],
-  "PlayStation": [
-    "2354"
-  ],
-  "Plutone": [
-    "10299"
-  ],
-  "Pollicino": [
-    "22062"
-  ],
-  "Polline": [
-    "37153"
-  ],
-  "Polo Nord": [
-    "6187"
-  ],
-  "Polo Sud": [
-    "6188"
-  ],
-  "Polonia": [
-    "22051",
-    "28985"
-  ],
-  "Ponte di Pietra": [
-    "5557"
-  ],
-  "Pontevedra": [
-    "14758"
-  ],
-  "Porcellino maggiore": [
-    "5954"
-  ],
-  "Porcellino medio": [
-    "5955"
-  ],
-  "Porcellino minore": [
-    "5956"
-  ],
-  "Porta del Carmen": [
-    "22060"
-  ],
-  "Porta di Alcalá": [
-    "22056"
-  ],
-  "Porta di Brandeburgo": [
-    "22058"
-  ],
-  "Porta di Palmas": [
-    "25357"
-  ],
-  "Porto Rico": [
-    "17296"
-  ],
-  "Portogallo": [
-    "28969",
-    "8196"
-  ],
-  "Preistoria": [
-    "32630",
-    "32634"
-  ],
-  "Presepe": [
-    "24873"
-  ],
-  "Presidente del Senato": [
-    "37563"
-  ],
-  "Principessa del Burundi": [
-    "34571"
-  ],
-  "Proa valdearinnoensis": [
-    "34587"
-  ],
-  "Prostaglandina E2": [
-    "31700"
-  ],
-  "Protesi dentaria": [
-    "37170"
-  ],
-  "Protottero etiopico": [
-    "34583"
-  ],
-  "Q": [
-    "3146"
-  ],
-  "QR": [
-    "38514"
-  ],
-  "Qatar": [
-    "28064"
-  ],
-  "Qual è il tuo numero di cellulare?": [
-    "31484"
-  ],
-  "Qual è il tuo numero di telefono?": [
-    "31485"
-  ],
-  "Qual' è il tuo nome?": [
-    "38570"
-  ],
-  "Quanto pesa?": [
-    "33128"
-  ],
-  "Quasimodo": [
-    "6020"
-  ],
-  "R": [
-    "3147"
-  ],
-  "Ramadan": [
-    "36438"
-  ],
-  "Re Magi": [
-    "26390",
-    "3124",
-    "5072"
-  ],
-  "Regno Unito": [
-    "28974",
-    "8206"
-  ],
-  "Repubblica Ceca": [
-    "21535"
-  ],
-  "Repubblica Democratica del Congo": [
-    "26769"
-  ],
-  "Repubblica Democratica di Sao Tomè e Principe": [
-    "39169"
-  ],
-  "Repubblica Domenicana": [
-    "27308"
-  ],
-  "Repubblica Dominicana": [
-    "29727"
-  ],
-  "Repubblica Popolare del Bangladesh": [
-    "38460"
-  ],
-  "Repubblica di Tunisia": [
-    "39168"
-  ],
-  "Riccioli d'Oro": [
-    "6207"
-  ],
-  "Rio de Janeiro": [
-    "25036"
-  ],
-  "Rivoluzione Francese": [
-    "37926"
-  ],
-  "Robaculeros": [
-    "5413"
-  ],
-  "Roccia degli innamorati": [
-    "31131"
-  ],
-  "Romania": [
-    "28975",
-    "8214"
-  ],
-  "Romano": [
-    "32088"
-  ],
-  "Roquefort": [
-    "28018"
-  ],
-  "Russia": [
-    "28976",
-    "8215"
-  ],
-  "S": [
-    "3152"
-  ],
-  "SOS": [
-    "29016"
-  ],
-  "SUV": [
-    "3223"
-  ],
-  "Sabato": [
-    "6605"
-  ],
-  "Sagrada Familia": [
-    "22098"
-  ],
-  "Saint Kitts e Nevis": [
-    "29734",
-    "29735"
-  ],
-  "Salamanca": [
-    "14774"
-  ],
-  "Salvador Dalí": [
-    "21581"
-  ],
-  "San Fermìn": [
-    "38225"
-  ],
-  "San Giacomo Maggiore": [
-    "35871"
-  ],
-  "San Giorgio": [
-    "25427",
-    "5576"
-  ],
-  "San Giorgio e il Drago": [
-    "5576"
-  ],
-  "San Giovanni": [
-    "24386"
-  ],
-  "San Giovanni Battista": [
-    "24386"
-  ],
-  "San Giuseppe": [
-    "7238"
-  ],
-  "San Lorenzo": [
-    "5577"
-  ],
-  "San Marino": [
-    "27309",
-    "29581"
-  ],
-  "San Pietro": [
-    "39220"
-  ],
-  "San Sebastián": [
-    "28960"
-  ],
-  "San Valentino": [
-    "19541",
-    "19543",
-    "19545"
-  ],
-  "San Valerio": [
-    "28701"
-  ],
-  "Sancho Panza": [
-    "15495"
-  ],
-  "Sant Vincet e Grenadine": [
-    "27310"
-  ],
-  "Sant'Antonio": [
-    "39221"
-  ],
-  "Sant'Antonio Abate": [
-    "39221"
-  ],
-  "Santa Claus": [
-    "25297",
-    "25298",
-    "3139"
-  ],
-  "Santa Croce": [
-    "24135"
-  ],
-  "Santiago di Compostella": [
-    "35831"
-  ],
-  "Sao Tomè e Principe": [
-    "39169"
-  ],
-  "Saragozza": [
-    "14682",
-    "5607"
-  ],
-  "Saturno": [
-    "10300"
-  ],
-  "Scandinavia": [
-    "34069"
-  ],
-  "Scozia": [
-    "21844"
-  ],
-  "Segovia": [
-    "14775"
-  ],
-  "Senegal": [
-    "8221"
-  ],
-  "Serbia": [
-    "22112",
-    "27311",
-    "28987"
-  ],
-  "Servizio Occupazione Disabili": [
-    "11657"
-  ],
-  "Settembre": [
-    "35929",
-    "6613"
-  ],
-  "Settimana Santa": [
-    "25441",
-    "3153",
-    "32538"
-  ],
-  "Shabbat": [
-    "36133"
-  ],
-  "Shavuot": [
-    "38964"
-  ],
-  "Shiva": [
-    "24400"
-  ],
-  "Singapore": [
-    "28065"
-  ],
-  "Siria": [
-    "28066",
-    "38820"
-  ],
-  "Siviglia": [
-    "14690"
-  ],
-  "Slovacchia": [
-    "21853",
-    "29572"
-  ],
-  "Slovenia": [
-    "29573",
-    "29586"
-  ],
-  "Smarties": [
-    "28305"
-  ],
-  "Somalia": [
-    "36665",
-    "36666"
-  ],
-  "Soria": [
-    "14776"
-  ],
-  "Spagna": [
-    "10476",
-    "28967",
-    "8108"
-  ],
-  "Spiderman": [
-    "8224"
-  ],
-  "Spirito Santo": [
-    "24029"
-  ],
-  "Sri Lanka": [
-    "28067"
-  ],
-  "Staff di Trattamento Familiare": [
-    "25064"
-  ],
-  "Stame": [
-    "37147"
-  ],
-  "Stati Uniti": [
-    "29588",
-    "8112"
-  ],
-  "Statua della Libertà": [
-    "21854"
-  ],
-  "Stella Cometa": [
-    "3100"
-  ],
-  "Stella di Davide": [
-    "22795"
-  ],
-  "Stella di Natale": [
-    "36394"
-  ],
-  "Stemma di Aragona": [
-    "5610"
-  ],
-  "Strisce Pedonali": [
-    "7197"
-  ],
-  "Sud": [
-    "8228"
-  ],
-  "Sud-Ovest": [
-    "28096"
-  ],
-  "Sud-est": [
-    "28095"
-  ],
-  "Sudafrica": [
-    "22113"
-  ],
-  "Sudan": [
-    "39463"
-  ],
-  "Superman": [
-    "8227"
-  ],
-  "Suriname": [
-    "27312",
-    "29603"
-  ],
-  "Svezia": [
-    "10253",
-    "28977"
-  ],
-  "Svizzera": [
-    "22114",
-    "28978"
-  ],
-  "T": [
-    "3158"
-  ],
-  "TC": [
-    "30705"
-  ],
-  "TEACCH": [
-    "30648",
-    "32868",
-    "32869",
-    "32966",
-    "32967"
-  ],
-  "TMS": [
-    "39834"
-  ],
-  "Tagikistan": [
-    "28068"
-  ],
-  "Tailandia": [
-    "25483"
-  ],
-  "Taj Mahal": [
-    "25484"
-  ],
-  "Tamborrada di San Sebastián": [
-    "28944",
-    "28952"
-  ],
-  "Tanzania": [
-    "39464"
-  ],
-  "Tarragona": [
-    "14835"
-  ],
-  "Tarzan": [
-    "29800"
-  ],
-  "Tastavinsauro": [
-    "34579"
-  ],
-  "Teatro Nero": [
-    "36455"
-  ],
-  "Teatro romano di Mérida": [
-    "25494"
-  ],
-  "Tecnico Sanitario": [
-    "2375",
-    "6050"
-  ],
-  "Teide": [
-    "10305"
-  ],
-  "Tenerife": [
-    "14849"
-  ],
-  "Terapia Occupazionale": [
-    "16061"
-  ],
-  "Terapia intensiva": [
-    "30468"
-  ],
-  "Tereré": [
-    "31033"
-  ],
-  "Terra": [
-    "30014",
-    "30015"
-  ],
-  "Teruel": [
-    "14681",
-    "5594"
-  ],
-  "Test Proteina C-reattiva": [
-    "36841"
-  ],
-  "Testone Berrugón": [
-    "5407"
-  ],
-  "Testone Boticario": [
-    "5461"
-  ],
-  "Testone Forana": [
-    "5409"
-  ],
-  "Testone Forano": [
-    "5410"
-  ],
-  "Testone Morico": [
-    "5411"
-  ],
-  "Testone Pilara": [
-    "5412"
-  ],
-  "Testone Robaculeros": [
-    "5413"
-  ],
-  "Testone Torero": [
-    "5414"
-  ],
-  "Testone Tuerto": [
-    "5415"
-  ],
-  "Tholos El Romeral": [
-    "31133"
-  ],
-  "Tirannosauro": [
-    "34981"
-  ],
-  "Toledo": [
-    "14766"
-  ],
-  "Torcal di Antequera": [
-    "31129"
-  ],
-  "Torero": [
-    "5414"
-  ],
-  "Tornillo del Torcal": [
-    "31031"
-  ],
-  "Torre del Agua": [
-    "22145"
-  ],
-  "Torre di San Salvador": [
-    "31388"
-  ],
-  "Torta del Casar": [
-    "28149"
-  ],
-  "Torvosauro": [
-    "34435"
-  ],
-  "Tostones": [
-    "37510"
-  ],
-  "Trinidad e Tobago": [
-    "29654",
-    "29655"
-  ],
-  "Tuerto": [
-    "5415"
-  ],
-  "Tunisia": [
-    "39168"
-  ],
-  "Turchia": [
-    "22161",
-    "29582"
-  ],
-  "Turiasaurus riodevensis": [
-    "34585"
-  ],
-  "Turkmenistan": [
-    "28069"
-  ],
-  "Tutankamon": [
-    "26521"
-  ],
-  "Txotx!": [
-    "29246"
-  ],
-  "U": [
-    "3164"
-  ],
-  "UDC": [
-    "38152",
-    "38153",
-    "38154",
-    "38155",
-    "38156",
-    "38157",
-    "38158",
-    "38159",
-    "38160",
-    "38161",
-    "38162",
-    "38163",
-    "38164",
-    "38165",
-    "38166",
-    "38167",
-    "38168",
-    "38169",
-    "38170",
-    "38171",
-    "38172",
-    "38173",
-    "38174",
-    "38175",
-    "38176",
-    "38177",
-    "38179",
-    "38180",
-    "38181",
-    "38182",
-    "38183",
-    "38184",
-    "38185",
-    "38186",
-    "38187",
-    "38188",
-    "38189",
-    "38190",
-    "38191",
-    "38192",
-    "38193",
-    "38194",
-    "38195",
-    "38196",
-    "38197",
-    "38198"
-  ],
-  "UNESCO": [
-    "9082"
-  ],
-  "UNICEF": [
-    "9083"
-  ],
-  "UNIFOR": [
-    "16184"
-  ],
-  "USA": [
-    "29588"
-  ],
-  "Ucraina": [
-    "27313",
-    "29583"
-  ],
-  "Ufficio elaborazione carte d'identità": [
-    "38291"
-  ],
-  "Ungheria": [
-    "10251",
-    "29576"
-  ],
-  "Unità di Impiego, Uguaglianza, Cooperazione e Comunicazione": [
-    "16182"
-  ],
-  "Unità di terapia intensiva": [
-    "30468"
-  ],
-  "Uomo ragno": [
-    "8224"
-  ],
-  "Urano": [
-    "10302"
-  ],
-  "Uruguay": [
-    "29602",
-    "8244"
-  ],
-  "Uzbekistan": [
-    "28070"
-  ],
-  "V": [
-    "3165"
-  ],
-  "Valencia": [
-    "14769"
-  ],
-  "Valenza": [
-    "14769"
-  ],
-  "Valladolid": [
-    "14777"
-  ],
-  "Vangelo": [
-    "24039",
-    "30845",
-    "30846",
-    "30847",
-    "30848"
-  ],
-  "Velociraptor": [
-    "39827"
-  ],
-  "Venerdì": [
-    "6629"
-  ],
-  "Venerdì Santo": [
-    "32950",
-    "32951"
-  ],
-  "Venere": [
-    "10303"
-  ],
-  "Venezuela": [
-    "29596",
-    "29597"
-  ],
-  "Vergine del Pilar": [
-    "5606"
-  ],
-  "Vespa": [
-    "28167"
-  ],
-  "Vieja Cuaresma": [
-    "14550"
-  ],
-  "Vietato bere alcolici durante la gravidanza": [
-    "32172"
-  ],
-  "Vietnam": [
-    "28071"
-  ],
-  "Vigilia di Natale": [
-    "8260"
-  ],
-  "W": [
-    "3167"
-  ],
-  "W-Fi": [
-    "35503"
-  ],
-  "W.C.": [
-    "37710"
-  ],
-  "WC": [
-    "27559",
-    "27561",
-    "28213",
-    "37331",
-    "38625",
-    "38626",
-    "38627"
-  ],
-  "Wrestling delle Canarie": [
-    "37039"
-  ],
-  "X": [
-    "3168"
-  ],
-  "Y": [
-    "3171"
-  ],
-  "Yemen": [
-    "28072"
-  ],
-  "Z": [
-    "3173"
-  ],
-  "Zamora": [
-    "14778"
-  ],
   "\\": [
     "3413"
   ],
   "a": [
     "3021",
+    "3049",
     "7034",
     "7041"
   ],
@@ -3811,9 +1267,6 @@
   "accendere l'aria condizionata": [
     "29142"
   ],
-  "accendere la TV": [
-    "9802"
-  ],
   "accendere la candela": [
     "6486"
   ],
@@ -3821,6 +1274,9 @@
     "8103"
   ],
   "accendere la televisione": [
+    "9802"
+  ],
+  "accendere la tv": [
     "9802"
   ],
   "accendere una candela": [
@@ -3887,7 +1343,7 @@
     "8187",
     "8188"
   ],
-  "acchina a raggi X": [
+  "acchina a raggi x": [
     "33105"
   ],
   "acciottolato": [
@@ -3971,6 +1427,9 @@
   "aceto": [
     "5605"
   ],
+  "aceto balsamico": [
+    "38539"
+  ],
   "acetone": [
     "29925"
   ],
@@ -3998,6 +1457,9 @@
   "acne": [
     "26616",
     "29668"
+  ],
+  "acnur": [
+    "9073"
   ],
   "acqua": [
     "2248",
@@ -4045,6 +1507,7 @@
     "38420"
   ],
   "acquario": [
+    "26618",
     "5360",
     "6882"
   ],
@@ -4100,6 +1563,9 @@
   ],
   "aculeo": [
     "28016"
+  ],
+  "adamo ed eva": [
+    "23729"
   ],
   "adattamento": [
     "12242"
@@ -4348,8 +1814,14 @@
     "25757",
     "39106"
   ],
+  "afghanistan": [
+    "24831"
+  ],
   "afido": [
     "37258"
+  ],
+  "africa": [
+    "5364"
   ],
   "africano": [
     "6011",
@@ -4479,6 +1951,10 @@
   "agopuntura": [
     "38119"
   ],
+  "agosto": [
+    "35941",
+    "6034"
+  ],
   "agricoltore": [
     "2982",
     "6035"
@@ -4493,11 +1969,17 @@
     "28225",
     "28926"
   ],
+  "ai": [
+    "39705"
+  ],
   "ai blocchi di partenza": [
     "37274"
   ],
   "aia": [
     "23979"
+  ],
+  "aids": [
+    "24402"
   ],
   "aikido": [
     "32964"
@@ -4556,6 +2038,13 @@
     "11477",
     "3175"
   ],
+  "albacete": [
+    "14762"
+  ],
+  "albania": [
+    "29584",
+    "29585"
+  ],
   "albeggiare": [
     "11477",
     "3175"
@@ -4586,10 +2075,6 @@
   "albero d'inverno": [
     "5062"
   ],
-  "albero di Natale": [
-    "24859",
-    "3058"
-  ],
   "albero di arance": [
     "3209"
   ],
@@ -4610,6 +2095,10 @@
   ],
   "albero di mele": [
     "3203"
+  ],
+  "albero di natale": [
+    "24859",
+    "3058"
   ],
   "albero di pere": [
     "3214"
@@ -4644,6 +2133,12 @@
   "albume": [
     "36899",
     "6980"
+  ],
+  "alcazaba de badajoz": [
+    "38651"
+  ],
+  "alcazaba di malaga": [
+    "25411"
   ],
   "alce": [
     "8010"
@@ -4696,8 +2191,17 @@
   "alga": [
     "6040"
   ],
+  "algeria": [
+    "26668"
+  ],
+  "alhambra": [
+    "31027"
+  ],
   "ali di pollo": [
     "37583"
+  ],
+  "alicante": [
+    "14767"
   ],
   "alice": [
     "28930"
@@ -4852,6 +2356,8 @@
     "38837"
   ],
   "allergologia": [
+    "31172",
+    "31174",
     "38837"
   ],
   "allergologo": [
@@ -4915,6 +2421,9 @@
   "allungare": [
     "8574"
   ],
+  "almería": [
+    "14683"
+  ],
   "aloe vera": [
     "39468"
   ],
@@ -4946,6 +2455,9 @@
   ],
   "altalena inclusiva": [
     "38025"
+  ],
+  "altamira": [
+    "11177"
   ],
   "altare": [
     "23737",
@@ -5112,6 +2624,9 @@
   "alzarsi sul paddle surf": [
     "35840"
   ],
+  "alzheimer": [
+    "16349"
+  ],
   "amaca": [
     "30229",
     "31050"
@@ -5157,6 +2672,9 @@
     "14552",
     "20389"
   ],
+  "ambu": [
+    "37221"
+  ],
   "ambulanza": [
     "2251",
     "36199",
@@ -5176,6 +2694,12 @@
   ],
   "ambulatorio visita pediatrica": [
     "38874"
+  ],
+  "ameria del sud": [
+    "34387"
+  ],
+  "america": [
+    "5377"
   ],
   "amica": [
     "25786",
@@ -5279,6 +2803,7 @@
     "11519",
     "11536",
     "11538",
+    "16637",
     "37798",
     "37799",
     "8020"
@@ -5397,6 +2922,10 @@
   "ancora una volta": [
     "37163"
   ],
+  "andalusia": [
+    "8024",
+    "8489"
+  ],
   "andare": [
     "2432",
     "31758",
@@ -5472,6 +3001,9 @@
   "andare in letargo": [
     "28831"
   ],
+  "andare in moto": [
+    "38117"
+  ],
   "andare in pensione": [
     "11704",
     "14666",
@@ -5508,6 +3040,10 @@
   ],
   "andiamo a un altro negozio": [
     "32954"
+  ],
+  "andorra": [
+    "26666",
+    "28979"
   ],
   "anelli di calamaro": [
     "3002"
@@ -5573,6 +3109,9 @@
   "angiologo": [
     "31168",
     "31170"
+  ],
+  "angola": [
+    "26667"
   ],
   "angolo": [
     "3382",
@@ -5669,6 +3208,10 @@
   "anno futuro": [
     "39732"
   ],
+  "anno nuovo": [
+    "32536",
+    "5071"
+  ],
   "anno passato": [
     "39731"
   ],
@@ -5715,6 +3258,9 @@
     "27393",
     "7174"
   ],
+  "annunciazione": [
+    "29957"
+  ],
   "annuncio": [
     "12325",
     "12326",
@@ -5740,10 +3286,21 @@
     "30485",
     "37176"
   ],
+  "antartide": [
+    "21363"
+  ],
   "antenna": [
     "2253",
     "3252",
     "39068"
+  ],
+  "antequera": [
+    "31029",
+    "31031",
+    "31129",
+    "31131",
+    "31133",
+    "31135"
   ],
   "anteriore": [
     "27319",
@@ -6015,6 +3572,10 @@
   "apribottiglie": [
     "3226"
   ],
+  "aprile": [
+    "35935",
+    "6024"
+  ],
   "aprire": [
     "10137",
     "24825",
@@ -6117,6 +3678,9 @@
   "araba fenice": [
     "38764"
   ],
+  "arabia saudita": [
+    "24858"
+  ],
   "arabo": [
     "6010",
     "6150"
@@ -6126,6 +3690,15 @@
   ],
   "arachidi": [
     "2674"
+  ],
+  "aragona": [
+    "5383",
+    "5384",
+    "5608",
+    "5610"
+  ],
+  "aragosauro": [
+    "34437"
   ],
   "aragosta": [
     "11200",
@@ -6156,8 +3729,15 @@
     "25812",
     "26154"
   ],
+  "arasaac": [
+    "35071"
+  ],
   "aratro": [
     "25808"
+  ],
+  "araword": [
+    "25748",
+    "25749"
   ],
   "arazzo": [
     "36970"
@@ -6165,7 +3745,7 @@
   "arbitra": [
     "11181"
   ],
-  "arbitra di Karate": [
+  "arbitra di karate": [
     "31244"
   ],
   "arbitrare": [
@@ -6181,6 +3761,12 @@
   ],
   "arbitro di karate": [
     "31242"
+  ],
+  "arca dell'alleanza": [
+    "36087"
+  ],
+  "arca di noè": [
+    "23751"
   ],
   "archeologa": [
     "32095",
@@ -6280,6 +3866,10 @@
   "argenteria": [
     "30624"
   ],
+  "argentina": [
+    "29590",
+    "8030"
+  ],
   "argento": [
     "6183"
   ],
@@ -6321,6 +3911,10 @@
   "armatura": [
     "5406"
   ],
+  "armenia": [
+    "26669",
+    "29569"
+  ],
   "armeria": [
     "35975"
   ],
@@ -6332,6 +3926,9 @@
   ],
   "aromatiche": [
     "39101"
+  ],
+  "arowana australiano": [
+    "34429"
   ],
   "arpa": [
     "8493"
@@ -6612,6 +4209,9 @@
     "32131",
     "35719",
     "35741"
+  ],
+  "asia": [
+    "5390"
   ],
   "asilo": [
     "29853",
@@ -6937,6 +4537,11 @@
   "astuccio": [
     "8575"
   ],
+  "asturie": [
+    "14829",
+    "8034",
+    "8494"
+  ],
   "ateismo": [
     "38598"
   ],
@@ -6958,6 +4563,9 @@
   "atmosfera": [
     "10289",
     "20385"
+  ],
+  "atomium": [
+    "23769"
   ],
   "atrio": [
     "38432"
@@ -7112,7 +4720,7 @@
   "attrazione crazy frog": [
     "38402"
   ],
-  "attrazione di tiro 3D": [
+  "attrazione di tiro 3d": [
     "39588"
   ],
   "attrazione goal di precisione": [
@@ -7267,6 +4875,14 @@
   ],
   "ausili per la mobilità": [
     "12355"
+  ],
+  "australia": [
+    "21393",
+    "37646"
+  ],
+  "austria": [
+    "21394",
+    "28980"
   ],
   "autenticare": [
     "29955"
@@ -7505,6 +5121,9 @@
   "avorio": [
     "39845"
   ],
+  "avvento": [
+    "37174"
+  ],
   "avventura": [
     "21401",
     "30616"
@@ -7566,9 +5185,16 @@
   "avvoltoio": [
     "2998"
   ],
+  "azerbaigian": [
+    "26670",
+    "29570"
+  ],
   "azione": [
     "32067",
     "7297"
+  ],
+  "azutero": [
+    "36175"
   ],
   "azzuffarsi": [
     "24254",
@@ -7584,11 +5210,18 @@
     "4869"
   ],
   "b": [
-    "3023"
+    "3023",
+    "3061"
   ],
   "babbo": [
     "2497",
     "31146"
+  ],
+  "babbo natale": [
+    "25297",
+    "25298",
+    "3139",
+    "32454"
   ],
   "baby sitter": [
     "15992"
@@ -7614,6 +5247,9 @@
   ],
   "bacchette": [
     "32090"
+  ],
+  "bach": [
+    "35023"
   ],
   "bacheca": [
     "6997"
@@ -7654,6 +5290,10 @@
   "bacon": [
     "2994",
     "39273"
+  ],
+  "badajoz": [
+    "14830",
+    "25357"
   ],
   "badante": [
     "14662",
@@ -7794,6 +5434,13 @@
   "bagnoschiuma": [
     "3335"
   ],
+  "bahamas": [
+    "26671",
+    "29730"
+  ],
+  "bahrain": [
+    "27591"
+  ],
   "baia": [
     "23792",
     "23871"
@@ -7807,6 +5454,13 @@
   ],
   "baldacchino per processione": [
     "35477"
+  ],
+  "baldassarre": [
+    "7048"
+  ],
+  "baleari": [
+    "8036",
+    "8498"
   ],
   "balena": [
     "2268"
@@ -7943,6 +5597,9 @@
   "bambino con paralisi cerebrale": [
     "36941"
   ],
+  "bambino gesù": [
+    "7177"
+  ],
   "bambino in mutande": [
     "31258"
   ],
@@ -7979,6 +5636,9 @@
     "36831",
     "36832",
     "6055"
+  ],
+  "banca mondiale": [
+    "9074"
   ],
   "bancarella": [
     "37527",
@@ -8062,22 +5722,19 @@
     "8123",
     "8124"
   ],
-  "bandiera Wiphala": [
-    "36981"
-  ],
-  "bandiera del Brasile": [
+  "bandiera del brasile": [
     "8044"
   ],
-  "bandiera dell'Andalusia": [
+  "bandiera dell'andalusia": [
     "8024"
   ],
-  "bandiera dell'Argentina": [
+  "bandiera dell'argentina": [
     "8030"
   ],
-  "bandiera della Germania": [
+  "bandiera della germania": [
     "8011"
   ],
-  "bandiera della Somalia": [
+  "bandiera della somalia": [
     "36665"
   ],
   "bandiera pirata": [
@@ -8090,6 +5747,9 @@
   "bandiera tedesca": [
     "8011"
   ],
+  "bandiera wiphala": [
+    "36981"
+  ],
   "bandierina": [
     "5919"
   ],
@@ -8098,6 +5758,9 @@
   ],
   "bandura": [
     "3256"
+  ],
+  "bangladesh": [
+    "38460"
   ],
   "banjo": [
     "38784"
@@ -8158,9 +5821,16 @@
   "barbabietola": [
     "26370"
   ],
+  "barbados": [
+    "26672",
+    "29732"
+  ],
   "barbecue": [
     "36039",
     "5393"
+  ],
+  "barbie": [
+    "3063"
   ],
   "barbiere": [
     "2849",
@@ -8186,6 +5856,10 @@
   ],
   "barca a vela": [
     "8714"
+  ],
+  "barcellona": [
+    "14832",
+    "9858"
   ],
   "barche da canotaggio": [
     "28962"
@@ -8237,8 +5911,18 @@
   "barrito": [
     "37403"
   ],
+  "baryonyx": [
+    "34439"
+  ],
   "barzelletta": [
     "21537"
+  ],
+  "base 10": [
+    "31334",
+    "31335",
+    "31336",
+    "31337",
+    "31338"
   ],
   "base aerea": [
     "36619"
@@ -8259,6 +5943,9 @@
     "7789"
   ],
   "basilica": [
+    "5394"
+  ],
+  "basilica del pilar": [
     "5394"
   ],
   "basilico": [
@@ -8353,6 +6040,9 @@
   ],
   "batacchio": [
     "25321"
+  ],
+  "batman": [
+    "8039"
   ],
   "battaglia": [
     "34937"
@@ -8463,12 +6153,26 @@
   "becco": [
     "5538"
   ],
+  "beciuania": [
+    "26674"
+  ],
+  "beethoven": [
+    "35057"
+  ],
   "beige": [
     "9093"
   ],
   "belare": [
     "26664",
     "6927"
+  ],
+  "belgio": [
+    "28972",
+    "8040"
+  ],
+  "belize": [
+    "27598",
+    "29729"
   ],
   "bella": [
     "11194",
@@ -8588,6 +6292,9 @@
   "berretto peruviano": [
     "36985"
   ],
+  "berrugón": [
+    "5407"
+  ],
   "bersaglio": [
     "11236"
   ],
@@ -8625,6 +6332,9 @@
     "2662",
     "8043"
   ],
+  "biancaneve": [
+    "21447"
+  ],
   "biancheria intima": [
     "25680"
   ],
@@ -8644,7 +6354,11 @@
     "36621"
   ],
   "bibbia": [
+    "23833",
     "26539"
+  ],
+  "bibbia ebraica": [
+    "36183"
   ],
   "biberon": [
     "4577"
@@ -8661,14 +6375,14 @@
     "5926",
     "6063"
   ],
-  "biblioteca CAA": [
-    "36049"
-  ],
   "biblioteca accessibile": [
     "23837"
   ],
   "biblioteca adattata": [
     "11190"
+  ],
+  "biblioteca caa": [
+    "36049"
   ],
   "biblioteca inbook": [
     "36049"
@@ -8713,7 +6427,7 @@
   "bicicletta adattata": [
     "39011"
   ],
-  "bicicletta da BMX": [
+  "bicicletta da bmx": [
     "39236"
   ],
   "bicicletta da spinning": [
@@ -8743,6 +6457,10 @@
   "bidone per l'umido": [
     "2355"
   ],
+  "bielorussia": [
+    "26673",
+    "29571"
+  ],
   "bietola": [
     "2981"
   ],
@@ -8751,6 +6469,9 @@
   ],
   "bifacciale": [
     "32614"
+  ],
+  "big ben": [
+    "21445"
   ],
   "biglie": [
     "10281",
@@ -8882,6 +6603,9 @@
   "birillo": [
     "8297"
   ],
+  "birmania": [
+    "27603"
+  ],
   "biro": [
     "2282",
     "36620"
@@ -8905,6 +6629,9 @@
   "bisbigliare": [
     "12291",
     "16899"
+  ],
+  "biscaglia": [
+    "14761"
   ],
   "biscotti": [
     "2402",
@@ -9017,6 +6744,9 @@
   "blush": [
     "3017"
   ],
+  "bmx": [
+    "39237"
+  ],
   "boa": [
     "26696"
   ],
@@ -9072,6 +6802,10 @@
   ],
   "bolide": [
     "5070"
+  ],
+  "bolivia": [
+    "29594",
+    "29595"
   ],
   "bolla": [
     "35807",
@@ -9237,8 +6971,21 @@
   "bosco tagliato": [
     "25869"
   ],
+  "bosnia-erzegovina": [
+    "21459",
+    "28966"
+  ],
   "bosso": [
     "25853"
+  ],
+  "botafumeiro": [
+    "35867"
+  ],
+  "boticario": [
+    "5461"
+  ],
+  "botswana": [
+    "26674"
   ],
   "botte": [
     "6934"
@@ -9382,6 +7129,9 @@
   "brachiare": [
     "37977"
   ],
+  "brachiosauro": [
+    "34441"
+  ],
   "braciere": [
     "39239"
   ],
@@ -9402,6 +7152,10 @@
   ],
   "branco": [
     "10246"
+  ],
+  "brasile": [
+    "29589",
+    "8044"
   ],
   "break": [
     "36109"
@@ -9502,6 +7256,9 @@
   "bruna": [
     "8171"
   ],
+  "brunei": [
+    "27624"
+  ],
   "bruno": [
     "8171"
   ],
@@ -9543,6 +7300,9 @@
   ],
   "buco nel muro": [
     "21455"
+  ],
+  "budda": [
+    "23857"
   ],
   "budino": [
     "25111",
@@ -9588,6 +7348,10 @@
     "26993",
     "8643"
   ],
+  "bulgaria": [
+    "17185",
+    "28984"
+  ],
   "bullismo": [
     "22761"
   ],
@@ -9603,12 +7367,32 @@
   "buon appetito!": [
     "11627"
   ],
+  "buon compleanno": [
+    "26786",
+    "26788",
+    "6499"
+  ],
+  "buon compleanno!": [
+    "16635",
+    "26786",
+    "26788",
+    "5997",
+    "6499"
+  ],
   "buon giorno": [
     "38568",
     "6944"
   ],
   "buon giorno!": [
     "38567"
+  ],
+  "buon natale": [
+    "32456",
+    "32458"
+  ],
+  "buon natale!": [
+    "32456",
+    "32458"
   ],
   "buon pomeriggio": [
     "38592",
@@ -9630,6 +7414,12 @@
   "burattino da dito": [
     "38735"
   ],
+  "burgos": [
+    "14771"
+  ],
+  "burkina faso": [
+    "26675"
+  ],
   "burrasca": [
     "34296"
   ],
@@ -9647,6 +7437,9 @@
   ],
   "burrone": [
     "23815"
+  ],
+  "burundi": [
+    "26676"
   ],
   "bus": [
     "26654",
@@ -9695,6 +7488,9 @@
   ],
   "busto ortopedico": [
     "38903"
+  ],
+  "butan": [
+    "27625"
   ],
   "butano": [
     "8048"
@@ -9759,10 +7555,14 @@
     "26493"
   ],
   "c": [
-    "3024"
+    "3024",
+    "3069"
   ],
   "c'e vento!": [
     "10736"
+  ],
+  "c'era una volta": [
+    "8277"
   ],
   "c'è il sole!": [
     "38560"
@@ -9779,6 +7579,9 @@
   ],
   "c'è vento?": [
     "10726"
+  ],
+  "caa": [
+    "6991"
   ],
   "cabaret": [
     "38464"
@@ -9862,6 +7665,9 @@
   "cacciavite": [
     "2736"
   ],
+  "cachopo": [
+    "30508"
+  ],
   "caco": [
     "13074"
   ],
@@ -9885,6 +7691,9 @@
     "31151",
     "31152",
     "31153"
+  ],
+  "cadice": [
+    "14684"
   ],
   "caduta di cenere vulcanica": [
     "37838"
@@ -10043,7 +7852,7 @@
     "3071",
     "32488"
   ],
-  "calendario dell'Avvento": [
+  "calendario dell'avvento": [
     "37985"
   ],
   "calice": [
@@ -10086,16 +7895,19 @@
   "calsots alla griglia": [
     "37425"
   ],
+  "calvario": [
+    "38730"
+  ],
   "calvo": [
     "5420"
   ],
   "calza": [
     "8358"
   ],
-  "calza della Befana": [
+  "calza della befana": [
     "5065"
   ],
-  "calza di Babbo Natale": [
+  "calza di babbo natale": [
     "5065"
   ],
   "calzamaglia": [
@@ -10191,11 +8003,17 @@
   "cambio di marcia": [
     "22009"
   ],
+  "cambogia": [
+    "27646"
+  ],
   "camera da letto": [
     "15732",
     "32422",
     "33068",
     "5988"
+  ],
+  "camera dei deputati": [
+    "21551"
   ],
   "camera di ospedale": [
     "35325"
@@ -10210,6 +8028,9 @@
   ],
   "camerino": [
     "23893"
+  ],
+  "camerun": [
+    "8055"
   ],
   "camice": [
     "3229",
@@ -10345,6 +8166,9 @@
   "cammino": [
     "6955"
   ],
+  "cammino di santiago": [
+    "35835"
+  ],
   "camomilla": [
     "2429",
     "38795"
@@ -10393,6 +8217,9 @@
   "camper": [
     "3180",
     "38243"
+  ],
+  "campidoglio": [
+    "24941"
   ],
   "campione di saliva": [
     "37844",
@@ -10455,6 +8282,10 @@
   "camposanto": [
     "4591"
   ],
+  "canada": [
+    "29587",
+    "8057"
+  ],
   "canale": [
     "25920"
   ],
@@ -10466,6 +8297,10 @@
   ],
   "canapè": [
     "10221"
+  ],
+  "canarie": [
+    "8058",
+    "8525"
   ],
   "canarino": [
     "3004"
@@ -10600,6 +8435,11 @@
   "canovaccio": [
     "2496"
   ],
+  "cantabria": [
+    "14836",
+    "8060",
+    "8527"
+  ],
   "cantante": [
     "11201",
     "4585"
@@ -10639,7 +8479,7 @@
   "canto del gallo": [
     "6950"
   ],
-  "canto di Natale": [
+  "canto di natale": [
     "2778"
   ],
   "canto natalizio": [
@@ -10656,7 +8496,7 @@
     "24795",
     "38000"
   ],
-  "canzone di Natale": [
+  "canzone di natale": [
     "2778"
   ],
   "canzone natalizia": [
@@ -10665,6 +8505,9 @@
   "caos": [
     "24832",
     "24833"
+  ],
+  "cap": [
+    "38565"
   ],
   "capanna": [
     "8049",
@@ -10744,7 +8587,7 @@
   "capo del servizio comunicazione e partecipazione": [
     "37874"
   ],
-  "capo dell'informatica e NNTT": [
+  "capo dell'informatica e nntt": [
     "37571"
   ],
   "capo di gabinetto": [
@@ -10759,6 +8602,13 @@
   ],
   "capo ufficio stampa": [
     "37557"
+  ],
+  "capo verde": [
+    "26677"
+  ],
+  "capodanno": [
+    "32536",
+    "8261"
   ],
   "capomastro": [
     "2649",
@@ -10822,7 +8672,7 @@
   "cappello da uomo": [
     "2572"
   ],
-  "cappello di Babbo Natale": [
+  "cappello di babbo natale": [
     "3109"
   ],
   "cappello di feltro": [
@@ -10841,6 +8691,9 @@
   ],
   "cappotto a tre quarti": [
     "9197"
+  ],
+  "cappuccetto rosso": [
+    "5942"
   ],
   "cappuccino": [
     "24483"
@@ -10944,6 +8797,9 @@
     "16321",
     "38825"
   ],
+  "cardiotocografia": [
+    "32206"
+  ],
   "cardiotocografia interna": [
     "32208"
   ],
@@ -10991,10 +8847,10 @@
     "39449",
     "5496"
   ],
-  "caricatore USB": [
+  "caricatore da muro usb": [
     "38255"
   ],
-  "caricatore da muro USB": [
+  "caricatore usb": [
     "38255"
   ],
   "carico": [
@@ -11241,6 +9097,9 @@
   "cartella medica": [
     "32259"
   ],
+  "cartellata": [
+    "36627"
+  ],
   "cartellina": [
     "3233"
   ],
@@ -11270,7 +9129,7 @@
     "17208",
     "7215"
   ],
-  "cartolina di Natale": [
+  "cartolina di natale": [
     "7269"
   ],
   "cartolina natalizia": [
@@ -11531,11 +9390,30 @@
     "5422",
     "5950"
   ],
+  "castello dell'aljafería": [
+    "5421"
+  ],
+  "castello di loarre": [
+    "5422"
+  ],
   "castello di sabbia": [
     "4790"
   ],
   "castello gonfiabile": [
     "28259"
+  ],
+  "castellón": [
+    "14768"
+  ],
+  "castiglia la mancia": [
+    "8067",
+    "8529"
+  ],
+  "castiglia león": [
+    "8530"
+  ],
+  "castilla león": [
+    "8068"
   ],
   "castoro": [
     "7055"
@@ -11549,6 +9427,10 @@
   "catalogatore": [
     "10255",
     "11182"
+  ],
+  "catalogna": [
+    "8069",
+    "8532"
   ],
   "catalogo": [
     "28717"
@@ -11595,19 +9477,19 @@
   "catetere": [
     "32252"
   ],
-  "catetere Foley": [
+  "catetere a doppio palloncino": [
+    "31690"
+  ],
+  "catetere foley": [
     "30112",
     "30113"
   ],
-  "catetere Port-a-Cath": [
+  "catetere port-a-cath": [
     "31316",
     "31317",
     "31318",
     "31319",
     "31354"
-  ],
-  "catetere a doppio palloncino": [
-    "31690"
   ],
   "catetere venoso periferico": [
     "39219"
@@ -11617,6 +9499,18 @@
   ],
   "cattedrale": [
     "5423"
+  ],
+  "cattedrale della seo": [
+    "5423"
+  ],
+  "cattedrale di burgo": [
+    "36897"
+  ],
+  "cattedrale di malaga": [
+    "25550"
+  ],
+  "cattedrale di santiago": [
+    "35833"
   ],
   "cattiva": [
     "10207",
@@ -11722,7 +9616,7 @@
   "cavo": [
     "6948"
   ],
-  "cavoletto di Bruxelles": [
+  "cavoletto di bruxelles": [
     "23949"
   ],
   "cavolfiore": [
@@ -11740,8 +9634,46 @@
   "cazzuola": [
     "2866"
   ],
+  "cd": [
+    "15349",
+    "2322",
+    "39044"
+  ],
   "cd musicale": [
-    "15349"
+    "15349",
+    "39044"
+  ],
+  "cd rom": [
+    "25614"
+  ],
+  "cd-rom": [
+    "2322",
+    "25614"
+  ],
+  "cdd": [
+    "28369",
+    "28370",
+    "28371",
+    "28372",
+    "28373",
+    "28374",
+    "28375",
+    "28376",
+    "28377",
+    "28378",
+    "28379",
+    "28380",
+    "28381",
+    "28382",
+    "28383",
+    "28384"
+  ],
+  "cdu": [
+    "38608",
+    "38614",
+    "38615",
+    "38616",
+    "39825"
   ],
   "ce": [
     "32306"
@@ -11792,11 +9724,17 @@
     "38057",
     "4592"
   ],
+  "cenachero": [
+    "25588"
+  ],
   "cenare": [
     "28675",
     "38057",
     "4593",
     "6970"
+  ],
+  "cenerentola": [
+    "21527"
   ],
   "censura": [
     "14668"
@@ -11918,12 +9856,18 @@
   "centro formazione docenti": [
     "39028"
   ],
+  "centro galiziano di arte contemporanea": [
+    "36898"
+  ],
   "centro interpreti": [
     "32348",
     "32349"
   ],
   "centro materiali edili": [
     "36185"
+  ],
+  "centro mobile di rianimazione": [
+    "28163"
   ],
   "centro per l'orientamento": [
     "36532"
@@ -12070,11 +10014,17 @@
   "cerume": [
     "39510"
   ],
+  "cervantes": [
+    "15351"
+  ],
   "cervello": [
     "2696"
   ],
   "cervo": [
     "3263"
+  ],
+  "cesare augusto": [
+    "24978"
   ],
   "cesoia": [
     "3403",
@@ -12155,6 +10105,13 @@
   ],
   "cetriolo": [
     "2847"
+  ],
+  "ceuta": [
+    "14837",
+    "31330",
+    "31331",
+    "8070",
+    "8535"
   ],
   "chacolí": [
     "29197"
@@ -12390,7 +10347,7 @@
     "2937",
     "2938"
   ],
-  "chiavetta USB": [
+  "chiavetta usb": [
     "9800"
   ],
   "chiavi": [
@@ -12677,6 +10634,10 @@
     "7185",
     "7186"
   ],
+  "ci sei riuscito!": [
+    "25752",
+    "25757"
+  ],
   "ci sono nuvole!": [
     "10734"
   ],
@@ -12687,6 +10648,9 @@
   "ciabatte": [
     "24230"
   ],
+  "ciad": [
+    "26752"
+  ],
   "ciak": [
     "8542"
   ],
@@ -12696,6 +10660,9 @@
     "36025",
     "36095",
     "38531",
+    "5565"
+  ],
+  "ciambella di san valerio": [
     "5565"
   ],
   "ciambellina": [
@@ -12766,7 +10733,7 @@
   "ciclamino": [
     "38624"
   ],
-  "ciclide del Malawi": [
+  "ciclide del malawi": [
     "34573"
   ],
   "ciclide di marmo": [
@@ -12805,6 +10772,9 @@
     "38270",
     "6978"
   ],
+  "cigarrera": [
+    "36173"
+  ],
   "ciglia": [
     "2844"
   ],
@@ -12813,6 +10783,10 @@
   ],
   "cigno": [
     "2337"
+  ],
+  "cile": [
+    "29598",
+    "8071"
   ],
   "ciliegia": [
     "8303"
@@ -12856,6 +10830,10 @@
   "cin cin": [
     "24963"
   ],
+  "cina": [
+    "37647",
+    "8074"
+  ],
   "cineforum": [
     "36477"
   ],
@@ -12867,7 +10845,7 @@
   "cinema 3d": [
     "34997"
   ],
-  "cinema 4D": [
+  "cinema 4d": [
     "34333"
   ],
   "cinema all'aperto": [
@@ -13009,7 +10987,7 @@
     "2323",
     "35157"
   ],
-  "cipolla di Tropea": [
+  "cipolla di tropea": [
     "38530"
   ],
   "cipolla rossa": [
@@ -13020,6 +10998,9 @@
   ],
   "cipresso": [
     "3079"
+  ],
+  "cipro": [
+    "21536"
   ],
   "circa": [
     "12313"
@@ -13062,7 +11043,7 @@
     "36001",
     "37657"
   ],
-  "circuito da MX": [
+  "circuito da mx": [
     "39237"
   ],
   "circuito di calistenia": [
@@ -13099,6 +11080,9 @@
     "2704",
     "5963"
   ],
+  "città del vaticano": [
+    "27314"
+  ],
   "città murata": [
     "38646",
     "38651"
@@ -13110,6 +11094,9 @@
   ],
   "ciuccio": [
     "4599"
+  ],
+  "ciudad real": [
+    "14763"
   ],
   "ciuffi d'erba": [
     "3113"
@@ -13147,7 +11134,29 @@
     "37361",
     "8077"
   ],
-  "classificazione decimale di Dewy": [
+  "classificazione decimale dewey": [
+    "28369",
+    "28370",
+    "28371",
+    "28372",
+    "28373",
+    "28374",
+    "28375",
+    "28376",
+    "28377",
+    "28378",
+    "28379",
+    "28380",
+    "28381",
+    "28382",
+    "28383",
+    "28384",
+    "33962",
+    "33963",
+    "33964",
+    "33965"
+  ],
+  "classificazione decimale di dewy": [
     "38152",
     "38153",
     "38154",
@@ -13242,7 +11251,11 @@
     "38194",
     "38195",
     "38196",
-    "38198"
+    "38198",
+    "38608",
+    "38614",
+    "38615",
+    "38616"
   ],
   "classificazione decimale univesale": [
     "38197"
@@ -13318,6 +11331,18 @@
   "cnsigliare": [
     "37708"
   ],
+  "co2": [
+    "24015"
+  ],
+  "coca catalana": [
+    "12311"
+  ],
+  "coca cola": [
+    "31021"
+  ],
+  "coca-cola": [
+    "2338"
+  ],
   "coccarda": [
     "26845"
   ],
@@ -13369,6 +11394,9 @@
   "codice postale": [
     "31482",
     "38565"
+  ],
+  "codice qr": [
+    "38514"
   ],
   "codino": [
     "5429"
@@ -13491,8 +11519,13 @@
   "colomba": [
     "2493"
   ],
+  "colombia": [
+    "29593",
+    "8080"
+  ],
   "colombo": [
-    "25293"
+    "25293",
+    "37932"
   ],
   "colonia": [
     "25974",
@@ -13557,6 +11590,9 @@
   ],
   "colorificio": [
     "29983"
+  ],
+  "colosseo di roma": [
+    "23957"
   ],
   "colostomia": [
     "37399"
@@ -13764,6 +11800,9 @@
     "37771",
     "37793"
   ],
+  "compact disc": [
+    "39044"
+  ],
   "compagna": [
     "38937",
     "38938",
@@ -13877,6 +11916,9 @@
   "compostaggio": [
     "25004"
   ],
+  "compostela": [
+    "35913"
+  ],
   "composti molecolari inorganici": [
     "33032"
   ],
@@ -13966,11 +12008,19 @@
   "comunità autonome": [
     "35509"
   ],
+  "comunità di madrid": [
+    "8156",
+    "8622"
+  ],
   "comunità educante": [
     "11453"
   ],
   "comunità educativa": [
     "11453"
+  ],
+  "comunità valenzana": [
+    "8246",
+    "8713"
   ],
   "comò": [
     "16281",
@@ -14011,7 +12061,7 @@
     "34625",
     "35035"
   ],
-  "conchiglia di San Giacomo": [
+  "conchiglia di san giacomo": [
     "37587"
   ],
   "conchiglie": [
@@ -14182,6 +12232,9 @@
   ],
   "congressista": [
     "34457"
+  ],
+  "congresso": [
+    "21551"
   ],
   "conigliera": [
     "31398"
@@ -14679,6 +12732,9 @@
   "corallo": [
     "35269"
   ],
+  "corano": [
+    "23973"
+  ],
   "corda": [
     "26026",
     "3265",
@@ -14698,10 +12754,22 @@
   "cordigliera": [
     "23975"
   ],
+  "cordoba": [
+    "14685"
+  ],
+  "cordon bleu": [
+    "30508"
+  ],
   "cordone ombelicale": [
     "31722",
     "31833",
     "32262"
+  ],
+  "corea del nord": [
+    "25014"
+  ],
+  "corea del sud": [
+    "25015"
   ],
   "coriandolo": [
     "24990",
@@ -14748,6 +12816,9 @@
     "2718",
     "36231",
     "38002"
+  ],
+  "corona dell'avvento": [
+    "37174"
   ],
   "corona funebre": [
     "25992",
@@ -14881,6 +12952,9 @@
   "cortesia": [
     "37231"
   ],
+  "corti d'aragona": [
+    "5421"
+  ],
   "cortile": [
     "6204"
   ],
@@ -14977,6 +13051,13 @@
     "2826",
     "30518",
     "8007"
+  ],
+  "costa d'avorio": [
+    "26778"
+  ],
+  "costa rica": [
+    "21567",
+    "29726"
   ],
   "costata": [
     "24809",
@@ -15206,6 +13287,9 @@
   "cremino": [
     "39637"
   ],
+  "cremà": [
+    "25024"
+  ],
   "creperia": [
     "34231"
   ],
@@ -15282,11 +13366,25 @@
     "23993",
     "25033"
   ],
+  "cristo": [
+    "24135",
+    "39831"
+  ],
+  "cristo redentore": [
+    "25036"
+  ],
+  "cristoforo colombo": [
+    "37932"
+  ],
   "critica": [
     "39512"
   ],
   "critico": [
     "39512"
+  ],
+  "croazia": [
+    "21572",
+    "28986"
   ],
   "croccante alle mandorle": [
     "24087"
@@ -15303,6 +13401,13 @@
   ],
   "crocchia": [
     "26230"
+  ],
+  "croce": [
+    "24135"
+  ],
+  "croce rossa": [
+    "30253",
+    "9075"
   ],
   "crocevia": [
     "39244"
@@ -15374,6 +13479,13 @@
   "cs": [
     "36739",
     "36784"
+  ],
+  "ctg": [
+    "32206"
+  ],
+  "cuba": [
+    "17218",
+    "29607"
   ],
   "cubetto": [
     "7128"
@@ -15476,6 +13588,9 @@
   ],
   "cucitrice chirurgica cutanea": [
     "30772"
+  ],
+  "cuenca": [
+    "14764"
   ],
   "cuffia": [
     "27802",
@@ -15604,6 +13719,9 @@
     "2715",
     "4613"
   ],
+  "cupido": [
+    "16637"
+  ],
   "cupola": [
     "36514"
   ],
@@ -15664,6 +13782,9 @@
   "custodia per occhiali": [
     "24065"
   ],
+  "cv": [
+    "39177"
+  ],
   "cyber bullismo": [
     "38509"
   ],
@@ -15683,8 +13804,12 @@
   "cyrtocara moorii": [
     "38388"
   ],
+  "cáceres": [
+    "14831"
+  ],
   "d": [
-    "3025"
+    "3025",
+    "3088"
   ],
   "da": [
     "7074",
@@ -15718,6 +13843,9 @@
   "dacentruro": [
     "34595"
   ],
+  "dacentrurus armatus": [
+    "34595"
+  ],
   "dadi": [
     "3089"
   ],
@@ -15746,6 +13874,9 @@
   "dallo": [
     "11712"
   ],
+  "dalí": [
+    "21581"
+  ],
   "dama": [
     "3192"
   ],
@@ -15754,6 +13885,10 @@
   ],
   "dammi cinque!": [
     "35197"
+  ],
+  "danimarca": [
+    "21799",
+    "28981"
   ],
   "danza": [
     "32562"
@@ -15836,6 +13971,9 @@
   "dare la multa": [
     "10172"
   ],
+  "dare la precedenza": [
+    "6968"
+  ],
   "dare tempo": [
     "24527"
   ],
@@ -15876,6 +14014,9 @@
     "34343",
     "34344",
     "34345"
+  ],
+  "das": [
+    "2529"
   ],
   "data": [
     "34799",
@@ -15970,7 +14111,7 @@
   "decorazione d'interni": [
     "30413"
   ],
-  "decorazione di Natale": [
+  "decorazione di natale": [
     "6885"
   ],
   "decorazione natalizia": [
@@ -16034,7 +14175,7 @@
   "delfino": [
     "2732"
   ],
-  "delfino blu del Malawi": [
+  "delfino blu del malawi": [
     "38388"
   ],
   "delfinoterapia": [
@@ -16123,6 +14264,9 @@
   ],
   "denti di dinosauro": [
     "34959"
+  ],
+  "dentiera": [
+    "37170"
   ],
   "dentifricio": [
     "2858"
@@ -16407,8 +14551,12 @@
   "diavolo": [
     "8549"
   ],
-  "dice Gesù": [
+  "dice gesù": [
     "23746"
+  ],
+  "dicembre": [
+    "35937",
+    "6476"
   ],
   "dichiarazione dei redditi": [
     "35449"
@@ -16445,6 +14593,9 @@
   "dieci meno un quarto": [
     "29546",
     "39372"
+  ],
+  "diego di marcilla": [
+    "34927"
   ],
   "dieta": [
     "11239"
@@ -16561,6 +14712,10 @@
   ],
   "dinosauro peluche": [
     "34989"
+  ],
+  "dio": [
+    "24013",
+    "35069"
   ],
   "dipartimento dell'economia e finanze": [
     "37329"
@@ -17199,6 +15354,9 @@
   "dizionario": [
     "7024"
   ],
+  "dj": [
+    "9193"
+  ],
   "djembe": [
     "38105"
   ],
@@ -17272,13 +15430,13 @@
   "dolce di mele cotogne": [
     "28357"
   ],
-  "dolce tipico di Cantabria": [
+  "dolce tipico di cantabria": [
     "8369"
   ],
   "dolcetti": [
     "22182"
   ],
-  "dolcetti di Aragona": [
+  "dolcetti di aragona": [
     "11268"
   ],
   "dolcetto": [
@@ -17309,7 +15467,7 @@
   "dolci di marzapane": [
     "13366"
   ],
-  "dolci tipici di Cantabria": [
+  "dolci tipici di cantabria": [
     "4792"
   ],
   "dolciana": [
@@ -17319,7 +15477,12 @@
     "5091"
   ],
   "dolmen": [
-    "31029"
+    "31029",
+    "31133",
+    "31135"
+  ],
+  "dolmen d viera": [
+    "31135"
   ],
   "dolorante": [
     "2367"
@@ -17395,7 +15558,8 @@
     "39718"
   ],
   "domenica": [
-    "37723"
+    "37723",
+    "6478"
   ],
   "domenica che verrà": [
     "39717"
@@ -17426,6 +15590,9 @@
   ],
   "domotica": [
     "25990"
+  ],
+  "don chisciotte": [
+    "10359"
   ],
   "donare": [
     "16877",
@@ -17605,6 +15772,9 @@
   "dovere": [
     "15523"
   ],
+  "dracula": [
+    "6239"
+  ],
   "drago": [
     "5572"
   ],
@@ -17691,6 +15861,12 @@
   "dulciana": [
     "17223"
   ],
+  "dulcinea": [
+    "15373"
+  ],
+  "dulcinea del toboso": [
+    "15373"
+  ],
   "duplicare": [
     "16345"
   ],
@@ -17713,6 +15889,9 @@
   "dvd": [
     "9152"
   ],
+  "dya": [
+    "30000"
+  ],
   "dz": [
     "36742",
     "36782"
@@ -17730,7 +15909,8 @@
   ],
   "e": [
     "11399",
-    "3026"
+    "3026",
+    "3096"
   ],
   "e accentata": [
     "36783"
@@ -17748,6 +15928,9 @@
   "e-mail": [
     "5432"
   ],
+  "ebro": [
+    "5446"
+  ],
   "eccessivo": [
     "39188"
   ],
@@ -17759,6 +15942,10 @@
   ],
   "eccitato": [
     "39090"
+  ],
+  "ecg": [
+    "30802",
+    "30805"
   ],
   "eclisse": [
     "8096",
@@ -17812,6 +15999,10 @@
   ],
   "economico": [
     "4574"
+  ],
+  "ecuador": [
+    "19550",
+    "29600"
   ],
   "eczema": [
     "5578"
@@ -17885,8 +16076,19 @@
   "educazione tecnica": [
     "36363"
   ],
+  "eeg": [
+    "30090",
+    "30091",
+    "30170",
+    "30171",
+    "30249"
+  ],
   "effrazione": [
     "24909"
+  ],
+  "egitto": [
+    "37648",
+    "8099"
   ],
   "egittologa": [
     "32095"
@@ -17909,6 +16111,16 @@
   ],
   "eiaculazione": [
     "16665"
+  ],
+  "einsamada di maiorca": [
+    "11253"
+  ],
+  "el hierro": [
+    "14843"
+  ],
+  "el salvador": [
+    "29652",
+    "29653"
   ],
   "elaborare": [
     "11698"
@@ -18021,6 +16233,9 @@
     "14980",
     "31202"
   ],
+  "emergenza unità supporto vitale": [
+    "28163"
+  ],
   "emiciclo": [
     "21925"
   ],
@@ -18036,11 +16251,17 @@
     "25644",
     "25645"
   ],
+  "emirati arabi uniti": [
+    "27730"
+  ],
   "emisfero nord": [
     "10285"
   ],
   "emisfero sud": [
     "10286"
+  ],
+  "emmenthal": [
+    "38899"
   ],
   "emorragia": [
     "39616",
@@ -18153,7 +16374,7 @@
     "38427",
     "38432"
   ],
-  "entrata del Parlamento": [
+  "entrata del parlamento": [
     "37542"
   ],
   "entrata dell'emiciclo": [
@@ -18176,6 +16397,9 @@
   "epidurale": [
     "31740",
     "32286"
+  ],
+  "epifania": [
+    "5072"
   ],
   "epigastralgia": [
     "32148"
@@ -18208,6 +16432,9 @@
   "era glaciale": [
     "34268"
   ],
+  "eracle": [
+    "37316"
+  ],
   "erba": [
     "11214",
     "3113"
@@ -18217,6 +16444,9 @@
   ],
   "erboristeria": [
     "26126"
+  ],
+  "ercole": [
+    "37316"
   ],
   "ereditare": [
     "11700",
@@ -18231,6 +16461,9 @@
   ],
   "erezione": [
     "16661"
+  ],
+  "eritrea": [
+    "26833"
   ],
   "eritrociti": [
     "39165"
@@ -18302,6 +16535,10 @@
   ],
   "esaurito": [
     "32778"
+  ],
+  "eschimese": [
+    "6135",
+    "6151"
   ],
   "esclamare": [
     "32804"
@@ -18413,7 +16650,7 @@
   "esplorazione addominale": [
     "30788"
   ],
-  "esplorazione tramite TAC": [
+  "esplorazione tramite tac": [
     "30797"
   ],
   "esplosione": [
@@ -18591,6 +16828,9 @@
     "7032",
     "7033"
   ],
+  "est": [
+    "8114"
+  ],
   "estate": [
     "5604"
   ],
@@ -18611,6 +16851,10 @@
   ],
   "estirpare": [
     "7013"
+  ],
+  "estonia": [
+    "21856",
+    "29574"
   ],
   "estorcere": [
     "30626",
@@ -18638,6 +16882,10 @@
   "estratto": [
     "11463"
   ],
+  "estremadura": [
+    "8120",
+    "8580"
+  ],
   "estremità": [
     "29086"
   ],
@@ -18661,18 +16909,35 @@
   "etilometro": [
     "38771"
   ],
+  "etiopia": [
+    "26844"
+  ],
   "età": [
     "7072"
   ],
+  "età dei metalli": [
+    "32640"
+  ],
   "età della maturità": [
     "20397"
+  ],
+  "età della pietra": [
+    "32636",
+    "32638"
   ],
   "euro": [
     "35165",
     "5092",
     "8633"
   ],
+  "europa": [
+    "5468",
+    "8117"
+  ],
   "europelta": [
+    "34591"
+  ],
+  "europelta carbonensis": [
     "34591"
   ],
   "evacuare": [
@@ -18709,6 +16974,9 @@
   "evoluzione biologica": [
     "32628"
   ],
+  "evra": [
+    "31779"
+  ],
   "evviva": [
     "26615"
   ],
@@ -18719,7 +16987,8 @@
     "7154"
   ],
   "f": [
-    "3027"
+    "3027",
+    "3101"
   ],
   "fa": [
     "28205"
@@ -18947,6 +17216,9 @@
   "fantino": [
     "3169"
   ],
+  "fao": [
+    "9076"
+  ],
   "far arrabbiare": [
     "7039"
   ],
@@ -19159,9 +17431,6 @@
     "8597",
     "8598"
   ],
-  "fare la TAC": [
-    "30797"
-  ],
   "fare la cacca": [
     "16709",
     "21919",
@@ -19210,6 +17479,9 @@
     "39753",
     "8985",
     "8986"
+  ],
+  "fare la tac": [
+    "30797"
   ],
   "fare la valigia": [
     "38584"
@@ -19670,6 +17942,10 @@
   "fazzoletto da taschino": [
     "5417"
   ],
+  "febbraio": [
+    "35945",
+    "6498"
+  ],
   "febbre": [
     "28729",
     "32530",
@@ -19708,6 +17984,12 @@
     "6892",
     "8582",
     "9907"
+  ],
+  "felice anno nuovo": [
+    "32480"
+  ],
+  "felice anno nuovo!": [
+    "32480"
   ],
   "felicissima": [
     "39091"
@@ -19863,24 +18145,47 @@
     "6969",
     "7099"
   ],
-  "festa dei Tabernacoli": [
+  "festa dei tabernacoli": [
     "37848"
   ],
+  "festa del papà": [
+    "3093"
+  ],
   "festa della maggiore età": [
+    "36119",
     "36121"
   ],
-  "festa di Giugno": [
+  "festa della mamma": [
+    "3091"
+  ],
+  "festa delle lampade": [
+    "36125"
+  ],
+  "festa delle primizie": [
+    "38964"
+  ],
+  "festa delle settimane": [
+    "38964"
+  ],
+  "festa di capodanno": [
+    "32534"
+  ],
+  "festa di giugno": [
     "37654"
-  ],
-  "festa di San Giorgio": [
-    "12309",
-    "28267"
-  ],
-  "festa di San Giovanni": [
-    "15036"
   ],
   "festa di mezza estate": [
     "37656"
+  ],
+  "festa di san giacomo": [
+    "35865"
+  ],
+  "festa di san giorgio": [
+    "12309",
+    "28267"
+  ],
+  "festa di san giovanni": [
+    "15036",
+    "32452"
   ],
   "festa ebraica del riposo del sabato": [
     "36133"
@@ -19890,6 +18195,9 @@
   ],
   "feste": [
     "32800"
+  ],
+  "feste del pilar": [
+    "5073"
   ],
   "festeggiamento": [
     "24963",
@@ -20111,6 +18419,9 @@
   "fila per due": [
     "39146"
   ],
+  "filetti di pollo impanati": [
+    "35815"
+  ],
   "filetto": [
     "26178",
     "35147"
@@ -20127,14 +18438,17 @@
   "filigrana": [
     "32741"
   ],
+  "filippine": [
+    "27761"
+  ],
   "film": [
     "24797",
     "9183"
   ],
-  "film Blu Ray": [
+  "film blu ray": [
     "36427"
   ],
-  "film DVD": [
+  "film dvd": [
     "36427"
   ],
   "filmare": [
@@ -20173,7 +18487,7 @@
   "finale": [
     "5358"
   ],
-  "finale della festa de Las Fallas": [
+  "finale della festa de las fallas": [
     "25024"
   ],
   "finalista": [
@@ -20219,6 +18533,10 @@
   ],
   "finire la carta igienica": [
     "39089"
+  ],
+  "finlandia": [
+    "21873",
+    "28983"
   ],
   "fino a": [
     "7771"
@@ -20359,29 +18677,32 @@
     "2811",
     "5446"
   ],
-  "fiume Ebro": [
+  "fiume ebro": [
     "5446"
-  ],
-  "fiume Mekong": [
-    "34943"
-  ],
-  "fiume Murray": [
-    "34391"
-  ],
-  "fiume Nilo": [
-    "34389"
-  ],
-  "fiume Rio delle Amazzoni": [
-    "34941"
   ],
   "fiume inquinato": [
     "7066"
   ],
+  "fiume mekong": [
+    "34943"
+  ],
+  "fiume murray": [
+    "34391"
+  ],
+  "fiume nilo": [
+    "34389"
+  ],
+  "fiume rio delle amazzoni": [
+    "34941"
+  ],
   "fiumi": [
     "10306"
   ],
-  "fiumi della Spagna": [
+  "fiumi della spagna": [
     "10306"
+  ],
+  "fivet": [
+    "14986"
   ],
   "flacone": [
     "34759"
@@ -20411,7 +18732,7 @@
   "flauto a tre buchi": [
     "38466"
   ],
-  "flauto di Pan": [
+  "flauto di pan": [
     "38785"
   ],
   "flauto traverso": [
@@ -20437,6 +18758,9 @@
   ],
   "fluttuare": [
     "21874"
+  ],
+  "fmi": [
+    "9077"
   ],
   "fobia": [
     "38417"
@@ -20529,6 +18853,12 @@
     "3064",
     "30834"
   ],
+  "forana": [
+    "5409"
+  ],
+  "forano": [
+    "5410"
+  ],
   "forare": [
     "39069"
   ],
@@ -20583,9 +18913,6 @@
     "29144",
     "4881"
   ],
-  "formaggio Emmenthal": [
-    "38899"
-  ],
   "formaggio a fette": [
     "4881"
   ],
@@ -20606,6 +18933,9 @@
   ],
   "formaggio di pecora": [
     "35761"
+  ],
+  "formaggio emmenthal": [
+    "38899"
   ],
   "formaggio fresco": [
     "15367",
@@ -20634,6 +18964,9 @@
   ],
   "forme geometriche": [
     "4651"
+  ],
+  "formentera": [
+    "14848"
   ],
   "formica": [
     "2425"
@@ -20815,6 +19148,13 @@
   "francese": [
     "36367"
   ],
+  "francia": [
+    "28968",
+    "8121"
+  ],
+  "francisco goya": [
+    "15493"
+  ],
   "francobollo": [
     "2802"
   ],
@@ -20824,6 +19164,9 @@
   "frangia": [
     "28803",
     "29929"
+  ],
+  "frankenstein": [
+    "8279"
   ],
   "frankfurteria": [
     "38618"
@@ -21080,6 +19423,9 @@
   "fucile mitragliatore": [
     "36936"
   ],
+  "fuerteventura": [
+    "24478"
+  ],
   "fufu": [
     "39810"
   ],
@@ -21208,7 +19554,8 @@
     "9829"
   ],
   "g": [
-    "3028"
+    "3028",
+    "3104"
   ],
   "gabbia": [
     "16097",
@@ -21232,11 +19579,18 @@
     "37331",
     "37904"
   ],
+  "gabon": [
+    "26871"
+  ],
   "galeone": [
     "36057"
   ],
   "galera": [
     "4588"
+  ],
+  "galizia": [
+    "8123",
+    "8588"
   ],
   "galle di quercia": [
     "38268"
@@ -21264,6 +19618,9 @@
   ],
   "galleria pubblica": [
     "37541"
+  ],
+  "galles": [
+    "39461"
   ],
   "galletta": [
     "8312"
@@ -21303,7 +19660,7 @@
   "gamberetto": [
     "37605"
   ],
-  "gamberetto della Caridea": [
+  "gamberetto della caridea": [
     "37605"
   ],
   "gamberi": [
@@ -21322,8 +19679,14 @@
   "gamberone": [
     "34010"
   ],
+  "gambia": [
+    "8124"
+  ],
   "gambo": [
     "37009"
+  ],
+  "gana": [
+    "26873"
   ],
   "gancio": [
     "2744",
@@ -21392,6 +19755,9 @@
     "25129",
     "36321"
   ],
+  "gaspare": [
+    "7769"
+  ],
   "gastrite": [
     "10264"
   ],
@@ -21458,7 +19824,7 @@
   "gazzosa": [
     "6510"
   ],
-  "gecko diurno del Madagascar": [
+  "gecko diurno del madagascar": [
     "38322"
   ],
   "gel igienizzante": [
@@ -21566,6 +19932,10 @@
     "35062",
     "35201"
   ],
+  "gennaio": [
+    "35923",
+    "6488"
+  ],
   "gente": [
     "39622",
     "7116",
@@ -21581,6 +19951,10 @@
   "geologia": [
     "36369"
   ],
+  "georgia": [
+    "26872",
+    "29575"
+  ],
   "geosfera": [
     "24073"
   ],
@@ -21590,6 +19964,10 @@
   "geriatra": [
     "25642",
     "38835"
+  ],
+  "germania": [
+    "28970",
+    "8011"
   ],
   "germano reale": [
     "28479"
@@ -21630,6 +20008,17 @@
   "gesto": [
     "32592"
   ],
+  "gesù": [
+    "24135",
+    "39831"
+  ],
+  "gesù bambino": [
+    "7177"
+  ],
+  "gesù cristo": [
+    "24135",
+    "39831"
+  ],
   "gettare": [
     "15479",
     "28449",
@@ -21654,6 +20043,9 @@
   ],
   "gettoni": [
     "9135"
+  ],
+  "ggattonare a quattro zampe": [
+    "37969"
   ],
   "ghepardo": [
     "39488"
@@ -21688,7 +20080,7 @@
     "3085",
     "3111"
   ],
-  "ghirlanda di Natale": [
+  "ghirlanda di natale": [
     "3085"
   ],
   "giacca": [
@@ -21717,6 +20109,13 @@
   ],
   "giallo": [
     "2648"
+  ],
+  "giamaica": [
+    "26880",
+    "29731"
+  ],
+  "giappone": [
+    "8144"
   ],
   "giara": [
     "29706",
@@ -21904,7 +20303,7 @@
   "giocare col fango": [
     "39675"
   ],
-  "giocare con il PC": [
+  "giocare con il pc": [
     "29153"
   ],
   "giocare con il tablet": [
@@ -22088,14 +20487,14 @@
   "gioco del salto": [
     "37154"
   ],
-  "gioco dell'Oca": [
-    "3421"
-  ],
   "gioco dell'hula hoop": [
     "29941"
   ],
   "gioco dell'indovinello": [
     "26150"
+  ],
+  "gioco dell'oca": [
+    "3421"
   ],
   "gioco della campana": [
     "10282"
@@ -22112,7 +20511,7 @@
   "gioco delle sedie": [
     "36404"
   ],
-  "gioco dello \"Stop\"": [
+  "gioco dello \"stop\"": [
     "37124"
   ],
   "gioco dello yo-yo": [
@@ -22180,6 +20579,10 @@
   "gioiello": [
     "29088"
   ],
+  "giordania": [
+    "25319",
+    "27857"
+  ],
   "giornalaio": [
     "6541",
     "6601"
@@ -22202,25 +20605,34 @@
   "giornata": [
     "26799"
   ],
+  "giornata della strage degli innocenti": [
+    "27152"
+  ],
+  "giornata mondiale per la consapevolezza sull'autismo": [
+    "29927"
+  ],
+  "giornata nazionale della catalogna": [
+    "27723"
+  ],
   "giorno": [
     "26799",
     "37371",
     "37731",
     "7022"
   ],
-  "giorno del Pilar": [
+  "giorno del pilar": [
     "5073"
   ],
-  "giorno della Notte di san Silvestro": [
+  "giorno della notte di san silvestro": [
     "8261"
   ],
-  "giorno della Vigilia di Natale": [
+  "giorno della vigilia di natale": [
     "8260"
   ],
-  "giorno di Capodanno": [
+  "giorno di capodanno": [
     "5071"
   ],
-  "giorno di Natale": [
+  "giorno di natale": [
     "3092"
   ],
   "giorno e notte": [
@@ -22244,7 +20656,7 @@
   "giostra girevole": [
     "38554"
   ],
-  "giostra macchinina dei Flinstone": [
+  "giostra macchinina dei flinstone": [
     "35011"
   ],
   "giostre": [
@@ -22262,11 +20674,21 @@
   "giovani": [
     "38817"
   ],
+  "giove": [
+    "10293"
+  ],
+  "giovedi grasso": [
+    "28281"
+  ],
   "giovedì": [
-    "37727"
+    "37727",
+    "6536"
   ],
   "giovedì che verrà": [
     "39723"
+  ],
+  "giovedì grasso": [
+    "28279"
   ],
   "giovedì passato": [
     "39725"
@@ -22375,6 +20797,9 @@
   "giro in trattore": [
     "39575"
   ],
+  "girona": [
+    "14833"
+  ],
   "girotondo": [
     "16739",
     "16741",
@@ -22435,6 +20860,10 @@
   "giuggiole": [
     "7118"
   ],
+  "giugno": [
+    "35933",
+    "6539"
+  ],
   "giullare": [
     "5405"
   ],
@@ -22450,6 +20879,9 @@
   ],
   "giuria": [
     "26885"
+  ],
+  "giuseppe": [
+    "7238"
   ],
   "giusta": [
     "5397"
@@ -22482,6 +20914,9 @@
     "7032",
     "7033",
     "8477"
+  ],
+  "gli amanti": [
+    "5503"
   ],
   "glitter": [
     "36437"
@@ -22563,6 +20998,9 @@
   "golfo": [
     "24079"
   ],
+  "golgota": [
+    "38730"
+  ],
   "golondrina": [
     "28913"
   ],
@@ -22634,11 +21072,17 @@
   "gorgheggiare": [
     "37413"
   ],
+  "gorgonzola": [
+    "28018"
+  ],
   "gorilla": [
     "2410"
   ],
   "gota": [
     "2919"
+  ],
+  "gourami": [
+    "34425"
   ],
   "gourami gigante": [
     "38340"
@@ -22652,6 +21096,9 @@
   ],
   "governo": [
     "21906"
+  ],
+  "goya": [
+    "15493"
   ],
   "gps": [
     "9154"
@@ -22719,6 +21166,14 @@
   "grammofono": [
     "10323"
   ],
+  "gran canaria": [
+    "24477"
+  ],
+  "granada": [
+    "14686",
+    "26874",
+    "29733"
+  ],
   "granadilla": [
     "39105"
   ],
@@ -22750,6 +21205,9 @@
   "grande": [
     "38564",
     "4658"
+  ],
+  "grande muraglia cinese": [
+    "10272"
   ],
   "grandi magazzini": [
     "15842"
@@ -22847,6 +21305,10 @@
   "grazioso": [
     "31851"
   ],
+  "grecia": [
+    "28973",
+    "8130"
+  ],
   "greco": [
     "36370"
   ],
@@ -22912,6 +21374,9 @@
   "grissino ai semi di girasole": [
     "37881"
   ],
+  "groenlandia": [
+    "26875"
+  ],
   "grondaia": [
     "10254"
   ],
@@ -22950,11 +21415,11 @@
   "gruppo di pressione": [
     "15913"
   ],
-  "gruppo di supporto Sindrome di Down": [
-    "30235"
-  ],
   "gruppo di supporto per sindrome cri du chat": [
     "30237"
+  ],
+  "gruppo di supporto sindrome di down": [
+    "30235"
   ],
   "gruppo elettrogeno": [
     "15916",
@@ -22975,6 +21440,9 @@
   ],
   "guadagno": [
     "36346"
+  ],
+  "guadalajara": [
+    "14765"
   ],
   "guaiava": [
     "39824"
@@ -23009,7 +21477,7 @@
   "guanti da kumite": [
     "31269"
   ],
-  "guanti per Karate": [
+  "guanti per karate": [
     "31269"
   ],
   "guanto": [
@@ -23112,11 +21580,18 @@
   "guardiano": [
     "38263"
   ],
+  "guatemala": [
+    "21916",
+    "29724"
+  ],
   "guava": [
     "39824"
   ],
   "guerra": [
     "12256"
+  ],
+  "guerra d'indipendenza spagnola": [
+    "36925"
   ],
   "gufo": [
     "24905",
@@ -23124,6 +21599,13 @@
   ],
   "gui": [
     "39816"
+  ],
+  "guiana": [
+    "26878",
+    "29601"
+  ],
+  "guiana francese": [
+    "26879"
   ],
   "guida": [
     "27821",
@@ -23175,8 +21657,20 @@
   "guidatrice": [
     "11223"
   ],
+  "guinea": [
+    "26876"
+  ],
+  "guinea equatoriale": [
+    "26877"
+  ],
+  "guinea- bissau": [
+    "39170"
+  ],
   "guinzaglio": [
     "25996"
+  ],
+  "guipúzcoa": [
+    "14760"
   ],
   "guiro": [
     "35461"
@@ -23212,13 +21706,18 @@
     "36780"
   ],
   "h": [
-    "3029"
+    "3029",
+    "3112"
   ],
   "hai bisogno di aiuto?": [
     "16125"
   ],
   "haima": [
     "35119"
+  ],
+  "haiti": [
+    "27835",
+    "29728"
   ],
   "hall": [
     "38427"
@@ -23246,14 +21745,26 @@
   "hangar": [
     "39594"
   ],
+  "hannukah": [
+    "36125"
+  ],
+  "hansel e gretel": [
+    "21923"
+  ],
   "hardware": [
     "35027"
+  ],
+  "hercules c-130": [
+    "36641"
   ],
   "hip hop": [
     "32562"
   ],
   "hiudere lo scarico della sacca per stomia": [
     "37390"
+  ],
+  "hiv": [
+    "24402"
   ],
   "ho bisogno di aiuto": [
     "7171"
@@ -23277,6 +21788,16 @@
     "35259",
     "35260",
     "39185"
+  ],
+  "homo sapiens": [
+    "37713"
+  ],
+  "honduras": [
+    "29605",
+    "29606"
+  ],
+  "hong kong": [
+    "39462"
   ],
   "hostess": [
     "2990"
@@ -23303,11 +21824,20 @@
   "hub": [
     "9155"
   ],
+  "huelva": [
+    "14687"
+  ],
+  "huesca": [
+    "14680",
+    "38923",
+    "5488"
+  ],
   "hummus": [
     "36015"
   ],
   "i": [
     "3030",
+    "3117",
     "8477"
   ],
   "i accentata": [
@@ -23317,10 +21847,26 @@
     "3031",
     "3119"
   ],
+  "ia": [
+    "39704"
+  ],
+  "iberica": [
+    "37125"
+  ],
+  "iberici": [
+    "37130"
+  ],
+  "iberico": [
+    "37119",
+    "37122"
+  ],
+  "ibiza": [
+    "14850"
+  ],
   "iceberg": [
     "6014"
   ],
-  "icona di Malaga": [
+  "icona di malaga": [
     "25588"
   ],
   "ictus": [
@@ -23396,6 +21942,9 @@
   ],
   "il": [
     "8476"
+  ],
+  "il gatto con gli stivali": [
+    "21888"
   ],
   "il loro": [
     "12274",
@@ -23652,11 +22201,11 @@
   "impilatore arcobaleno": [
     "37092"
   ],
-  "implementazione CAA": [
+  "implementazione caa": [
     "37989",
     "37990"
   ],
-  "implementazione della CAA": [
+  "implementazione della caa": [
     "37991",
     "37992",
     "37993",
@@ -23810,11 +22359,14 @@
   "inaugurare": [
     "6016"
   ],
-  "inaugurazione dei Giochi Olimpici": [
+  "inaugurazione dei giochi olimpici": [
     "39208"
   ],
-  "inaugurazione delle Olimpiadi": [
+  "inaugurazione delle olimpiadi": [
     "39208"
+  ],
+  "inca kola": [
+    "31021"
   ],
   "incantata": [
     "39091"
@@ -24007,9 +22559,22 @@
   "indecisione": [
     "39420"
   ],
-  "indiana d'America": [
+  "india": [
+    "25165",
+    "25484"
+  ],
+  "indiana": [
+    "6152"
+  ],
+  "indiana d'america": [
     "10339",
     "6153"
+  ],
+  "indiana jones": [
+    "21405"
+  ],
+  "indiano d'america": [
+    "5489"
   ],
   "indicare": [
     "11308",
@@ -24062,6 +22627,9 @@
   ],
   "individuo": [
     "34560"
+  ],
+  "indonesia": [
+    "27852"
   ],
   "indossare": [
     "34494",
@@ -24151,6 +22719,9 @@
   ],
   "indovino": [
     "11163"
+  ],
+  "induismo": [
+    "38517"
   ],
   "indumenti rotti": [
     "31476"
@@ -24955,11 +23526,21 @@
   "ipsilon": [
     "3047"
   ],
+  "iran": [
+    "25169"
+  ],
+  "iraq": [
+    "25168"
+  ],
   "iride": [
     "9103"
   ],
   "iris": [
     "37585"
+  ],
+  "irlanda": [
+    "21941",
+    "37651"
   ],
   "irrigare": [
     "22082",
@@ -24983,6 +23564,12 @@
   "irritata": [
     "28671"
   ],
+  "isabella di segura": [
+    "34929"
+  ],
+  "isabella e diego": [
+    "34935"
+  ],
   "iscriversi": [
     "9901",
     "9902"
@@ -24991,8 +23578,17 @@
     "9901",
     "9902"
   ],
+  "isidoro l'agricoltore": [
+    "36850"
+  ],
+  "islam": [
+    "22793"
+  ],
   "islamismo": [
     "22793"
+  ],
+  "islanda": [
+    "21942"
   ],
   "isola": [
     "24127",
@@ -25008,6 +23604,9 @@
   "isolato": [
     "25776",
     "7253"
+  ],
+  "isole faroe": [
+    "39459"
   ],
   "isolotto": [
     "2966"
@@ -25028,6 +23627,9 @@
   ],
   "ispirazione": [
     "37999"
+  ],
+  "israele": [
+    "25170"
   ],
   "issare": [
     "28489"
@@ -25080,6 +23682,10 @@
     "34705",
     "34755"
   ],
+  "italia": [
+    "28971",
+    "8143"
+  ],
   "itinerario": [
     "11393",
     "25648"
@@ -25099,8 +23705,12 @@
     "31768",
     "31879"
   ],
+  "iud": [
+    "32035"
+  ],
   "j": [
-    "3031"
+    "3031",
+    "3119"
   ],
   "jacuzzi": [
     "25175"
@@ -25108,8 +23718,20 @@
   "jalapeno": [
     "39782"
   ],
+  "jamsa": [
+    "24158"
+  ],
+  "jaén": [
+    "14688"
+  ],
   "joelette": [
     "36193"
+  ],
+  "johann sebastian bach": [
+    "35023"
+  ],
+  "joker": [
+    "5405"
   ],
   "jota": [
     "5495"
@@ -25133,11 +23755,15 @@
     "9177"
   ],
   "k": [
-    "3032"
+    "3032",
+    "3120"
   ],
   "karate saluto": [
     "31230",
     "31231"
+  ],
+  "karate seiza": [
+    "31236"
   ],
   "karategi": [
     "31238"
@@ -25148,6 +23774,12 @@
   ],
   "karatè": [
     "21955"
+  ],
+  "kasakistan": [
+    "27858"
+  ],
+  "kata": [
+    "31240"
   ],
   "katana": [
     "10319"
@@ -25162,6 +23794,16 @@
   "kebabbaro": [
     "36171"
   ],
+  "kefta di agnello": [
+    "36649"
+  ],
+  "kefta di manzo": [
+    "36650"
+  ],
+  "kenia": [
+    "37649",
+    "37650"
+  ],
   "kentia": [
     "35399"
   ],
@@ -25170,6 +23812,12 @@
   ],
   "kinesio tape": [
     "36467"
+  ],
+  "kinesiologia": [
+    "38581"
+  ],
+  "kirghizistan": [
+    "27859"
   ],
   "kit di pronto soccorso": [
     "27545"
@@ -25187,8 +23835,15 @@
   "koala": [
     "2954"
   ],
+  "kumite": [
+    "31246"
+  ],
+  "kuwait": [
+    "27860"
+  ],
   "l": [
-    "3033"
+    "3033",
+    "3121"
   ],
   "l'altro ieri": [
     "38272"
@@ -25248,8 +23903,43 @@
     "7029",
     "8476"
   ],
+  "la alfajería": [
+    "5421"
+  ],
+  "la alhambra di granada": [
+    "31027"
+  ],
+  "la bella addormentata": [
+    "21433"
+  ],
+  "la coruña": [
+    "14755"
+  ],
+  "la gomera": [
+    "14845"
+  ],
   "la loro": [
     "12274"
+  ],
+  "la palma": [
+    "14846"
+  ],
+  "la rioja": [
+    "14839",
+    "8149",
+    "8613"
+  ],
+  "la sagrada familia": [
+    "22098"
+  ],
+  "la seo": [
+    "5423"
+  ],
+  "la sepoltura della sardina": [
+    "27737"
+  ],
+  "la topina presuntuosa": [
+    "38686"
   ],
   "la vaquillera": [
     "34838"
@@ -25552,6 +24242,12 @@
   "landa": [
     "20395"
   ],
+  "lanzarote": [
+    "14847"
+  ],
+  "laos": [
+    "27861"
+  ],
   "lapide": [
     "26158",
     "35457",
@@ -25574,6 +24270,9 @@
   ],
   "larva": [
     "26164"
+  ],
+  "las pajaritas": [
+    "38923"
   ],
   "lasagna": [
     "9051"
@@ -25598,6 +24297,9 @@
   ],
   "laterizio": [
     "2951"
+  ],
+  "latino": [
+    "32697"
   ],
   "latta di olio motore": [
     "16747"
@@ -25653,6 +24355,12 @@
   ],
   "lavagna bianca": [
     "37872"
+  ],
+  "lavagna digitale multimediale": [
+    "9162"
+  ],
+  "lavagna interattiva multimediale": [
+    "30512"
   ],
   "lavagna magnetica": [
     "37872"
@@ -26772,7 +25480,7 @@
     "36257",
     "7141"
   ],
-  "leggere  QR code": [
+  "leggere  qr code": [
     "39018"
   ],
   "leggere ad alta voce": [
@@ -26784,10 +25492,10 @@
   "leggere i simboli": [
     "36257"
   ],
-  "leggere il Braille": [
+  "leggere il braille": [
     "12297"
   ],
-  "leggere il Vangelo": [
+  "leggere il vangelo": [
     "30872",
     "30873",
     "30874",
@@ -26845,6 +25553,7 @@
   ],
   "lei": [
     "2608",
+    "31801",
     "6481",
     "7028",
     "7029",
@@ -26889,6 +25598,9 @@
   "lenzuolo da sotto": [
     "17308"
   ],
+  "leonardo da vinci": [
+    "38259"
+  ],
   "leone": [
     "2449",
     "25187"
@@ -26922,7 +25634,7 @@
     "34361",
     "6963"
   ],
-  "lettera a Babbo Natale": [
+  "lettera a babbo natale": [
     "36356"
   ],
   "lettera maiuscola": [
@@ -26969,15 +25681,16 @@
   "letto posturale": [
     "27345"
   ],
+  "lettonia": [
+    "21961",
+    "29577"
+  ],
   "lettore": [
     "9156"
   ],
-  "lettore CD": [
+  "lettore cd": [
     "24509",
     "9156"
-  ],
-  "lettore VHS": [
-    "11360"
   ],
   "lettore di carte": [
     "39712"
@@ -26994,6 +25707,9 @@
   "lettore dvd": [
     "4957"
   ],
+  "lettore vhs": [
+    "11360"
+  ],
   "lettoscrittura": [
     "22789"
   ],
@@ -27004,7 +25720,7 @@
   "lettura condivisa": [
     "39762"
   ],
-  "lettura del Vangelo": [
+  "lettura del vangelo": [
     "30872",
     "30873",
     "30874",
@@ -27112,12 +25828,18 @@
   "lezione di tedesco": [
     "37740"
   ],
+  "león": [
+    "14772"
+  ],
   "li": [
     "31906",
     "7033"
   ],
   "liana": [
     "34179"
+  ],
+  "libano": [
+    "27862"
   ],
   "libellula": [
     "9066"
@@ -27215,6 +25937,10 @@
   "liceo linguistico": [
     "38620"
   ],
+  "liechtenstein": [
+    "27303",
+    "29578"
+  ],
   "lievitare": [
     "38690"
   ],
@@ -27236,6 +25962,10 @@
   ],
   "lillà": [
     "39389"
+  ],
+  "lim": [
+    "30512",
+    "9162"
   ],
   "lima": [
     "5501"
@@ -27306,7 +26036,7 @@
   "lingua dei segni": [
     "11754"
   ],
-  "lingua di Menelik": [
+  "lingua di menelik": [
     "3204"
   ],
   "lingua e letteratura basca": [
@@ -27370,6 +26100,9 @@
   "litro": [
     "7145"
   ],
+  "lituania": [
+    "21968"
+  ],
   "livella": [
     "9119"
   ],
@@ -27389,6 +26122,9 @@
   "lo vedi?": [
     "11617",
     "11619"
+  ],
+  "loarre": [
+    "5422"
   ],
   "locale caldaia": [
     "16115"
@@ -27517,7 +26253,7 @@
   "lucertola": [
     "2950"
   ],
-  "lucertola di Gesù Cristo": [
+  "lucertola di gesù cristo": [
     "38342"
   ],
   "luci": [
@@ -27527,7 +26263,7 @@
   "luci colorate": [
     "8155"
   ],
-  "luci di Natale": [
+  "luci di natale": [
     "5083"
   ],
   "luci natalizie": [
@@ -27550,6 +26286,13 @@
   ],
   "ludoteca": [
     "4689"
+  ],
+  "luglio": [
+    "35931",
+    "6538"
+  ],
+  "lugo": [
+    "14756"
   ],
   "lui": [
     "31670",
@@ -27581,7 +26324,8 @@
     "10294"
   ],
   "lunedì": [
-    "37730"
+    "37730",
+    "6554"
   ],
   "lunedì che verrà": [
     "39730"
@@ -27639,6 +26383,13 @@
     "37933",
     "5892"
   ],
+  "lupo cattivo": [
+    "36608",
+    "6140"
+  ],
+  "lussemburgo": [
+    "21973"
+  ],
   "lutto": [
     "26180",
     "31873",
@@ -27651,11 +26402,15 @@
   "là": [
     "5375"
   ],
+  "lérida": [
+    "14834"
+  ],
   "lì": [
     "5375"
   ],
   "m": [
-    "3035"
+    "3035",
+    "3125"
   ],
   "ma": [
     "11377"
@@ -27693,14 +26448,14 @@
     "25652",
     "6981"
   ],
-  "macchina CPAP": [
-    "37679"
-  ],
-  "macchina a raggi X": [
+  "macchina a raggi x": [
     "33104"
   ],
   "macchina cambia valute": [
     "39579"
+  ],
+  "macchina cpap": [
+    "37679"
   ],
   "macchina da caffè a capsule": [
     "38032"
@@ -27765,6 +26520,9 @@
   "macedonia": [
     "8620"
   ],
+  "macedonia del nord": [
+    "21974"
+  ],
   "macellaia": [
     "11203"
   ],
@@ -27774,6 +26532,7 @@
   ],
   "macelleria": [
     "3007",
+    "31402",
     "35663",
     "6074"
   ],
@@ -27789,6 +26548,9 @@
   "macete": [
     "38513"
   ],
+  "machu picchu": [
+    "25207"
+  ],
   "macinacaffè": [
     "28557"
   ],
@@ -27801,12 +26563,25 @@
   "macinino del caffè": [
     "28557"
   ],
+  "madagascar": [
+    "30204",
+    "37645"
+  ],
   "madeleine": [
     "25211",
     "8623"
   ],
+  "madonna": [
+    "7301"
+  ],
+  "madonna del pilar": [
+    "5606"
+  ],
   "madre": [
     "31148"
+  ],
+  "madrid": [
+    "14840"
   ],
   "maestra": [
     "2456",
@@ -27858,6 +26633,14 @@
   ],
   "magazzino materiale sportivo": [
     "38029"
+  ],
+  "magen david adom": [
+    "36195",
+    "36227"
+  ],
+  "maggio": [
+    "35925",
+    "6559"
   ],
   "maggiordomo": [
     "16307",
@@ -27931,6 +26714,9 @@
   "maionese": [
     "5509"
   ],
+  "maiorca": [
+    "14851"
+  ],
   "mais": [
     "36287",
     "4879"
@@ -27979,6 +26765,13 @@
     "31871",
     "32160"
   ],
+  "malaga": [
+    "14689",
+    "24153"
+  ],
+  "malaisia": [
+    "27863"
+  ],
   "malanga": [
     "39820"
   ],
@@ -28008,6 +26801,9 @@
   ],
   "malattia renale": [
     "37737"
+  ],
+  "maldive": [
+    "27864"
   ],
   "male": [
     "11252",
@@ -28056,6 +26852,10 @@
   ],
   "malmesso": [
     "4770"
+  ],
+  "malta": [
+    "21975",
+    "29579"
   ],
   "maltrattamento": [
     "20091",
@@ -28322,6 +27122,9 @@
     "2928",
     "4624"
   ],
+  "mano di fatima": [
+    "24158"
+  ],
   "mano in alto!": [
     "38053"
   ],
@@ -28341,7 +27144,7 @@
   "manovella": [
     "26188"
   ],
-  "manovra di Heimlich": [
+  "manovra di heimlich": [
     "38966"
   ],
   "manta gigante": [
@@ -28411,6 +27214,9 @@
   "maquillage": [
     "8626"
   ],
+  "mar menor": [
+    "33040"
+  ],
   "maraca": [
     "8315"
   ],
@@ -28446,6 +27252,15 @@
   ],
   "margherita": [
     "3127"
+  ],
+  "mari domingi": [
+    "38439"
+  ],
+  "maria": [
+    "7301"
+  ],
+  "maria vergine": [
+    "7301"
   ],
   "marihuana": [
     "38819"
@@ -28498,6 +27313,10 @@
   "marmotta": [
     "39794"
   ],
+  "marocco": [
+    "38139",
+    "8159"
+  ],
   "marrone": [
     "2923",
     "9094"
@@ -28508,8 +27327,12 @@
   "marsupio": [
     "37048"
   ],
+  "marte": [
+    "10296"
+  ],
   "martedì": [
-    "37729"
+    "37729",
+    "6557"
   ],
   "martedì che verrà": [
     "39728"
@@ -28544,15 +27367,15 @@
   "martello del giudice": [
     "36937"
   ],
-  "martello di Taylor": [
-    "30134"
-  ],
   "martello di gomma": [
     "28549"
   ],
   "martello di sicurezza": [
     "38111",
     "38244"
+  ],
+  "martello di taylor": [
+    "30134"
   ],
   "martello per  valutare i riflessi": [
     "30134"
@@ -28566,11 +27389,18 @@
   "martinetto": [
     "3333"
   ],
+  "martinica": [
+    "27304"
+  ],
   "marzapane": [
     "13346"
   ],
   "marziano": [
     "7154"
+  ],
+  "marzo": [
+    "35939",
+    "6558"
   ],
   "mascara": [
     "14262"
@@ -28618,7 +27448,7 @@
   "maschera d'ossigeno": [
     "30771"
   ],
-  "maschera di Carnevale": [
+  "maschera di carnevale": [
     "5944"
   ],
   "maschera per anestesia": [
@@ -28828,6 +27658,9 @@
   "maturità polmonare": [
     "32109"
   ],
+  "matè": [
+    "37013"
+  ],
   "mazza": [
     "28549",
     "8501"
@@ -28862,6 +27695,9 @@
     "6632",
     "7309",
     "7310"
+  ],
+  "mecca": [
+    "36550"
   ],
   "meccanico": [
     "11301",
@@ -28937,6 +27773,9 @@
   "medio": [
     "4693"
   ],
+  "medioevo": [
+    "39846"
+  ],
   "meditazione": [
     "32734",
     "34239"
@@ -28968,6 +27807,14 @@
   "melanzane al miele": [
     "36352"
   ],
+  "melchiorre": [
+    "8264"
+  ],
+  "melilla": [
+    "14838",
+    "8164",
+    "8628"
+  ],
   "melo": [
     "3203"
   ],
@@ -28990,11 +27837,11 @@
   "membro": [
     "37165"
   ],
-  "membro del Parlamento": [
-    "37561"
-  ],
   "membro del congresso": [
     "9859"
+  ],
+  "membro del parlamento": [
+    "37561"
   ],
   "membro della giuria": [
     "36546",
@@ -29003,7 +27850,7 @@
   "memoria": [
     "9157"
   ],
-  "memoria USB": [
+  "memoria usb": [
     "9800"
   ],
   "memory": [
@@ -29091,7 +27938,8 @@
     "7780"
   ],
   "mercoledì": [
-    "37728"
+    "37728",
+    "6563"
   ],
   "mercoledì che verrà": [
     "39724"
@@ -29113,6 +27961,9 @@
   ],
   "mercoledì successivo": [
     "39724"
+  ],
+  "mercurio": [
+    "10297"
   ],
   "mercurio cromo": [
     "26212"
@@ -29184,6 +28035,10 @@
   "messaggio email": [
     "37433"
   ],
+  "messico": [
+    "29591",
+    "8167"
+  ],
   "mestiere": [
     "7795"
   ],
@@ -29231,12 +28086,12 @@
   "metodo": [
     "27403"
   ],
-  "metodo TEACCH": [
-    "36971",
-    "36976"
-  ],
   "metodo di studio": [
     "31297"
+  ],
+  "metodo teacch": [
+    "36971",
+    "36976"
   ],
   "metodologia": [
     "27403",
@@ -29522,7 +28377,7 @@
   "mettere nello zaino il quaderno di comunicazione": [
     "37189"
   ],
-  "mettere nello zaino il quaderno in CAA": [
+  "mettere nello zaino il quaderno in caa": [
     "37189"
   ],
   "mettere perossido di idrogeno": [
@@ -29612,6 +28467,10 @@
   ],
   "mezzaluna": [
     "39523"
+  ],
+  "mezzaluna rossa": [
+    "36197",
+    "36225"
   ],
   "mezzanotte": [
     "39300"
@@ -29770,6 +28629,9 @@
   "mignolo": [
     "7778"
   ],
+  "miguel de cervantes": [
+    "15351"
+  ],
   "milionario": [
     "37803",
     "4733"
@@ -29825,6 +28687,9 @@
   "minerali": [
     "26226"
   ],
+  "minerva": [
+    "37117"
+  ],
   "minestra": [
     "2573"
   ],
@@ -29868,11 +28733,17 @@
   "minimondo": [
     "39700"
   ],
+  "ministero economia e finanze mef": [
+    "37329"
+  ],
   "ministra": [
     "21988"
   ],
   "ministro": [
     "21992"
+  ],
+  "minorca": [
+    "14852"
   ],
   "minore": [
     "16121",
@@ -30051,11 +28922,18 @@
   "mojón": [
     "29246"
   ],
+  "mojón!": [
+    "29246"
+  ],
   "moka": [
     "2297"
   ],
   "molare": [
     "2905"
+  ],
+  "moldavia": [
+    "27305",
+    "29580"
   ],
   "molestia telefonica": [
     "30644"
@@ -30154,6 +29032,9 @@
     "11305",
     "30824"
   ],
+  "monaco": [
+    "27306"
+  ],
   "monarca": [
     "5563"
   ],
@@ -30164,6 +29045,15 @@
     "32677",
     "32678",
     "32790"
+  ],
+  "monastero di piedra": [
+    "5518"
+  ],
+  "monastero di san juan": [
+    "5519"
+  ],
+  "moncayo": [
+    "5520"
   ],
   "mondiale": [
     "8173"
@@ -30180,6 +29070,9 @@
   ],
   "mongolfiera": [
     "2407"
+  ],
+  "mongolia": [
+    "28061"
   ],
   "monitor": [
     "2910"
@@ -30247,6 +29140,15 @@
   "monte": [
     "2909"
   ],
+  "monte calvario": [
+    "38730"
+  ],
+  "monte fuji": [
+    "37069"
+  ],
+  "montenegro": [
+    "27307"
+  ],
   "montone": [
     "9061"
   ],
@@ -30254,7 +29156,7 @@
     "36297",
     "8113"
   ],
-  "monumento ad Andres Guazurari": [
+  "monumento ad andres guazurari": [
     "38044"
   ],
   "mora": [
@@ -30267,7 +29169,7 @@
     "26455",
     "4578"
   ],
-  "morbo di Alzheimer": [
+  "morbo di alzheimer": [
     "16349"
   ],
   "morcón": [
@@ -30291,6 +29193,12 @@
   ],
   "more": [
     "2906"
+  ],
+  "mori e crociati": [
+    "37044"
+  ],
+  "morico": [
+    "5411"
   ],
   "morire": [
     "29861",
@@ -30379,6 +29287,9 @@
   ],
   "mostro": [
     "11306"
+  ],
+  "mosè": [
+    "24194"
   ],
   "motivare": [
     "39285"
@@ -30561,6 +29472,11 @@
     "2642",
     "6038"
   ],
+  "murcia": [
+    "14841",
+    "8174",
+    "8636"
+  ],
   "muretto": [
     "39074"
   ],
@@ -30680,8 +29596,12 @@
     "37796",
     "4702"
   ],
+  "mérida": [
+    "25494"
+  ],
   "n": [
-    "3036"
+    "3036",
+    "3133"
   ],
   "nacchera": [
     "8340",
@@ -30698,6 +29618,12 @@
   ],
   "nano": [
     "5450"
+  ],
+  "napoleone": [
+    "37705"
+  ],
+  "napoleone bonaparte": [
+    "37705"
   ],
   "narciso": [
     "28567"
@@ -30774,12 +29700,20 @@
   "nastro trasportatore": [
     "36662"
   ],
+  "natale": [
+    "3134"
+  ],
   "natiche": [
     "26030",
     "2730"
   ],
   "natività": [
-    "26320"
+    "24873",
+    "26320",
+    "5089"
+  ],
+  "nato": [
+    "27302"
   ],
   "natura": [
     "20389"
@@ -30809,6 +29743,11 @@
   ],
   "nautilo": [
     "35055"
+  ],
+  "navarra": [
+    "14842",
+    "8177",
+    "8639"
   ],
   "nave": [
     "2273",
@@ -30843,6 +29782,9 @@
   "nazionalità": [
     "12338"
   ],
+  "nazioni unite": [
+    "9079"
+  ],
   "ne voglio ancora": [
     "32753"
   ],
@@ -30869,6 +29811,9 @@
   ],
   "necessità": [
     "37160"
+  ],
+  "nefertiti": [
+    "26252"
   ],
   "nefrologa": [
     "35309",
@@ -31171,6 +30116,9 @@
   "neo": [
     "25303"
   ],
+  "neolitico": [
+    "32638"
+  ],
   "neon": [
     "7106"
   ],
@@ -31182,6 +30130,10 @@
     "28216",
     "6060",
     "8176"
+  ],
+  "nepal": [
+    "28062",
+    "37644"
   ],
   "nera": [
     "2886"
@@ -31223,6 +30175,9 @@
     "11314",
     "26941",
     "5800"
+  ],
+  "nettuno": [
+    "10298"
   ],
   "neurologa": [
     "35293",
@@ -31269,6 +30224,10 @@
     "2884",
     "3135"
   ],
+  "nicaragua": [
+    "22004",
+    "29604"
+  ],
   "nido": [
     "26254",
     "7173"
@@ -31279,6 +30238,9 @@
   "niente": [
     "29839",
     "32522"
+  ],
+  "nigeria": [
+    "39708"
   ],
   "nipote": [
     "10342",
@@ -31563,6 +30525,15 @@
   "noodle": [
     "5960"
   ],
+  "nord": [
+    "8178"
+  ],
+  "nord est": [
+    "27913"
+  ],
+  "nord ovest": [
+    "27915"
+  ],
   "nordic skiing": [
     "38425"
   ],
@@ -31572,6 +30543,10 @@
   "norme": [
     "34779",
     "34794"
+  ],
+  "norvegia": [
+    "10252",
+    "28982"
   ],
   "nostalgico": [
     "32360"
@@ -31621,10 +30596,10 @@
     "35789",
     "7181"
   ],
-  "notte di Natale": [
+  "notte di natale": [
     "8260"
   ],
-  "notte di San Silvestro": [
+  "notte di san silvestro": [
     "32534",
     "8261"
   ],
@@ -31685,6 +30660,13 @@
   "novecento": [
     "29432"
   ],
+  "novembre": [
+    "35927",
+    "6570"
+  ],
+  "noè": [
+    "24198"
+  ],
   "nube": [
     "2883"
   ],
@@ -31734,7 +30716,7 @@
   "numero da circo": [
     "35995"
   ],
-  "numero del Servizio Sanitario Emergenza": [
+  "numero del servizio sanitario emergenza": [
     "37501"
   ],
   "numero di emergenza": [
@@ -31789,9 +30771,18 @@
     "11316",
     "4705"
   ],
+  "nuova zelanda": [
+    "25273"
+  ],
   "nuovo": [
     "11316",
     "4705"
+  ],
+  "nuovo testamento": [
+    "24039"
+  ],
+  "nutella": [
+    "7763"
   ],
   "nutria": [
     "6158"
@@ -31833,7 +30824,8 @@
   ],
   "o": [
     "11317",
-    "3037"
+    "3037",
+    "3136"
   ],
   "o accentata": [
     "36776"
@@ -31962,10 +30954,13 @@
     "24711",
     "25355"
   ],
+  "oceania": [
+    "5528"
+  ],
   "oceano": [
     "2925"
   ],
-  "oceano Atlantico": [
+  "oceano atlantico": [
     "32699"
   ],
   "ocra": [
@@ -32016,6 +31011,9 @@
     "32150"
   ],
   "offerta": [
+    "5529"
+  ],
+  "offerta dei fiori": [
     "5529"
   ],
   "offerta di fiori": [
@@ -32092,6 +31090,13 @@
     "38276",
     "7131"
   ],
+  "ognissanti": [
+    "32460",
+    "6951"
+  ],
+  "oit": [
+    "9078"
+  ],
   "ok": [
     "13630",
     "31410",
@@ -32100,6 +31105,13 @@
   ],
   "okra": [
     "39817"
+  ],
+  "olanda": [
+    "19547",
+    "29568"
+  ],
+  "olentzero": [
+    "27017"
   ],
   "oliera": [
     "6877"
@@ -32171,6 +31183,9 @@
   "omaggiare": [
     "36720"
   ],
+  "oman": [
+    "28063"
+  ],
   "ombelico": [
     "2873"
   ],
@@ -32229,6 +31244,9 @@
     "11554",
     "11556"
   ],
+  "oms": [
+    "9080"
+  ],
   "oncologa": [
     "34729",
     "38848"
@@ -32249,6 +31267,9 @@
   "onore": [
     "14660"
   ],
+  "onu": [
+    "9079"
+  ],
   "oorinolaringoiatra": [
     "38847"
   ],
@@ -32266,6 +31287,9 @@
     "27917",
     "27921",
     "39665"
+  ],
+  "opera di sidney": [
+    "31386"
   ],
   "opera di teatro": [
     "11319"
@@ -32457,6 +31481,9 @@
   "orecchio medio": [
     "39498"
   ],
+  "orense": [
+    "14757"
+  ],
   "oreo": [
     "38501"
   ],
@@ -32602,6 +31629,9 @@
   ],
   "orso di peluche": [
     "4945"
+  ],
+  "orso piccolo": [
+    "6162"
   ],
   "orso polare": [
     "2868"
@@ -32853,6 +31883,10 @@
   "otto meno un quarto": [
     "29542"
   ],
+  "ottobre": [
+    "35943",
+    "6571"
+  ],
   "ottocento": [
     "29408"
   ],
@@ -32861,6 +31895,12 @@
   ],
   "ovale": [
     "4711"
+  ],
+  "ovario": [
+    "37151"
+  ],
+  "ovest": [
+    "8179"
   ],
   "ovile": [
     "31394",
@@ -32888,7 +31928,11 @@
     "37830"
   ],
   "p": [
-    "3038"
+    "3038",
+    "3137"
+  ],
+  "pablo picasso": [
+    "25325"
   ],
   "pacchetto di ceci secchi": [
     "38594"
@@ -32965,6 +32009,7 @@
     "31146"
   ],
   "padre nostro": [
+    "30850",
     "30889"
   ],
   "paella": [
@@ -32983,6 +32028,14 @@
   "paese": [
     "2823",
     "38586"
+  ],
+  "paesi baschi": [
+    "8118",
+    "8576"
+  ],
+  "paesi bassi": [
+    "19547",
+    "29568"
   ],
   "paga": [
     "33996"
@@ -33044,6 +32097,10 @@
   "paiolo": [
     "8519"
   ],
+  "pakistan": [
+    "25288",
+    "38140"
+  ],
   "pala": [
     "2867"
   ],
@@ -33065,9 +32122,15 @@
     "25542",
     "25545"
   ],
-  "palazzo del Governo": [
+  "palazzo dei congressi di saragozza": [
+    "25545"
+  ],
+  "palazzo del governo": [
     "37462",
     "37463"
+  ],
+  "palazzo delle fiere e congressi di malaga": [
+    "25544"
   ],
   "palazzo modernista": [
     "38684"
@@ -33084,11 +32147,20 @@
   "palcoscenico": [
     "8106"
   ],
+  "palencia": [
+    "14773"
+  ],
+  "paleolitico": [
+    "32636"
+  ],
   "paleontologa": [
     "34256"
   ],
   "paleontologo": [
     "34254"
+  ],
+  "palestina": [
+    "39689"
   ],
   "palestra": [
     "24785",
@@ -33192,7 +32264,7 @@
   "pallavolo adattata": [
     "39010"
   ],
-  "palle dell'albero di Natale": [
+  "palle dell'albero di natale": [
     "3067"
   ],
   "palleggiare": [
@@ -33210,7 +32282,7 @@
   "palline al cioccolato": [
     "39205"
   ],
-  "palline dell'albero di Natale": [
+  "palline dell'albero di natale": [
     "3067"
   ],
   "palloncino": [
@@ -33292,8 +32364,14 @@
   "paludoso": [
     "26290"
   ],
-  "pan di Spagna": [
+  "pan di spagna": [
     "10234"
+  ],
+  "panama": [
+    "29725"
+  ],
+  "panamá": [
+    "17283"
   ],
   "panca": [
     "4919"
@@ -33422,6 +32500,9 @@
   "panfilo": [
     "3172"
   ],
+  "pangasio gigante": [
+    "34575"
+  ],
   "pangolino": [
     "39693"
   ],
@@ -33541,6 +32622,9 @@
   "pap test": [
     "33122"
   ],
+  "papa": [
+    "24234"
+  ],
   "papaia": [
     "16829"
   ],
@@ -33582,6 +32666,9 @@
     "2497",
     "31146"
   ],
+  "papà orso": [
+    "6165"
+  ],
   "parabola": [
     "2253"
   ],
@@ -33604,8 +32691,17 @@
   "paradenti": [
     "37715"
   ],
+  "paradiso": [
+    "25948"
+  ],
   "parafarmacia": [
     "34274"
+  ],
+  "paraguai": [
+    "8181"
+  ],
+  "paraguay": [
+    "29599"
   ],
   "parallelogramma": [
     "4761"
@@ -33630,13 +32726,13 @@
   "parastinchi": [
     "31248"
   ],
-  "parastinchi per Karate": [
+  "parastinchi per karate": [
     "31248"
   ],
   "parata": [
     "26708"
   ],
-  "parata di Carnevale": [
+  "parata di carnevale": [
     "36663"
   ],
   "paraurti": [
@@ -33661,6 +32757,9 @@
   ],
   "parcheggio per biciclette": [
     "26632"
+  ],
+  "parchis": [
+    "2501"
   ],
   "parco": [
     "2859",
@@ -33690,6 +32789,9 @@
     "2859",
     "36145",
     "38085"
+  ],
+  "parco guell": [
+    "35863"
   ],
   "parco naturale": [
     "39848"
@@ -33728,6 +32830,7 @@
     "37561"
   ],
   "parlamento": [
+    "21551",
     "21925",
     "36943"
   ],
@@ -33752,7 +32855,7 @@
     "4662",
     "6518"
   ],
-  "parlare con la CAA": [
+  "parlare con la caa": [
     "37416"
   ],
   "parlare da soli": [
@@ -33864,6 +32967,9 @@
   "pascolare": [
     "37006",
     "37007"
+  ],
+  "pasqua ebraica": [
+    "36131"
   ],
   "passaggi di stato della materia": [
     "36327"
@@ -34035,6 +33141,9 @@
   ],
   "pastorella": [
     "27539"
+  ],
+  "patacòn": [
+    "37510"
   ],
   "patata": [
     "2503"
@@ -34256,6 +33365,12 @@
     "36411",
     "8618"
   ],
+  "pc": [
+    "2487"
+  ],
+  "pc fisso": [
+    "9150"
+  ],
   "pda": [
     "9161"
   ],
@@ -34302,8 +33417,22 @@
     "22187",
     "34167"
   ],
+  "pedro di azagra": [
+    "34933"
+  ],
+  "pedro di segura": [
+    "34931"
+  ],
+  "peg": [
+    "30474",
+    "30475",
+    "30476"
+  ],
   "peggiore": [
     "39512"
+  ],
+  "peine del viento": [
+    "28899"
   ],
   "pelapatate": [
     "24250",
@@ -34750,26 +33879,26 @@
   "persona con visiera": [
     "36866"
   ],
-  "persona indigena d'America": [
+  "persona indigena d'america": [
     "5489",
     "6153"
   ],
-  "persona indigena del Circolo Polare Artico": [
+  "persona indigena del circolo polare artico": [
     "6135",
     "6151"
   ],
-  "persona indigena dell'Africa": [
+  "persona indigena dell'africa": [
     "6011",
     "6282"
   ],
-  "persona indigena dell'America del Sud": [
+  "persona indigena dell'america del sud": [
     "6137"
   ],
-  "persona indigena dell'Asia": [
+  "persona indigena dell'asia": [
     "5958",
     "5959"
   ],
-  "persona indigena dell'India": [
+  "persona indigena dell'india": [
     "6152"
   ],
   "personale": [
@@ -34795,6 +33924,13 @@
   ],
   "però": [
     "11377"
+  ],
+  "perù": [
+    "29592",
+    "8185"
+  ],
+  "pesach": [
+    "36131"
   ],
   "pesante": [
     "27025"
@@ -34980,6 +34116,9 @@
   "pesto alla genovese": [
     "39605"
   ],
+  "pet": [
+    "38355"
+  ],
   "petalo": [
     "34063"
   ],
@@ -34995,6 +34134,9 @@
   ],
   "peto": [
     "29666"
+  ],
+  "petra": [
+    "25319"
   ],
   "petrolio": [
     "8186"
@@ -35261,6 +34403,13 @@
   "piazza": [
     "6184"
   ],
+  "piazza del torico": [
+    "5543"
+  ],
+  "picasso": [
+    "25325",
+    "25413"
+  ],
   "piccante": [
     "32013",
     "37756",
@@ -35366,6 +34515,9 @@
   "pifferaio": [
     "5999"
   ],
+  "pifferaio di hamelin": [
+    "5999"
+  ],
   "pifferaio magico": [
     "5999"
   ],
@@ -35395,6 +34547,13 @@
   "pila": [
     "24282",
     "8320"
+  ],
+  "pilar": [
+    "5394",
+    "5606"
+  ],
+  "pilara": [
+    "5412"
   ],
   "pilates": [
     "38793"
@@ -35468,6 +34627,9 @@
   ],
   "pino": [
     "3216"
+  ],
+  "pinocchio": [
+    "6177"
   ],
   "pinoli": [
     "8667"
@@ -35547,6 +34709,9 @@
   "pirata": [
     "6180"
   ],
+  "pirenei": [
+    "5541"
+  ],
   "pirofila": [
     "37065"
   ],
@@ -35598,7 +34763,7 @@
   "pista ciclabile": [
     "7051"
   ],
-  "pista da BMX": [
+  "pista da bmx": [
     "39237"
   ],
   "pista da sci": [
@@ -35820,12 +34985,21 @@
   "platessa": [
     "25666"
   ],
+  "playstation": [
+    "2354"
+  ],
   "plurale": [
     "11098",
     "11100"
   ],
+  "plutone": [
+    "10299"
+  ],
   "pluviometro": [
     "37480"
+  ],
+  "pma": [
+    "9081"
   ],
   "pneumatico": [
     "37072",
@@ -35905,7 +35079,7 @@
   "polizia municipale": [
     "35659"
   ],
-  "polizia municipale della comunità di Foral de Navarra": [
+  "polizia municipale della comunità di foral de navarra": [
     "30022"
   ],
   "polizia penitenziaria": [
@@ -35937,6 +35111,12 @@
   ],
   "pollice": [
     "7799"
+  ],
+  "pollicino": [
+    "22062"
+  ],
+  "polline": [
+    "37153"
   ],
   "pollivendola": [
     "11347"
@@ -35978,11 +35158,21 @@
   "polo negativo": [
     "26937"
   ],
+  "polo nord": [
+    "6187"
+  ],
   "polo positivo": [
     "27222"
   ],
+  "polo sud": [
+    "6188"
+  ],
   "polo tshirt": [
     "24308"
+  ],
+  "polonia": [
+    "22051",
+    "28985"
   ],
   "polpaccio": [
     "39125"
@@ -36136,8 +35326,14 @@
   "ponte della nave": [
     "21577"
   ],
+  "ponte di pietra": [
+    "5557"
+  ],
   "ponte levatoio": [
     "37603"
+  ],
+  "pontevedra": [
+    "14758"
   ],
   "ponticello": [
     "37257"
@@ -36159,6 +35355,15 @@
     "2327",
     "5954",
     "5955",
+    "5956"
+  ],
+  "porcellino maggiore": [
+    "5954"
+  ],
+  "porcellino medio": [
+    "5955"
+  ],
+  "porcellino minore": [
     "5956"
   ],
   "porcello": [
@@ -36202,11 +35407,23 @@
   "porta da hockey su ghiaccio": [
     "27226"
   ],
+  "porta del carmen": [
+    "22060"
+  ],
+  "porta di alcalá": [
+    "22056"
+  ],
+  "porta di brandeburgo": [
+    "22058"
+  ],
   "porta di hockey su prato": [
     "27230"
   ],
   "porta di pallanuoto": [
     "27234"
+  ],
+  "porta di palmas": [
+    "25357"
   ],
   "porta di rugby": [
     "9149"
@@ -36415,9 +35632,19 @@
   "porto marittimo": [
     "35453"
   ],
+  "porto rico": [
+    "17296"
+  ],
+  "portogallo": [
+    "28969",
+    "8196"
+  ],
   "porzione": [
     "11307",
     "37270"
+  ],
+  "pos": [
+    "9185"
   ],
   "posare": [
     "25347",
@@ -36711,6 +35938,10 @@
     "30901",
     "36033"
   ],
+  "preistoria": [
+    "32630",
+    "32634"
+  ],
   "prelevare": [
     "17312"
   ],
@@ -36984,6 +36215,7 @@
     "9870"
   ],
   "presepe": [
+    "24873",
     "26320",
     "5089"
   ],
@@ -37002,10 +36234,13 @@
     "16378",
     "22052"
   ],
-  "presidente di Aragona": [
+  "presidente del senato": [
+    "37563"
+  ],
+  "presidente di aragona": [
     "16377"
   ],
-  "presidenza del Congresso": [
+  "presidenza del congresso": [
     "37568"
   ],
   "presina": [
@@ -37105,6 +36340,9 @@
   "principessa": [
     "5554"
   ],
+  "principessa del burundi": [
+    "34571"
+  ],
   "principi": [
     "38146"
   ],
@@ -37125,6 +36363,9 @@
   ],
   "privato": [
     "22637"
+  ],
+  "proa valdearinnoensis": [
+    "34587"
   ],
   "problema": [
     "32304",
@@ -37487,6 +36728,9 @@
   "prossimo venerdì": [
     "39722"
   ],
+  "prostaglandina e2": [
+    "31700"
+  ],
   "prostituzione": [
     "15553",
     "15555",
@@ -37506,6 +36750,9 @@
   "protesi acustiche": [
     "12361"
   ],
+  "protesi dentaria": [
+    "37170"
+  ],
   "protesta": [
     "27469",
     "27471"
@@ -37521,25 +36768,25 @@
     "12260",
     "12261"
   ],
-  "protezione anti raggi X per testicoli": [
+  "protezione anti raggi x per testicoli": [
     "33130",
     "33133",
     "33134",
     "33136",
     "33150"
   ],
-  "protezione anti raggi X per zona intima": [
+  "protezione anti raggi x per zona intima": [
     "33139"
   ],
   "protezione civile": [
     "28014"
   ],
-  "protezione gonadi anti raggi X": [
+  "protezione gonadi anti raggi x": [
     "33135",
     "33137",
     "33138"
   ],
-  "protezione gonadi anti raggi X li": [
+  "protezione gonadi anti raggi x li": [
     "33132"
   ],
   "protezione per testicoli": [
@@ -37554,6 +36801,9 @@
   ],
   "protocollo": [
     "37310"
+  ],
+  "protottero etiopico": [
+    "34583"
   ],
   "protuberanza": [
     "32274"
@@ -38080,7 +37330,14 @@
     "8028"
   ],
   "q": [
-    "3039"
+    "3039",
+    "3146"
+  ],
+  "qatar": [
+    "28064"
+  ],
+  "qr": [
+    "38514"
   ],
   "qua": [
     "5382"
@@ -38141,6 +37398,12 @@
   "qual è il tuo nome?": [
     "27353"
   ],
+  "qual è il tuo numero di cellulare?": [
+    "31484"
+  ],
+  "qual è il tuo numero di telefono?": [
+    "31485"
+  ],
   "qual è la differenza?": [
     "32792"
   ],
@@ -38151,6 +37414,7 @@
     "38574"
   ],
   "qual' è il tuo nome?": [
+    "38570",
     "38575"
   ],
   "qual' è il tuo numero di cellulare?": [
@@ -38283,6 +37547,9 @@
     "9833",
     "9834"
   ],
+  "quanto pesa?": [
+    "33128"
+  ],
   "quanto sei alto?": [
     "8013"
   ],
@@ -38368,6 +37635,9 @@
   ],
   "quasi come": [
     "37590"
+  ],
+  "quasimodo": [
+    "6020"
   ],
   "quattordici": [
     "29266"
@@ -38467,7 +37737,8 @@
     "2845"
   ],
   "r": [
-    "3040"
+    "3040",
+    "3147"
   ],
   "rabbia": [
     "35567"
@@ -38681,7 +37952,7 @@
     "36821",
     "36824"
   ],
-  "ragazza con sindrome di Down": [
+  "ragazza con sindrome di down": [
     "37455"
   ],
   "ragazza con strabismo": [
@@ -38749,11 +38020,9 @@
   "ragazzo con strabismo": [
     "37814"
   ],
-  "raggi X": [
-    "33104",
-    "33105"
-  ],
   "raggi x": [
+    "33104",
+    "33105",
     "6198"
   ],
   "raggio": [
@@ -38796,6 +38065,9 @@
   ],
   "rallegrarsi": [
     "31186"
+  ],
+  "ramadan": [
+    "36438"
   ],
   "ramarro": [
     "2949"
@@ -39007,6 +38279,11 @@
     "34244",
     "5563"
   ],
+  "re magi": [
+    "26390",
+    "3124",
+    "5072"
+  ],
   "recentemente": [
     "39715"
   ],
@@ -39109,6 +38386,10 @@
   "registro cardiotocografico": [
     "32206"
   ],
+  "regno unito": [
+    "28974",
+    "8206"
+  ],
   "regolare": [
     "28027"
   ],
@@ -39185,7 +38466,7 @@
   "renna": [
     "9069"
   ],
-  "renna di Babbo Natale": [
+  "renna di babbo natale": [
     "3150"
   ],
   "reparto": [
@@ -39199,6 +38480,27 @@
   ],
   "replicare": [
     "11752"
+  ],
+  "repubblica ceca": [
+    "21535"
+  ],
+  "repubblica democratica del congo": [
+    "26769"
+  ],
+  "repubblica democratica di sao tomè e principe": [
+    "39169"
+  ],
+  "repubblica di tunisia": [
+    "39168"
+  ],
+  "repubblica domenicana": [
+    "27308"
+  ],
+  "repubblica dominicana": [
+    "29727"
+  ],
+  "repubblica popolare del bangladesh": [
+    "38460"
   ],
   "reputazione": [
     "14660"
@@ -39388,6 +38690,9 @@
   ],
   "riccio di mare": [
     "34033"
+  ],
+  "riccioli d'oro": [
+    "6207"
   ],
   "ricciolo": [
     "5564"
@@ -39753,6 +39058,9 @@
   "rinoceronte": [
     "2550"
   ],
+  "rio de janeiro": [
+    "25036"
+  ],
   "riordinare": [
     "5514"
   ],
@@ -40099,6 +39407,12 @@
   "rivoluzione della terra attorno al sole": [
     "24448"
   ],
+  "rivoluzione francese": [
+    "37926"
+  ],
+  "robaculeros": [
+    "5413"
+  ],
   "robot": [
     "6208"
   ],
@@ -40120,6 +39434,9 @@
   "roccia": [
     "6594"
   ],
+  "roccia degli innamorati": [
+    "31131"
+  ],
   "rock": [
     "38704"
   ],
@@ -40137,6 +39454,13 @@
   ],
   "roller": [
     "9204"
+  ],
+  "romania": [
+    "28975",
+    "8214"
+  ],
+  "romano": [
+    "32088"
   ],
   "romantica": [
     "11957"
@@ -40186,6 +39510,9 @@
   ],
   "ronzio nell' orecchio": [
     "39508"
+  ],
+  "roquefort": [
+    "28018"
   ],
   "rosa": [
     "2807",
@@ -40417,6 +39744,10 @@
   "russare": [
     "22094"
   ],
+  "russia": [
+    "28976",
+    "8215"
+  ],
   "ruttare": [
     "25068",
     "25069",
@@ -40439,10 +39770,12 @@
     "4737"
   ],
   "s": [
-    "3041"
+    "3041",
+    "3152"
   ],
   "sabato": [
-    "37725"
+    "37725",
+    "6605"
   ],
   "sabato che verrà": [
     "39720"
@@ -40565,11 +39898,15 @@
   "sagoma maschile": [
     "4744"
   ],
+  "sagrada familia": [
+    "22098"
+  ],
   "sagrestia": [
     "30004"
   ],
-  "sala TV": [
-    "16139"
+  "saint kitts e nevis": [
+    "29734",
+    "29735"
   ],
   "sala accettazione": [
     "38859"
@@ -40752,6 +40089,9 @@
     "24628",
     "37350"
   ],
+  "sala tv": [
+    "16139"
+  ],
   "sala visita": [
     "38870",
     "38875"
@@ -40765,6 +40105,9 @@
   "sala visite": [
     "38357",
     "38877"
+  ],
+  "salamanca": [
+    "14774"
   ],
   "salamandra": [
     "7236"
@@ -41107,6 +40450,9 @@
   "salvadanaio": [
     "4666"
   ],
+  "salvador dalí": [
+    "21581"
+  ],
   "salvagente": [
     "30036",
     "3103",
@@ -41130,11 +40476,57 @@
   "salviette umide": [
     "6231"
   ],
+  "san fermìn": [
+    "38225"
+  ],
+  "san giacomo maggiore": [
+    "35871"
+  ],
+  "san giorgio": [
+    "25427",
+    "5576"
+  ],
+  "san giorgio e il drago": [
+    "5576"
+  ],
+  "san giovanni": [
+    "24386"
+  ],
+  "san giovanni battista": [
+    "24386"
+  ],
+  "san giuseppe": [
+    "7238"
+  ],
+  "san lorenzo": [
+    "5577"
+  ],
+  "san marino": [
+    "27309",
+    "29581"
+  ],
+  "san pietro": [
+    "39220"
+  ],
+  "san sebastián": [
+    "28960"
+  ],
+  "san valentino": [
+    "19541",
+    "19543",
+    "19545"
+  ],
+  "san valerio": [
+    "28701"
+  ],
   "sana": [
     "39515"
   ],
   "sana alimentazione": [
     "37201"
+  ],
+  "sancho panza": [
+    "15495"
   ],
   "sandali": [
     "2556",
@@ -41176,9 +40568,29 @@
     "37797",
     "39515"
   ],
+  "sant vincet e grenadine": [
+    "27310"
+  ],
+  "sant'antonio": [
+    "39221"
+  ],
+  "sant'antonio abate": [
+    "39221"
+  ],
   "santa": [
     "10197",
     "24388"
+  ],
+  "santa claus": [
+    "25297",
+    "25298",
+    "3139"
+  ],
+  "santa croce": [
+    "24135"
+  ],
+  "santiago di compostella": [
+    "35831"
   ],
   "santo": [
     "24392",
@@ -41190,6 +40602,9 @@
   ],
   "santuario": [
     "3118"
+  ],
+  "sao tomè e principe": [
+    "39169"
   ],
   "sapere": [
     "16885",
@@ -41206,6 +40621,10 @@
   ],
   "saponetta": [
     "2964"
+  ],
+  "saragozza": [
+    "14682",
+    "5607"
   ],
   "sarcofago": [
     "26427",
@@ -41252,6 +40671,9 @@
   "saturimetro": [
     "30138",
     "38905"
+  ],
+  "saturno": [
+    "10300"
   ],
   "saturo": [
     "39086"
@@ -41452,18 +40874,21 @@
   "scampo": [
     "3014"
   ],
+  "scandinavia": [
+    "34069"
+  ],
   "scanner": [
     "9153"
   ],
-  "scanner DEXA": [
-    "38668"
-  ],
-  "scanner MOC": [
-    "38668"
-  ],
-  "scanner a raggi X": [
+  "scanner a raggi x": [
     "31076",
     "31088"
+  ],
+  "scanner dexa": [
+    "38668"
+  ],
+  "scanner moc": [
+    "38668"
   ],
   "scanner per bagagli": [
     "39602"
@@ -41480,7 +40905,7 @@
   "scansionare": [
     "38058"
   ],
-  "scansionare QR code": [
+  "scansionare qr code": [
     "39018"
   ],
   "scansione": [
@@ -41818,11 +41243,11 @@
     "25498",
     "2910"
   ],
-  "schermo LCD": [
-    "25498"
-  ],
   "schermo intero": [
     "39251"
+  ],
+  "schermo lcd": [
+    "25498"
   ],
   "schermo protezione igienica": [
     "36863"
@@ -42244,6 +41669,9 @@
   ],
   "scovolino per biberon": [
     "36825"
+  ],
+  "scozia": [
+    "21844"
   ],
   "scrittore": [
     "11258"
@@ -42832,6 +42260,9 @@
   "segno di barra inversa": [
     "3424"
   ],
+  "segovia": [
+    "14775"
+  ],
   "segretaria": [
     "34784",
     "4742"
@@ -42846,17 +42277,17 @@
   "segreteria dei servizi legali": [
     "37559"
   ],
-  "segreteria del Congresso": [
+  "segreteria del congresso": [
     "37564",
     "37565"
   ],
-  "segreteria del Parlamento": [
+  "segreteria del parlamento": [
     "37564"
   ],
   "segreteria del presidente": [
     "37560"
   ],
-  "segreteria dell'ufficio del Parlamento": [
+  "segreteria dell'ufficio del parlamento": [
     "37558"
   ],
   "seguente": [
@@ -43030,6 +42461,9 @@
   "senecio giallo": [
     "38269"
   ],
+  "senegal": [
+    "8221"
+  ],
   "seni": [
     "7275"
   ],
@@ -43184,6 +42618,11 @@
     "31319",
     "31354"
   ],
+  "serbia": [
+    "22112",
+    "27311",
+    "28987"
+  ],
   "sereno": [
     "37828"
   ],
@@ -43241,9 +42680,6 @@
     "38532",
     "38533"
   ],
-  "servizio di Terapia Occupazionale": [
-    "11659"
-  ],
   "servizio di audit": [
     "37325"
   ],
@@ -43266,6 +42702,9 @@
   "servizio di radiologia": [
     "38353"
   ],
+  "servizio di terapia occupazionale": [
+    "11659"
+  ],
   "servizio di trasferimento denaro": [
     "39789"
   ],
@@ -43275,7 +42714,7 @@
   "servizio emergenze": [
     "36225"
   ],
-  "servizio emergenze Israele": [
+  "servizio emergenze israele": [
     "36227"
   ],
   "servizio fotocopie": [
@@ -43289,6 +42728,9 @@
   ],
   "servizio informazioni": [
     "24541"
+  ],
+  "servizio occupazione disabili": [
+    "11657"
   ],
   "servizio sociale": [
     "39780"
@@ -43412,6 +42854,10 @@
   "settecento": [
     "29386"
   ],
+  "settembre": [
+    "35929",
+    "6613"
+  ],
   "settimana": [
     "24601",
     "37372",
@@ -43426,6 +42872,11 @@
   ],
   "settimana prossima": [
     "39736"
+  ],
+  "settimana santa": [
+    "25441",
+    "3153",
+    "32538"
   ],
   "settimana scorsa": [
     "39735"
@@ -43482,7 +42933,7 @@
   "sfilata": [
     "26708"
   ],
-  "sfilata di Carnevale": [
+  "sfilata di carnevale": [
     "36663"
   ],
   "sfinge": [
@@ -43567,14 +43018,23 @@
   "sgusciare l'uovo": [
     "36944"
   ],
+  "shabbat": [
+    "36133"
+  ],
   "shaker": [
     "23945"
   ],
   "shampoo": [
     "2699"
   ],
+  "shavuot": [
+    "38964"
+  ],
   "shekel": [
     "36829"
+  ],
+  "shiva": [
+    "24400"
   ],
   "showdown": [
     "33022",
@@ -43715,9 +43175,12 @@
   "sindrome cri du chat": [
     "30239"
   ],
-  "sindrome di Down": [
+  "sindrome di down": [
     "30233",
     "8222"
+  ],
+  "singapore": [
+    "28065"
   ],
   "singhiozzo": [
     "22127"
@@ -43740,6 +43203,10 @@
     "5589",
     "6214",
     "6891"
+  ],
+  "siria": [
+    "28066",
+    "38820"
   ],
   "siringa": [
     "16809",
@@ -43825,6 +43292,9 @@
     "32757",
     "6989"
   ],
+  "siviglia": [
+    "14690"
+  ],
   "skateboard": [
     "2507",
     "9020"
@@ -43878,7 +43348,7 @@
   "slitta": [
     "8710"
   ],
-  "slitta di Babbo Natale": [
+  "slitta di babbo natale": [
     "3161"
   ],
   "slittare": [
@@ -43886,6 +43356,14 @@
   ],
   "slittino": [
     "8710"
+  ],
+  "slovacchia": [
+    "21853",
+    "29572"
+  ],
+  "slovenia": [
+    "29573",
+    "29586"
   ],
   "smaltimento medicinali": [
     "37635"
@@ -43909,6 +43387,9 @@
   ],
   "smart working": [
     "36731"
+  ],
+  "smarties": [
+    "28305"
   ],
   "smartwatch": [
     "31384"
@@ -44073,14 +43554,14 @@
     "2797",
     "36726"
   ],
-  "soldato Iberico": [
-    "37121"
-  ],
-  "soldato Romano": [
-    "37126"
-  ],
   "soldato francese": [
     "36967"
+  ],
+  "soldato iberico": [
+    "37121"
+  ],
+  "soldato romano": [
+    "37126"
   ],
   "soldi": [
     "4630",
@@ -44187,6 +43668,10 @@
   ],
   "soluzione fisiologica": [
     "6220"
+  ],
+  "somalia": [
+    "36665",
+    "36666"
   ],
   "sombrero": [
     "30973"
@@ -44312,6 +43797,9 @@
   "sorgente": [
     "24154"
   ],
+  "soria": [
+    "14776"
+  ],
   "sorpassare": [
     "34844",
     "8482"
@@ -44347,6 +43835,9 @@
   "sorteggiare": [
     "31676",
     "8699"
+  ],
+  "sos": [
+    "29016"
   ],
   "sosta disabili": [
     "38790"
@@ -44446,6 +43937,11 @@
   ],
   "spaghettini": [
     "8584"
+  ],
+  "spagna": [
+    "10476",
+    "28967",
+    "8108"
   ],
   "spagnola": [
     "11535"
@@ -44718,7 +44214,7 @@
     "37029",
     "37063"
   ],
-  "spettacolo con T-Rex": [
+  "spettacolo con t-rex": [
     "34673"
   ],
   "spettacolo di burattini": [
@@ -44776,6 +44272,9 @@
   ],
   "spicchio di limone": [
     "39614"
+  ],
+  "spiderman": [
+    "8224"
   ],
   "spiedino": [
     "27260",
@@ -44894,6 +44393,9 @@
   "spirare": [
     "29862",
     "29863"
+  ],
+  "spirito santo": [
+    "24029"
   ],
   "spirometria": [
     "30094",
@@ -45161,6 +44663,9 @@
   "sradicare": [
     "7013"
   ],
+  "sri lanka": [
+    "28067"
+  ],
   "sta nevicando!": [
     "10733",
     "38562"
@@ -45199,6 +44704,9 @@
   ],
   "stadio di calcio": [
     "5993"
+  ],
+  "staff di trattamento familiare": [
+    "25064"
   ],
   "staffetta": [
     "36105"
@@ -45245,6 +44753,9 @@
   "stalla per cavalli": [
     "26712"
   ],
+  "stame": [
+    "37147"
+  ],
   "stampa": [
     "20117"
   ],
@@ -45252,7 +44763,7 @@
     "26138",
     "2970"
   ],
-  "stampante 3D": [
+  "stampante 3d": [
     "38039"
   ],
   "stampante laser": [
@@ -45445,6 +44956,10 @@
   "stati membri": [
     "11469"
   ],
+  "stati uniti": [
+    "29588",
+    "8112"
+  ],
   "stato": [
     "35431"
   ],
@@ -45463,6 +44978,9 @@
   "statua": [
     "38044",
     "8113"
+  ],
+  "statua della libertà": [
+    "21854"
   ],
   "statuetta": [
     "2394"
@@ -45538,14 +45056,20 @@
     "2752",
     "4644"
   ],
-  "stella di Betlemme": [
+  "stella cometa": [
     "3100"
   ],
-  "stella di Davide": [
+  "stella di betlemme": [
+    "3100"
+  ],
+  "stella di davide": [
     "22795"
   ],
   "stella di mare": [
     "3310"
+  ],
+  "stella di natale": [
+    "36394"
   ],
   "stella marina": [
     "3310"
@@ -45559,6 +45083,9 @@
     "37009"
   ],
   "stemma": [
+    "5610"
+  ],
+  "stemma di aragona": [
     "5610"
   ],
   "stemma ebraico": [
@@ -45666,7 +45193,7 @@
   "stimolazione infantile": [
     "31299"
   ],
-  "stimolazione magnetica transranica (TMS)": [
+  "stimolazione magnetica transranica (tms)": [
     "39834"
   ],
   "stimolazione precoce": [
@@ -45922,7 +45449,8 @@
     "35821"
   ],
   "strisce pedonali": [
-    "3430"
+    "3430",
+    "7197"
   ],
   "striscia reattiva per il glucosio": [
     "24591"
@@ -46261,6 +45789,21 @@
   "succo di pomodoro": [
     "11404"
   ],
+  "sud": [
+    "8228"
+  ],
+  "sud-est": [
+    "28095"
+  ],
+  "sud-ovest": [
+    "28096"
+  ],
+  "sudafrica": [
+    "22113"
+  ],
+  "sudan": [
+    "39463"
+  ],
   "sudare": [
     "32125",
     "35721",
@@ -46373,6 +45916,9 @@
   "supereroi": [
     "36728"
   ],
+  "superman": [
+    "8227"
+  ],
   "supermercato": [
     "3389",
     "6618"
@@ -46402,6 +45948,10 @@
   "surgelato": [
     "31197"
   ],
+  "suriname": [
+    "27312",
+    "29603"
+  ],
   "sushi": [
     "38993"
   ],
@@ -46426,6 +45976,9 @@
     "28837",
     "28838",
     "30786"
+  ],
+  "suv": [
+    "3223"
   ],
   "sveglia": [
     "28631",
@@ -46495,6 +46048,10 @@
   "svestito": [
     "34637"
   ],
+  "svezia": [
+    "10253",
+    "28977"
+  ],
   "svilupparsi": [
     "11683",
     "39286"
@@ -46513,6 +46070,10 @@
   ],
   "svitare il tappo": [
     "37181"
+  ],
+  "svizzera": [
+    "22114",
+    "28978"
   ],
   "svogliato": [
     "32063",
@@ -46542,7 +46103,8 @@
     "5584"
   ],
   "t": [
-    "3042"
+    "3042",
+    "3158"
   ],
   "tabaccheria": [
     "2751"
@@ -46550,11 +46112,11 @@
   "tabella": [
     "6222"
   ],
-  "tabella CAA": [
-    "6222"
-  ],
   "tabella alfabetica": [
     "39013"
+  ],
+  "tabella caa": [
+    "6222"
   ],
   "tabella di comunicazione": [
     "24707",
@@ -46614,6 +46176,9 @@
   ],
   "taco": [
     "39698"
+  ],
+  "tagikistan": [
+    "28068"
   ],
   "taglia": [
     "9923"
@@ -46713,6 +46278,12 @@
     "32960",
     "32961"
   ],
+  "tailandia": [
+    "25483"
+  ],
+  "taj mahal": [
+    "25484"
+  ],
   "tajine": [
     "32673"
   ],
@@ -46742,6 +46313,10 @@
   ],
   "tamborrada": [
     "5592"
+  ],
+  "tamborrada di san sebastián": [
+    "28944",
+    "28952"
   ],
   "tamburello": [
     "2495",
@@ -46803,6 +46378,9 @@
   ],
   "tanto tempo fa": [
     "39716"
+  ],
+  "tanzania": [
+    "39464"
   ],
   "tapis roulant": [
     "30981"
@@ -46903,6 +46481,9 @@
   "taro": [
     "39820"
   ],
+  "tarragona": [
+    "14835"
+  ],
   "tarso": [
     "37469"
   ],
@@ -46928,6 +46509,9 @@
   "tartufo": [
     "35753"
   ],
+  "tarzan": [
+    "29800"
+  ],
   "tasca": [
     "6937"
   ],
@@ -46947,6 +46531,9 @@
   ],
   "tasso": [
     "37493"
+  ],
+  "tastavinsauro": [
+    "34579"
   ],
   "tasti del pianoforte": [
     "7270"
@@ -46999,7 +46586,7 @@
   "tatami": [
     "31275"
   ],
-  "tatami per Karate": [
+  "tatami per karate": [
     "31275"
   ],
   "tattoo studio": [
@@ -47134,12 +46721,22 @@
   "tazzina": [
     "2581"
   ],
+  "tc": [
+    "30705"
+  ],
   "tchoukball": [
     "38516"
   ],
   "te": [
     "6625",
     "7290"
+  ],
+  "teacch": [
+    "30648",
+    "32868",
+    "32869",
+    "32966",
+    "32967"
   ],
   "team di aiuto sociale": [
     "24665",
@@ -47158,6 +46755,12 @@
   ],
   "teatro di burattini": [
     "4754"
+  ],
+  "teatro nero": [
+    "36455"
+  ],
+  "teatro romano di mérida": [
+    "25494"
   ],
   "tecnica amministrativa": [
     "16176"
@@ -47201,6 +46804,10 @@
   "tecnico radiologo": [
     "30192"
   ],
+  "tecnico sanitario": [
+    "2375",
+    "6050"
+  ],
   "tecnologia": [
     "11459",
     "36363",
@@ -47227,6 +46834,9 @@
   ],
   "tegola": [
     "2792"
+  ],
+  "teide": [
+    "10305"
   ],
   "teiera": [
     "7276"
@@ -47428,6 +47038,9 @@
   "tenere un segreto": [
     "39842"
   ],
+  "tenerife": [
+    "14849"
+  ],
   "tenia": [
     "25502"
   ],
@@ -47451,12 +47064,6 @@
   "tensione muscolare": [
     "37172"
   ],
-  "terapia CPAP": [
-    "37679"
-  ],
-  "terapia E.V.": [
-    "38749"
-  ],
   "terapia assistita con gli animali": [
     "29202",
     "29203",
@@ -47465,6 +47072,9 @@
   "terapia con le campane tibetane": [
     "37155",
     "37157"
+  ],
+  "terapia cpap": [
+    "37679"
   ],
   "terapia del massaggio sonoro": [
     "37769"
@@ -47491,15 +47101,22 @@
     "15925",
     "25552"
   ],
+  "terapia e.v.": [
+    "38749"
+  ],
   "terapia endovenosa": [
     "29812",
     "38749"
+  ],
+  "terapia intensiva": [
+    "30468"
   ],
   "terapia intensiva pediatrica": [
     "36337",
     "36339"
   ],
   "terapia occupazionale": [
+    "16061",
     "24821"
   ],
   "terapista dei cani": [
@@ -47514,6 +47131,9 @@
   ],
   "terapisti occupazionali": [
     "24821"
+  ],
+  "tereré": [
+    "31033"
   ],
   "tergicristalli": [
     "10331"
@@ -47531,11 +47151,11 @@
   "terminal bus": [
     "36291"
   ],
-  "terminale POS": [
-    "39712"
-  ],
   "terminale di pagamento": [
     "9185"
+  ],
+  "terminale pos": [
+    "39712"
   ],
   "termine": [
     "9837"
@@ -47555,6 +47175,8 @@
     "3288"
   ],
   "terra": [
+    "30014",
+    "30015",
     "3017",
     "3160"
   ],
@@ -47595,6 +47217,10 @@
   "terrorista": [
     "16111"
   ],
+  "teruel": [
+    "14681",
+    "5594"
+  ],
   "terza": [
     "15543",
     "28327",
@@ -47614,10 +47240,10 @@
     "34447",
     "37749"
   ],
-  "teschio di Tirannosauro": [
+  "teschio di tirannosauro": [
     "34969"
   ],
-  "teschio di Triceratopo": [
+  "teschio di triceratopo": [
     "34967"
   ],
   "tesoro": [
@@ -47677,6 +47303,9 @@
   "test diagnostico": [
     "32111"
   ],
+  "test proteina c-reattiva": [
+    "36841"
+  ],
   "test rapido": [
     "37010"
   ],
@@ -47723,6 +47352,33 @@
     "36175",
     "8300"
   ],
+  "testone berrugón": [
+    "5407"
+  ],
+  "testone boticario": [
+    "5461"
+  ],
+  "testone forana": [
+    "5409"
+  ],
+  "testone forano": [
+    "5410"
+  ],
+  "testone morico": [
+    "5411"
+  ],
+  "testone pilara": [
+    "5412"
+  ],
+  "testone robaculeros": [
+    "5413"
+  ],
+  "testone torero": [
+    "5414"
+  ],
+  "testone tuerto": [
+    "5415"
+  ],
   "testuggine": [
     "26503"
   ],
@@ -47758,6 +47414,9 @@
   ],
   "thermos": [
     "7274"
+  ],
+  "tholos el romeral": [
+    "31133"
   ],
   "thè mate": [
     "31035",
@@ -47843,6 +47502,9 @@
     "31698",
     "31908"
   ],
+  "tirannosauro": [
+    "34981"
+  ],
   "tirare": [
     "15375",
     "28449",
@@ -47922,11 +47584,14 @@
   "tiro a segno": [
     "5102"
   ],
-  "tiro a segno 3D": [
+  "tiro a segno 3d": [
     "39588"
   ],
   "tiro alla fune": [
     "36454"
+  ],
+  "tms": [
+    "39834"
   ],
   "toad in the hole": [
     "38304"
@@ -48144,6 +47809,9 @@
   "toka": [
     "39019"
   ],
+  "toledo": [
+    "14766"
+  ],
   "tollerante": [
     "33000"
   ],
@@ -48198,6 +47866,9 @@
     "14538",
     "14540"
   ],
+  "torcal di antequera": [
+    "31129"
+  ],
   "torcia": [
     "6138"
   ],
@@ -48215,6 +47886,7 @@
   ],
   "torero": [
     "11387",
+    "5414",
     "5597"
   ],
   "tornado": [
@@ -48238,6 +47910,9 @@
   "tornello": [
     "29054"
   ],
+  "tornillo del torcal": [
+    "31031"
+  ],
   "tornio": [
     "39537"
   ],
@@ -48253,17 +47928,23 @@
     "38648",
     "6232"
   ],
-  "torre Eiffel": [
-    "10271"
-  ],
   "torre a caduta libera": [
     "39595"
   ],
   "torre acrobatica": [
     "35995"
   ],
+  "torre del agua": [
+    "22145"
+  ],
   "torre di controllo": [
     "22141"
+  ],
+  "torre di san salvador": [
+    "31388"
+  ],
+  "torre eiffel": [
+    "10271"
   ],
   "torre ottagonale": [
     "38648"
@@ -48314,6 +47995,9 @@
   "torta con le candeline": [
     "2579"
   ],
+  "torta del casar": [
+    "28149"
+  ],
   "torta di carote": [
     "38496"
   ],
@@ -48362,6 +48046,9 @@
   "tortora": [
     "35053"
   ],
+  "torvosauro": [
+    "34435"
+  ],
   "torà": [
     "24463"
   ],
@@ -48397,6 +48084,9 @@
   ],
   "tostare": [
     "17330"
+  ],
+  "tostones": [
+    "37510"
   ],
   "totocalcio": [
     "4729"
@@ -48611,7 +48301,7 @@
   "trasporto pazienti": [
     "28269"
   ],
-  "trattamento Therasuit": [
+  "trattamento therasuit": [
     "34290"
   ],
   "trattare bene": [
@@ -48803,6 +48493,10 @@
   "trincea": [
     "37129"
   ],
+  "trinidad e tobago": [
+    "29654",
+    "29655"
+  ],
   "trinxat": [
     "38097"
   ],
@@ -48868,7 +48562,7 @@
   "trombone": [
     "6233"
   ],
-  "tronchetto di Natale": [
+  "tronchetto di natale": [
     "12303",
     "12305"
   ],
@@ -48983,6 +48677,9 @@
   "tue": [
     "12283"
   ],
+  "tuerto": [
+    "5415"
+  ],
   "tuffarsi": [
     "22137",
     "22170",
@@ -49026,6 +48723,9 @@
   "tunica marocchina": [
     "36643"
   ],
+  "tunisia": [
+    "39168"
+  ],
   "tunnel": [
     "8972"
   ],
@@ -49064,7 +48764,14 @@
   "turbina eolica": [
     "25768"
   ],
+  "turchia": [
+    "22161",
+    "29582"
+  ],
   "turiasauro": [
+    "34585"
+  ],
+  "turiasaurus riodevensis": [
     "34585"
   ],
   "turismo": [
@@ -49079,6 +48786,9 @@
     "29644",
     "6236",
     "9002"
+  ],
+  "turkmenistan": [
+    "28069"
   ],
   "turno": [
     "22190",
@@ -49097,6 +48807,9 @@
   ],
   "tuta da sci": [
     "29931"
+  ],
+  "tutankamon": [
+    "26521"
   ],
   "tutor": [
     "4708",
@@ -49166,6 +48879,9 @@
   "twister": [
     "29004"
   ],
+  "txotx!": [
+    "29246"
+  ],
   "ty": [
     "36755",
     "36770"
@@ -49186,7 +48902,8 @@
     "29802"
   ],
   "u": [
-    "3043"
+    "3043",
+    "3164"
   ],
   "u accentata": [
     "36769"
@@ -49224,6 +48941,58 @@
     "8160",
     "8161"
   ],
+  "ucraina": [
+    "27313",
+    "29583"
+  ],
+  "udc": [
+    "38152",
+    "38153",
+    "38154",
+    "38155",
+    "38156",
+    "38157",
+    "38158",
+    "38159",
+    "38160",
+    "38161",
+    "38162",
+    "38163",
+    "38164",
+    "38165",
+    "38166",
+    "38167",
+    "38168",
+    "38169",
+    "38170",
+    "38171",
+    "38172",
+    "38173",
+    "38174",
+    "38175",
+    "38176",
+    "38177",
+    "38179",
+    "38180",
+    "38181",
+    "38182",
+    "38183",
+    "38184",
+    "38185",
+    "38186",
+    "38187",
+    "38188",
+    "38189",
+    "38190",
+    "38191",
+    "38192",
+    "38193",
+    "38194",
+    "38195",
+    "38196",
+    "38197",
+    "38198"
+  ],
   "udire": [
     "2381",
     "28659",
@@ -49243,7 +49012,7 @@
   "ufficio dei rappresentanti degli studenti": [
     "16190"
   ],
-  "ufficio del Parlamento": [
+  "ufficio del parlamento": [
     "37558"
   ],
   "ufficio della posta": [
@@ -49259,8 +49028,11 @@
   "ufficio di collocamento mirato": [
     "34312"
   ],
-  "ufficio di presidenza del Parlamento": [
+  "ufficio di presidenza del parlamento": [
     "37569"
+  ],
+  "ufficio elaborazione carte d'identità": [
+    "38291"
   ],
   "ufficio elaborazione passaporto": [
     "38292"
@@ -49462,11 +49234,24 @@
   "undici meno un quarto": [
     "29524"
   ],
+  "unesco": [
+    "9082"
+  ],
+  "ungheria": [
+    "10251",
+    "29576"
+  ],
   "unghia": [
     "2783"
   ],
+  "unicef": [
+    "9083"
+  ],
   "unicorno": [
     "6237"
+  ],
+  "unifor": [
+    "16184"
   ],
   "uniforme da cuoco": [
     "38696"
@@ -49491,11 +49276,17 @@
   "unità di assistenza alle donne": [
     "38295"
   ],
+  "unità di impiego, uguaglianza, cooperazione e comunicazione": [
+    "16182"
+  ],
   "unità di polizia per adolescenti": [
     "38294"
   ],
   "unità di polizia per minorenni": [
     "38294"
+  ],
+  "unità di terapia intensiva": [
+    "30468"
   ],
   "universal design": [
     "14678"
@@ -49560,6 +49351,9 @@
   "uomo lupo": [
     "8135"
   ],
+  "uomo ragno": [
+    "8224"
+  ],
   "uova": [
     "34039"
   ],
@@ -49572,7 +49366,7 @@
   "uova alla russa": [
     "36409"
   ],
-  "uova di Pasqua": [
+  "uova di pasqua": [
     "37452",
     "37466"
   ],
@@ -49599,14 +49393,14 @@
   "uovo all'occhio di bue": [
     "2428"
   ],
-  "uovo di Pasqua": [
+  "uovo di cioccolato": [
+    "11304"
+  ],
+  "uovo di pasqua": [
     "11304",
     "12307",
     "29678",
     "32478"
-  ],
-  "uovo di cioccolato": [
-    "11304"
   ],
   "uovo di razza": [
     "38921"
@@ -49631,6 +49425,9 @@
   ],
   "uragano": [
     "8606"
+  ],
+  "urano": [
+    "10302"
   ],
   "urgente": [
     "36675"
@@ -49679,6 +49476,13 @@
   ],
   "urtare": [
     "38283"
+  ],
+  "uruguay": [
+    "29602",
+    "8244"
+  ],
+  "usa": [
+    "29588"
   ],
   "usare": [
     "15485"
@@ -49797,8 +49601,12 @@
   "uva passa": [
     "8648"
   ],
+  "uzbekistan": [
+    "28070"
+  ],
   "v": [
-    "3044"
+    "3044",
+    "3165"
   ],
   "va bene": [
     "29634",
@@ -49861,8 +49669,14 @@
   "valdostana": [
     "30508"
   ],
+  "valencia": [
+    "14769"
+  ],
   "valenciano": [
     "36372"
+  ],
+  "valenza": [
+    "14769"
   ],
   "validare": [
     "35097"
@@ -49873,6 +49687,9 @@
   "valigia": [
     "11297",
     "2931"
+  ],
+  "valladolid": [
+    "14777"
   ],
   "valle": [
     "6238"
@@ -49894,6 +49711,13 @@
   ],
   "vampiro": [
     "6239"
+  ],
+  "vangelo": [
+    "24039",
+    "30845",
+    "30846",
+    "30847",
+    "30848"
   ],
   "vaniglia": [
     "28679"
@@ -49996,14 +49820,6 @@
     "28673",
     "6564"
   ],
-  "vedere la TV": [
-    "16905",
-    "2782",
-    "29123",
-    "29124",
-    "29125",
-    "6626"
-  ],
   "vedere la tele": [
     "7296"
   ],
@@ -50015,6 +49831,14 @@
     "29125",
     "6626",
     "7296"
+  ],
+  "vedere la tv": [
+    "16905",
+    "2782",
+    "29123",
+    "29124",
+    "29125",
+    "6626"
   ],
   "vedova": [
     "11637",
@@ -50060,6 +49884,9 @@
   "veloce": [
     "37850",
     "5306"
+  ],
+  "velociraptor": [
+    "39827"
   ],
   "velocità": [
     "37850",
@@ -50123,7 +49950,8 @@
     "39184"
   ],
   "venerdì": [
-    "37726"
+    "37726",
+    "6629"
   ],
   "venerdì che verrà": [
     "39722"
@@ -50137,6 +49965,10 @@
   "venerdì prossimo": [
     "39722"
   ],
+  "venerdì santo": [
+    "32950",
+    "32951"
+  ],
   "venerdì scorso": [
     "39721"
   ],
@@ -50145,6 +49977,13 @@
   ],
   "venerdì successivo": [
     "39722"
+  ],
+  "venere": [
+    "10303"
+  ],
+  "venezuela": [
+    "29596",
+    "29597"
   ],
   "venire": [
     "11708",
@@ -50258,6 +50097,9 @@
   "vergine": [
     "7301"
   ],
+  "vergine del pilar": [
+    "5606"
+  ],
   "vergogna": [
     "25823",
     "30632",
@@ -50362,6 +50204,7 @@
     "24200"
   ],
   "vespa": [
+    "28167",
     "6925"
   ],
   "vestaglia": [
@@ -50507,11 +50350,11 @@
   "vibratore": [
     "26581"
   ],
-  "vicepresidente del Congresso": [
+  "vicepresidente del congresso": [
     "37566",
     "37567"
   ],
-  "vicepresidente del Parlamento": [
+  "vicepresidente del parlamento": [
     "37566",
     "37567"
   ],
@@ -50568,6 +50411,9 @@
   "videoteca": [
     "30213"
   ],
+  "vieja cuaresma": [
+    "14550"
+  ],
   "vietare": [
     "9022"
   ],
@@ -50582,6 +50428,9 @@
   "vietato bere": [
     "29177",
     "8673"
+  ],
+  "vietato bere alcolici durante la gravidanza": [
+    "32172"
   ],
   "vietato curiosare": [
     "25714"
@@ -50620,6 +50469,9 @@
   "vietato usare cellulari": [
     "8676"
   ],
+  "vietnam": [
+    "28071"
+  ],
   "vigilante": [
     "3343"
   ],
@@ -50641,6 +50493,9 @@
   ],
   "vigilessa": [
     "11280"
+  ],
+  "vigilia di natale": [
+    "8260"
   ],
   "vigogna": [
     "37012"
@@ -51009,7 +50864,14 @@
     "4767"
   ],
   "w": [
-    "3045"
+    "3045",
+    "3167"
+  ],
+  "w-fi": [
+    "35503"
+  ],
+  "w.c.": [
+    "37710"
   ],
   "wafer": [
     "34302"
@@ -51030,10 +50892,17 @@
     "15927"
   ],
   "wc": [
+    "27559",
+    "27561",
+    "28213",
     "33934",
     "33935",
     "33936",
-    "37904"
+    "37331",
+    "37904",
+    "38625",
+    "38626",
+    "38627"
   ],
   "wc adattato": [
     "15810",
@@ -51077,11 +50946,15 @@
   "wonder woman": [
     "36737"
   ],
+  "wrestling delle canarie": [
+    "37039"
+  ],
   "würstel": [
     "6647"
   ],
   "x": [
-    "3046"
+    "3046",
+    "3168"
   ],
   "xebec": [
     "38345"
@@ -51090,8 +50963,14 @@
     "2616",
     "6249"
   ],
+  "y": [
+    "3171"
+  ],
   "yacht": [
     "3172"
+  ],
+  "yemen": [
+    "28072"
   ],
   "yo-yo": [
     "8734"
@@ -51109,7 +50988,8 @@
     "36677"
   ],
   "z": [
-    "3048"
+    "3048",
+    "3173"
   ],
   "zafferano": [
     "23781"
@@ -51127,6 +51007,9 @@
   ],
   "zambomba": [
     "11400"
+  ],
+  "zamora": [
+    "14778"
   ],
   "zampa": [
     "16833",
@@ -51346,40 +51229,20 @@
   "zuppiera": [
     "10257"
   ],
-  "Á": [
-    "36740"
-  ],
-  "Álava": [
-    "14759"
-  ],
-  "Ávila": [
-    "14770"
-  ],
-  "Ç": [
-    "29078"
-  ],
-  "Í": [
-    "36743"
-  ],
-  "Ñ": [
-    "5085"
-  ],
-  "Ó": [
-    "36749"
-  ],
-  "Ö": [
-    "36750"
-  ],
-  "Ú": [
-    "36754"
-  ],
-  "Ü": [
-    "36752"
-  ],
   "à": [
     "36785"
   ],
+  "á": [
+    "36740"
+  ],
+  "álava": [
+    "14759"
+  ],
+  "ávila": [
+    "14770"
+  ],
   "ç": [
+    "29078",
     "29080"
   ],
   "è finito!": [
@@ -51420,31 +51283,37 @@
   "ì": [
     "36779"
   ],
+  "í": [
+    "36743"
+  ],
   "ñ": [
-    "3412"
+    "3412",
+    "5085"
   ],
   "ò": [
     "36776"
   ],
+  "ó": [
+    "36749"
+  ],
   "ö": [
+    "36750",
     "36774"
   ],
   "ú": [
+    "36754",
     "36769"
   ],
   "ü": [
+    "36752",
     "36772"
   ],
-  "Ő": [
-    "36738"
-  ],
   "ő": [
+    "36738",
     "36775"
   ],
-  "Ű": [
-    "36751"
-  ],
   "ű": [
+    "36751",
     "36771"
   ]
 }
