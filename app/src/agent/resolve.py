@@ -97,17 +97,24 @@ class _EmbeddingIndex:
 
         The embedding matrix rows are already L2-normalised, so cosine
         similarity reduces to a plain dot product.
+        Returns None (instead of raising) if sentence-transformers is not installed.
         """
         if self._mat.shape[0] == 0:
             return None
-        self._load_model()
+        try:
+            self._load_model()
+        except RuntimeError as exc:
+            logger.warning("Embedding step disabled: %s", exc)
+            # Poison the instance so we don't retry _load_model() on every concept.
+            self._mat = np.empty((0, 0), dtype=np.float32)
+            return None
         vec = self._model.encode([concept], normalize_embeddings=True).astype(np.float32)
         scores = self._mat @ vec[0]          # shape (N,)
         best_idx = int(np.argmax(scores))
         best_score = float(scores[best_idx])
         if best_score >= threshold:
             kw = str(self._kws[best_idx])
-            logger.debug(
+            logger.info(
                 "Embedding nearest(%r) → %r  score=%.3f  threshold=%.2f",
                 concept, kw, best_score, threshold,
             )
