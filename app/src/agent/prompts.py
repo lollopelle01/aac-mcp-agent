@@ -110,7 +110,12 @@ def build_planner_prompt(*, full: bool = False) -> str:
 
 
 def build_planner_message(raw_input: str, history: str = "", context_block: str = "") -> str:
-    """Build the user-turn message, prepending session history and context when available."""
+    """Build the user-turn message, prepending session history and context when available.
+
+    At turn 0 (history is empty) a one-line hint is appended to remind the planner
+    to emit the grammatical subject of the caregiver's sentence as the first concept.
+    The hint is omitted on subsequent turns to avoid interfering with the normal flow.
+    """
     parts: list[str] = []
     if history:
         parts.append(history)
@@ -122,6 +127,12 @@ def build_planner_message(raw_input: str, history: str = "", context_block: str 
         parts.append(f'Caregiver: "{raw_input}"')
     else:
         parts.append('Caregiver: "" (empty, see history)')
+    if not history:
+        parts.append(
+            "\nHint: this is the first turn — no history yet. "
+            "Start your concept list with the grammatical subject of the caregiver's sentence "
+            '(e.g. "I", "my ...", "we", "you") before listing semantic concepts.'
+        )
     return "\n".join(parts)
 
 
