@@ -40,8 +40,9 @@ from agent.session import SessionMemory, Turn
 from agent.backends import LLMBackend, OllamaBackend
 from agent.ranking import rank_and_fill
 
-logger    = logging.getLogger(__name__)
-agent_log = logging.getLogger("agent.run")
+logger     = logging.getLogger(__name__)
+agent_log  = logging.getLogger("agent.run")
+prompt_log = logging.getLogger("agent.prompt")   # writes to logs/prompt.log
 
 
 ### Eval context #################################################################
@@ -355,6 +356,15 @@ class AACAgent:
         system_msg = build_decision_prompt()
         user_msg   = build_planner_message(raw_input, history)   # reuses existing builder
 
+        # Log the full prompt to prompt.log so we can inspect what the model sees.
+        prompt_log.info(
+            "[DECIDE] turn=? model=%s\n"
+            "=== SYSTEM ===\n%s\n"
+            "=== USER ===\n%s\n"
+            "==============",
+            self.backend.model_id, system_msg, user_msg,
+        )
+
         try:
             raw_text = self.backend.chat(system_msg, user_msg)
             elapsed  = time.perf_counter() - _t0
@@ -387,9 +397,21 @@ class AACAgent:
         system_msg = build_planner_prompt(full=False)
         user_msg   = build_planner_message(raw_input, history, context_block=context_block)
 
+        # Log the full prompt to prompt.log — this is what the model actually sees.
+        # Annotate whether the subject hint is present (only at turn 0, when history is empty).
+        hint_present = not bool(history)
+        prompt_log.info(
+            "[PLAN] model=%s  hint_present=%s\n"
+            "=== SYSTEM ===\n%s\n"
+            "=== USER ===\n%s\n"
+            "==============",
+            self.backend.model_id, hint_present, system_msg, user_msg,
+        )
+
+        # Also keep the existing [PLAN IN] line in agent.log for quick scanning.
         agent_log.info(
-            "[PLAN IN] model=%s  user_msg=%r",
-            self.backend.model_id, user_msg,
+            "[PLAN IN] model=%s  hint_present=%s  user_msg=%r",
+            self.backend.model_id, hint_present, user_msg,
         )
 
         try:

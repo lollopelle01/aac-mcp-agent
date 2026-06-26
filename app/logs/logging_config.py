@@ -9,6 +9,8 @@
 #   logs/errors.log  -- WARNING+ only, rotation 1 MB x 3 files
 #   logs/agent.log   -- human-readable trace of the agent flow (INFO+): LLM input,
 #                       tool calls, LLM output, final result
+#   logs/prompt.log  -- full verbatim prompts sent to the LLM (system + user),
+#                       one record per call, tagged with phase (DECIDE / PLAN)
 #   stderr           -- WARNING+ without timestamp (readable in terminal, captured by pytest -s)
 #
 # File format:    "2025-04-15 14:23:01,042 WARNING  mcp_server.tools.arasaac: <msg>"
@@ -65,6 +67,8 @@ def setup_logging() -> None:
             "console_fmt": {"format": _FMT_CONSOLE, "datefmt": _DATE_FMT},
             # No prefix: agent.py already formats each line in a readable way
             "agent_fmt":   {"format": "%(message)s"},
+            # Prompt log: include timestamp so we can correlate with agent.log
+            "prompt_fmt":  {"format": "%(asctime)s %(message)s", "datefmt": _DATE_FMT},
         },
 
         "handlers": {
@@ -96,6 +100,16 @@ def setup_logging() -> None:
                 "formatter":   "agent_fmt",
                 "level":       "INFO",
             },
+            # Full verbatim prompts (system + user) sent to the LLM each turn
+            "prompt_file": {
+                "class":       "logging.handlers.RotatingFileHandler",
+                "filename":    str(_LOGS_DIR / "prompt.log"),
+                "maxBytes":    _APP_LOG_MAX_BYTES,
+                "backupCount": _APP_LOG_BACKUP_COUNT,
+                "encoding":    "utf-8",
+                "formatter":   "prompt_fmt",
+                "level":       "INFO",
+            },
             "console": {
                 "class":     "logging.StreamHandler",
                 "stream":    "ext://sys.stderr",
@@ -117,6 +131,12 @@ def setup_logging() -> None:
                 "handlers":  ["agent_file"],
                 "propagate": False,
             },
+            # Dedicated logger for full LLM prompts -- separate file for easy inspection
+            "agent.prompt": {
+                "level":     "INFO",
+                "handlers":  ["prompt_file"],
+                "propagate": False,
+            },
             # Silence verbose libraries
             "urllib3":            {"level": "WARNING", "propagate": True},
             "requests":           {"level": "WARNING", "propagate": True},
@@ -128,9 +148,10 @@ def setup_logging() -> None:
     _CONFIGURED = True
 
     logging.getLogger(__name__).info(
-        "Logging initialised. app.log=%s, errors.log=%s, agent.log=%s, file_level=%s",
+        "Logging initialised. app.log=%s, errors.log=%s, agent.log=%s, prompt.log=%s, file_level=%s",
         _LOGS_DIR / "app.log",
         _LOGS_DIR / "errors.log",
         _LOGS_DIR / "agent.log",
+        _LOGS_DIR / "prompt.log",
         _FILE_LEVEL,
     )
