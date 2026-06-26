@@ -87,7 +87,7 @@ If the input is empty, infer the next concept from session history.
 Examples:
 
 Caregiver: "he keeps covering his ears"
-{"concepts": ["ear", "noise", "loud", "pain", "headphone", "quiet", "stop"]}
+{"concepts": ["I", "ear", "noise", "loud", "pain", "headphone", "quiet", "stop"]}
 
 Caregiver: "she keeps reaching for the snacks"
 {"concepts": ["snack", "hungry", "eat", "food", "want", "more"]}
@@ -96,7 +96,10 @@ Caregiver: "she is doing physiotherapy at 10:45 this morning"
 {"concepts": ["physiotherapy", "exercise", "arm", "leg", "stretch", "therapist", "pain", "movement"]}
 
 Caregiver: "coat and shoes, we are going out"
-{"concepts": ["coat", "shoes", "go out", "door", "bag", "ready", "outside"]}
+{"concepts": ["We", "coat", "shoes", "go out", "door", "bag", "ready", "outside"]}
+
+Caregiver: "she keeps pulling at her socks"
+{"concepts": ["I", "sock", "foot", "uncomfortable", "take off", "tight", "hurt"]}
 """
 
 

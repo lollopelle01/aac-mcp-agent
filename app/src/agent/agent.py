@@ -387,9 +387,9 @@ class AACAgent:
         system_msg = build_planner_prompt(full=False)
         user_msg   = build_planner_message(raw_input, history, context_block=context_block)
 
-        agent_log.debug(
-            "[PLAN IN] model=%s\n--- system ---\n%s\n--- user ---\n%s",
-            self.backend.model_id, system_msg, user_msg,
+        agent_log.info(
+            "[PLAN IN] model=%s  user_msg=%r",
+            self.backend.model_id, user_msg,
         )
 
         try:
