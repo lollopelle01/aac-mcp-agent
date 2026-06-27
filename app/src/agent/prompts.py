@@ -132,9 +132,11 @@ def build_planner_message(raw_input: str, history: str = "", context_block: str 
         parts.append('Caregiver: "" (empty, see history)')
     if not history:
         parts.append(
-            "\nHint: this is the first turn — no history yet. "
-            "Start your concept list with the grammatical subject of the caregiver's sentence "
-            '(e.g. "I", "my ...", "we", "you") before listing semantic concepts.'
+            "\nHint: this is the first turn —> no history yet. "
+            "The AAC user is always the person the caregiver is speaking ABOUT. "
+            "Always start your concept list with 'I' (the AAC user's self-reference), "
+            "regardless of whether the caregiver says 'he', 'she', 'they', or 'you'. "
+            "Then list semantic concepts from the caregiver's input."
         )
     return "\n".join(parts)
 
