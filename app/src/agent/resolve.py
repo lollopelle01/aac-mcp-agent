@@ -108,7 +108,7 @@ class _EmbeddingIndex:
             # Poison the instance so we don't retry _load_model() on every concept.
             self._mat = np.empty((0, 0), dtype=np.float32)
             return None
-        vec = self._model.encode([concept], normalize_embeddings=True).astype(np.float32)
+        vec = self._model.encode([concept], normalize_embeddings=True, show_progress_bar=False).astype(np.float32)
         scores = self._mat @ vec[0]          # shape (N,)
         best_idx = int(np.argmax(scores))
         best_score = float(scores[best_idx])

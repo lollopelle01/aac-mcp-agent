@@ -68,11 +68,11 @@ _DEFAULTS: dict[str, Any] = {
     "agent_default_model":       "qwen2.5:3b",
     "agent_use_llamacpp":        True,   # if True, use LlamaCppBackend instead of Ollama
     "agent_max_results":         25,     # R22: 24->25 (eval window size experiment)
-    "agent_candidates_per_term": 10,
-    "agent_memory_turns":        3,
+    "agent_candidates_per_term": 20,     # R23: 10->20 (candidate cap experiment)
+    "agent_memory_turns":        5,      # R23: 3->5 (memory turns experiment)
     "agent_fetch_schedule":      True,
     "agent_synset_expand":       True,
-    "agent_synset_expand_max":   8,
+    "agent_synset_expand_max":   20,     # R23: 8->20 (synset budget experiment)
     "agent_use_two_phase":       True,
 
     # Dataset
