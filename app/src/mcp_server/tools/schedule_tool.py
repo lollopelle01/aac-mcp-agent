@@ -1,6 +1,8 @@
 from __future__ import annotations
 
+import json
 import logging
+import os
 from datetime import date, datetime, timedelta
 from typing import Optional
 from zoneinfo import ZoneInfo
@@ -44,6 +46,22 @@ def get_schedule(date_str: Optional[str] = None) -> list[dict]:
         target = datetime.fromisoformat(date_str).date()
     else:
         target = date.today()
+
+    # Demo/eval override: when MOCK_SCHEDULE_EVENTS is set in the environment,
+    # short-circuit the real providers entirely and return the injected events
+    # as-is. Used by notebooks/scripts that need get_schedule to answer with
+    # known data without a real Google/Apple account configured -- the request
+    # still goes through the tool and the MCP protocol like any other call,
+    # only the data source changes. Unset by default: does not affect the app.
+    mock_env = os.environ.get("MOCK_SCHEDULE_EVENTS")
+    if mock_env:
+        try:
+            raw_events = json.loads(mock_env)
+            events = [ScheduleEvent.model_validate(e) for e in raw_events]
+            logger.info("get_schedule: %d mocked events (MOCK_SCHEDULE_EVENTS set).", len(events))
+            return [e.model_dump() for e in events]
+        except Exception as exc:
+            logger.warning("MOCK_SCHEDULE_EVENTS set but invalid (%s) -- falling back to CALENDAR_PROVIDER.", exc)
 
     if CALENDAR_PROVIDER == "google":
         events = _fetch_google(target)

@@ -1,4 +1,6 @@
+import json
 import logging
+import os
 from datetime import datetime
 
 from mcp_server.server import mcp
@@ -39,6 +41,25 @@ def get_time() -> dict:
         current_dt  : str  -- ISO 8601 datetime (YYYY-MM-DDTHH:MM:SS)
         time_of_day : str  -- slot label (e.g. "morning", "afternoon", etc.)
     """
+    # Demo/eval override: when MOCK_TIME_INFO is set in the environment, return
+    # it as-is instead of the real system clock. Mirrors the MOCK_SCHEDULE_EVENTS
+    # override in schedule_tool.py -- used together so a notebook/script can pin
+    # get_time and get_schedule to the same fictional moment (e.g. a row from the
+    # evaluation dataset) instead of mixing today's real clock with mock events
+    # written for a different time of day. The call still goes through the tool
+    # and the MCP protocol like any other call; only the data source changes.
+    # Unset by default: does not affect the app.
+    mock_env = os.environ.get("MOCK_TIME_INFO")
+    if mock_env:
+        try:
+            mock_payload = json.loads(mock_env)
+            result = TimeInfo.model_validate(mock_payload)
+            logger.info("get_time: mocked -> %s | %s (MOCK_TIME_INFO set).",
+                        result.current_dt, result.time_of_day)
+            return result.model_dump(mode="json")
+        except Exception as exc:
+            logger.warning("MOCK_TIME_INFO set but invalid (%s) -- falling back to system clock.", exc)
+
     now = datetime.now()
     time_of_day = _resolve_time_of_day(now.hour)
 

@@ -76,8 +76,9 @@ _DEFAULTS: dict[str, Any] = {
     "agent_use_two_phase":       True,
 
     # Dataset
-    # en_eval is the merged eval dataset (local + HF clean) used by run_eval_hf.py.
-    # It is never touched by update_datasets.py -- treat it as a frozen snapshot.
+    # en_eval is the merged eval dataset (local + HF clean) used for cluster-based
+    # HF evaluation. It is never touched by update_datasets.py -- treat it as a
+    # frozen snapshot.
     "use_local_datasets": True,
     "dataset_langs":      ["en", "en_eval", "it", "es"],
 }

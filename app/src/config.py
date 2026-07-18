@@ -47,7 +47,7 @@ APPLE_CALDAV_URL   = os.environ.get("APPLE_CALDAV_URL", "https://caldav.icloud.c
 APPLE_USERNAME     = os.environ.get("APPLE_USERNAME", "")
 APPLE_APP_PASSWORD = os.environ.get("APPLE_APP_PASSWORD", "")
 
-# HuggingFace (used only for cluster evaluation — eval/cluster_work/run_eval_hf.py)
+# HuggingFace (used only for cluster-based evaluation against the HF eval dataset)
 HF_DATASET = os.environ.get("HF_DATASET", "")
 HF_TOKEN   = os.environ.get("HF_TOKEN", "")
 
