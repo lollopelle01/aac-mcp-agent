@@ -31,16 +31,9 @@ def get_schedule(date_str: Optional[str] = None) -> list[dict]:
     """
     Return today's (or a given date's) calendar events.
 
-    Parameters
-    ----------
-    date_str : str | None
-        ISO 8601 date string -- either YYYY-MM-DD or a full datetime (e.g. the
-        current_dt field returned by get_time). Defaults to today.
-
-    Returns
-    -------
-    list[dict]  -- Serialised ScheduleEvent objects:
-                   {title, start_time, location, description}
+    date_str accepts an ISO 8601 date (YYYY-MM-DD) or a full datetime (e.g.
+    the current_dt field returned by get_time), defaults to today. Returns
+    serialised ScheduleEvent objects: {title, start_time, location, description}.
     """
     if date_str:
         target = datetime.fromisoformat(date_str).date()
@@ -48,11 +41,7 @@ def get_schedule(date_str: Optional[str] = None) -> list[dict]:
         target = date.today()
 
     # Demo/eval override: when MOCK_SCHEDULE_EVENTS is set in the environment,
-    # short-circuit the real providers entirely and return the injected events
-    # as-is. Used by notebooks/scripts that need get_schedule to answer with
-    # known data without a real Google/Apple account configured -- the request
-    # still goes through the tool and the MCP protocol like any other call,
-    # only the data source changes. Unset by default: does not affect the app.
+    # short-circuit the real providers entirely and return the injected events as-is.
     mock_env = os.environ.get("MOCK_SCHEDULE_EVENTS")
     if mock_env:
         try:

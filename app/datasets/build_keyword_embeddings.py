@@ -1,42 +1,12 @@
-#!/usr/bin/env python3
 """
-datasets/build_keyword_embeddings.py
-
 Pre-compute L2-normalised sentence embeddings for every keyword in
-datasets/{lang}/keywords.json and save them to
-datasets/{lang}/keyword_embeddings.npz.
+datasets/{lang}/keywords.json, saved to datasets/{lang}/keyword_embeddings.npz.
 
-The .npz archive is consumed at runtime by _EmbeddingIndex in
-src/agent/resolve.py (step 5 of resolve_concept).  It is the only way to
-enable embedding-based fallback; the file is NOT created automatically by
-update_datasets.py so that the 80 MB model download is opt-in.
+Consumed at runtime by _EmbeddingIndex in src/agent/resolve.py (step 5 of
+resolve_concept). Not run automatically by update_datasets.py, since the
+model download should be opt-in. 
 
-Usage
------
-    # All languages defined in config.DATASET_LANGS
-    python datasets/build_keyword_embeddings.py
-
-    # Specific languages
-    python datasets/build_keyword_embeddings.py --langs en it
-
-    # Force rebuild even if .npz already exists
-    python datasets/build_keyword_embeddings.py --force
-
-    # Different model (must be compatible with sentence-transformers)
-    python datasets/build_keyword_embeddings.py --model paraphrase-MiniLM-L6-v2
-
-Dependencies
-------------
-    pip install sentence-transformers
-
-The default model is all-MiniLM-L6-v2 (22 MB, 384-dimensional embeddings).
-It is downloaded once by sentence-transformers and cached in
-~/.cache/torch/sentence_transformers/.
-
-Archive layout
---------------
-    keywords   : np.ndarray, shape (N,),    dtype object  — keyword strings
-    embeddings : np.ndarray, shape (N, 384), dtype float32 — L2-normalised rows
+Run --help for options.
 """
 
 from __future__ import annotations
@@ -49,13 +19,10 @@ from pathlib import Path
 
 import numpy as np
 
-####################################################################################################
-# Path setup — same as update_datasets.py
-####################################################################################################
-
+#### Path setup #########################################################################################################################
 _DATASETS_DIR = Path(__file__).resolve().parent   # app/datasets/
 _APP          = _DATASETS_DIR.parent              # app/
-_ROOT         = _APP.parent                       # <project_root>/
+_ROOT         = _APP.parent                       # aac-mcp-agent/
 _SRC          = _APP / "src"                      # app/src/
 for _p in (_SRC, _APP):
     if str(_p) not in sys.path:
@@ -63,10 +30,7 @@ for _p in (_SRC, _APP):
 
 from config import DATASETS_DIR, DATASET_LANGS
 
-####################################################################################################
-# Logging
-####################################################################################################
-
+#### Logging #########################################################################################################################
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s  %(levelname)-8s  %(message)s",
@@ -74,10 +38,7 @@ logging.basicConfig(
 )
 log = logging.getLogger(__name__)
 
-####################################################################################################
-# Core
-####################################################################################################
-
+#### Core #########################################################################################################################
 DEFAULT_MODEL = "all-MiniLM-L6-v2"
 BATCH_SIZE    = 512   # keywords per encode() call
 
@@ -164,10 +125,7 @@ def build_for_lang(
     return model
 
 
-####################################################################################################
-# CLI
-####################################################################################################
-
+#### CLI #########################################################################################################################
 def main() -> None:
     parser = argparse.ArgumentParser(
         description="Pre-compute keyword embeddings for resolve_concept() step 5.",

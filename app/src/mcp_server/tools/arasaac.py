@@ -19,7 +19,7 @@ from config import (
 
 logger = logging.getLogger(__name__)
 
-####### Utils ############################################################
+####### Utils #######################################################################
 
 
 def _image_url(pictogram_id: int) -> str:
@@ -160,7 +160,7 @@ def _ids_to_results(
     return results
 
 
-####### Helper ###########################################################
+####### Helper ######################################################################
 
 def get_pictogram_image(pictogram_id: int) -> bytes:
     """
@@ -180,7 +180,7 @@ def get_pictogram_image(pictogram_id: int) -> bytes:
     return r.content
 
 
-####### MCP tools ########################################################
+####### MCP tools ###################################################################
 
 @mcp.tool()
 def search_pictograms(
@@ -191,22 +191,10 @@ def search_pictograms(
     """
     Search ARASAAC pictograms by a single keyword and return the best matches.
 
-    IMPORTANT: this is a literal keyword match against ARASAAC's catalogue,
-    not a semantic search. The keyword must match (or closely resemble) the
-    exact string stored as a pictogram label in the chosen language.
-
-    Before calling this tool, use list_keywords() to discover the exact
-    keyword strings available in the catalogue.
-
-    Parameters
-    ----------
-    keyword     : str  -- Exact or near-exact word/phrase to look up (e.g. "eat").
-    lang        : str  -- ARASAAC language code (default from config: "en").
-    max_results : int  -- Maximum number of results to return (default 5).
-
-    Returns
-    -------
-    dict  -- {"results": list[dict]}  up to max_results serialised Pictogram dicts.
+    This is a literal keyword match against ARASAAC's catalogue, not a
+    semantic search, the keyword must match (or closely resemble) the exact
+    string stored as a pictogram label in the chosen language. Call
+    list_keywords() first to discover the exact strings available.
     """
     if USE_LOCAL_DATASETS:
         kw_index   = _DatasetCache.load_keyword_index(lang)
@@ -245,15 +233,6 @@ def get_pictogram_metadata(
 
     Uses the local dataset when available; falls back to the live API.
     Returns an error dict (instead of raising) for unknown IDs.
-
-    Parameters
-    ----------
-    pictogram_id : int  -- Unique ARASAAC pictogram ID (e.g. 2500).
-    lang         : str  -- Language code for keyword fields (default from config).
-
-    Returns
-    -------
-    dict  -- All pictogram fields plus image_url, or {"error": "..."} if not found.
     """
     pid_str = str(pictogram_id)
 
@@ -293,15 +272,7 @@ def list_keywords(lang: str = LANG) -> dict:
 
     Call this before search_pictograms() to discover the exact strings the
     catalogue recognises. Reads from datasets/{lang}/keywords.json when
-    USE_LOCAL_DATASETS is True; falls back to the live /keywords/{lang} endpoint.
-
-    Parameters
-    ----------
-    lang : str  -- ARASAAC language code (default from config).
-
-    Returns
-    -------
-    dict  -- {"keywords": list[str]}  sorted keyword strings.
+    USE_LOCAL_DATASETS is True, it falls back to the live /keywords/{lang} endpoint.
     """
     if USE_LOCAL_DATASETS:
         local_kws = _DatasetCache.load_keywords(lang)
@@ -338,22 +309,11 @@ def search_pictograms_by_synset(
     """
     Fetch all ARASAAC pictograms linked to a Princeton WordNet synset.
 
-    The most semantically precise search available -- retrieves exactly the
+    The most semantically precise search available, retrieves exactly the
     pictograms representing a concept without relying on keyword matching.
 
-    Synset IDs are 8-digit zero-padded integers followed by a POS tag,
-    e.g. "00854425-v" (eat/consume), "04341686-n" (school).
-    Use NLTK or https://wordnet.princeton.edu for lookup.
-
-    Parameters
-    ----------
-    synset_id : str  -- WordNet synset offset with POS suffix (e.g. "00854425-v").
-    wordnet   : str  -- WordNet version (default "3.1"; also supports "3.0").
-    lang      : str  -- ARASAAC language code for keyword labels (default from config).
-
-    Returns
-    -------
-    dict  -- {"results": list[dict]}  serialised Pictogram dicts for all matches.
+    Synset IDs are 8-digit zero-padded integers followed by a POS tag.
+    es: "00854425-v" (eat/consume) or "04341686-n" (school).
     """
     if USE_LOCAL_DATASETS:
         synset_index = _DatasetCache.load_synset_index(lang)

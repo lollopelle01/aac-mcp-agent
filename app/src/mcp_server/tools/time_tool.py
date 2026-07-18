@@ -31,24 +31,11 @@ def get_time() -> dict:
     Return the current local datetime and the time-of-day slot.
 
     Use this tool when the caregiver's input is vague about the time of
-    day or the date and temporal context is needed. You can use this with
-    the tool get_schedule in order to infer the actual plans and enrich the
-    content of the caregiver.
-
-    Returns
-    -------
-    dict with fields:
-        current_dt  : str  -- ISO 8601 datetime (YYYY-MM-DDTHH:MM:SS)
-        time_of_day : str  -- slot label (e.g. "morning", "afternoon", etc.)
+    day or the date and temporal context is needed. Pair it with
+    get_schedule to infer the actual plans and enrich the context.
     """
     # Demo/eval override: when MOCK_TIME_INFO is set in the environment, return
-    # it as-is instead of the real system clock. Mirrors the MOCK_SCHEDULE_EVENTS
-    # override in schedule_tool.py -- used together so a notebook/script can pin
-    # get_time and get_schedule to the same fictional moment (e.g. a row from the
-    # evaluation dataset) instead of mixing today's real clock with mock events
-    # written for a different time of day. The call still goes through the tool
-    # and the MCP protocol like any other call; only the data source changes.
-    # Unset by default: does not affect the app.
+    # it as-is instead of the real system clock.
     mock_env = os.environ.get("MOCK_TIME_INFO")
     if mock_env:
         try:

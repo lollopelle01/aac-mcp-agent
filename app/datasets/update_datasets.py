@@ -1,81 +1,24 @@
-#!/usr/bin/env python3
 """
-datasets/update_datasets.py
-
 Builds and incrementally refreshes the local ARASAAC metadata used by the MCP
 server when config.USE_LOCAL_DATASETS is True.
 
-Dataset layout
---------------
-datasets/
-  {lang}/
-    _meta.json            Per-file build timestamps and record counts.
-    keywords.json         Full keyword list for that language (list of strings).
-    pictograms.json       { id_str → PictogramRecord } for all pictograms.
-    keyword_index.json    { keyword → [id, ...] } for local search_pictograms().
-    synset_index.json     { synset_id → [id, ...] } for local search_pictograms_by_synset().
-  pictograms/
-    {id}.png              Language-independent pictogram images (optional).
+Layout, per language, under datasets/{lang}/:
+1. _meta.json (build timestamps +counts), 
+2. keywords.json (flat list), 
+3. pictograms.json ({id_str -> record}, see _extract_record() for the fields), 
+4. keyword_index.json ({keyword -> [id, ...]}),
+5. synset_index.json ({synset_id -> [id, ...]}). 
 
-_meta.json structure (per language)
--------------------------------------
-{
-  "keywords":      { "built_at": "<ISO8601>", "count": 7021 },
-  "pictograms":    { "built_at": "<ISO8601>", "count": 13780, "added": 0, "updated": 0 },
-  "keyword_index": { "built_at": "<ISO8601>", "count": 18400 },
-  "synset_index":  { "built_at": "<ISO8601>", "count": 3211 }
-}
+Images are language-independent,in datasets/pictograms/{id}.png.
 
-All "built_at" values reflect the UTC timestamp of the run that wrote that file.
-For keyword_index and synset_index (derived from pictogram records, no upstream
-timestamp of their own) built_at is the timestamp of the run that rebuilt them,
-which happens on every run where at least one pictogram was added or updated.
+GET /pictograms/all/{lang} fetches all ~13 800 pictograms in one request keywords
+and both indexes are derived from the merged records, not fetched separately,
+so they can't drift out of sync.
 
-PictogramRecord fields
-----------------------
-  id           int               Unique ARASAAC pictogram ID.
-  keywords     list[dict]        All keyword objects: {type, keyword, plural, meaning}.
-                                 No artificial primary/synonym distinction — all terms
-                                 are stored as equals, matching the Keyword model.
-  categories   list[str]         Thematic categories (e.g. "food & drink").
-  synsets      list[str]         WordNet synset IDs (e.g. "00854425-v").
-  tags         list[str]         Free-form editorial labels.
-  sex          bool              Content safety flag.
-  violence     bool              Content safety flag.
-  schematic    bool              Simplified/schematic variant.
-  aac          bool              Suitable for AAC use.
-  aacColor     bool              Colour AAC variant available.
-  skin         bool              Has skin-tone variants.
-  hair         bool              Has hair-colour variants.
-  created      str|None          ISO 8601 creation timestamp.
-  lastUpdated  str|None          ISO 8601 update timestamp — used for incremental updates.
+On re-runs, a record is replaced only when the API's lastUpdated is strictly
+newer than the stored one. Pass --force to skip this and re-fetch everything. 
 
-How population works
---------------------
-GET /pictograms/all/{lang} returns all ~13 800 pictograms in a single request,
-replacing the old approach of searching every keyword individually (~7 000 HTTP
-requests, ~20 minutes per language). The full build now completes in seconds.
-
-The keyword list is derived directly from the merged pictogram records rather than
-from a separate /keywords/{lang} call, keeping it automatically in sync.
-
-Incremental update logic
-------------------------
-On re-runs, a record is updated only when the API's lastUpdated timestamp is
-strictly newer than the stored one. Pass --force to skip this check.
-
-Images
-------
-Language-independent PNGs in datasets/pictograms/{id}.png.
-Pass --download-images to pre-download all images.
-
-Usage
------
-    python datasets/update_datasets.py                     # all langs in config.DATASET_LANGS
-    python datasets/update_datasets.py --langs en it       # specific languages
-    python datasets/update_datasets.py --force             # re-fetch all, ignore lastUpdated
-    python datasets/update_datasets.py --download-images   # also save {id}.png files
-    python datasets/update_datasets.py --verbose           # DEBUG logging
+Run --help for all options.
 """
 
 from __future__ import annotations
@@ -90,10 +33,8 @@ from pathlib import Path
 
 import requests
 
-####################################################################################################
-# Path setup — this file lives in app/datasets/, project root is two levels up.
-####################################################################################################
-
+#### Path setup #####################################################################################
+# This file lives in app/datasets/, project root is two levels up.
 _DATASETS_DIR = Path(__file__).resolve().parent   # app/datasets/
 _APP  = _DATASETS_DIR.parent                      # app/
 _ROOT = _APP.parent                               # <project_root>/
@@ -110,9 +51,7 @@ from config import (
     DATASET_LANGS,
 )
 
-####################################################################################################
-# Constants
-####################################################################################################
+#### Constants ######################################################################################
 
 # Polite delay between requests (seconds). Only used for image downloads.
 REQUEST_DELAY = 0.15
@@ -125,9 +64,7 @@ logging.basicConfig(
 log = logging.getLogger(__name__)
 
 
-####################################################################################################
-# Utilities
-####################################################################################################
+#### Utilities ######################################################################################
 
 def _now_iso() -> str:
     """Return the current UTC time as an ISO 8601 string."""
@@ -184,15 +121,13 @@ def _write_meta(lang_dir: Path, meta: dict) -> None:
     _write_json(lang_dir / "_meta.json", meta, "_meta")
 
 
-####################################################################################################
-# Pictogram record extraction
-####################################################################################################
+#### Pictogram record extraction ####################################################################
 
 def _extract_record(raw: dict) -> dict | None:
     """
     Convert a raw /pictograms/all/{lang} item to a PictogramRecord.
 
-    All keyword entries are stored as equal peers — no artificial split into
+    All keyword entries are stored as equal peers, no artificial split into
     a primary "keyword" and secondary "synonyms". Each entry preserves the
     type, keyword, plural, and meaning fields from the API so that the
     pipeline can use full Keyword objects without information loss.
@@ -247,9 +182,7 @@ def _is_newer(api_ts: str | None, stored_ts: str | None) -> bool:
     return api_ts > stored_ts
 
 
-####################################################################################################
-# Per-language dataset build
-####################################################################################################
+#### Per-language dataset build #####################################################################
 
 def build_lang_dataset(
     lang: str,
@@ -257,25 +190,15 @@ def build_lang_dataset(
     force: bool,
     download_images: bool,
 ) -> bool:
-    """
-    Build or incrementally update the dataset for one language.
-
-    Steps:
-      1. Fetch all pictograms via GET /pictograms/all/{lang} (single request).
-      2. Merge with existing pictograms.json using lastUpdated for incremental mode.
-      3. Derive keywords.json from the merged pictogram records (all keyword strings).
-      4. Rebuild keyword_index.json and synset_index.json from the merged records.
-      5. Write _meta.json with built_at timestamps and counts for every file.
-      6. Optionally download pictogram images.
-
-    Returns True on success, False on failure.
+    """Build or incrementally update the dataset for one language. Steps are
+    numbered inline below. Returns True on success, False on failure.
     """
     lang_dir = datasets_dir / lang
     lang_dir.mkdir(parents=True, exist_ok=True)
     meta   = _read_meta(lang_dir)
     run_ts = _now_iso()
 
-    # -- 1. Fetch all pictograms ----------------------------------------------
+    # 1. Fetch all pictograms
     log.info("[%s] Fetching all pictograms via /pictograms/all/%s ...", lang, lang)
     url  = f"{ARASAAC_API_BASE}/pictograms/all/{lang}"
     data = _get(url)
@@ -286,7 +209,7 @@ def build_lang_dataset(
 
     log.info("[%s] Received %d pictogram entries from API.", lang, len(data))
 
-    # -- 2. Merge with existing records ---------------------------------------
+    # 2. Merge with existing records
     pictograms: dict[str, dict] = {}
     if not force:
         existing = _read_json(lang_dir / "pictograms.json")
@@ -335,13 +258,7 @@ def build_lang_dataset(
         "updated":  updated,
     }
 
-    # -- 3. Derive keywords from pictogram records ----------------------------
-    # All keyword strings across all pictogram records, with no hierarchy.
-    # This stays in sync with the pictogram data automatically — no separate
-    # /keywords/{lang} call required.
-    # Keywords are lowercased here so that keywords.json (and therefore the
-    # kw_set loaded at runtime) uses the same case as resolve_concept(), which
-    # always lowercases the input concept before matching.
+    # 3. Derive keywords from pictogram records
     keyword_set: set[str] = set()
     for rec in pictograms.values():
         for kw in rec.get("keywords", []):
@@ -356,7 +273,7 @@ def build_lang_dataset(
     )
     meta["keywords"] = {"built_at": run_ts, "count": len(keywords)}
 
-    # -- 4a. Rebuild keyword_index --------------------------------------------
+    # 4a. Rebuild keyword_index
     # Keys are lowercased to match keywords.json and the runtime kw_set.
     keyword_index: dict[str, list[str]] = {}
     for pid_str, rec in pictograms.items():
@@ -375,7 +292,7 @@ def build_lang_dataset(
     )
     meta["keyword_index"] = {"built_at": run_ts, "count": len(keyword_index)}
 
-    # -- 4b. Rebuild synset_index ---------------------------------------------
+    # 4b. Rebuild synset_index
     synset_index: dict[str, list[str]] = {}
     for pid_str, rec in pictograms.items():
         for syn in rec.get("synsets", []):
@@ -391,7 +308,7 @@ def build_lang_dataset(
     )
     meta["synset_index"] = {"built_at": run_ts, "count": len(synset_index)}
 
-    # -- 5. Write _meta.json --------------------------------------------------
+    # 5. Write _meta.json
     _write_meta(lang_dir, meta)
 
     log.info(
@@ -399,16 +316,14 @@ def build_lang_dataset(
         lang, len(pictograms), len(keywords), len(keyword_index), len(synset_index),
     )
 
-    # -- 6. Optionally download images ----------------------------------------
+    # 6. Optionally download images
     if download_images:
         _download_images(list(pictograms.keys()), datasets_dir)
 
     return True
 
 
-####################################################################################################
-# Image download (language-independent)
-####################################################################################################
+#### Image download (language-independent) ##########################################################
 
 def _download_images(pid_strs: list[str], datasets_dir: Path) -> None:
     """
@@ -444,9 +359,7 @@ def _download_images(pid_strs: list[str], datasets_dir: Path) -> None:
     log.info("Image download complete — %d downloaded, %d failed.", downloaded, failed)
 
 
-####################################################################################################
-# Orchestration
-####################################################################################################
+#### Orchestration ##################################################################################
 
 def run(
     langs: list[str],

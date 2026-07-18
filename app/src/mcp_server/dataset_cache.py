@@ -1,20 +1,11 @@
-####### mcp_server/dataset_cache.py ######################################
-# Lazy in-memory loader for local ARASAAC datasets.
-#
-# Reads from DATASETS_DIR/{lang}/*.json on first access, keeps in memory for the
-# process lifetime. All load_* methods return None on missing/malformed files so
-# callers can fall back to the live API transparently.
-#
-# Call invalidate() to force a reload (e.g. after running update_datasets.py in
-# the same process).
-#
-# Layout:
-#   app/datasets/{lang}/_meta.json            Build timestamps and counts per file.
-#   app/datasets/{lang}/keywords.json         Full keyword list.
-#   app/datasets/{lang}/pictograms.json       { id_str -> PictogramRecord }
-#   app/datasets/{lang}/keyword_index.json    { keyword -> [id, ...] }
-#   app/datasets/{lang}/synset_index.json     { synset_id -> [id, ...] }
-#   app/datasets/pictograms/{id}.png          Language-independent images.
+'''
+Lazy in-memory loader for local ARASAAC datasets.
+
+Reads from app/datasets/{lang}/*.json on first access, keeps in memory for the
+process lifetime. All load_* methods return None on missing/malformed files so
+callers can fall back to the live API transparently.
+'''
+
 
 from __future__ import annotations
 
@@ -34,7 +25,7 @@ class _DatasetCache:
     _keyword_index: dict[str, dict[str, list[str]]]  = {}  # lang -> { keyword -> [id, ...] }
     _synset_index:  dict[str, dict[str, list[str]]]  = {}  # lang -> { synset_id -> [id, ...] }
 
-    ####### Helpers ########################################################
+    ####### Helpers #############################################################################################
 
     @classmethod
     def _lang_dir(cls, lang: str) -> Path:
@@ -42,7 +33,7 @@ class _DatasetCache:
 
     @classmethod
     def _load_json(cls, path: Path) -> object | None:
-        """Read and parse a JSON file; return None on any failure."""
+        """Read and parse a JSON file, return None on any failure."""
         try:
             with open(path, encoding="utf-8") as fh:
                 return json.load(fh)
@@ -56,25 +47,15 @@ class _DatasetCache:
             logger.error("Dataset file %s is not valid JSON: %s", path, exc)
             return None
 
-    ####### Meta ###########################################################
+    ####### Meta ################################################################################################
 
     @classmethod
     def load_meta(cls, lang: str) -> dict | None:
-        """
-        Return the _meta.json dict for lang, or None if unavailable.
-
-        _meta.json structure:
-          {
-            "pictograms":    { "built_at": "<ISO8601>", "count": 13780, "added": 0, "updated": 3 },
-            "keywords":      { "built_at": "<ISO8601>", "count": 18400 },
-            "keyword_index": { "built_at": "<ISO8601>", "count": 18400 },
-            "synset_index":  { "built_at": "<ISO8601>", "count": 3211 }
-          }
-        """
+        """Return the _meta.json dict (build timestamps and counts per file) for lang, or None if unavailable."""
         data = cls._load_json(cls._lang_dir(lang) / "_meta.json")
         return data if isinstance(data, dict) else None
 
-    ####### Public loaders ################################################
+    ####### Public loaders ######################################################################################
 
     @classmethod
     def load_keywords(cls, lang: str) -> list[str] | None:
