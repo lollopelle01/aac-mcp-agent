@@ -13,9 +13,9 @@ from config import DATASETS_DIR
 logger = logging.getLogger(__name__)
 
 
-################################################################################
-# Embedding index — lazy singleton, one per language
-################################################################################
+##################################################################################################################
+# Embedding index, lazy singleton, one per language
+##################################################################################################################
 
 class _EmbeddingIndex:
     """
@@ -27,8 +27,8 @@ class _EmbeddingIndex:
     affected when all concepts resolve via exact/lemma/hyphen/token steps.
 
     Layout of the .npz archive:
-        keywords  — 1-D array of UTF-8 keyword strings, shape (N,)
-        embeddings — 2-D float32 matrix, shape (N, D), L2-normalised rows
+        keywords, 1-D array of UTF-8 keyword strings, shape (N,)
+        embeddings, 2-D float32 matrix, shape (N, D), L2-normalised rows
     """
 
     # Class-level registry: lang -> _EmbeddingIndex (None if build file absent)
@@ -127,9 +127,9 @@ class _EmbeddingIndex:
 
 
 
-################################################################################
+##################################################################################################################
 # Internal helpers
-################################################################################
+##################################################################################################################
 
 def _lemmatize_phrase(text: str) -> str:
     """Lemmatise a (possibly multi-word) phrase via spaCy."""
@@ -143,9 +143,9 @@ def _lemmatize_word(word: str) -> str:
     return doc[0].lemma_ if doc else word.lower()
 
 
-################################################################################
+##################################################################################################################
 # Public API
-################################################################################
+##################################################################################################################
 
 # Leading/trailing words that carry no semantic content and block exact matches.
 _STRIP_WORDS: frozenset[str] = frozenset({
@@ -177,16 +177,16 @@ def resolve_concept(
     """Map a natural-language concept to one or more ARASAAC keyword strings.
 
     Resolution steps (first match wins):
-        0. strip      — remove leading/trailing determiners, then retry steps 1-4
-        1. exact      — lowercase exact match
-        2. lemma      — full-phrase spaCy lemma
-        3. hyphen     — space ↔ hyphen normalisation
-        3b. lemma_alt — lemma of the normalised form
-        4. token      — individual lemmatised tokens (len > 2), reusing the doc
-                        from step 2 — no extra spaCy calls per token
-        5. embedding  — nearest-neighbour cosine search against precomputed
-                        keyword embeddings (lazy-loaded, no-op if .npz absent)
-        none          — no match found
+        0. strip      :  remove leading/trailing determiners, then retry steps 1-4
+        1. exact      :  lowercase exact match
+        2. lemma      :  full-phrase spaCy lemma
+        3. hyphen     :  space <--> hyphen normalisation
+        3b. lemma_alt :  lemma of the normalised form
+        4. token      :  individual lemmatised tokens (len > 2), reusing the doc
+                         from step 2, no extra spaCy calls per token
+        5. embedding  :  nearest-neighbour cosine search against precomputed
+                         keyword embeddings (lazy-loaded, no-op if .npz absent)
+        none          :  no match found
 
     Set return_method=True to get (keywords, method_label) for eval tracing.
     The lang parameter selects the embedding index built by
@@ -204,13 +204,13 @@ def resolve_concept(
         if phrase in kw_set:
             return [phrase]
 
-        # Step 2: full-phrase lemma — run spaCy once and keep the doc for step 4
+        # Step 2: full-phrase lemma, run spaCy once and keep the doc for step 4
         doc   = _nlp()(phrase)
         lemma = " ".join(t.lemma_ for t in doc)
         if lemma != phrase and lemma in kw_set:
             return [lemma]
 
-        # Step 3: space ↔ hyphen, then lemma of that form (different string → own call)
+        # Step 3: space <--> hyphen, then lemma of that form (different string --> own call)
         alt = phrase.replace(" ", "-") if " " in phrase else phrase.replace("-", " ")
         if alt in kw_set:
             return [alt]
@@ -218,7 +218,7 @@ def resolve_concept(
         if lemma_alt not in (phrase, lemma, alt) and lemma_alt in kw_set:
             return [lemma_alt]
 
-        # Step 4: individual token lemmas — reuse doc from step 2, no extra spaCy calls
+        # Step 4: individual token lemmas, reuse doc from step 2, no extra spaCy calls
         token_lemmas = [t.lemma_ for t in doc if len(t.text) > 2]
         found        = [t for t in dict.fromkeys(token_lemmas) if t in kw_set]
         if found:
@@ -232,7 +232,7 @@ def resolve_concept(
         method = _resolve_method_label(c, result, kw_set)
         return (result, method) if return_method else result
 
-    # Retry after stripping determiners (e.g. "a banana" → "banana")
+    # Retry after stripping determiners (e.g. "a banana" --> "banana")
     stripped = _strip_determiners(c)
     if stripped and stripped != c:
         result = _lookup(stripped)

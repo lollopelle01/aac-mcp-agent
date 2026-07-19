@@ -45,7 +45,7 @@ agent_log  = logging.getLogger("agent.run")
 prompt_log = logging.getLogger("agent.prompt")   # writes to logs/prompt.log
 
 
-### Eval context #################################################################
+### Eval context ###############################################################################################################################
 @dataclass
 class EvalContext:
     """Frozen tool outputs injected during evaluation to replace live MCP calls."""
@@ -56,26 +56,25 @@ class EvalContext:
 
 
 ################################################################################################################################################
-# AGENT                                                                                                                                        #
+# AGENT                                                                                                         
 ################################################################################################################################################
 
 class AACAgent:
     """AAC pictogram selection agent with per-session memory.
 
-    Two-phase pipeline (when use_two_phase=True, the default):
-      Phase 1 DECISION  — fast LLM call: does this input need time/schedule context?
-      Phase 2 CONTEXT   — MCP tools (get_time, get_schedule) only if needed
-      Phase 3 PLANNING  — LLM planner with full context already available
-      Phase 4 RETRIEVAL — keyword search on ARASAAC
-      Phase 5 SYNSET    — optional pool expansion via synset siblings
-      Phase 6 RANKING   — deterministic ranking + window fill
-
-    Legacy mode (use_two_phase=False): single LLM call that returns call_tools + concepts,
-    context collected after. Kept for backward compatibility with eval scripts.
+    Pipelines: 
+    - Two-phase pipeline (use_two_phase=True, the default) runs decision, context,
+    planning, retrieval, synset expansion, and ranking in sequence, see the
+    phase-numbered sections in run(). 
+    - One-phase (use_two_phase=False) uses a single LLM call that returns 
+    call_tools + concepts, kept for backward compatibility with eval scripts.
+    (**NOTE**: it is not used because even if it is faster it does not consider 
+    properly the tools output as they are called before)
 
     Backend: pass a ``LLMBackend`` instance (LlamaCppBackend, HuggingFaceBackend,
     OllamaBackend) or leave ``backend=None`` to auto-build an OllamaBackend from
     the model alias and its parameters in MODELS.
+    
     Call ``agent.unload()`` between models in a multi-model eval loop.
     """
 
@@ -118,7 +117,7 @@ class AACAgent:
 
         # Diagnostic fields exposed to the API and eval notebooks
         self.last_candidates:   list[Pictogram] = []
-        self.last_call_tools:   bool            = False   # backward compat: True ↔ needs_context
+        self.last_call_tools:   bool            = False   # backward compat, True equals needs_context
         self.last_resolve_info: list[dict]      = []      # [{concept, queries, method}]
         self.last_plan_method:  str             = "llm"   # "llm" | "fallback_spacy" | "fallback_empty"
         self.last_synset_added: int             = 0       # pictograms added by synset expansion
@@ -127,9 +126,9 @@ class AACAgent:
         self.last_context_block: str            = ""      # context_block injected into planner
         self.last_tool_calls:   list[str]       = []      # MCP tools actually called this turn
 
-    #######################################################################################################
-    # Public API                                                                                          #
-    #######################################################################################################
+    ############################################################################################################################################
+    # Public API                                                                                            
+    ############################################################################################################################################
 
     def run(
         self,
@@ -147,15 +146,15 @@ class AACAgent:
         history = self.memory.prompt_summary(AGENT_MEMORY_TURNS)
         history_turns = len(self.memory.turns)
 
-        # [INPUT] — one line: turn index, raw input, memory state
+        # [INPUT]  one line: turn index, raw input, memory state
         agent_log.info(
             "[INPUT]  turn=%d  user=%r  history_turns=%d  history=%r",
             turn_id, raw_input, history_turns, history or "(none)",
         )
 
-        ####################################################################################################
-        # Phase 1: DECISION                                                                                #
-        ####################################################################################################
+        ########################################################################################################################################
+        # Phase 1: DECISION                                                                             
+        ########################################################################################################################################
 
         if eval_ctx is not None and eval_ctx.mock_needs_context is not None:
             # Eval bypass: honor the mock even with empty raw_input (turn_pos > 0
@@ -169,19 +168,17 @@ class AACAgent:
             needs_context = self._decide(raw_input, history)
         else:
             # Empty input (turn_pos > 0 in multi-turn eval) or legacy mode with
-            # no mock set: don't force context collection — the context is already
-            # in session history from turn 0.  Forcing True here caused
-            # called_get_time=True / called_get_schedule=False bleed-through in
-            # the eval CSV for all subsequent turns.
+            # no mock set: context is already in session history from turn 0,
+            # so we don't force a fresh collection here.
             needs_context = False
             agent_log.info(
                 "[DECIDE] skipped (empty input or legacy mode)  needs_context=False  elapsed=%.2fs",
                 time.perf_counter() - _t_run_start,
             )
 
-        ####################################################################################################
-        # Phase 2: CONTEXT (MCP tools — only if needed)                                                   #
-        ####################################################################################################
+        ########################################################################################################################################
+        # Phase 2: CONTEXT (MCP tools, only if needed)                                                  
+        ########################################################################################################################################
 
         context_block:   str            = ""
         time_of_day:     Optional[str]  = None
@@ -202,7 +199,7 @@ class AACAgent:
                 # No schedule events, but we still want the exact time surfaced
                 # to the planner instead of just the coarse slot.
                 context_block = build_context_block(time_of_day, [], exact_time=exact_time)
-            # Single informative line for the whole context phase — includes the
+            # Single informative line for the whole context phase, includes the
             # event detail that used to be duplicated across [EVAL]/[TOOL] lines
             # in context.py (now removed in favour of this one line).
             agent_log.info(
@@ -213,15 +210,14 @@ class AACAgent:
         else:
             agent_log.info("[CTX]    skipped")
 
-        # Update diagnostic fields
         self.last_tool_calls    = tool_calls_done
         self.last_needs_context = needs_context
         self.last_context_block = context_block
         self.last_call_tools    = needs_context   # backward compat for server.py / eval
 
-        ####################################################################################################
-        # Phase 3: PLANNING (LLM with context already available)                                          #
-        ####################################################################################################
+        ########################################################################################################################################
+        # Phase 3: PLANNING (LLM with context already available)                                        
+        ########################################################################################################################################
 
         if self.use_two_phase:
             concepts = self._plan(raw_input, history, context_block=context_block)
@@ -229,7 +225,7 @@ class AACAgent:
             # Legacy mode: old planner returns (call_tools, concepts)
             _call_tools_legacy, concepts = self._plan_legacy(raw_input, history)
             self.last_call_tools = _call_tools_legacy
-            # In legacy mode context was already collected above (needs_context=True always);
+            # In legacy mode context was already collected above (needs_context=True always),
             # inject schedule terms as the old flow did
             if _call_tools_legacy and schedule_events:
                 relevant    = filter_schedule_by_time(schedule_events, time_of_day)
@@ -254,9 +250,9 @@ class AACAgent:
         else:
             self.last_plan_method = "llm"
 
-        #######################################################################################################################
-        # Phase 4: retrieval                                                                                                  #
-        #######################################################################################################################
+        ########################################################################################################################################
+        # Phase 4: retrieval                                                                            
+        ########################################################################################################################################
 
         candidates = self._search_candidates(concepts)
 
@@ -271,17 +267,17 @@ class AACAgent:
             self._eval_ctx = None
             return []
 
-        #######################################################################################################################
-        # Phase 5: deterministic ranking + window fill                                                                        #
-        #######################################################################################################################
+        ########################################################################################################################################
+        # Phase 5: deterministic ranking, window fill                                                   
+        ########################################################################################################################################
 
         # Exclude only the pictograms the user actually selected (Option A, R22)
         selected_ids = self.memory.recently_selected_ids(n_turns=AGENT_MEMORY_TURNS)
         result       = self._rank_and_fill(candidates, selected_ids)
 
-        #######################################################################################################################
-        # Record turn in session memory                                                                                       #
-        #######################################################################################################################
+        ########################################################################################################################################
+        # Record turn in session memory                                                                 
+        ########################################################################################################################################
 
         self.memory.add_turn(Turn(
             turn_id     = turn_id,
@@ -321,9 +317,9 @@ class AACAgent:
             self.backend.unload()
         logger.info("AACAgent.unload() called — backend=%s", type(self.backend).__name__)
 
-    #########################################################################################################################
-    # Init helpers                                                                                                          #
-    #########################################################################################################################
+    ############################################################################################################################################
+    # Init helpers                                                                                          
+    ############################################################################################################################################
 
     def _load_kw_set(self) -> set[str]:
         """Load the full ARASAAC keyword index into a set for O(1) lookups."""
@@ -336,19 +332,19 @@ class AACAgent:
             logger.warning("list_keywords(lang=%r) failed: %s", self.lang, exc)
             return set()
 
-    #########################################################################################################################
-    # Phase 1: decision                                                                                                     #
-    #########################################################################################################################
+    ############################################################################################################################################
+    # Phase 1: decision                                                                                     
+    ############################################################################################################################################
 
     def _decide(self, raw_input: str, history: str) -> bool:
         """Phase 1: fast LLM call to determine if time/schedule context is needed.
 
         Returns True if context is needed, False otherwise.
-        The decision prompt no longer requests a "reason" field — the choice is
+        The decision prompt no longer requests a "reason" field, the choice is
         objective enough that the extra token cost is not justified.
         """
         # Eval bypass: if mock_needs_context is set, skip the LLM call entirely.
-        # [DECIDE] is already logged by the caller (run()) in this case — don't log again.
+        # [DECIDE] is already logged by the caller (run()) in this case, don't log again.
         if self._eval_ctx is not None and self._eval_ctx.mock_needs_context is not None:
             return self._eval_ctx.mock_needs_context
 
@@ -383,9 +379,9 @@ class AACAgent:
             agent_log.info("[DECIDE] LLM failed — defaulting needs_context=True")
             return True
 
-    #########################################################################################################################
-    # Phase 3: planner                                                                                                      #
-    #########################################################################################################################
+    ############################################################################################################################################
+    # Phase 3: planner                                                                                      
+    ############################################################################################################################################
 
     def _plan(
         self,
@@ -393,11 +389,11 @@ class AACAgent:
         history:       str,
         context_block: str = "",
     ) -> list[str]:
-        """Phase 3 (two-phase mode): LLM planner. Returns concepts list only; no call_tools."""
+        """Phase 3 (two-phase mode): LLM planner. Returns concepts list only. No call_tools."""
         system_msg = build_planner_prompt(full=False)
         user_msg   = build_planner_message(raw_input, history, context_block=context_block)
 
-        # Log the full prompt to prompt.log — this is what the model actually sees.
+        # Log the full prompt to prompt.log, this is what the model actually sees.
         # Annotate whether the subject hint is present (only at turn 0, when history is empty).
         hint_present = not bool(history)
         prompt_log.info(
@@ -420,12 +416,12 @@ class AACAgent:
             _elapsed = time.perf_counter() - _t0
 
             parsed   = parse_new_planner_response(raw_text)   # no call_tools expected
-            # Deduplicate while preserving order — Llama-class models sometimes
-            # loop a single token (e.g. 80× "look") when the JSON is truncated
-            # at max_tokens. dict.fromkeys keeps first occurrence, discards rest.
+            # Deduplicate while preserving order, models sometimes
+            # loop a single token when the JSON is truncated at max_tokens. 
+            # dict.fromkeys keeps first occurrence, discards rest.
             raw_concepts = [str(c).strip() for c in parsed.get("concepts", []) if c]
             concepts     = list(dict.fromkeys(raw_concepts))
-            dedup_note   = f"  (deduped {len(raw_concepts)}→{len(concepts)})" if len(raw_concepts) != len(concepts) else ""
+            dedup_note   = f"  (deduped {len(raw_concepts)}-->{len(concepts)})" if len(raw_concepts) != len(concepts) else ""
             # Single informative line: timing + concepts + raw model output
             agent_log.info(
                 "[PLAN]   elapsed=%.2fs  concepts=%s%s  raw=%r",
@@ -445,7 +441,7 @@ class AACAgent:
         """Legacy planner (use_two_phase=False): returns (call_tools, concepts).
 
         Kept for backward compatibility with eval scripts that depend on last_call_tools.
-        Body is identical to the original _plan(); only the name changed.
+        Body is identical to the original _plan(). Only the name changed.
         """
         system_msg = build_planner_prompt(full=False)
         user_msg   = build_planner_message(raw_input, history)
@@ -460,7 +456,7 @@ class AACAgent:
             raw_text = self.backend.chat(system_msg, user_msg)
             _elapsed = time.perf_counter() - _t0
 
-            parsed     = parse_planner_response(raw_text)   # legacy parser — includes call_tools
+            parsed     = parse_planner_response(raw_text)   # legacy parser, includes call_tools
             call_tools = bool(parsed.get("call_tools", True))
             concepts   = [str(c).strip() for c in parsed.get("concepts", []) if c]
             # Single informative line: timing + call_tools + concepts + raw model output
@@ -474,9 +470,9 @@ class AACAgent:
             logger.warning("Planner LLM failed: %s — falling back to regex.", exc)
             return True, []
 
-    #########################################################################################################################
-    # Phase 4: search                                                                                                       #
-    #########################################################################################################################
+    ############################################################################################################################################
+    # Phase 4: search                                                                                       
+    ############################################################################################################################################
 
     def _search_candidates(self, terms: list[str]) -> list[Pictogram]:
         """Resolve each concept to ARASAAC keywords and fetch candidate pictograms."""
@@ -491,7 +487,7 @@ class AACAgent:
             resolve_info.append({"concept": term, "queries": queries, "method": method})
 
             if not queries:
-                agent_log.info("[RESOLVE] %r → no match  [method=none]", term)
+                agent_log.info("[RESOLVE] %r --> no match  [method=none]", term)
                 continue
 
             n_new = 0
@@ -513,7 +509,7 @@ class AACAgent:
                 except Exception as exc:
                     logger.warning("search_pictograms(%r) failed: %s", query, exc)
 
-            # Single line per concept: term → keywords → new candidates added
+            # Single line per concept: term, keywords, new candidates added
             agent_log.info(
                 "[RESOLVE] %r → queries=%s  new_candidates=%d  [method=%s]",
                 term, queries, n_new, method,
@@ -560,9 +556,9 @@ class AACAgent:
             )
         return expanded
 
-    #########################################################################################################################
-    # Phase 5: ranking + window fill                                                                                        #
-    #########################################################################################################################
+    ############################################################################################################################################
+    # Phase 5: ranking, window fill                                                                         
+    ############################################################################################################################################
 
     def _rank_and_fill(
         self,
@@ -587,9 +583,9 @@ class AACAgent:
         )
         return window
 
-    #########################################################################################################################
-    # Fallback term extraction (spaCy)                                                                                      #
-    #########################################################################################################################
+    ############################################################################################################################################
+    # Fallback term extraction (spaCy)                                                                      
+    ############################################################################################################################################
 
     def _extract_terms(self, raw_input: str) -> list[str]:
         """Fallback: extract non-stop NOUNs/VERBs/PROPNs via spaCy when the planner returns nothing."""

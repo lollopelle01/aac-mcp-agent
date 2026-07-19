@@ -1,25 +1,21 @@
 """
-src/api/server.py — FastAPI backend for the AAC pictogram selection app.
+FastAPI backend for the AAC pictogram selection app.
 
 Wraps AACAgent in a stateful HTTP server. One agent instance per process
 (single-user, local app). Session lives in-process memory.
 
-Run from the app/ directory:
-    cd app
-    uvicorn src.api.server:app --reload --port 8000
-
 Endpoints
 ---------
-    POST /run           {"text": str}         -> PictogramList
-    POST /select        {"pictogram_id": int} -> {"ok": true}
-    POST /reset                               -> {"ok": true}
-    GET  /session                             -> SessionHistory
-    GET  /settings                            -> dict
-    PATCH /settings     {key: value, ...}     -> {"ok": true}
-    GET  /health                              -> HealthStatus
-    GET  /images/{id}       (PNG proxy)         -> image/png
-    GET  /datasets/status                       -> DatasetStatus
-    POST /datasets/update  {langs?, force?, images?} -> SSE stream of log lines
+    POST /run              -> PictogramList
+    POST /select           -> {"ok": true}
+    POST /reset            -> {"ok": true}
+    GET  /session          -> SessionHistory
+    GET  /settings         -> dict
+    PATCH /settings        -> {"ok": true}
+    GET  /health           -> HealthStatus
+    GET  /images/{id}      -> image/png
+    GET  /datasets/status  -> DatasetStatus
+    POST /datasets/update  -> SSE stream of log lines
 """
 
 from __future__ import annotations
@@ -33,8 +29,7 @@ from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import Any, Optional
 
-####### Path setup #######################################################
-# This file lives at app/src/api/server.py.
+####### Path setup ############################################################################
 # app/src/ must be on sys.path for all package imports (config, agent, mcp_server...).
 _SRC = Path(__file__).resolve().parent.parent   # app/src/
 _APP = _SRC.parent                              # app/
@@ -43,7 +38,7 @@ if str(_SRC) not in sys.path:
 if str(_APP) not in sys.path:
     sys.path.insert(0, str(_APP))               # allows `from logs.logging_config import ...`
 
-####### Logging setup (before any other local import) ####################
+####### Logging setup (before any other local import) #########################################
 try:
     from logs.logging_config import setup_logging
     setup_logging()
@@ -52,13 +47,13 @@ except Exception:
 
 logger = logging.getLogger(__name__)
 
-####### FastAPI imports ##################################################
+####### FastAPI imports #######################################################################
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response, StreamingResponse
 from pydantic import BaseModel
 
-####### Domain imports ###################################################
+####### Domain imports ########################################################################
 from config import AGENT_DEFAULT_MODEL, DATASETS_DIR, DATASET_LANGS, MACRO_CATEGORIES
 from settings import settings
 from agent.agent import AACAgent
@@ -70,10 +65,9 @@ from mcp_server.tools.arasaac import (
     get_pictogram_metadata,
 )
 
-####### Warmup state #####################################################
+####### Warmup state ##########################################################################
 # Tracks whether the model is loaded and ready for inference.
-# warming_up=True while the GGUF is being read from disk (first load).
-# Set to False when _ensure_loaded() completes; errors are logged but non-fatal.
+# Set to False when _ensure_loaded() completes, errors are logged but non-fatal.
 _warmup_done  = threading.Event()   # set when model is loaded
 _warmup_error: Optional[str] = None # set if warmup failed
 
@@ -82,7 +76,7 @@ def _warmup_agent() -> None:
     """Load the agent and its LLM backend in a background thread.
 
     Called once at startup via the lifespan hook, and again whenever the model
-    setting changes (triggered by PATCH /settings). Safe to call concurrently --
+    setting changes (triggered by PATCH /settings). Safe to call concurrently,
     the second call is a no-op if the agent is already loaded for the requested
     model.
     """
@@ -94,9 +88,7 @@ def _warmup_agent() -> None:
         agent = _get_agent()          # creates AACAgent + LlamaCppBackend
         if agent.backend is not None:
             agent.backend._ensure_loaded()   # load GGUF into RAM now
-            # Run a dummy inference with the REAL planner prompt so llama.cpp
-            # caches the system prompt prefix. A different prompt at warmup means
-            # the first real /run still pays full prefill cost -- defeating warmup.
+            # Run a dummy inference 
             try:
                 agent.backend.chat(
                     system = build_planner_prompt(full=False),
@@ -121,10 +113,9 @@ async def lifespan(app):
     thread.start()
     logger.info("[WARMUP] background model load started")
     yield
-    # Nothing to clean up -- threads are daemon, process exit handles the rest.
 
 
-####### App setup ########################################################
+####### App setup #############################################################################
 app = FastAPI(title="AAC Pictogram Agent", version="1.0.0", lifespan=lifespan)
 
 app.add_middleware(
@@ -134,7 +125,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-####### Single shared agent instance (one user, local app) ##############
+####### Single shared agent instance (one user, local app) ####################################
 _agent: Optional[AACAgent] = None
 
 
@@ -169,7 +160,7 @@ def _get_agent() -> AACAgent:
     return _agent
 
 
-####### Request / response schemas ######################################
+####### Request / response schemas ############################################################
 
 class RunRequest(BaseModel):
     text: str
@@ -209,7 +200,7 @@ class HealthResponse(BaseModel):
     warmup_error: Optional[str] = None  # set if warmup failed
 
 
-####### Helpers ##########################################################
+####### Helpers ###############################################################################
 
 def _pic_to_out(pic) -> PictogramOut:
     label = pic.keywords[0].keyword if pic.keywords else str(pic.id)
@@ -222,21 +213,12 @@ def _pic_to_out(pic) -> PictogramOut:
     )
 
 
-####### Endpoints ########################################################
+####### Endpoints #############################################################################
 
 @app.post("/run", response_model=RunResponse)
 async def run(req: RunRequest) -> RunResponse:
+    # NOTE: asyncio.to_thread() offloads the blocking call to a ThreadPoolExecutor
     """Execute one agent turn: caregiver input -> pictogram grid.
-
-    agent.run() calls the LLM backend (llama.cpp or Ollama) which is a
-    blocking, CPU-bound operation that can take 10-60 s.  Running it in a
-    plain sync endpoint would block uvicorn's asyncio event loop for the
-    entire duration, causing the Vite proxy to receive "socket hang up"
-    before any response arrives.
-
-    asyncio.to_thread() offloads the blocking call to a ThreadPoolExecutor
-    thread so the event loop stays alive, keep-alives are sent, and the
-    response is returned as soon as inference finishes.
     """
     if not req.text.strip():
         raise HTTPException(status_code=400, detail="text must not be empty")
@@ -263,7 +245,7 @@ async def run(req: RunRequest) -> RunResponse:
 def select(req: SelectRequest) -> dict:
     """Register a pictogram selection into session memory.
 
-    In the UI the subject taps a card; this call records it so the next
+    In the UI the subject taps a card, this call records it so the next
     /run turn has accurate history. The agent's last turn is updated in-place:
     we replace its pictogram list with the single selected pictogram so that
     prompt_summary reflects the actual user choice.
@@ -277,8 +259,8 @@ def select(req: SelectRequest) -> dict:
     chosen = next((p for p in last.pictograms if p.id == pid), None)
 
     if chosen is None:
-        # Pictogram not in last window -- fetch metadata and inject anyway
-        # (covers the case where user navigates manually outside the grid)
+        # Pictogram not in last window: fetch metadata and inject anyway
+        # NOTE: covers the case where user navigates manually outside the grid)
         try:
             meta    = get_pictogram_metadata(pid)
             from mcp_server.models import Pictogram
@@ -338,7 +320,7 @@ def patch_settings(req: PatchSettingsRequest) -> dict:
     logger.info("/settings PATCH  keys=%s", list(req.updates.keys()))
 
     if new_model != old_model:
-        # Unload the current backend before swapping -- avoids holding two GGUF
+        # Unload the current backend before swapping, avoids holding two GGUF
         # models in RAM simultaneously during the warmup of the new one.
         global _agent
         if _agent is not None:
@@ -380,9 +362,8 @@ def get_image(pictogram_id: int) -> Response:
         raise HTTPException(status_code=404, detail=str(exc))
 
 
-####### Category browser #################################################
+####### Category browser ######################################################################
 # MACRO_CATEGORIES is defined in config.py.
-# Level 0: macro-categories  Level 1: ARASAAC category strings  Level 2: /by_category
 
 
 @app.get("/categories")
@@ -471,7 +452,7 @@ def get_categories(lang: str = "en") -> dict:
             "categories":        sub_cats,
         })
 
-    # Step 3: "Other" -- only pictograms not covered by any named macro
+    # Step 3: "Other" ==> only pictograms not covered by any named macro
     other_cat_ids: dict[str, set[int]] = {}
     other_cat_rep: dict[str, tuple[int, bool]] = {}
     for id_str, rec in pics.items():
@@ -552,9 +533,9 @@ def get_by_category(
     return results[:max_results]
 
 
-####### Dataset update ###################################################
+####### Dataset update ########################################################################
 
-# One concurrent update job at a time; lock prevents double-runs.
+# One concurrent update job at a time, lock prevents double-runs.
 _update_lock = threading.Lock()
 
 
@@ -586,15 +567,6 @@ def datasets_status() -> dict:
 @app.post("/datasets/update")
 def datasets_update(req: DatasetUpdateRequest) -> StreamingResponse:
     """Stream a dataset update as Server-Sent Events.
-
-    Runs update_datasets.build_lang_dataset() in a background thread so the
-    HTTP connection isn't blocked. Log output is forwarded line-by-line as
-    SSE ``data:`` messages so the UI can show a live progress feed.
-
-    SSE event format::
-
-        data: {"type": "log",  "msg": "..."}
-        data: {"type": "done", "ok": true|false}
     """
     if _update_lock.locked():
         raise HTTPException(status_code=409, detail="Dataset update already in progress")

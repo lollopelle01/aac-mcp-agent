@@ -10,9 +10,9 @@ from mcp_server.models import Pictogram
 _MAX_CONCEPT = 9999
 
 
-########################################################################
+#################################################################################################
 # Strategy: sequential_blocks
-########################################################################
+#################################################################################################
 
 def _sequential_blocks(
     candidates: list[Pictogram],
@@ -21,7 +21,7 @@ def _sequential_blocks(
 ) -> list[Pictogram]:
     """Baseline strategy: one sorted block per concept, by AAC quality score desc.
 
-    Eval baseline — must remain bit-for-bit identical to the pre-refactor
+    Eval baseline, must remain bit-for-bit identical to the pre-refactor
     implementation in agent.py.
     """
     def _sort_key(pic: Pictogram) -> tuple[int, int]:
@@ -39,9 +39,9 @@ def _sequential_blocks(
     return pool
 
 
-########################################################################
+#################################################################################################
 # Strategy: round_robin_weighted
-########################################################################
+#################################################################################################
 
 # weight(rank) = DECAY ** rank  (rank = position in ascending concept_order)
 _ROUND_ROBIN_DECAY = 0.7
@@ -56,14 +56,16 @@ def _round_robin_weighted(
 
     Each concept forms a FIFO queue. At every step the group with the highest
     deficit is picked:
+    
         deficit(c) = weight(c) * (total_picks + 1) - picks(c)
+    
     Weights decrease with concept position so earlier concepts get more
     representation without starving later ones.
 
     Weights are assigned by rank in the sorted list of present concept indices,
-    not by raw index value — so non-contiguous indices (e.g. {0, 2, 5} from
-    failed resolves) are handled correctly. Synset-expanded candidates
-    (cidx == _MAX_CONCEPT) always land in the lowest-weight group.
+    not by raw index value, so non-contiguous indices are handled correctly. 
+    Synset-expanded candidates (cidx == _MAX_CONCEPT) always land in the 
+    lowest-weight group.
     """
     pool_candidates = [p for p in candidates if p.id not in selected_ids]
 
@@ -95,9 +97,9 @@ def _round_robin_weighted(
     return pool
 
 
-########################################################################
+#################################################################################################
 # Registry + public entry point
-########################################################################
+#################################################################################################
 
 STRATEGIES: dict[str, Callable[[list[Pictogram], set[int], dict[int, int]], list[Pictogram]]] = {
     "sequential_blocks":    _sequential_blocks,
