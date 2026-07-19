@@ -1,14 +1,6 @@
 // CategoryBrowser.jsx — 3-level navigation for manual pictogram search
-//
-// Level 0 — macro-categories (~15 cards with representative image)
-// Level 1 — ARASAAC sub-categories of the selected macro
-// Level 2 — pictograms in the selected category (reuses PictogramCard style)
-//
-// API calls:
-//   GET /api/categories?lang=en   -> {macros: [...]}
-//   GET /api/by_category?category=food&lang=en&max_results=50  -> [...]
-//
-// Tapping a pictogram calls onSelect(pic) — same contract as PictogramGrid.
+// (macro-category -> ARASAAC sub-category -> pictograms). Tapping a
+// pictogram calls onSelect(pic), same contract as PictogramGrid.
 
 import React, { useState, useEffect, useRef } from 'react'
 
@@ -241,14 +233,6 @@ function PicGrid({ pics, selectedId, onSelect }) {
 
 // ── Main component ────────────────────────────────────────────────────────────
 
-/**
- * CategoryBrowser
- *
- * Props:
- *   onClose()          — closes the panel (without selection)
- *   onSelect(pic)      — chosen pictogram; same contract as PictogramGrid
- *   lang               — dataset language (default "en")
- */
 export function CategoryBrowser({ onClose, onSelect, lang = 'en' }) {
   // Navigation level: 0 | 1 | 2
   const [level,       setLevel]       = useState(0)

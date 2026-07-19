@@ -33,7 +33,10 @@ Compares three sources to build a fair, self-consistent evaluation base:
 - `df_hf`, the HuggingFace mirror of the ARASAAC pictogram catalog (`disi-unibo-nlp-students/ARASAAC-Pictograms`)
 - `df_eval`, a HuggingFace dataset of caregiver-style sentences (`disi-unibo-nlp-students/aac_database`).
 
-It cleans each source, finds overlaps/mismatches between them, and produces two artifacts: `app/datasets/en_eval/`, `df_local` merged with the pictogram IDs that only exist in `df_hf`, written in the same file layout as `app/datasets/en/` (this exists so the evaluation always has a pictogram record for every ID referenced by the eval sentences, even ones missing from the "production" `en/` dataset); and `annotation/eval_filtered.parquet`, the caregiver sentences from `df_eval`, filtered/deduplicated so that every referenced pictogram ID actually resolves in the merged dataset above.
+It cleans each source, finds overlaps/mismatches between them, and produces two artifacts:
+
+- `app/datasets/en_eval/`: `df_local` merged with the pictogram IDs that only exist in `df_hf`, written in the same file layout as `app/datasets/en/` (this exists so the evaluation always has a pictogram record for every ID referenced by the eval sentences, even ones missing from the "production" `en/` dataset).
+- `annotation/eval_filtered.parquet`: the caregiver sentences from `df_eval`, filtered/deduplicated so that every referenced pictogram ID actually resolves in the merged dataset above.
 
 Requires `HF_TOKEN` in `app/.env`, only needed to pull the two gated/rate limited HF datasets, see `app/.env.example`.
 

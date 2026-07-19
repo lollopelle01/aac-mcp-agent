@@ -20,7 +20,7 @@ _SRC           = Path(__file__).resolve().parent
 _APP           = _SRC.parent
 _SETTINGS_FILE = _APP / "user_settings.json"
 
-####### Defaults #########################################################
+####### Defaults #####################################################################
 
 _DEFAULTS: dict[str, Any] = {
     # Locale / time
@@ -30,7 +30,7 @@ _DEFAULTS: dict[str, Any] = {
     # Calendar
     "calendar_provider": "apple",
     "subscribed_ics_urls": {
-        # UNIBO calendar — Ethics lectures only
+        # UNIBO calendar, Ethics lectures only don't worry :)
         "UNIBO": (
             "https://calendar.students.cs.unibo.it/cal/9063/2"
             "?curr=000-000&subjects=91257_1,91257_2"
@@ -38,15 +38,8 @@ _DEFAULTS: dict[str, Any] = {
     },
 
     # Ollama models available locally.
-    # num_predict: cap on generated tokens for the planner call. The expected
-    #   JSON output is ~50 tokens; 150 is a safe ceiling that avoids runaway
-    #   generation while leaving room for slightly verbose models.
-    # num_ctx: context window raised to 2048 — the two-phase pipeline sends
-    #   decision + planner prompts separately, each easily exceeding the old
-    #   512-token budget by turn 3+, causing degraded generation quality.
-    # NOTE: the -h suffix on granite4:3b-h is the hybrid mamba-2 architecture,
-    #   NOT a reasoning/thinking mode. None of these models activate reasoning
-    #   by default.
+    # num_predict: cap on generated tokens for the planner call. The expected JSON output is ~50 tokens, 150 is a safe ceiling that avoids runaway generation while leaving room for slightly verbose models.
+    # num_ctx: context window raised to 2048, the task implies incremental prompt sizes as the turns run it was empirically enough
     "models": {
         "granite4:3b-h": {"size_gb": 2.1, "num_predict": 150, "num_ctx": 2048},
         "qwen2.5:3b":    {"size_gb": 2.0, "num_predict": 150, "num_ctx": 2048},
@@ -55,8 +48,7 @@ _DEFAULTS: dict[str, Any] = {
     },
 
     # GGUF model paths for llama-cpp-python backend.
-    # Keys mirror the Ollama aliases for easy cross-reference.
-    # Paths are relative to the app/ directory.
+    # NOTE: paths are relative to the app/ directory.
     "gguf_models": {
         "qwen2.5:3b":    "models/Qwen2.5-3B-Instruct-Q4_K_M.gguf",
         "llama3.2:3b":   "models/Llama-3.2-3B-Instruct-Q4_K_M.gguf",
@@ -67,24 +59,21 @@ _DEFAULTS: dict[str, Any] = {
     # Agent behaviour
     "agent_default_model":       "qwen2.5:3b",
     "agent_use_llamacpp":        True,   # if True, use LlamaCppBackend instead of Ollama
-    "agent_max_results":         25,     # R22: 24->25 (eval window size experiment)
-    "agent_candidates_per_term": 20,     # R23: 10->20 (candidate cap experiment)
-    "agent_memory_turns":        5,      # R23: 3->5 (memory turns experiment)
+    "agent_max_results":         25,     
+    "agent_candidates_per_term": 20,     
+    "agent_memory_turns":        5,      
     "agent_fetch_schedule":      True,
     "agent_synset_expand":       True,
-    "agent_synset_expand_max":   20,     # R23: 8->20 (synset budget experiment)
+    "agent_synset_expand_max":   20,     
     "agent_use_two_phase":       True,
 
     # Dataset
-    # en_eval is the merged eval dataset (local + HF clean) used for cluster-based
-    # HF evaluation. It is never touched by update_datasets.py -- treat it as a
-    # frozen snapshot.
     "use_local_datasets": True,
     "dataset_langs":      ["en", "en_eval", "it", "es"],
 }
 
 
-####### Manager ##########################################################
+####### Manager ######################################################################
 
 class _SettingsManager:
     """Singleton settings manager -- import as `from settings import settings`."""
@@ -93,7 +82,7 @@ class _SettingsManager:
         self._data: dict[str, Any] = dict(_DEFAULTS)
         self._load()
 
-    ####### Persistence ###################################################
+    ####### Persistence ##############################################################
 
     def _load(self) -> None:
         if _SETTINGS_FILE.exists():
@@ -118,7 +107,7 @@ class _SettingsManager:
         except Exception as exc:
             logger.error("Could not write %s: %s", _SETTINGS_FILE, exc)
 
-    ####### Public API ####################################################
+    ####### Public API ###############################################################
 
     def get(self, key: str, default: Any = None) -> Any:
         return self._data.get(key, default)
@@ -143,7 +132,7 @@ class _SettingsManager:
         """Return a copy of all current settings (safe to serialise to JSON)."""
         return dict(self._data)
 
-    ####### Getters #######################################################
+    ####### Getters ##################################################################
 
     @property
     def timezone(self) -> str:
@@ -214,6 +203,6 @@ class _SettingsManager:
         return bool(self._data["agent_use_two_phase"])
 
 
-####### Singleton ########################################################
+####### Singleton ####################################################################
 
 settings = _SettingsManager()

@@ -41,6 +41,6 @@ End-to-end quality: whether the gold pictogram lands in the final window, or at 
 
 `cpu-colab/explore/`: 30 sentences, 3 models (`qwen2.5:3b`, `llama3.2:3b`, `granite4:3b-h`), identical input/planning/resolve, only the ranking strategy changes. No strategy wins across the board, differences are mostly outside the metrics that matter most. Qwen is the fastest model in both runs. `round_robin_weighted` is slightly better on ranking metrics, so it's the one chosen for the next stage.
 
-`cpu-colab/best/` and `cpu-local_only_best/`: chosen model + strategy, larger sample. Same notebook, same config; the local run is about 4x faster than the Colab one.
+`cpu-colab/best/` and `cpu-local_only_best/`: chosen model + strategy, larger sample. Same notebook, same config, the local run is about 4x faster than the Colab one.
 
 None of these experiments go through the MCP protocol, the agent calls its tools in-process, same as in production. For a version of the pipeline running over a real MCP client/server connection, see `../test/mcp_protocol_demo.ipynb`.

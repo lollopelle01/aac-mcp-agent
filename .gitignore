@@ -31,3 +31,4 @@ app/models/
 .xdg_cache/
 app/.env
 eval/analyze_none_concepts.py
+app/credentials/credentials.json

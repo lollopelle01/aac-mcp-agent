@@ -1,23 +1,17 @@
-# logging_config.py -- centralised logging configuration for aac-mcp-agent.
-#
-# Usage: call setup_logging() as early as possible. It is idempotent.
-#
-#   from logs.logging_config import setup_logging; setup_logging()
-#
-# Output:
-#   logs/app.log     -- everything (DEBUG+), rotation 2 MB x 5 files
-#   logs/errors.log  -- WARNING+ only, rotation 1 MB x 3 files
-#   logs/agent.log   -- human-readable trace of the agent flow (INFO+): LLM input,
-#                       tool calls, LLM output, final result
-#   logs/prompt.log  -- full verbatim prompts sent to the LLM (system + user),
-#                       one record per call, tagged with phase (DECIDE / PLAN)
-#   stderr           -- WARNING+ without timestamp (readable in terminal, captured by pytest -s)
-#
-# File format:    "2025-04-15 14:23:01,042 WARNING  mcp_server.tools.arasaac: <msg>"
-# Console format: "WARNING  mcp_server.tools.arasaac: <msg>"
-# Agent format:   raw message (no prefix -- already formatted by the agent)
-#
-# File level: APP_LOG_LEVEL (default DEBUG). E.g.: APP_LOG_LEVEL=INFO python ...
+'''
+The centralised logging configuration for aac-mcp-agent.
+
+It is enough to write:
+    from logs.logging_config import setup_logging
+    setup_logging()
+    
+It writes:
+    logs/app.log
+    logs/errors.log
+    logs/agent.log
+    logs/prompt.log
+'''
+
 
 from __future__ import annotations
 
@@ -26,9 +20,9 @@ import logging.config
 import os
 from pathlib import Path
 
-##############################################################################
-## Constants #################################################################
-##############################################################################
+#####################################################################################################
+## Constants ########################################################################################
+#####################################################################################################
 
 # This file lives inside logs/, so Path(__file__).parent is already the logs/ folder.
 _LOGS_DIR = Path(__file__).parent
@@ -46,9 +40,9 @@ _ERR_LOG_BACKUP_COUNT = 3
 _CONFIGURED = False
 
 
-##############################################################################
-## Public function ###########################################################
-##############################################################################
+#####################################################################################################
+## Public function ##################################################################################
+#####################################################################################################
 
 def setup_logging() -> None:
     """Configure the global logging system. Idempotent."""
@@ -124,14 +118,14 @@ def setup_logging() -> None:
         },
 
         "loggers": {
-            # Dedicated logger for agent trace -- does not propagate to root to avoid
+            # Dedicated logger for agent trace, does not propagate to root to avoid
             # duplicating lines in app.log with the wrong format
             "agent.run": {
                 "level":     "INFO",
                 "handlers":  ["agent_file"],
                 "propagate": False,
             },
-            # Dedicated logger for full LLM prompts -- separate file for easy inspection
+            # Dedicated logger for full LLM prompts, separate file for easy inspection
             "agent.prompt": {
                 "level":     "INFO",
                 "handlers":  ["prompt_file"],
