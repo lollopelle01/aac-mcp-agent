@@ -6,12 +6,12 @@ __pycache__/
 .pytest_cache/
 
 # ── Credentials and secrets ──────────────────────
-app/credentials/credentials.json   # client_secret OAuth Google
-app/credentials/token.pickle       # token OAuth attivo
+app/credentials/credentials.json   
+app/credentials/token.pickle       
 app/credentials/passwords.txt
 *.pickle
-app/.env                           # local credentials
-app/user_settings.json             # impostazioni utente locali (generate da settings.py)
+app/.env                           
+app/user_settings.json             
 
 # ── Log ────────────────────────────────────────────────────────
 app/logs/*.log
@@ -24,11 +24,11 @@ app/frontend/dist/
 # ── gguf models ──────────────────
 app/models/
 *.gguf
+app/datasets/pictograms/*
 
-# ── Cache cluster (generate da run_eval_cluster.sh) ──────────
+# ── Cache cluster ──────────
 .hf_cache/
 .torch_cache/
 .xdg_cache/
 app/.env
 eval/analyze_none_concepts.py
-app/credentials/credentials.json

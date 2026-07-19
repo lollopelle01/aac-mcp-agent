@@ -285,6 +285,20 @@ Main flow in `App.jsx`: the user types and submits (`/run`) → receives a grid 
 
 `models/` contains the `.gguf` files referenced by `gguf_models` in `settings.py`, one per Ollama alias: `qwen2.5:3b`, `llama3.2:3b`, `granite4:3b-h`, `mistral:7b`. Gitignored folder due to size, and not included in the submission zip either, see [root README](../README.md#missing-data-this-is-a-stripped-down-archive) to download one, or use the Ollama backend instead.
 
+Download the exact files `gguf_models` expects, all from the same quantizer so filenames match with no renaming needed:
+
+```bash
+hf download bartowski/Qwen2.5-3B-Instruct-GGUF Qwen2.5-3B-Instruct-Q4_K_M.gguf --local-dir models
+
+# hf download bartowski/Llama-3.2-3B-Instruct-GGUF Llama-3.2-3B-Instruct-Q4_K_M.gguf --local-dir models
+
+# hf download bartowski/ibm-granite_granite-4.1-3b-GGUF ibm-granite_granite-4.1-3b-Q4_K_M.gguf --local-dir models
+
+# hf download bartowski/Mistral-7B-Instruct-v0.3-GGUF Mistral-7B-Instruct-v0.3-Q4_K_M.gguf --local-dir models
+```
+
+Total for all four: ~10 GB.
+
 `logs/`: centralized configuration in `logging_config.py`, called by `api/server.py` at startup, which produces 4 distinct files. `app.log`: everything, DEBUG+, rotation 2 MB × 5. `errors.log`: WARNING+ only, rotation 1 MB × 3. `agent.log`: a readable, phase-by-phase trace of each turn (`[INPUT]`, `[DECIDE]`, `[CTX]`, `[PLAN]`, `[RESOLVE]`, `[SYNSET]`, `[RANK]`, `[RESULT]`), the most useful file for understanding what the agent did on a specific turn. `prompt.log`: verbatim prompts, system+user, sent to the LLM on each call, to inspect exactly what the model sees. `clear_logs.sh`: utility script to clear the logs.
 
 `credentials/`: local secrets for the calendar integration (`credentials.json`/`token.pickle` for Google OAuth2). Never committed, see `.gitignore`, only needed if using `calendar_provider: "google"`.

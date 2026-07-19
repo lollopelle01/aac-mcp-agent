@@ -77,7 +77,8 @@ To just view the full pictogram set without regenerating anything, a pre-downloa
 ```bash
 pip install gdown
 gdown 1xZGHdEk29XQ0TodoONHOVK6s5V-fyMLT -O pictograms.zip
-unzip pictograms.zip -d datasets/pictograms/
+unzip pictograms.zip -d datasets
+rm pictograms.zip
 ```
 
 ## Keyword embeddings
