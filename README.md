@@ -79,12 +79,10 @@ All other dataset files (`pictograms.json`, `keywords.json`, `keyword_index.json
 
 ## Where to go next
 
-`app/README.md`: how to set up and run the app, and how the code works, agent pipeline, MCP tools, API, frontend. Start here to run or understand the system.
+`app/README.md`: how to set up and run the app, and how the code works, agent pipeline, MCP tools, API, frontend.
 
 `app/datasets/README.md`: where the pictogram data comes from and how the local dataset is structured.
 
 `annotation/README.md`: how the evaluation dataset was built.
 
 `eval/README.md`: how the agent's quality is measured against that dataset.
-
-`test/mcp_protocol_demo.ipynb`: the agent pipeline run over a real MCP client/server connection instead of in-process calls, useful if you want to see actual JSON-RPC round trips rather than take the in-process design on faith.

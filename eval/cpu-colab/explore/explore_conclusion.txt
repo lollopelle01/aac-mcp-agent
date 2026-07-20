@@ -1,3 +1,0 @@
-From the two sets of experiments we can see that thare is no clear best model in all the performances. 
-The most clear difference is execution time and the fastest is Qwen.
-Moreover the round_robin_weighted is slightly better, when looking at ranking metrics.
